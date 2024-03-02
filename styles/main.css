@@ -1,0 +1,119 @@
+@import url(https://fonts.googleapis.com/css?family=Righteous:100,200,300,400,500,600,700,800,900&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Macondo:100,200,300,400,500,600,700,800,900&display=swap);
+
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", "Righteous", Arial, Helvetica, sans-serif !important;
+
+  --primary: #0000;
+  /*Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;*/
+  background-color: #fff;
+  font-size: 14px;
+  /*#0043EF*/
+  /*background-accent #ffe0e0*/
+  overflow-x:hidden;
+}
+html.drawer-open{
+  overflow:hidden;
+}
+button,
+input[type=submit]{
+  transition:background-color ease-out 150ms,
+  color ease-out 150ms;
+}
+
+.toAuthorArticles--container {
+  transition: transform ease-in-out 0.5s;
+}
+.toAuthorArticles--container > a {
+  transition: opacity ease-in-out 0.5s;
+}
+
+.spotlight-desc--container::before{
+  content: "";
+  position:absolute;
+ 
+  top:0.8rem;
+  z-index: -1;
+  width: 100%;
+  height: 1px;
+  background: var(--primary);
+ 
+}
+
+.article-prev::first-letter {
+  background-color: var(--primary);
+  font-size: 8.6rem;
+  line-height: 5.6rem;
+  min-width: 8.8rem;
+  font-weight: 900;
+  float: left;
+  font-weight:700;
+  color: #fff3f3;
+  height: fit-content;
+  box-sizing: border-box;
+  padding-top: .5rem;
+  padding-right: .5rem;
+  padding-left: .5rem;
+  margin: 6px 10px 0 0;
+
+  
+}
+.underline_span{
+  
+    text-decoration: none;
+    background-image: linear-gradient(#01e2c2, #01e2c2);
+    background-repeat: no-repeat;
+    background-position: 0% 90%;
+    background-size: 0% 0.4rem !important;
+    transition: background-size 0.4s ease-in !important;
+    will-change: background-size;
+  
+
+
+}
+.menu-cat--title:hover .underline_span,
+.menu-cat--title:focus .underline_span,
+.article-title:hover .underline_span,
+.article-title:focus .underline_span {
+  background-size: 100% 0.4rem !important;
+
+  /*text-decoration: underline;
+  text-underline-offset: 0.05em;
+  text-decoration-color: #4fc049;
+  text-decoration-thickness: 5px !important;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;*/
+}
+
+
+.article-preview::first-letter {
+  color: black;
+  font-size: 6rem;
+  font-style:italic;
+  font-weight: 900;
+  float: left;
+  line-height: 0.45;
+ 
+  margin: 0.1em 0.15em 0.1em 0;
+}
+.share-methods--ctnr{
+  display:none !important;
+  transition: display 0.34s ease-in;
+}
+.share-btn--expanded div{
+  display: inline-block !important;
+  
+}
+
+
+.search-btn{
+  left: calc(45px *((1 - (20/45))/2));
+  top: calc(45px *((1 - (20/45))/2)); 
+}
