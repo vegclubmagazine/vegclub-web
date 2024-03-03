@@ -21,8 +21,8 @@ const Home = ({})=>{
                             </div>
                         </div>
                     </div>
-                    <div className="hidden lg:inline-block w-[30%]">
-                        <div className="w-[80%] mx-auto">
+                    <div className="hidden lg:inline-block w-[50%]">
+                        <div className="w-[90%] mx-auto">
                             <p>When Golden was a young curator in the nineties, her shows, centering Black artists, were unprecedented. Today, those artists are the stars of the art market.</p>
                         </div>
                     </div>
@@ -155,9 +155,10 @@ const Home = ({})=>{
                 <div className="mx-auto max-w-[450px] w-[80%] h-[90px] bg-[#CACACA] mt-2"></div>
             </section>
             <section className="w-full">
-                <div className="w-full border-[#cacaca] border-b-[1px] pb-[2rem]">
-                    <div className="bg-[#000]">
-                        <div className="h-fit w-[40%] pt-[20px] ml-[5%] pb-[80px]">
+                <div className="w-full border-[#cacaca] border-b-[1px] pb-[2rem] md:pb-0">
+                    <div className="bg-[#000] w-full">
+                    
+                        <div className="md:inline-block ml-[5%] h-fit w-[40%] pt-[20px] pb-[80px]">
                             <h3 className = "text-white article-title inline-block uppercase italic font-semibold cursor-pointer w-fit"><span className="underline_span">News</span>
                                 
                             </h3>
@@ -173,17 +174,18 @@ const Home = ({})=>{
                                 <p className="inline-block font-semibold uppercase italic"> 23 FEB 2024</p>
                             </div>
                         </div>
+                        <div className="hidden md:inline-block w-[50%] align-top aspect-[16/9] ml-[2.5%] bg-[#cacaca]"></div>
                     </div>
-                    <div className="aspect-[16/8] md:aspect-square w-[90%] md:w-[50%] mx-auto md:ml-[47%] mt-[-50px] md:mt-[-30%] bg-[#CACACA]"></div>
+                    <div className="block md:hidden aspect-[16/9]  w-[90%]  mx-auto  mt-[-50px] bg-[#CACACA]"></div>
                 </div>
-                <div className=" border-[#CACACA]">
+                <div className="border-[#CACACA]  md:w-[80%] md:border-r-[1px]">
                     <ul className="list-none text-start">
                         
                         <li className="border-[#CACACA] border-b-[1px]">
-                            <div className="grid grid-cols-[60%_40%] h-full">
-                                <div className="pt-[10px] pb-5 ml-[5%] md:mx-auto md:w-[90%] text-black">
+                            <div className="grid grid-cols-[60%_40%] md:grid-cols-[55%_45%] h-full">
+                                <div className="pt-[10px] pb-5 ml-[5%] md:mx-auto md:w-[80%] text-black">
                                     
-                                    <h1 className="font-semibold md:text-[1.44rem]">The Art World Before And After Thelma Golden</h1>
+                                    <h1 className="font-semibold md:text-[1.44rem]">The Art World Before And After</h1>
                                     <h2 className="hidden md:block mt-4">When Golden was a young curator in the nineties, her shows, centering Black artists, were unprecedented. Today, those artists are the stars of the art market.</h2>
                                     <div className="mt-4 text-[0.833rem]">
                                         <p className="inline-block uppercase italic mt-3 mr-1">Author</p>
@@ -191,26 +193,7 @@ const Home = ({})=>{
                                     </div>
                                 </div>
                                 <div>
-                                    <div className="h-full md:h-auto md:w-[80%] md:mx-auto  aspect-square md:aspect-[4/3] mx-auto bg-[#CACACA]">
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </li>
-                        <li className="border-[#CACACA] border-b-[1px]">
-                            <div className="grid grid-cols-[60%_40%] h-full">
-                                <div className="pt-[10px] pb-5 ml-[5%] md:mx-auto md:w-[90%] text-black">
-                                    
-                                    <h1 className="font-semibold md:text-[1.44rem]">The Art World Before And After Thelma Golden</h1>
-                                    <h2 className="hidden md:block mt-4">When Golden was a young curator in the nineties, her shows, centering Black artists, were unprecedented. Today, those artists are the stars of the art market.</h2>
-                                    <div className="mt-4 text-[0.833rem]">
-                                        <p className="inline-block uppercase italic mt-3 mr-1">Author</p>
-                                        <p className="inline-block uppercase italic font-semibold">23 feb 2024</p>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className="h-full md:h-auto md:w-[80%] md:mx-auto  aspect-square md:aspect-[4/3] mx-auto bg-[#CACACA]">
+                                    <div className="h-full md:h-auto md:w-[80%] md:mx-auto  aspect-square md:aspect-[16/9] mx-auto bg-[#CACACA]">
 
                                     </div>
                                 </div>
@@ -219,10 +202,10 @@ const Home = ({})=>{
                         </li>
                         
                         <li className="border-[#CACACA] border-b-[1px]">
-                            <div className="grid grid-cols-[60%_40%] h-full">
-                                <div className="pt-[10px] pb-5 ml-[5%] md:mx-auto md:w-[90%] text-black">
+                            <div className="grid grid-cols-[60%_40%] md:grid-cols-[55%_45%] h-full">
+                                <div className="pt-[10px] pb-5 ml-[5%] md:mx-auto md:w-[80%] text-black">
                                     
-                                    <h1 className="font-semibold md:text-[1.44rem]">The Art World Before And After Thelma Golden</h1>
+                                    <h1 className="font-semibold md:text-[1.44rem]">The Art World Before And After</h1>
                                     <h2 className="hidden md:block mt-4">When Golden was a young curator in the nineties, her shows, centering Black artists, were unprecedented. Today, those artists are the stars of the art market.</h2>
                                     <div className="mt-4 text-[0.833rem]">
                                         <p className="inline-block uppercase italic mt-3 mr-1">Author</p>
@@ -230,7 +213,28 @@ const Home = ({})=>{
                                     </div>
                                 </div>
                                 <div>
-                                    <div className="h-full md:h-auto md:w-[80%] md:mx-auto  aspect-square md:aspect-[4/3] mx-auto bg-[#CACACA]">
+                                    <div className="h-full md:h-auto md:w-[80%] md:mx-auto  aspect-square md:aspect-[16/9] mx-auto bg-[#CACACA]">
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        
+                        
+                        <li className="border-[#CACACA] border-b-[1px]">
+                            <div className="grid grid-cols-[60%_40%] md:grid-cols-[55%_45%] h-full">
+                                <div className="pt-[10px] pb-5 ml-[5%] md:mx-auto md:w-[80%] text-black">
+                                    
+                                    <h1 className="font-semibold md:text-[1.44rem]">The Art World Before And After</h1>
+                                    <h2 className="hidden md:block mt-4">When Golden was a young curator in the nineties, her shows, centering Black artists, were unprecedented. Today, those artists are the stars of the art market.</h2>
+                                    <div className="mt-4 text-[0.833rem]">
+                                        <p className="inline-block uppercase italic mt-3 mr-1">Author</p>
+                                        <p className="inline-block uppercase italic font-semibold">23 feb 2024</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div className="h-full md:h-auto md:w-[80%] md:mx-auto  aspect-square md:aspect-[16/9] mx-auto bg-[#CACACA]">
 
                                     </div>
                                 </div>
@@ -242,9 +246,10 @@ const Home = ({})=>{
                 </div>
             </section>
             <section className="w-full">
-                <div className="w-full border-[#cacaca] border-b-[1px] pb-[2rem]">
-                    <div className="bg-[#000]">
-                        <div className="h-fit w-[40%] pt-[20px] ml-[5%] pb-[80px]">
+                <div className="w-full border-[#cacaca] border-b-[1px] pb-[2rem] md:pb-0">
+                    <div className="bg-[#000] w-full">
+                    
+                        <div className="md:inline-block ml-[5%] h-fit w-[40%] pt-[20px] pb-[80px]">
                             <h3 className = "text-white article-title inline-block uppercase italic font-semibold cursor-pointer w-fit"><span className="underline_span">News</span>
                                 
                             </h3>
@@ -260,36 +265,18 @@ const Home = ({})=>{
                                 <p className="inline-block font-semibold uppercase italic"> 23 FEB 2024</p>
                             </div>
                         </div>
+                        <div className="hidden md:inline-block w-[50%] align-top aspect-[16/9] ml-[2.5%] bg-[#cacaca]"></div>
                     </div>
-                    <div className="aspect-[16/8] md:aspect-square w-[90%] md:w-[50%] mx-auto md:ml-[47%] mt-[-50px] md:mt-[-30%] bg-[#CACACA]"></div>
+                    <div className="block md:hidden aspect-[16/9]  w-[90%]  mx-auto  mt-[-50px] bg-[#CACACA]"></div>
                 </div>
-                <div className=" border-[#CACACA]">
+                <div className="border-[#CACACA]  md:w-[80%] md:border-r-[1px]">
                     <ul className="list-none text-start">
                         
                         <li className="border-[#CACACA] border-b-[1px]">
-                            <div className="grid grid-cols-[60%_40%] h-full">
-                                <div className="pt-[10px] pb-5 ml-[5%] md:mx-auto md:w-[90%] text-black">
+                            <div className="grid grid-cols-[60%_40%] md:grid-cols-[55%_45%] h-full">
+                                <div className="pt-[10px] pb-5 ml-[5%] md:mx-auto md:w-[80%] text-black">
                                     
-                                    <h1 className="font-semibold md:text-[1.44rem] lg:text-[1.728rem]">The Art World Before And After Thelma Golden</h1>
-                                    <h2 className="hidden md:block mt-4 lg:text-[1.2rem]">When Golden was a young curator in the nineties, her shows, centering Black artists, were unprecedented. Today, those artists are the stars of the art market.</h2>
-                                    <div className="mt-4 text-[0.833rem] lg:text-[1rem]">
-                                        <p className="inline-block uppercase italic mt-3 mr-1">Author</p>
-                                        <p className="inline-block uppercase italic font-semibold">23 feb 2024</p>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className="h-full md:h-auto md:w-[80%] md:mx-auto  aspect-square md:aspect-[4/3] mx-auto bg-[#CACACA]">
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </li>
-                        <li className="border-[#CACACA] border-b-[1px]">
-                            <div className="grid grid-cols-[60%_40%] h-full">
-                                <div className="pt-[10px] pb-5 ml-[5%] md:mx-auto md:w-[90%] text-black">
-                                    
-                                    <h1 className="font-semibold md:text-[1.44rem]">The Art World Before And After Thelma Golden</h1>
+                                    <h1 className="font-semibold md:text-[1.44rem]">The Art World Before And After</h1>
                                     <h2 className="hidden md:block mt-4">When Golden was a young curator in the nineties, her shows, centering Black artists, were unprecedented. Today, those artists are the stars of the art market.</h2>
                                     <div className="mt-4 text-[0.833rem]">
                                         <p className="inline-block uppercase italic mt-3 mr-1">Author</p>
@@ -297,7 +284,7 @@ const Home = ({})=>{
                                     </div>
                                 </div>
                                 <div>
-                                    <div className="h-full md:h-auto md:w-[80%] md:mx-auto  aspect-square md:aspect-[4/3] mx-auto bg-[#CACACA]">
+                                    <div className="h-full md:h-auto md:w-[80%] md:mx-auto  aspect-square md:aspect-[16/9] mx-auto bg-[#CACACA]">
 
                                     </div>
                                 </div>
@@ -306,10 +293,10 @@ const Home = ({})=>{
                         </li>
                         
                         <li className="border-[#CACACA] border-b-[1px]">
-                            <div className="grid grid-cols-[60%_40%] h-full">
-                                <div className="pt-[10px] pb-5 ml-[5%] md:mx-auto md:w-[90%] text-black">
+                            <div className="grid grid-cols-[60%_40%] md:grid-cols-[55%_45%] h-full">
+                                <div className="pt-[10px] pb-5 ml-[5%] md:mx-auto md:w-[80%] text-black">
                                     
-                                    <h1 className="font-semibold md:text-[1.44rem]">The Art World Before And After Thelma Golden</h1>
+                                    <h1 className="font-semibold md:text-[1.44rem]">The Art World Before And After</h1>
                                     <h2 className="hidden md:block mt-4">When Golden was a young curator in the nineties, her shows, centering Black artists, were unprecedented. Today, those artists are the stars of the art market.</h2>
                                     <div className="mt-4 text-[0.833rem]">
                                         <p className="inline-block uppercase italic mt-3 mr-1">Author</p>
@@ -317,7 +304,28 @@ const Home = ({})=>{
                                     </div>
                                 </div>
                                 <div>
-                                    <div className="h-full md:h-auto md:w-[80%] md:mx-auto  aspect-square md:aspect-[4/3] mx-auto bg-[#CACACA]">
+                                    <div className="h-full md:h-auto md:w-[80%] md:mx-auto  aspect-square md:aspect-[16/9] mx-auto bg-[#CACACA]">
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        
+                        
+                        <li className="border-[#CACACA] border-b-[1px]">
+                            <div className="grid grid-cols-[60%_40%] md:grid-cols-[55%_45%] h-full">
+                                <div className="pt-[10px] pb-5 ml-[5%] md:mx-auto md:w-[80%] text-black">
+                                    
+                                    <h1 className="font-semibold md:text-[1.44rem]">The Art World Before And After</h1>
+                                    <h2 className="hidden md:block mt-4">When Golden was a young curator in the nineties, her shows, centering Black artists, were unprecedented. Today, those artists are the stars of the art market.</h2>
+                                    <div className="mt-4 text-[0.833rem]">
+                                        <p className="inline-block uppercase italic mt-3 mr-1">Author</p>
+                                        <p className="inline-block uppercase italic font-semibold">23 feb 2024</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div className="h-full md:h-auto md:w-[80%] md:mx-auto  aspect-square md:aspect-[16/9] mx-auto bg-[#CACACA]">
 
                                     </div>
                                 </div>
