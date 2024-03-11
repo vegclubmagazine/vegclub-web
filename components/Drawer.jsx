@@ -16,7 +16,7 @@ const Drawer = ({isOpen, onClose})=>{
     return (
         <Fragment>
             <div className={`${isOpen ? "fixed opacity-[.1]":"hidden opacity-0"} bg-[#000] h-screen w-screen top-0 right-0 transition-opacity ease-out duration-300 z-[9998]`}></div>
-            <nav className ={`${isOpen ?"scale-y-100":"scale-y-0"} fixed top-0    overflow-x-hidden w-screen h-screen bg-[#fff] z-[9999] transition-transform duration-300 origin-[0%_0%] ease-[cubic-bezier(.19,1,.22,1)]`}>
+            <nav className ={`${isOpen ?"scale-y-100":"scale-y-0"} fixed top-0    overflow-x-hidden w-screen h-screen md:h-fit md:pb-[3rem] bg-[#fff] z-[9999] transition-transform duration-300 origin-[0%_0%] ease-[cubic-bezier(.19,1,.22,1)]`}>
                 <div className={`${isOpen ? "opacity-100": "opacity-0"} duration-300 delay-[250ms] ease-in transition-opacity px-[20px] pt-[20px] relative opacity-1`}>
                     <div className="relative mb-2 pb-2 border-[#cacaca] border-b-[1px] h-fit">
                         <button className="w-[20%] align-middle" aria-label="Close Menu" onClick={()=>{onClose();}}>
@@ -30,14 +30,14 @@ const Drawer = ({isOpen, onClose})=>{
                         </div>
                     </div>
                     <div>
-                        <div className="w-full border-[#cacaca]">
-                            <div className="mt-[4rem] uppercase text-[1.44rem] italic font-bold">
+                        <div className="w-full md:inline-block md:w-[45%] md:align-top border-[#cacaca]">
+                            <div className="mt-[4rem] uppercase text-[1.44rem] md:text-[2.074rem] font-bold">
                                 <ul className="list-none">
                                     <li className="menu-cat--title cursor-pointer w-fit"><span className="underline_span">News</span></li>
                                     <li className="menu-cat--title cursor-pointer w-fit"><span className="underline_span">Lifestyle & Food</span></li>
                                 </ul>
                             </div>
-                            <form data-action="Search" role="search" method="GET" action="/search/" className=" w-[100%] mt-[3rem]">
+                            <form data-action="Search" role="search" method="GET" action="/search/" className=" w-[100%] md:w-[90%] mt-[3rem] md:mt-[1rem]">
                                 <div className="relative w-[100%] bg-[#f4f4f4] inline-block align-bottom">
                                     <button type="submit" className="search-btn absolute">
                                         <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -53,13 +53,13 @@ const Drawer = ({isOpen, onClose})=>{
                                 </div>
                                 
                             </form>
-                            <div className="w-fit  mt-[3rem] ">
+                            <div className="w-fit  mt-[3rem] md:mt-[2rem]">
                                     
-                                 <Link href="#" className=" inline-block text-[1.44rem] no-underline" passHref>
+                                 <Link href="#" className=" inline-block text-[1.44rem]  no-underline" passHref>
                                         <FaInstagram></FaInstagram>
                                 </Link>
                                     
-                                <Link href="#" className="inline-block text-[1.44rem] ml-5 no-underline" passHref>
+                                <Link href="#" className="inline-block text-[1.44rem]  ml-5 no-underline" passHref>
                                     <FaLinkedinIn></FaLinkedinIn>
                                 </Link>
 
@@ -76,8 +76,8 @@ const Drawer = ({isOpen, onClose})=>{
                                 <li className="mb-3">Support Us</li>
                             </ul>*/}
                         </div>
-                        <div className=" w-full mt-[3rem]">
-                            <ul className="list-none w-full text-start uppercase italic font-bold text-[1.2rem]">
+                        <div className=" w-full md:w-[45%] md:inline-block  mt-[3rem] md:mt-0">
+                            <ul className="list-none w-full md:grid md:grid-cols-2 md:grid-rows-4 md:grid-flow-col text-start uppercase font-bold text-[1.2rem] md:text-[1.44rem] md:mt-[4rem]">
                                 <li className="mb-3 pb-3 border-[#cacaca] border-b-[1px]">Team</li>
                                 <li className="mb-3 pb-3 border-[#cacaca]  border-b-[1px]">About</li>
                                 <li className="mb-3 pb-3 border-[#cacaca]  border-b-[1px]">Contact</li>

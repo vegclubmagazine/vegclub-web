@@ -26,6 +26,8 @@ const Layout = (
     const [minNav,setMinNav] = useState(false);
     const {isScrolling,isScrollingDown} = useScrollDirection();
     const [isOpen,setIsOpen] = useState(false);
+    const [ lastScrollY, setLastScrollY] = useState(0);
+    
     const openDrawer = ()=>
     {
         return setIsOpen(prev => prev ? false: true);
@@ -34,17 +36,27 @@ const Layout = (
     {
         return setIsOpen(false);
     }
-
-    useEffect(()=>{
-        if(scrollY > 0){
-
+    const controlNavBar = ()=>
+    {
+        if(window.scrollY > 80)
+        {
             setMinNav(true);
         }
         else{
             setMinNav(false);
         }
+        setLastScrollY(window.scrollY);
+
+    }
+
+    useEffect(()=>{
+        window.addEventListener("scroll", controlNavBar);
+
+        return ()=>{
+            window.removeEventListener("scroll", controlNavBar)
+        }
         
-    }, [isScrolling])
+    }, [lastScrollY])
     useEffect(()=>{
         document.querySelector("html").classList.toggle("drawer-open", isOpen);
     }, [isOpen]);
@@ -60,83 +72,41 @@ const Layout = (
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
                 <title>{ title || "Vegclub magazine" }</title>
             </Head>
-            {minNav ?
-                (
-                    <nav className="fixed bg-[#fff] top-0 w-full  h-[3.5rem] border-[#CACACA] drop-shadow-md  z-[999] grid grid-cols-3 items-center">
-                        <div>
-                            
-                            <div className="inline-block w-fit ml-[5%] mr-5">
-                                <button className="relative w-[17px] h-[17px] " onClick={()=>{openDrawer();}}>
-                                    <div className="absolute top-0 w-full h-[3px] bg-black"></div>
-                                    <div className="absolute top-[39.65%] w-full h-[3px] bg-black"></div>
-                                    <div className="absolute top-[79.3%] w-full h-[3px] bg-black"></div>
-                                </button>
-                            </div>
-                            
-                            <div className="hidden md:inline-block align-bottom w-fit mr-5">
-                               
-                                
-                                   
-                                <a href="/search" className="">
-                                    <svg width="17" height="17" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fillRule="evenodd" clipRule="evenodd" d="M6.55892 10.7328C8.86408 10.7328 10.7328 8.86408 10.7328 6.55892C10.7328 4.25376 8.86408 2.38506 6.55892 2.38506C4.25376 2.38506 2.38506 4.25376 2.38506 6.55892C2.38506 8.86408 4.25376 10.7328 6.55892 10.7328ZM6.55892 13.1178C10.1813 13.1178 13.1178 10.1813 13.1178 6.55892C13.1178 2.93653 10.1813 0 6.55892 0C2.93653 0 0 2.93653 0 6.55892C0 10.1813 2.93653 13.1178 6.55892 13.1178Z" fill="black"></path>
-                                        <path fillRule="evenodd" clipRule="evenodd" d="M14.5219 15.9015C14.3906 16.0328 14.1777 16.0328 14.0464 15.9015L9.18249 11.0376L11.0376 9.18249L15.9015 14.0464C16.0328 14.1777 16.0328 14.3906 15.9015 14.5219L14.5219 15.9015Z" fill="black">
-                                        </path>
-                                    </svg>
-                                </a>
-                                    
-                                 
-                                   
-                               
-                            </div>
-                            <ul className="inline-block w-fit leading-none  font-semibold align-bottom">
-                                <li  className="inline-block  mr-5"><a className="m-0 " href="#">News</a></li>
-                                <li className="inline-block"><a className="m-0" href="#">Lifestyle & Food</a></li>
-                            </ul>
+            
+        
+            
+            
+            <nav className={`fixed top-0 w-full grid grid-cols-3 items-center bg-white ${minNav ? "h-[4.5rem] drop-shadow-md bg-[#fff]/[.9] ":"h-[8rem]"} transition-all duration-[0.34s] ease-in-out z-[999] leading-[8rem] border-[#CACACA]`}>
+                    <div className="inline-block align-middle w-fit">
                         
-                            
+                        <div className="ml-[5%] h-fit w-fit">
+                            <Hamburger  color="#000" rounded size={20} toggle={()=>openDrawer()} />
                         </div>
-
-                        <div className="mx-auto w-fit">
-                            <img src="/vegClub_logo_org_2.png" alt="Header" className="h-[2.2rem]"></img>
-                        </div>
-
-                        <div className="hidden md:inline-block text-end">
-                            <ul className="mr-[5%] inline-block leading-none list-none w-fit font-semibold">
-                                
-                                <li className="text-[1.2rem]">
-                                    <Link href="#" className=" inline-block no-underline" passHref>
-                                            <FaInstagram ></FaInstagram>
-                                    </Link>
-                                        
-                                    <Link href="#" className="inline-block ml-5 no-underline" passHref>
-                                        <FaLinkedinIn></FaLinkedinIn>
-                                    </Link>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                       
-
-                    </nav>
-                )
-            :
-            (
-                <nav className="fixed top-0 w-full h-[8rem] leading-[8rem] border-[#CACACA]">
-                        <div className="inline-block align-middle w-[20%]">
-                            
-                            <div className=" h-fit w-fit">
-                                <Hamburger color="#000" rounded size={20} toggle={()=>openDrawer()} />
+                    </div>
+                    <div className=" mx-auto w-fit">
+                        <img src="/vegClub_logo_org_2.png" alt="Header" className={` ${minNav ? "h-[2.2rem]":"h-[3rem]"} transition-all duration-[.34s] ease-in-out delay-200 relative left-[50%] translate-x-[-50%]`}></img>
+                    </div>
+                    {minNav || (
+                        <div className="hidden w-full font-semibold md:text-[0.833rem] lg:text-[1rem] lg:inline-block text-end">
+                            <div className="inline-block px-3 mr-3">
+                                <a href="/category">News</a>
                             </div>
+                            <div className="inline-block px-3 mr-3">
+                                <a href="/category">Lifestyle & food</a>
+                            </div>
+                            <button className="align-middle mr-[5%]">
+                                <svg className="w-[16px] h-[16px] lg:w-[20px] lg:h-[20px] " viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M6.55892 10.7328C8.86408 10.7328 10.7328 8.86408 10.7328 6.55892C10.7328 4.25376 8.86408 2.38506 6.55892 2.38506C4.25376 2.38506 2.38506 4.25376 2.38506 6.55892C2.38506 8.86408 4.25376 10.7328 6.55892 10.7328ZM6.55892 13.1178C10.1813 13.1178 13.1178 10.1813 13.1178 6.55892C13.1178 2.93653 10.1813 0 6.55892 0C2.93653 0 0 2.93653 0 6.55892C0 10.1813 2.93653 13.1178 6.55892 13.1178Z" fill="black"></path>
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M14.5219 15.9015C14.3906 16.0328 14.1777 16.0328 14.0464 15.9015L9.18249 11.0376L11.0376 9.18249L15.9015 14.0464C16.0328 14.1777 16.0328 14.3906 15.9015 14.5219L14.5219 15.9015Z" fill="black">
+                                    </path>
+                                </svg>
+                            </button>
                         </div>
-                        <div className="inline-block align-middle  w-[60%]">
-                            <img src="/vegClub_logo_org_2.png" alt="Header" className="h-[3rem] relative left-[50%] translate-x-[-50%]"></img>
-                        </div>
-                       
+                    )}
 
-                </nav>
+            </nav>
                 
-            )}
+            
 
             <main className={`mt-[8rem]`}>
                 {children}

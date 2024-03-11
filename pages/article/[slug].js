@@ -21,68 +21,74 @@ const Article = ({article}) =>
         <Layout>
             <div className="w-[90%] mx-auto">
                 <main>
-                    <div className="text-center">
+                    <div className="text-center md:text-start md:w-[70%] lg:w-[50%] md:mx-auto">
                         <h2 className="italic font-semibold  uppercase">Fashion & beauty</h2>
-                        <h1 className="mt-5 text-[1.44rem]">The Art World Before And After Thelma Golden</h1>
-                        <div className="flex-row mt-3 flex w-fit mx-auto">
+                        <h1 className="mt-5 text-[1.44rem] md:font-bold md:text-[2.074rem] lg:text-[2.448rem]">The Art World Before And After Thelma Golden</h1>
+                        <div className="flex-row mt-3 flex w-fit mx-auto md:mx-0">
                             <p className="text-[0.833rem] italic uppercase">Author</p>
                             <span className="text-[#01e2c2] ml-1">/</span>
                             <p className="text-[0.833rem] font-semibold ml-1 italic uppercase">20 FEB 2024</p>
                         </div>
                     </div>
-                    <div className="w-full border-box  pb-3 border-[#CACACA] border-b-[1px] ">
-                        <div className="mt-5 w-full">
-                            <figure>
-                                <img className="object-cover" src="/Screenshot 2023-08-31 210110.png"></img>
-                            </figure>
+                    <div className="w-full border-[#CACACA] mx-auto lg:w-[60%] ">
+                        <div className="mt-5 w-full max-h-[450px] overflow-y-hidden">
+                            
+                            <img className="object-cover w-full" src="/Screenshot 2023-08-31 210110.png"></img>
+                            
 
                         </div>
-                        <div className="mt-1 text-[0.694rem] uppercase tracking-[0.03rem] text-[#cacaca]">Image caption</div>
-                        <div className={`${shareBtnActive ? "share-btn--expanded": "share-btn--retract"} mt-5`}>
-                            <button className={`w-fit border-box ${shareBtnActive ? "bg-[#01e2c2] pl-3" : "border-[#cacaca] border-[1px] px-3"}  py-2`} onClick={()=> setShareBtnActive( shareBtnActive ? 0: 1)}>
-                                <p className="inline-block text-[0.833rem] tracking-[.05rem] uppercase italic">share</p>
-                                <i className={`${shareBtnActive && "invisible"} inline-block ml-3`}>
-                                    <svg width={15} height={15} fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fillRule="evenodd" clipRule="evenodd" d="M7.335.272a.25.25 0 01.337 0l4.623 4.204a.25.25
-                                         0 01.017.353l-.336.37a.25.25 0 01-.353.016L8.004 1.926v7.9a.25.25
-                                          0 01-.25.25h-.5a.25.25 0 01-.25-.25V1.924l-3.62 3.291a.25.25 
-                                          0 01-.353-.016l-.336-.37a.25.25 0 01.016-.353L7.335.272zM.5 7.545a.25.25 
-                                          0 00-.25.25v6.75c0 .138.112.25.25.25h14a.25.25 0 00.25-.25v-6.75a.25.25 
-                                          0 00-.25-.25H14a.25.25 0 00-.25.25v6H1.25v-6a.25.25 0 00-.25-.25H.5z"
-                                          fill="#000"></path>
-                                    </svg>
-                                </i>
-                            </button>
-                            <div className={`share-methods--ctnr  w-fit bg-[#01e2c2] border-box ease-linear pr-3 py-2`}>
-                                <FaLink className="inline-block cursor-pointer"></FaLink>
-                                <FaFacebookF className="inline-block ml-5 cursor-pointer"></FaFacebookF>
-                                <FontAwesomeIcon className="inline-block ml-5 cursor-pointer" icon={"fa-brands fa-x-twitter"}></FontAwesomeIcon>
-                                <FaLinkedinIn className="inline-block ml-5 cursor-pointer"></FaLinkedinIn>
+                        <div className="mt-1 text-[0.694rem] uppercase tracking-[0.03rem] text-[#cacaca]  mx-auto">Image caption</div>
+                        <div className="w-full mx-auto md:w-[70%] lg:w-[83.33%] pb-3 border-[#cacaca] border-b-[1px]">
+                            <div className={`${shareBtnActive ? "share-btn--expanded": "share-btn--retract"} mt-5`}>
+                                <button className={`w-fit border-box ${shareBtnActive ? "bg-[#01e2c2] pl-3" : "border-[#cacaca] border-[1px] px-3"}  py-2`} onClick={()=> setShareBtnActive( shareBtnActive ? 0: 1)}>
+                                    <p className="inline-block text-[0.833rem] tracking-[.05rem] uppercase italic">share</p>
+                                    <i className={`${shareBtnActive && "invisible"} inline-block ml-3`}>
+                                        <svg width={15} height={15} fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M7.335.272a.25.25 0 01.337 0l4.623 4.204a.25.25
+                                            0 01.017.353l-.336.37a.25.25 0 01-.353.016L8.004 1.926v7.9a.25.25
+                                            0 01-.25.25h-.5a.25.25 0 01-.25-.25V1.924l-3.62 3.291a.25.25 
+                                            0 01-.353-.016l-.336-.37a.25.25 0 01.016-.353L7.335.272zM.5 7.545a.25.25 
+                                            0 00-.25.25v6.75c0 .138.112.25.25.25h14a.25.25 0 00.25-.25v-6.75a.25.25 
+                                            0 00-.25-.25H14a.25.25 0 00-.25.25v6H1.25v-6a.25.25 0 00-.25-.25H.5z"
+                                            fill="#000"></path>
+                                        </svg>
+                                    </i>
+                                </button>
+                                <div className={`share-methods--ctnr  w-fit bg-[#01e2c2] border-box ease-linear pr-3 py-2`}>
+                                    <FaLink className="inline-block cursor-pointer"></FaLink>
+                                    <FaFacebookF className="inline-block ml-5 cursor-pointer"></FaFacebookF>
+                                    <FontAwesomeIcon className="inline-block ml-5 cursor-pointer" icon={"fa-brands fa-x-twitter"}></FontAwesomeIcon>
+                                    <FaLinkedinIn className="inline-block ml-5 cursor-pointer"></FaLinkedinIn>
 
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <section className="mt-5 w-[80%] mx-auto">
-                        <p className="font-semibold  leading-[1.7] italic text-[1.2rem]">
+                    <section className="mt-[3rem] w-[80%] md:w-[70%] lg:w-[50%] lg:text-[1.2rem] mx-auto">
+                        <p className="font-semibold  leading-[1.7] italic">
                             When Golden was a young curator in the nineties, her shows, centering Black artists, were unprecedented. Today, those artists are the stars of the art market.
                         </p>
-                        <p className="mt-3 article-preview leading-[1.7] mb-5">Whether you’re a longtime plant-based eater or simply looking to explore the diverse world of vegan cuisine, you’re in for a treat. From cozy neighborhood joints to trendy hotspots</p>
+                        <p className="mt-[3rem] article-preview leading-[1.7] mb-5">Whether you’re a longtime plant-based eater or simply looking to explore the diverse world of vegan cuisine, you’re in for a treat. From cozy neighborhood joints to trendy hotspots</p>
                     </section>
-                    <section className="mt-5 border-box py-5 bg-[#01e2c2] w-[100vw] ml-[-5.5%]">
-                        <div className="w-[90%] mx-auto mt-5">
-                            <h2 className="uppercase text-[1.2rem]  italic">More from {" "} <span className="font-semibold underline cursor-pointer">Fashion & Beauty</span></h2>
+                    <section className="mt-[3rem] border-box py-5 bg-[#01e2c2] w-[100vw] ml-[-5.5%]">
+                        <div className="w-[90%]  mx-auto mt-5">
+                            <h2 className="uppercase text-[1.2rem] md:text-[1.44rem]  italic">More from {" "} <span className="font-semibold underline cursor-pointer">Fashion & Beauty</span></h2>
                             <div className="mt-[2rem]">
-                                <ul className="list-none">
-                                    <li className="mt-3 border-box border-[#00b89d] border-b-[1px] pb-5">
-                                        <div className="grid grid-cols-[70%_30%] grid-rows-1">
-                                            <div className=" text-black">
-                                                <h2 className="font-semibold text-[1.2rem] leading-[1.125]">Title goes right here</h2>
-                                                <div className="flex w-fit mt-3 flex-row">
+                                <ul className="list-none md:grid md:grid-cols-3 md:auto-rows-fr ">
+                                    <li className="mt-3 border-box border-[#00b89d] border-b-[1px] md:border-b-0 md:border-r-[1px] pb-5">
+                                        <div className="grid grid-cols-[70%_30%] grid-rows-1 md:grid-cols-1">
+                                            <div className="hidden md:block w-full bg-[#00b89d] aspect-[16/9]">
+
+                                            </div>
+                                            <div className=" text-black mt-[2rem] mx-auto md:w-[90%]">
+                                                <h2 className="font-semibold md:text-[1.2rem] leading-[1.125]">Title goes right here</h2>
+                                                <p className="mt-[1rem]"> article description</p>
+                                               <div className="flex w-fit mt-[1rem] flex-row">
                                                     <p className="text-[0.833rem] uppercase italic">Author</p>
                                                     <p className="text-[0.833rem] uppercase ml-1 font-semibold italic">20 Feb 2024</p>
                                                 </div>
                                             </div>
-                                            <div>
+                                            <div className="block md:hidden"> 
                                                 <div className="w-full aspect-square mx-auto bg-[#00b89d]">
 
                                                 </div>
@@ -90,16 +96,20 @@ const Article = ({article}) =>
 
                                         </div>
                                     </li>
-                                    <li className="mt-3 border-box border-[#00b89d] border-b-[1px] pb-5">
-                                        <div className="grid grid-cols-[70%_30%] grid-rows-1">
-                                            <div className=" text-black">
-                                                <h2 className="font-semibold text-[1.2rem] leading-[1.125]">Title goes right here</h2>
-                                                <div className="flex w-fit mt-3 flex-row">
+                                    <li className="mt-3 border-box border-[#00b89d] border-b-[1px] md:border-b-0 md:border-r-[1px] pb-5">
+                                        <div className="grid grid-cols-[70%_30%] grid-rows-1 md:grid-cols-1">
+                                            <div className="hidden md:block w-full bg-[#00b89d] aspect-[16/9]">
+
+                                            </div>
+                                            <div className=" text-black mx-auto md:w-[90%] mt-[2rem]">
+                                                <h2 className="font-semibold md:text-[1.2rem] leading-[1.125]">Title goes right here</h2>
+                                                <p className="mt-[1rem]"> article description</p>
+                                                <div className="flex w-fit mt-[1rem] flex-row">
                                                     <p className="text-[0.833rem] uppercase italic">Author</p>
                                                     <p className="text-[0.833rem] uppercase ml-1 font-semibold italic">20 Feb 2024</p>
                                                 </div>
                                             </div>
-                                            <div>
+                                            <div className="block md:hidden"> 
                                                 <div className="w-full aspect-square mx-auto bg-[#00b89d]">
 
                                                 </div>
@@ -107,16 +117,83 @@ const Article = ({article}) =>
 
                                         </div>
                                     </li>
-                                    <li className="mt-3 border-box border-[#00b89d]  pb-5">
-                                        <div className="grid grid-cols-[70%_30%] grid-rows-1">
-                                            <div className=" text-black">
-                                                <h2 className="font-semibold text-[1.2rem] leading-[1.125]">Title goes right here</h2>
-                                                <div className="flex mt-3 w-fit flex-row">
+                                    <li className="mt-3 border-box border-[#00b89d] border-b-[1px] md:border-0 pb-5">
+                                        <div className="grid grid-cols-[70%_30%] grid-rows-1 md:grid-cols-1">
+                                            <div className="hidden md:block w-full bg-[#00b89d] aspect-[16/9]">
+
+                                            </div>
+                                            <div className=" text-black mx-auto md:w-[90%] mt-[2rem]">
+                                                <h2 className="font-semibold md:text-[1.2rem] leading-[1.125]">Title goes right here</h2>
+                                                <p className="mt-[1rem]"> article description</p>
+                                                <div className="flex w-fit mt-[1rem] flex-row">
                                                     <p className="text-[0.833rem] uppercase italic">Author</p>
                                                     <p className="text-[0.833rem] uppercase ml-1 font-semibold italic">20 Feb 2024</p>
                                                 </div>
                                             </div>
-                                            <div>
+                                            <div className="block md:hidden"> 
+                                                <div className="w-full aspect-square mx-auto bg-[#00b89d]">
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </li>
+                                    <li className="border-box border-[#00b89d] border-b-[1px] md:border-r-[1px]  pb-5">
+                                        <div className="grid grid-cols-[70%_30%] grid-rows-1 md:grid-cols-1">
+                                            <div className="hidden md:block w-full bg-[#00b89d] aspect-[16/9]">
+
+                                            </div>
+                                            <div className=" text-black mx-auto md:w-[90%] mt-[2rem]">
+                                                <h2 className="font-semibold md:text-[1.2rem] leading-[1.125]">Title goes right here</h2>
+                                                <p className="mt-[1rem]"> article description</p>
+                                                <div className="flex w-fit mt-[1rem] flex-row">
+                                                    <p className="text-[0.833rem] uppercase italic">Author</p>
+                                                    <p className="text-[0.833rem] uppercase ml-1 font-semibold italic">20 Feb 2024</p>
+                                                </div>
+                                            </div>
+                                            <div className="block md:hidden"> 
+                                                <div className="w-full aspect-square mx-auto bg-[#00b89d]">
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </li>
+                                    <li className=" border-box border-[#00b89d] border-b-[1px] md:border-r-[1px]  pb-5">
+                                        <div className="grid grid-cols-[70%_30%] grid-rows-1 md:grid-cols-1">
+                                            <div className="hidden md:block w-full bg-[#00b89d] aspect-[16/9]">
+
+                                            </div>
+                                            <div className=" text-black mx-auto md:w-[90%] mt-[2rem]">
+                                                <h2 className="font-semibold md:text-[1.2rem] leading-[1.125]">Title goes right here</h2>
+                                                <p className="mt-[1rem]"> article description</p>
+                                                <div className="flex w-fit mt-[1rem] flex-row">
+                                                    <p className="text-[0.833rem] uppercase italic">Author</p>
+                                                    <p className="text-[0.833rem] uppercase ml-1 font-semibold italic">20 Feb 2024</p>
+                                                </div>
+                                            </div>
+                                            <div className="block md:hidden"> 
+                                                <div className="w-full aspect-square mx-auto bg-[#00b89d]">
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </li>
+                                    <li className=" border-box border-[#00b89d] border-b-[1px]   pb-5">
+                                        <div className="grid grid-cols-[70%_30%] grid-rows-1 md:grid-cols-1">
+                                            <div className="hidden md:block w-full bg-[#00b89d] aspect-[16/9]">
+
+                                            </div>
+                                            <div className=" text-black mx-auto md:w-[90%] mt-[2rem]">
+                                                <h2 className="font-semibold md:text-[1.2rem] leading-[1.125]">Title goes right here</h2>
+                                                <p className="mt-[1rem]"> article description</p>
+                                                <div className="flex w-fit mt-[1rem] flex-row">
+                                                    <p className="text-[0.833rem] uppercase italic">Author</p>
+                                                    <p className="text-[0.833rem] uppercase ml-1 font-semibold italic">20 Feb 2024</p>
+                                                </div>
+                                            </div>
+                                            <div className="block md:hidden"> 
                                                 <div className="w-full aspect-square mx-auto bg-[#00b89d]">
 
                                                 </div>
