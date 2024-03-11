@@ -16,7 +16,7 @@ const Footer  = ({})=>
                 
                 <div className="border-box py-5 border-[#333333] border-b-[1px]">
                     {/*<h4 className="italic mb-5 text-[#fff] font-semibold uppercase">More</h4>*/}
-                    <div className="text-[#a2a2a2] font-semibold  flex flex-row justify-evenly md:w-[80%] mx-auto">
+                    <div className="text-[#a2a2a2] font-semibold  flex flex-row justify-evenly md:w-[80%] lg:w-[60%] mx-auto">
                         <p>About</p>
                         
                         <p>Team</p>
