@@ -11,7 +11,7 @@ const Footer  = ({})=>
         <footer className = "bg-[#000] relative border-box py-5">
             <div className="w-[90%] mx-auto">
                 <div className="border-box py-3 border-[#333333] border-b-[1px]">
-                    <img  src="/vegClub_logo_white_2.png" className="mx-auto h-[4rem] w-auto"></img>
+                    <img  src="/vegClub_logo_white_2.png" className="mx-auto h-[2.5rem] w-auto"></img>
                 </div>
                 
                 <div className="border-box py-5 border-[#333333] border-b-[1px]">
@@ -26,7 +26,7 @@ const Footer  = ({})=>
                         <p>Support Us</p>
                         
                     </div>
-                    <div className="mt-5 text-center text-[1.44rem] text-[#A2A2A2]">
+                    <div className="mt-5 text-center text-[1.2rem] text-[#A2A2A2]">
                         
                         <Link href="#" className="inline-block mr-3 no-underline" passHref>
                             <FaInstagram></FaInstagram>
@@ -39,9 +39,9 @@ const Footer  = ({})=>
 
                     </div>
                     <div className="text-center text-[0.694rem] mt-2 text-[#A2A2A2]">
-                        <p className="inline-block border-[#333] w-fit mr-2">Privacy Policy</p>
-                        <span className="text-[#01e2c2]">/</span>
-                        <p className="inline-block border-[#333] w-fit ml-2">Cookie Policy</p>
+                        <p className="inline-block border-[#a2a2a2] px-2 w-fit border-r-[1px]">Privacy Policy</p>
+                        {/*<span className="text-[#01e2c2]">/</span>*/}
+                        <p className="inline-block border-[#333] px-2 w-fit ">Cookie Policy</p>
 
 
 
