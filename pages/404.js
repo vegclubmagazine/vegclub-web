@@ -20,7 +20,7 @@ const NotFound = ()=>
                            
                         </p>
                         <p className="mt-2 text-[1.2rem]">We’re sorry for any inconvenience.</p>
-                        <p className="underline text-[1.2rem] uppercase  font-semibold mt-5 lg:text-[1.44rem]"><a href="/">Home</a></p>
+                        <p className="underline text-[1.2rem] uppercase  font-semibold mt-5 lg:text-[1.2rem]"><a href="/">Home</a></p>
                     </div>
                 
                 
