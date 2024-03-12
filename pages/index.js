@@ -158,7 +158,7 @@ const Home = ({})=>{
                 <div className="w-full border-[#cacaca] border-b-[1px] pb-[2rem] md:pb-0">
                     <div className="bg-[#000] w-full">
                     
-                        <div className="md:inline-block ml-[5%] h-fit w-[40%] pt-[20px] pb-[80px]">
+                        <div className="md:inline-block w-[90%] mx-auto md:ml-[5%] h-fit md:w-[40%] pt-[20px] pb-[80px]">
                             <h3 className = "text-white article-title inline-block uppercase italic font-semibold cursor-pointer w-fit"><span className="underline_span">News</span>
                                 
                             </h3>
@@ -249,8 +249,8 @@ const Home = ({})=>{
                 <div className="w-full border-[#cacaca] border-b-[1px] pb-[2rem] md:pb-0">
                     <div className="bg-[#000] w-full">
                     
-                        <div className="md:inline-block ml-[5%] h-fit w-[40%] pt-[20px] pb-[80px]">
-                            <h3 className = "text-white article-title inline-block uppercase italic font-semibold cursor-pointer w-fit"><span className="underline_span">News</span>
+                        <div className="md:inline-block mx-auto w-[90%]  h-fit  md:ml-[5%] md:w-[40%] pt-[20px] pb-[80px]">
+                            <h3 className = "text-white article-title inline-block uppercase italic font-semibold cursor-pointer w-fit"><span className="underline_span">Lifestyle & Food</span>
                                 
                             </h3>
                             <h1 className="text-[1.44rem] text-white mt-4 font-semibold">The Art World Before And After Thelma Golden</h1>
