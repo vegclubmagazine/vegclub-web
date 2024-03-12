@@ -9,14 +9,14 @@ import Link from "next/link";
 import { useState,useEffect } from "react";
 import { Fragment } from "react";
 import Footer from "./Footer";
-
+// ease-[cubic-bezier(.19,1,.22,1)]
 const Drawer = ({isOpen, onClose})=>{
     
 
     return (
         <Fragment>
             <div className={`${isOpen ? "fixed opacity-[.1]":"hidden opacity-0"} bg-[#000] h-screen w-screen top-0 right-0 transition-opacity ease-out duration-300 z-[9998]`}></div>
-            <nav className ={`${isOpen ?"scale-y-100":"scale-y-0"} fixed top-0    overflow-x-hidden w-screen h-screen md:h-fit md:pb-[3rem] bg-[#fff] z-[9999] transition-transform duration-300 origin-[0%_0%] ease-[cubic-bezier(.19,1,.22,1)]`}>
+            <nav className ={`${isOpen ?"scale-y-100":"scale-y-0"} fixed top-0    overflow-x-hidden w-screen h-screen md:h-fit md:pb-[3rem] bg-[#fff] z-[9999]`}>
                 <div className={`${isOpen ? "opacity-100": "opacity-0"} duration-300 delay-[250ms] ease-in transition-opacity px-[20px] pt-[20px] relative opacity-1`}>
                     <div className="relative mb-2 pb-2 border-[#cacaca] border-b-[1px] h-fit">
                         <button className="w-[20%] align-middle" aria-label="Close Menu" onClick={()=>{onClose();}}>
@@ -31,7 +31,7 @@ const Drawer = ({isOpen, onClose})=>{
                     </div>
                     <div>
                         <div className="w-full md:inline-block md:w-[45%] md:align-top border-[#cacaca]">
-                            <div className="mt-[4rem] uppercase text-[1.44rem] md:text-[2.074rem] font-bold">
+                            <div className="mt-[4rem] uppercase text-[2.074rem] font-bold">
                                 <ul className="list-none">
                                     <li className="menu-cat--title cursor-pointer w-fit"><span className="underline_span">News</span></li>
                                     <li className="menu-cat--title cursor-pointer w-fit"><span className="underline_span">Lifestyle & Food</span></li>

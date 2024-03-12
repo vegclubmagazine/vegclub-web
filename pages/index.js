@@ -6,7 +6,7 @@ const Home = ({})=>{
         <Layout>
             <section className="block md:grid md:grid-cols-[2fr_1fr]">
                 <div className="relative border-[#cacaca] border-r-[1px]">
-                    <div className="w-full bg-[#CACACA] aspect-square md:aspect-[16/9]">
+                    <div className="w-full bg-[#CACACA] aspect-[4/3] md:aspect-[16/9]">
                     </div>
                     <div className="relative inline-block  left-[10%] md:left-[0%] mt-[-50px] bg-[#000] text-start text-white w-[90%] md:w-[75%] lg:aspect-[4/3] lg:w-[50%] py-[30px]">
                         {/*<p className="w-full bg-[#000] text-start text-[#fff] border-box pl-1 text-[0.6rem]"> Damon Winter <span className="text-[#01e2c2] ml-2 mr-2">/</span> Vegclub Magazine <span className="text-[#01e2c2] ml-2 mr-2">/</span> Redux</p>*/}
