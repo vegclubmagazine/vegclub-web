@@ -10,7 +10,7 @@ const Footer  = ({})=>
     return (
         <footer className = "bg-[#000] relative border-box py-5">
             <div className="w-[90%] mx-auto">
-                <div className="border-box py-3 border-[#333333] border-b-[1px]">
+                <div className="border-box py-3 border-[#333333] ">
                     <img  src="/vegClub_logo_white_2.png" className="mx-auto h-[2.5rem] w-auto"></img>
                 </div>
                 
@@ -39,9 +39,9 @@ const Footer  = ({})=>
 
                     </div>
                     <div className="text-center text-[0.694rem] mt-2 text-[#A2A2A2]">
-                        <p className="inline-block border-[#a2a2a2] px-2 w-fit border-r-[1px]">Privacy Policy</p>
+                        <p className="inline-block border-[#333] px-1 w-fit border-r-[1px]">Privacy Policy</p>
                         {/*<span className="text-[#01e2c2]">/</span>*/}
-                        <p className="inline-block border-[#333] px-2 w-fit ">Cookie Policy</p>
+                        <p className="inline-block border-[#333] px-1 w-fit ">Cookie Policy</p>
 
 
 

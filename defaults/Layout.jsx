@@ -76,7 +76,7 @@ const Layout = (
         
             
             
-            <nav className={`fixed top-0 w-full grid grid-cols-3 items-center bg-white ${minNav ? "h-[4.5rem] drop-shadow-md bg-[#fff]/[.9] ":"h-[8rem]"} transition-all duration-[0.34s] ease-in-out z-[999] leading-[8rem] border-[#CACACA]`}>
+            <nav className={`fixed top-0 w-full grid grid-cols-3 items-center bg-white ${minNav ? "h-[4.5rem] drop-shadow-md  ":"h-[8rem] bg-white/[.4]"} transition-all duration-[0.34s] ease-in-out z-[999] leading-[8rem] border-[#CACACA]`}>
                     <div className="inline-block align-middle w-fit">
                         
                         <div className="ml-[5%] h-fit w-fit">
