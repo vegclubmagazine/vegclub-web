@@ -6,11 +6,32 @@ import {
 } from "react-icons/fa";
 
 import Link from "next/link";
-import { useState,useEffect } from "react";
+import { useState,useEffect, useRef} from "react";
 import { Fragment } from "react";
 import Footer from "./Footer";
+import {useRouter} from "next/router";
+
+const qs = require('qs');
 // ease-[cubic-bezier(.19,1,.22,1)]
 const Drawer = ({isOpen, onClose})=>{
+
+    const router = useRouter();
+    const searchInputRef = useRef(null);
+    
+    const handleSubmit = (e) =>
+    {
+        e.preventDefault();
+        const search_query = qs.stringify({
+            q:searchInputRef.current.value
+        })
+
+        router.replace({
+            pathname:'/search',
+            query:search_query
+        })
+        
+
+    }
     
 
     return (
@@ -18,7 +39,7 @@ const Drawer = ({isOpen, onClose})=>{
             <div className={`${isOpen ? "fixed opacity-[.1]":"hidden opacity-0"} bg-[#000] h-screen w-screen top-0 right-0 transition-opacity ease-out duration-300 z-[9998]`}></div>
             <nav className ={`${isOpen ?"scale-y-100":"scale-y-0"} fixed top-0    overflow-x-hidden w-screen h-screen md:h-fit md:pb-[3rem] bg-[#fff] z-[9999]`}>
                 <div className={`${isOpen ? "opacity-100": "opacity-0"} duration-300 delay-[250ms] ease-in transition-opacity px-[20px] pt-[20px] relative opacity-1`}>
-                    <div className="relative mb-2 pb-2 border-[#cacaca] border-b-[1px] h-fit">
+                    <div className="relative mb-2 pb-2 border-black/[.1] border-b-[1px] h-fit">
                         <button className="w-[20%] align-middle" aria-label="Close Menu" onClick={()=>{onClose();}}>
                             <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fillRule="evenodd" clipRule="evenodd" d="M16 1.77778L14.2222 0L8 6.22222L1.77778 0L0 1.77778L6.22222 8L0 14.2222L1.77778 16L8 9.77778L14.2222 16L16 14.2222L9.77778 8L16 1.77778Z" fill="black"></path>
@@ -29,15 +50,15 @@ const Drawer = ({isOpen, onClose})=>{
 
                         </div>
                     </div>
-                    <div>
-                        <div className="w-full md:inline-block md:w-[45%] md:align-top border-[#cacaca]">
+                    <div className="md:grid md:grid-cols-[2fr_1fr]">
+                        <div className="w-full  border-black/[.1]">
                             <div className="mt-[4rem] uppercase text-[2.074rem] font-bold">
                                 <ul className="list-none">
-                                    <li className="menu-cat--title cursor-pointer w-fit"><span className="underline_span">News</span></li>
-                                    <li className="menu-cat--title cursor-pointer w-fit"><span className="underline_span">Lifestyle & Food</span></li>
+                                    <li className="menu-cat--title cursor-pointer w-fit"><Link href={`/category/news`} ><span className="underline_span">News</span></Link></li>
+                                    <li className="menu-cat--title cursor-pointer w-fit"><Link href={`/category/lifestyle-and-food`}><span className="underline_span">Lifestyle & Food</span></Link></li>
                                 </ul>
                             </div>
-                            <form data-action="Search" role="search" method="GET" action="/search/" className=" w-[100%] md:w-[90%] mt-[3rem] md:mt-[1rem]">
+                            <form data-action="Search" role="search" onSubmit={(e)=>handleSubmit(e)} className=" w-[100%] md:w-[90%] mt-[3rem] md:mt-[1rem]">
                                 <div className="relative w-[100%] bg-[#f4f4f4] inline-block align-bottom">
                                     <button type="submit" className="search-btn absolute">
                                         <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -49,7 +70,9 @@ const Drawer = ({isOpen, onClose})=>{
                                     <input type="search"
                                       name="q" 
                                       placeholder="Search VegClub..." 
-                                     className="z-[1] w-[100%] placeholder:text-[#cacaca] pl-[45px] h-[45px] border-[#cacaca] bg-transparent relative outline-[#01e2c2]"></input>
+                                     className="z-[1] w-[100%] placeholder:text-[#cacaca] pl-[45px] h-[45px] border-[#cacaca] bg-transparent relative outline-[#01e2c2]"
+                                     ref={searchInputRef}
+                                     ></input>
                                 </div>
                                 
                             </form>
@@ -76,12 +99,12 @@ const Drawer = ({isOpen, onClose})=>{
                                 <li className="mb-3">Support Us</li>
                             </ul>*/}
                         </div>
-                        <div className=" w-full md:w-[45%] md:inline-block  mt-[3rem] md:mt-0">
-                            <ul className="list-none w-full md:grid md:grid-cols-2 md:grid-rows-4 md:grid-flow-col text-start uppercase font-bold text-[1.2rem] md:text-[1.44rem] md:mt-[4rem]">
-                                <li className="mb-3 pb-3 border-[#cacaca] border-b-[1px]">Team</li>
-                                <li className="mb-3 pb-3 border-[#cacaca]  border-b-[1px]">About</li>
-                                <li className="mb-3 pb-3 border-[#cacaca]  border-b-[1px]">Contact</li>
-                                <li className="mb-3 pb-3 border-[#cacaca] border-b-[1px]">Support Us</li>
+                        <div className=" w-full  mt-[3rem] md:mt-[4rem]">
+                            <ul className="list-none w-full md:grid  md:grid-rows-4 md:grid-flow-col text-start font-bold text-[1.44rem]">
+                                <li className="mb-3 pb-3 border-[#cacaca] border-b-[1px]"><Link href="#">Team</Link></li>
+                                <li className="mb-3 pb-3 border-[#cacaca]  border-b-[1px]"><Link href="#">About</Link></li>
+                                <li className="mb-3 pb-3 border-[#cacaca]  border-b-[1px]"><Link href="#">Contact</Link></li>
+                                <li className="mb-3 pb-3 border-[#cacaca] border-b-[1px]"><Link href="#">Loyalty Card</Link></li>
                             </ul>
                             {/*<h6 className="flex mb-3">
                                 {/*<span className="shrink-0 italic uppercase text-[1.44rem] mr-[10px] font-bold">Learn more</span>*/}

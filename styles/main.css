@@ -101,7 +101,7 @@ input[type=submit]{
   float: left;
   line-height: 0.45;
  
-  margin: 0.1em 0.15em 0.1em 0;
+  margin: 0.1em 0.25em 0.1em 0;
 }
 .share-methods--ctnr{
   display:none !important;
@@ -116,4 +116,13 @@ input[type=submit]{
 .search-btn{
   left: calc(45px *((1 - (20/45))/2));
   top: calc(45px *((1 - (20/45))/2)); 
+}
+.spotlight-articleCard--headline_ctnr::after{
+  content:"";
+  display:block;
+  position:absolute;
+  height:80px;
+  background-color:#000000;
+  width:100%;
+  
 }

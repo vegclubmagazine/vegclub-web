@@ -10,7 +10,7 @@ const Footer  = ({})=>
     return (
         <footer className = "bg-[#000] relative border-box py-5">
             <div className="w-[90%] mx-auto">
-                <div className="border-box py-3 border-[#333333] ">
+                <div className="border-box py-3 border-[#333333]">
                     <img  src="/vegClub_logo_white_2.png" className="mx-auto h-[2.5rem] w-auto"></img>
                 </div>
                 
