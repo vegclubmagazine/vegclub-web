@@ -2,7 +2,7 @@
 
 
 const serverError = ()=>{
-    return (<></>)
+    return (<>500 error</>)
 }
 
 
