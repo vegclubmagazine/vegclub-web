@@ -75,7 +75,7 @@ const Layout = (
                 <title>{ title || "Vegclub magazine" }</title>
                 <meta name="keywords" content={keywords}></meta>
                 <meta name="description" content={desc}></meta>
-                {/*<link rel="shortcut icon" href="favicon.ico"></link>*/}
+                <link rel="shortcut icon" href="favicon.ico"></link>
 
                 <meta content="en_US" property="og:locale"></meta>
 

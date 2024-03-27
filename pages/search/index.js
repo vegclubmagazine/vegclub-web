@@ -230,7 +230,7 @@ const Search = ()=>
                                                                             article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
                                                                                 article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
                                                                                 article?.attributes?.media?.data?.attributes?.formats?.small?.url ||
-                                                                                article?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url
+                                                                                article?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url 
                                                                               
                                                                             
 

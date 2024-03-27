@@ -107,7 +107,7 @@ export async function getServerSideProps({req,res,query, params})
     res.setHeader(
         
         "Cache-Control",
-        "public", "s-maxage=5", "stale-while-revalidate=5"
+        "public", "s-maxage=604800", "stale-while-revalidate=86400"
         
     );
 
@@ -216,7 +216,7 @@ export async function getServerSideProps({req,res,query, params})
         props:{
             meta:data?.articles?.meta || null,
             articles: visible_articles || null,
-            category: data?.articles?.data[0]?.attributes?.category?.data?.attributes?.name|| cat
+            category: data?.articles?.data[0]?.attributes?.category?.data?.attributes?.name || cat 
         }
     }
 
