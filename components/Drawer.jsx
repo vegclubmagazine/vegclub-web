@@ -103,7 +103,7 @@ const Drawer = ({isOpen, onClose})=>{
                             <ul className="list-none w-full md:grid  md:grid-rows-4 md:grid-flow-col text-start font-bold text-[1.44rem]">
                                 <li className="pl-2 py-2 border-black/[.1] border-b-[1px]"><Link href="#">Team</Link></li>
                                 <li className="pl-2 py-2  border-black/[.1]  border-b-[1px]"><Link href="#">About</Link></li>
-                                <li className="pl-2  py-2 border-black/[.1]  border-b-[1px]"><Link href="#">Contact</Link></li>
+                                <li className="pl-2  py-2 border-black/[.1]  border-b-[1px]"><Link  href="mailto:contact@vegclubmagazine.com">Contact</Link></li>
                                 <li className="pl-2 py-2 loyalty-card--btn border-black/[.1] border-b-[1px]">
                                     <Link className="text-black inline-block mr-5" href="#">Loyalty Card</Link>
                                     <div className="inline-block  align-middle w-[25px] h-[25px]">

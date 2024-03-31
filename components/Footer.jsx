@@ -4,6 +4,7 @@ import {
     FaLinkedinIn,
     FaTwitter,
 } from "react-icons/fa";
+import {MdOpenInNew} from "react-icons/md";
 import Link from "next/link";
 const Footer  = ({})=>
 {
@@ -17,13 +18,16 @@ const Footer  = ({})=>
                 <div className="border-box py-5 border-[#333333] border-b-[1px]">
                     {/*<h4 className="italic mb-5 text-[#fff] font-semibold uppercase">More</h4>*/}
                     <div className="text-[#a2a2a2] font-semibold  flex flex-row justify-evenly md:w-[80%] lg:w-[60%] mx-auto">
-                        <p>About</p>
+                        <Link href="/about">About</Link>
                         
-                        <p>Team</p>
+                        <Link href="/team">Team</Link>
                         
-                        <p>contact</p>
+                        <div>
+                            <Link className="inline-block mr-3" href="mailto:contact@vegclubmagazine.com">contact</Link>
+                            <MdOpenInNew className="inline-block align-middle"></MdOpenInNew>
+                        </div>
                         
-                        <p>Support Us</p>
+                        <Link href="#">Loyalty Card</Link>
                         
                     </div>
                     <div className="mt-5 text-center text-[1.2rem] text-[#A2A2A2]">
