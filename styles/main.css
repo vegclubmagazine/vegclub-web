@@ -126,3 +126,48 @@ input[type=submit]{
   width:100%;
   
 }
+
+.loyalty-card--btn{
+  background: linear-gradient(rgb(0,0,0),rgb(0,0,0)) center 100%/ 100% 0% no-repeat;
+
+  -webkit-transition: background-size 1s cubic-bezier(.19,1,.22,1);
+  -moz-transition: background-size 1 cubic-bezier(.19,1,.22,1);
+  -o-transition: background-size 1 cubic-bezier(.19,1,.22,1);
+  -ms-transition: background-size 1s cubic-bezier(.19,1,.22,1);
+  transition: background-size 1s cubic-bezier(.19,1,.22,1);
+
+}
+
+.loyalty-card--btn a{
+  transition: all .34s cubic-bezier(.19,1,.22,1);
+  transition-delay: .04s;
+
+}
+
+.loyalty-card--btn:hover{
+   background-size: 100% 100%;
+
+}
+
+
+.loyalty-card--btn:hover a{
+  color:#fff;
+}
+
+
+.nave-menu--ctnr{
+  animation: opacity .34s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@keyframes opacity{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+
+
+

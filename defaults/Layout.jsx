@@ -93,33 +93,41 @@ const Layout = (
         
             
             
-            <nav className={`fixed top-0 w-full grid grid-cols-3 items-center bg-white ${minNav ? "h-[4.5rem] drop-shadow-md  ":"h-[8rem] bg-white"} transition-all duration-[0.34s] ease-in-out z-[999] leading-[8rem] border-[#CACACA]`}>
+            <nav className={`fixed top-0 w-full grid grid-cols-3 items-center bg-white ${minNav ? "h-[4.5rem] drop-shadow-md  ":"h-[8rem] bg-white"} transition-all duration-[0.34s] ease-in-out z-[999]  border-[#CACACA]`}>
                     <div className="inline-block align-middle w-fit">
                         
-                        <div className="ml-[5%] h-fit w-fit">
+                        <div className="pl-[30px] h-fit w-fit">
                             <Hamburger  color="#000" rounded size={20} toggle={()=>openDrawer()} />
                         </div>
                     </div>
                     <div className=" mx-auto w-fit">
                         <Link href="/"><img src="/vegClub_logo_org_2.png"  alt="Header" className={` ${minNav ? "h-[2.2rem]":"h-[2.8rem]"} transition-all duration-[.34s] ease-in-out delay-200 relative left-[50%] translate-x-[-50%]`}></img></Link>
                     </div>
-                    {minNav || (
-                        <div className="hidden w-full font-semibold md:text-[0.833rem] lg:inline-block text-end">
-                            <div className="inline-block px-3 mr-3">
-                                <Link href={`/category/news`}>News</Link>
-                            </div>
-                            <div className="inline-block px-3 mr-[1.5rem]">
-                                <Link href="/category/lifestyle-and-food">Lifestyle & food</Link>
-                            </div>
-                            <button className="align-middle  mr-[5%]">
-                                <svg className="w-[16px] h-[16px]" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fillRule="evenodd" clipRule="evenodd" d="M6.55892 10.7328C8.86408 10.7328 10.7328 8.86408 10.7328 6.55892C10.7328 4.25376 8.86408 2.38506 6.55892 2.38506C4.25376 2.38506 2.38506 4.25376 2.38506 6.55892C2.38506 8.86408 4.25376 10.7328 6.55892 10.7328ZM6.55892 13.1178C10.1813 13.1178 13.1178 10.1813 13.1178 6.55892C13.1178 2.93653 10.1813 0 6.55892 0C2.93653 0 0 2.93653 0 6.55892C0 10.1813 2.93653 13.1178 6.55892 13.1178Z" fill="black"></path>
-                                    <path fillRule="evenodd" clipRule="evenodd" d="M14.5219 15.9015C14.3906 16.0328 14.1777 16.0328 14.0464 15.9015L9.18249 11.0376L11.0376 9.18249L15.9015 14.0464C16.0328 14.1777 16.0328 14.3906 15.9015 14.5219L14.5219 15.9015Z" fill="black">
-                                    </path>
-                                </svg>
-                            </button>
+                    
+                    <div className={`${minNav ? "opacity-0 hidden":"lg:inline-block opacity-100"}  w-full font-semibold  md:text-[0.833rem] text-end`}>
+                        <div className="inline-block px-3 mr-3">
+                            <Link href={`/category/news`}>News</Link>
                         </div>
-                    )}
+                        <div className="inline-block  px-3 mr-3">
+                            <Link href="/category/lifestyle-and-food">Lifestyle & food</Link>
+                        </div>
+                        <div className="inline-block py-2  bg-black px-3 w-fit mr-[1.5rem]">
+                                <Link className="text-[#fff]  duration-[.34s] ease-in-out hover:text-white/[.4]" href="#">Loyalty card</Link>
+                                <div className="inline-block align-middle">
+                                    <img src="/loyalty_button_asset.png" className="h-[15px] w-[15px]"></img>
+                                </div>
+                            
+                            
+                        </div>
+                        <button className="align-middle mr-[5%]">
+                            <svg className="w-[16px] h-[16px]" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fillRule="evenodd" clipRule="evenodd" d="M6.55892 10.7328C8.86408 10.7328 10.7328 8.86408 10.7328 6.55892C10.7328 4.25376 8.86408 2.38506 6.55892 2.38506C4.25376 2.38506 2.38506 4.25376 2.38506 6.55892C2.38506 8.86408 4.25376 10.7328 6.55892 10.7328ZM6.55892 13.1178C10.1813 13.1178 13.1178 10.1813 13.1178 6.55892C13.1178 2.93653 10.1813 0 6.55892 0C2.93653 0 0 2.93653 0 6.55892C0 10.1813 2.93653 13.1178 6.55892 13.1178Z" fill="black"></path>
+                                <path fillRule="evenodd" clipRule="evenodd" d="M14.5219 15.9015C14.3906 16.0328 14.1777 16.0328 14.0464 15.9015L9.18249 11.0376L11.0376 9.18249L15.9015 14.0464C16.0328 14.1777 16.0328 14.3906 15.9015 14.5219L14.5219 15.9015Z" fill="black">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                    
 
             </nav>
                 

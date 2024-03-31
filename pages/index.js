@@ -76,8 +76,8 @@ const Home = ({articles})=>{
                         <div className="w-[90%] mx-auto pt-[40px] pr-[40px]">
                             <h1 className="font-semibold text-[1.44rem] lg:text-[1.728rem] duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/article/${articles?.featureArticles[1]?.attributes?.slug}`}>{articles?.featureArticles[1]?.attributes?.title}</Link></h1>
                             <div className="mt-4 text-[0.833rem]">
-                                <p className="inline-block  uppercase italic mr-1">{articles?.featureArticles[1]?.attributes?.author?.data?.attributes?.name}</p>
-                                <span className="text-[#01e2c2]">/</span>
+                                <p className="inline-block font-light  uppercase italic mr-1">{articles?.featureArticles[1]?.attributes?.author?.data?.attributes?.name}</p>
+                                
                                 <Moment className="inline-block font-semibold uppercase italic text-[0.833rem]" format="MMMM Do YYYY">{articles?.featureArticles[1]?.attributes?.date}</Moment>
                             </div>
                         </div>
@@ -87,8 +87,8 @@ const Home = ({articles})=>{
                         <div className="h-full pt-[40px] w-[90%] mx-auto pr-[40px]">
                             <h1 className=" font-semibold text-[1.44rem] lg:text-[1.728rem] duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/article/${articles?.featureArticles[2]?.attributes?.slug}`}>{articles?.featureArticles[2]?.attributes?.title}</Link></h1>
                             <div className="mt-4 text-[0.833rem]">
-                                <p className="inline-block  uppercase italic mr-1">{articles?.featureArticles[2]?.attributes?.author?.data?.attributes?.name}</p>
-                                <span className="text-[#01e2c2]">/</span>
+                                <p className="inline-block font-light  uppercase italic mr-1">{articles?.featureArticles[2]?.attributes?.author?.data?.attributes?.name}</p>
+                                
                                 <Moment className="inline-block font-semibold uppercase italic text-[0.833rem]" format="MMMM Do YYYY">{articles?.featureArticles[2]?.attributes?.date}</Moment>
                             </div>
                         </div>
@@ -111,7 +111,7 @@ const Home = ({articles})=>{
                                             
                                             <h1 className="md:text-[1.44rem] lg:text-[1.728rem] font-semibold"><Link href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></h1>
                                             <div className="mt-3 text-[0.833rem]">
-                                                <p className="inline-block uppercase italic mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
+                                                <p className="inline-block font-light uppercase italic mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
                                                 <Moment className="inline-block font-semibold uppercase italic text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
                                             </div>
                                         </div>
@@ -136,7 +136,7 @@ const Home = ({articles})=>{
                                     
                                             <h1 className="font-semibold text-[1.44rem] "><Link href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></h1>
                                             <div className="mt-4 text-[0.833rem]">
-                                                <p className="inline-block  uppercase italic mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
+                                                <p className="inline-block font-light  uppercase italic mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
                                                 
                                                 <Moment className="inline-block font-semibold uppercase italic text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
                                             </div>
@@ -152,7 +152,7 @@ const Home = ({articles})=>{
                                             
                                             <h1 className="md:text-[1.44rem] lg:text-[1.728rem] font-semibold"><Link className="duration-[.32s] ease-in-out hover:text-black/[.4]" href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></h1>
                                             <div className="mt-3 text-[0.833rem]">
-                                                <p className="inline-block uppercase italic mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
+                                                <p className="inline-block font-light uppercase italic mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
                                                 <Moment className="inline-block font-semibold uppercase italic text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
                                             </div>
                                         </div>
@@ -177,7 +177,7 @@ const Home = ({articles})=>{
                                     
                                             <h1 className="font-semibold text-[1.44rem] "><Link className="duration-[.32s] ease-in-out hover:text-black/[.4]" href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></h1>
                                             <div className="mt-4 text-[0.833rem]">
-                                                <p className="inline-block  uppercase italic mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
+                                                <p className="inline-block font-light uppercase italic mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
                                                 
                                                 <Moment className="inline-block font-semibold uppercase italic text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
                                             </div>
@@ -278,7 +278,7 @@ const Home = ({articles})=>{
                                         <h1 className="font-semibold md:text-[1.44rem] lg:text-[1.728rem] duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></h1>
                                         <h2 className="hidden md:block mt-4">{article?.attributes?.description}</h2>
                                         <div className="mt-4 text-[0.833rem]">
-                                            <p className="inline-block uppercase italic mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
+                                            <p className="inline-block uppercase font-light italic mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
                                         
                                             <Moment className="inline-block font-semibold uppercase italic text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
                                         </div>
@@ -387,7 +387,7 @@ const Home = ({articles})=>{
                                         <h1 className="font-semibold md:text-[1.44rem] lg:text-[1.728rem]  duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></h1>
                                         <h2 className="hidden md:block mt-4">{article?.attributes?.description}</h2>
                                         <div className="mt-4 text-[0.833rem]">
-                                            <p className="inline-block uppercase italic mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
+                                            <p className="inline-block uppercase font-light italic mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
                                         
                                             <Moment className="inline-block font-semibold uppercase italic text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
                                         </div>
