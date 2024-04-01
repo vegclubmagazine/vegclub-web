@@ -49,6 +49,13 @@ const GlobalProvider = ({children}) =>
         return isAuthor;
 
     }
+    const findAuthorByID = (id)=>
+
+    {
+        const author = Authors?.filter((user)=> parseInt(user?.id) === parseInt(id))
+
+        return author[0];
+    }   
 
     return (
         <Provider 
@@ -58,6 +65,7 @@ const GlobalProvider = ({children}) =>
                 setAuthors,
                 setError,
                 isMemberAuthor,
+                findAuthorByID,
                 
             }}
         >{children}</Provider>
