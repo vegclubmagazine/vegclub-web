@@ -9,11 +9,29 @@ const {Provider} = GlobalContext;
 const GlobalProvider = ({children}) =>
 {
     const [Authors, setAuthors] = useState([]);
+    const [Categories, setCategories] = useState([]);
     
     const [Error, setError] = useState({
         error: false,
         message:""
     })
+
+    useEffect(()=>{
+        fetch(`${API}/categories?populate=*`)
+        .then((res) => {
+            return res.json();
+
+        })
+        .then(({data})=>
+        {
+            setCategories(data)
+
+
+        })
+        .catch((err)=>{
+            setError(()=>{ return {err:true, message: err?.message}})
+        })
+    },[Categories.length, Categories])
 
     //get authors
     useEffect(()=>{
@@ -27,7 +45,7 @@ const GlobalProvider = ({children}) =>
             setAuthors(data);
         })
         .catch((err)=>{
-            setError(()=>{ return {error: true, message: err.message}});
+            setError(()=>{ return {error: true, message: err?.message}});
         })
 
     }, [Authors.length,Authors])
@@ -61,8 +79,10 @@ const GlobalProvider = ({children}) =>
         <Provider 
             value={{
                 Authors,
+                Categories,
                 Error,
                 setAuthors,
+                setCategories,
                 setError,
                 isMemberAuthor,
                 findAuthorByID,

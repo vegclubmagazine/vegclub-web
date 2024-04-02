@@ -18,12 +18,16 @@ import {
     FaSnapchatGhost,
 } from "react-icons/fa";
 import { slugify } from "../../lib/utils";
+import { API } from "../../config/api";
+import { useEffect } from "react";
 
+const qs = require("qs");
 
 
 
 const Team = ({excerpt,team}) =>
 {
+   
     return (
         <Layout title="Meet The Team | Vegclub Magazine">
             
@@ -34,16 +38,16 @@ const Team = ({excerpt,team}) =>
                 {team?.map((member,index)=>(
                         <div className="" key={index}>
                             <div className="aspect-square overflow-hidden  w-fit">
-                                <img src={member?.attributes?.media?.url} className="w-full h-auto"/>
+                                <img src={member?.attributes?.media?.data?.attributes?.url} className="w-full h-auto"/>
                             </div>
                             <div className="flex flex-col flex-grow ">
-                                <h2 className="text-[1.44rem] lg:text-[1.728rem] font-semibold duration-[.32s] ease-in-out hover:text-black/[.4]"><Link href={`team/${slugify(member?.attributes?.name)}`}>Bolu Talabi</Link></h2>
-                                <p className="text-[1.2rem] font-light mt-3">{member?.attributes?.role}</p>
+                                <h2 className="text-[1.44rem] lg:text-[1.728rem] font-semibold duration-[.32s] ease-in-out hover:text-black/[.4]"><Link href={`team/${slugify(member?.attributes?.name)}`}>{member?.attributes?.name}</Link></h2>
+                                <p className="text-[1.2rem]  font-light mt-3">{member?.attributes?.position}</p>
                                 <ul className="list-none mt-3 text-black text-[1.44rem]">
-                                    <FaInstagramSquare className="inline-block mr-5"></FaInstagramSquare>
-                                    <FaFacebookSquare className="inline-block mr-5"></FaFacebookSquare>
-                                    <FaTwitterSquare className="inline-block mr-5"></FaTwitterSquare>
-                                    <FaLinkedin className="inline-block"></FaLinkedin>
+                                    {member?.attributes?.instagram && (<FaInstagramSquare className="inline-block mr-5"></FaInstagramSquare>)}
+                                    {member?.attributes?.Facebook && (<FaFacebookSquare className="inline-block mr-5"></FaFacebookSquare>)}
+                                    {member?.attributes?.twitter && (<FaTwitterSquare className="inline-block mr-5"></FaTwitterSquare>)}
+                                    {member?.attributes?.linkedin && (<FaLinkedin className="inline-block"></FaLinkedin>)}
 
                                 </ul>
 
@@ -59,7 +63,7 @@ const Team = ({excerpt,team}) =>
 }
 
 
-export async function getServersideProps({req,res}){
+export async function getServerSideProps({req,res}){
 
     res.setHeader(
         "Cache-Control",
@@ -74,7 +78,7 @@ export async function getServersideProps({req,res}){
     const filters = qs.stringify(
         {
         populate: "*",
-        sort: ["order:asc"],
+       
         },
         { encodeValuesOnly: true }
     );
@@ -82,12 +86,14 @@ export async function getServersideProps({req,res}){
     const teamRequest = await fetch(`${API}/teams?${filters}`);
     const team = await teamRequest.json();
 
+    console.log(team);
+
     return {
         props: {
-        excerpt: excerpt?.data?.attributes?.content,
-        team: team?.data,
+            excerpt: excerpt?.data?.attributes?.content || null,
+            team: team?.data || null,
         },
-        revalidate: 10,
+        
     };
 
 }

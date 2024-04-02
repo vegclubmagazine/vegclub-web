@@ -6,14 +6,16 @@ import {
 } from "react-icons/fa";
 
 import Link from "next/link";
-import { useState,useEffect, useRef} from "react";
+import { useState,useEffect, useRef, useContext} from "react";
 import { Fragment } from "react";
 import Footer from "./Footer";
 import {useRouter} from "next/router";
-
+import { GlobalContext } from "../context/GlobalContext";
 const qs = require('qs');
 // ease-[cubic-bezier(.19,1,.22,1)]
 const Drawer = ({isOpen, onClose})=>{
+    
+    const {Categories} = useContext(GlobalContext)
 
     const router = useRouter();
     const searchInputRef = useRef(null);
@@ -50,12 +52,19 @@ const Drawer = ({isOpen, onClose})=>{
 
                         </div>
                     </div>
-                    <div className="md:grid md:grid-cols-[2fr_1fr]">
+                    <div className="md:grid md:grid-cols-2">
                         <div className="w-full  border-black/[.1]">
                             <div className="mt-[4rem] uppercase text-[2.074rem] font-bold">
                                 <ul className="list-none">
-                                    <li className="menu-cat--title cursor-pointer w-fit"><Link href={`/category/news`} ><span className="underline_span">News</span></Link></li>
-                                    <li className="menu-cat--title cursor-pointer w-fit"><Link href={`/category/lifestyle-and-food`}><span className="underline_span">Lifestyle & Food</span></Link></li>
+                                    <li className="pl-2 cursor-pointer w-fit"><Link href={`/category/news`} ><span className="">News</span></Link></li>
+                                    <li className="w-fit py-2 px-2 loyalty-card--btn">
+                                        <Link className="text-black inline-block mr-2" href="#">Loyalty Card</Link>
+                                        <div className="inline-block  align-middle w-[30px] h-[30px]">
+                                            <img className="w-fit h-auto" src="/loyalty_button_asset.png"/>
+                                        </div>
+
+                                    </li>
+                                
                                 </ul>
                             </div>
                             <form data-action="Search" role="search" onSubmit={(e)=>handleSubmit(e)} className=" w-[100%] md:w-[90%] mt-[3rem] md:mt-[1rem]">
@@ -100,17 +109,11 @@ const Drawer = ({isOpen, onClose})=>{
                             </ul>*/}
                         </div>
                         <div className=" w-full  mt-[3rem] md:mt-[4rem]">
-                            <ul className="list-none w-full md:grid  md:grid-rows-4 md:grid-flow-col text-start font-bold text-[1.44rem]">
-                                <li className="pl-2 py-2 border-black/[.1] border-b-[1px]"><Link href="#">Team</Link></li>
-                                <li className="pl-2 py-2  border-black/[.1]  border-b-[1px]"><Link href="#">About</Link></li>
-                                <li className="pl-2  py-2 border-black/[.1]  border-b-[1px]"><Link  href="mailto:contact@vegclubmagazine.com">Contact</Link></li>
-                                <li className="pl-2 py-2 loyalty-card--btn border-black/[.1] border-b-[1px]">
-                                    <Link className="text-black inline-block mr-5" href="#">Loyalty Card</Link>
-                                    <div className="inline-block  align-middle w-[25px] h-[25px]">
-                                        <img className="w-fit h-auto" src="/loyalty_button_asset.png"/>
-                                    </div>
-
-                                </li>
+                            <ul className="list-none w-full md:grid md:gap-x-8  md:grid-rows-5 md:grid-flow-col text-start font-bold text-[1.44rem]">
+                                {Categories?.length && Categories?.map((category, index)=>(
+                                    <li className={`py-4 border-black/[.1] ${!index ? "border-b-[1px]" : index === (Categories.length - 1) ? "border-b-[1px] md:border-b-0" : index  % (((parseInt(index/5)+ 1)* 5)-1) ? "border-b-[1px]": "border-b-[1px] md:border-b-0"}`} key={index}><Link href={`/${category?.attributes?.slug}`}>{category?.attributes?.name}</Link></li>
+                                    
+                                ))}   
                             </ul>
                             {/*<h6 className="flex mb-3">
                                 {/*<span className="shrink-0 italic uppercase text-[1.44rem] mr-[10px] font-bold">Learn more</span>*/}
