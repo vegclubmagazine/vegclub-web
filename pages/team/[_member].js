@@ -52,7 +52,7 @@ const Member = ({member, articles, meta}) =>
                         <div className=" mx-auto md:mx-0 flex justify-center flex-col mt-8  md:pr-[60px] lg:pr-[100px]">
                             
                             <h2 className="text-[1.44rem] w-fit mx-auto  md:mx-0 font-semibold">{member?.attributes?.position}</h2>
-                            <p className="text-[1.2rem] text-[#a2a2a2] w-fit mx-auto  mt-2">{member?.attributes?.pronouns}</p>
+                            <p className="text-[1.2rem] text-[#a2a2a2] w-fit mx-auto md:mx-0 mt-2">{member?.attributes?.pronouns}</p>
                             <p className="mt-8 text-[#a2a2a2] leading-[1.6]">{member?.attributes?.bio}</p>
                             <ul className="list-none mt-8 mx-auto md:mx-0 w-fit">
                                 <li className="inline-block mr-5">
