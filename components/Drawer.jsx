@@ -56,7 +56,7 @@ const Drawer = ({isOpen, onClose})=>{
                         <div className="w-full  border-black/[.1]">
                             <div className="mt-[4rem] uppercase text-[2.074rem] font-bold">
                                 <ul className="list-none">
-                                    <li className="pl-2 cursor-pointer w-fit"><Link href={`/category/news`} ><span className="">News</span></Link></li>
+                                    <li className="pl-2 cursor-pointer w-fit ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]"><Link href={`/category/news`} ><span className="">Watch</span></Link></li>
                                     <li className="w-fit py-2 px-2 loyalty-card--btn">
                                         <Link className="text-black inline-block mr-2" href="#">Loyalty Card</Link>
                                         <div className="inline-block  align-middle w-[30px] h-[30px]">
@@ -87,11 +87,11 @@ const Drawer = ({isOpen, onClose})=>{
                             </form>
                             <div className="w-fit  mt-[3rem] md:mt-[2rem]">
                                     
-                                 <Link href="#" className=" inline-block text-[1.44rem]  no-underline" passHref>
+                                 <Link href="https://www.instagram.com/vegclubmagazine/" className=" inline-block text-[1.44rem]  no-underline ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]" passHref>
                                         <FaInstagram></FaInstagram>
                                 </Link>
                                     
-                                <Link href="#" className="inline-block text-[1.44rem]  ml-5 no-underline" passHref>
+                                <Link href="#" className="inline-block text-[1.44rem]  ml-5 no-underline ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]" passHref>
                                     <FaLinkedinIn></FaLinkedinIn>
                                 </Link>
 
@@ -111,11 +111,11 @@ const Drawer = ({isOpen, onClose})=>{
                         <div className=" w-full  mt-[3rem] md:mt-[4rem]">
                             <ul className="list-none w-full md:grid md:gap-x-8  md:grid-rows-5 md:grid-flow-col text-start font-bold text-[1.44rem]">
                                 {Categories?.length && Categories?.map((category, index)=>(
-                                    <li className={`py-4 border-black/[.1] ${!index ? "border-b-[1px]" : index === (Categories.length - 1) ? "border-b-[1px] md:border-b-0" : index  % (((parseInt(index/5)+ 1)* 5)-1) ? "border-b-[1px]": "border-b-[1px] md:border-b-0"}`} key={index}><Link href={`/${category?.attributes?.slug}`}>{category?.attributes?.name}</Link></li>
+                                    <li className={`py-4 border-black/[.1] ${!index ? "border-b-[1px]" : index === (Categories.length - 1) ? "border-b-[1px] md:border-b-0" : index  % (((parseInt(index/5)+ 1)* 5)-1) ? "border-b-[1px]": "border-b-[1px] md:border-b-0"} ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]`} key={index}><Link href={`/${category?.attributes?.slug}`}>{category?.attributes?.name}</Link></li>
                                     
                                 ))}   
                             </ul>
-                            {/*<h6 className="flex mb-3">
+                            {/*<h6 className="flex mb-3">                                
                                 {/*<span className="shrink-0 italic uppercase text-[1.44rem] mr-[10px] font-bold">Learn more</span>*/}
                                 {/*<span className="border-[#cacaca] w-[100%] border-b-[1px] relative bottom-[8px]"></span>
                             </h6>*/}

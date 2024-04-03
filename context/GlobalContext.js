@@ -15,8 +15,10 @@ const GlobalProvider = ({children}) =>
         error: false,
         message:""
     })
-
+    //get categories
     useEffect(()=>{
+
+       
         fetch(`${API}/categories?populate=*`)
         .then((res) => {
             return res.json();
@@ -31,7 +33,7 @@ const GlobalProvider = ({children}) =>
         .catch((err)=>{
             setError(()=>{ return {err:true, message: err?.message}})
         })
-    },[Categories.length, Categories])
+    },[])
 
     //get authors
     useEffect(()=>{
@@ -48,7 +50,7 @@ const GlobalProvider = ({children}) =>
             setError(()=>{ return {error: true, message: err?.message}});
         })
 
-    }, [Authors.length,Authors])
+    }, [])
 
 
     const isMemberAuthor = (member)=>

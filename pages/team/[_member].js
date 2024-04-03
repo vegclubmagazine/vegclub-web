@@ -55,25 +55,33 @@ const Member = ({member, articles, meta}) =>
                             <p className="text-[1.2rem] text-[#a2a2a2] w-fit mx-auto md:mx-0 mt-2">{member?.attributes?.pronouns}</p>
                             <p className="mt-8 text-[#a2a2a2] leading-[1.6]">{member?.attributes?.bio}</p>
                             <ul className="list-none mt-8 mx-auto md:mx-0 w-fit">
-                                <li className="inline-block mr-5">
+                               {member?.attributes?.instagram &&( 
+                                    <li className="inline-block mr-5">
                                         <FaInstagram className="inline-block text-[1.2rem] sm:text-[1.2rem] md:text-[1.728rem] mr-5"></FaInstagram>
                                         <p className="text-[.833rem] text-[#a2a2a2] hidden md:inline-block">Instagram</p>
                                     </li>
+                               )}
                                 
-                               <li className="inline-block mr-5">
+                               {member?.attributes?.linkedin && (
+                                    <li className="inline-block mr-5">
                                         <FaLinkedin className="inline-block text-[1.2rem] sm:text-[1.44rem] md:text-[1.728rem] mr-5"></FaLinkedin>
                                         <p className="text-[.833rem] text-[#a2a2a2] hidden md:inline-block">LinkedIn</p>
-                                </li>
+                                    </li>
+                               )}
                                 
-                                <li className="inline-block mr-5">
-                                    <FaTwitter className="inline-block mr-5 text-[1.2rem] sm:text-[1.44rem] md:text-[1.728rem]"></FaTwitter>
-                                    <p className="text-[.833rem] text-[#a2a2a2] hidden md:inline-block">Twitter</p>
+                                {member?.attributes?.twitter && (
+                                    <li className="inline-block mr-5">
+                                        <FaTwitter className="inline-block mr-5 text-[1.2rem] sm:text-[1.44rem] md:text-[1.728rem]"></FaTwitter>
+                                        <p className="text-[.833rem] text-[#a2a2a2] hidden md:inline-block">Twitter</p>
 
-                                </li>
-                                <li className="inline-block mr-5">
-                                    <FaFacebookF className="inline-block mr-5 text-[1.2rem] sm:text-[1.44rem] md:text-[1.728rem]"></FaFacebookF>
-                                    <p className="text-[.833rem] text-[#a2a2a2] hidden md:inline-block">Facebook</p>
-                                </li>
+                                    </li>
+                                )}
+                                {member?.attributes?.Facebook &&(
+                                    <li className="inline-block mr-5">
+                                        <FaFacebookF className="inline-block mr-5 text-[1.2rem] sm:text-[1.44rem] md:text-[1.728rem]"></FaFacebookF>
+                                        <p className="text-[.833rem] text-[#a2a2a2] hidden md:inline-block">Facebook</p>
+                                    </li>
+                                )}
                             </ul>
                         </div>
                         <div className="hidden md:block bg-[#cacaca] w-full max-w-[350px]  aspect-square">
@@ -261,7 +269,7 @@ export async function getServerSideProps({req,res,params,query}){
     const teamResponse = await fetch(`${API}/teams?${filter}`);
 
     const {data} = await teamResponse.json();
-    console.log(data);
+    
 
     const articlesResponse = await fetch(`${BASE_URL}/graphql`,{
         method:"POST",

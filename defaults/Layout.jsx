@@ -104,7 +104,7 @@ const Layout = (
                         <Link href="/"><img src="/vegClub_logo_org_2.png"  alt="Header" className={` ${minNav ? "h-[2.2rem]":"h-[2.8rem]"} transition-all duration-[.34s] ease-in-out delay-200 relative left-[50%] translate-x-[-50%]`}></img></Link>
                     </div>
                     { minNav || (
-                        <div className={"hidden lg:inline-block   w-full font-semibold  md:text-[0.833rem] text-end"}>
+                        <div className={"hidden md:inline-block   w-full font-semibold  md:text-[0.833rem] text-end"}>
                             <div className="inline-block px-3 mr-3">
                                 <Link href={`/category/news`}>News</Link>
                             </div>
