@@ -109,7 +109,7 @@ const Drawer = ({isOpen, onClose})=>{
                             </ul>*/}
                         </div>
                         <div className=" w-full  mt-[3rem] md:mt-[4rem]">
-                            <ul className="list-none w-full md:grid md:gap-x-8  md:grid-rows-5 md:grid-flow-col text-start font-bold text-[1.44rem]">
+                            <ul className="list-none w-full md:grid md:gap-x-8  md:grid-rows-5 md:grid-flow-col text-start font-semibold text-[1.44rem]">
                                 {Categories?.length && Categories?.map((category, index)=>(
                                     <li className={`py-4 border-black/[.1] ${!index ? "border-b-[1px]" : index === (Categories.length - 1) ? "border-b-[1px] md:border-b-0" : index  % (((parseInt(index/5)+ 1)* 5)-1) ? "border-b-[1px]": "border-b-[1px] md:border-b-0"} ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]`} key={index}><Link href={`/${category?.attributes?.slug}`}>{category?.attributes?.name}</Link></li>
                                     
