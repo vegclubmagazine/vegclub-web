@@ -135,7 +135,7 @@ const Home = ({articles})=>{
                     <div className="relative inline-block py-[40px] pr-[40px] bottom-[40px] left-[10%] md:left-[0%]  bg-[#000] text-start text-white w-[90%] md:w-[75%] lg:w-[50%]">
                         {/*<p className="w-full bg-[#000] text-start text-[#fff] border-box pl-1 text-[0.6rem]"> Damon Winter <span className="text-[#01e2c2] ml-2 mr-2">/</span> Vegclub Magazine <span className="text-[#01e2c2] ml-2 mr-2">/</span> Redux</p>*/}
                         <div className="pl-[40px]">
-                            <p className="uppercase font-semibold italic">{articles?.featureArticles[0]?.attributes?.category?.data?.attributes?.name}</p>
+                            <h3 className = "article-title text-white text-[0.833rem] md:text-[1rem] inline-block uppercase italic font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`/category/${articles?.featureArticles[0]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.featureArticles[0]?.attributes?.category?.data?.attributes?.name}</Link></span></h3>                
                             <h1 className="mt-4 font-semibold leading-[1.5] text-[1.44rem] lg:text-[1.728rem]  duration-[.34s] ease-in-out hover:text-white/[.6]"><Link href={`/article/${articles?.featureArticles[0]?.attributes?.slug}`}>{articles?.featureArticles[0]?.attributes?.title}</Link></h1>
                             <h2 className="mt-4 text-[#a2a2a2] text-[1rem] lg:hidden">{articles?.featureArticles[0]?.attributes?.description}</h2>
                             <div className="mt-4 text-[0.833rem]">
