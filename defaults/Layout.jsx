@@ -105,12 +105,7 @@ const Layout = (
                     </div>
                     { minNav || (
                         <div className={"hidden lg:inline-block   w-full font-semibold  md:text-[0.833rem] text-end"}>
-                            <div className="inline-block px-3 mr-3">
-                                <Link href={`/category/news`}>News</Link>
-                            </div>
-                            <div className="inline-block  px-3 mr-3">
-                                <Link href="/category/lifestyle-and-food">Lifestyle & food</Link>
-                            </div>
+                           
                             <div className="inline-block py-2  bg-black px-3 w-fit mr-[1.5rem]">
                                     <Link className="text-[#fff]  duration-[.34s] ease-in-out hover:text-white/[.4]" href="#">Loyalty card</Link>
                                     <div className="inline-block align-middle">

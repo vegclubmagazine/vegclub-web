@@ -159,6 +159,33 @@ input[type=submit]{
   animation: opacity .34s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
+.text-ring{
+  
+  
+  -ms-animation:rotating 2s linear infinite;
+  -moz-animation: rotating 2s linear infinite;
+  -webkit-animation:rotating 2s linear infinite;
+  -o-animation: rotating 2s linear infinite;
+  animation:rotating 2s linear infinite;
+
+}
+
+
+.text-ring [style*=--index]{
+  position: absolute;
+  top:50%;
+  left:50%;
+
+  transform:translate(-50%,-50%)rotate(calc(270deg + ((90deg/5) * var(--index))))translateY(-4rem);
+}
+.text-ring [style*=--oindex]{
+  position: absolute;
+  top:50%;
+  left:50%;
+
+  transform:translate(-50%,-50%)rotate(calc(90deg + ((90deg/5) * var(--oindex))))translateY(-4rem);
+}
+
 @keyframes opacity{
   from{
     opacity: 0;
@@ -167,6 +194,26 @@ input[type=submit]{
     opacity: 1;
   }
 }
+
+
+@keyframes rotating{
+  from{
+    -ms-transform:rotate(0deg);
+    -moz-transform:rotate(0deg);
+    -o-transform:rotate(0deg);
+    -webkit-transform:rotate(0deg);
+    transform:rotate(0deg);
+  }
+  to{
+    -ms-transform:rotate(360deg);
+    -moz-transform:rotate(360deg);
+    -o-transform:rotate(360deg);
+    -webkit-transform:rotate(360deg);
+    transform:rotate(360deg);
+  }
+}
+
+
 
 
 

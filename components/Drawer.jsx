@@ -39,25 +39,25 @@ const Drawer = ({isOpen, onClose})=>{
     return (
         <Fragment>
             <div className={`${isOpen ? "fixed opacity-[.1]":"hidden opacity-0"} bg-[#000] h-screen w-screen top-0 right-0 transition-opacity ease-out duration-300 z-[9998]`}></div>
-            <nav className ={`${isOpen ?"scale-y-100":"scale-y-0"} fixed top-0    overflow-x-hidden w-screen h-screen md:h-fit md:pb-[3rem] bg-[#fff] z-[9999]`}>
-                <div className={`${isOpen ? "opacity-100": "opacity-0"} duration-300 delay-[250ms] ease-in transition-opacity px-[20px] pt-[20px] relative opacity-1`}>
+            <nav className ={`${isOpen ?"visible scale-y-100":"invisible scale-y-0"} fixed top-0 duration-[.34s] origin-top-right transition-visibility ease-[cubic-bezier(0.19,1,0.22,1)]   overflow-x-hidden w-screen h-screen md:h-fit md:pb-[3rem] bg-[#fff] z-[9999]`}>
+                <div className={`${isOpen ? "opacity-100 duration-300 delay-[250ms] ease-in transition-opacity": "opacity-0"} px-[20px] pt-[20px] relative`}>
                     <div className="relative mb-2 pb-2 border-black/[.1] border-b-[1px] h-fit">
-                        <button className="w-[20%] align-middle" aria-label="Close Menu" onClick={()=>{onClose();}}>
-                            <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <button className="w-[20%] pl-[20px] align-middle" aria-label="Close Menu" onClick={()=>{onClose();}}>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fillRule="evenodd" clipRule="evenodd" d="M16 1.77778L14.2222 0L8 6.22222L1.77778 0L0 1.77778L6.22222 8L0 14.2222L1.77778 16L8 9.77778L14.2222 16L16 14.2222L9.77778 8L16 1.77778Z" fill="black"></path>
                             </svg>
                         </button>
                         <div className="inline-block align-middle w-[80%]">
-                            <img src="/vegClub_logo_org_2.png" alt="Header" className="h-[3rem] relative left-[30%] translate-x-[-30%]"></img>
+                            <img src="/vegClub_logo_org_2.png" alt="Header" className="h-[2.8rem] relative left-[30%] translate-x-[-30%]"></img>
 
                         </div>
                     </div>
-                    <div className="md:grid md:grid-cols-2">
-                        <div className="w-full  border-black/[.1]">
-                            <div className="mt-[4rem] uppercase text-[2.074rem] font-bold">
+                    <div className="pl-[20px] md:flex md:flex-row md:flex-grow">
+                        <div className="md:w-[50%] border-black/[.1]">
+                            <div className="mt-[4rem] pt-4 uppercase text-[2.074rem] font-bold">
                                 <ul className="list-none">
-                                    <li className="pl-2 cursor-pointer w-fit ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]"><Link href={`/category/news`} ><span className="">Watch</span></Link></li>
-                                    <li className="w-fit py-2 px-2 loyalty-card--btn">
+                                    <li className="cursor-pointer w-fit ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]"><Link href={`/category/news`} ><span className="">Watch</span></Link></li>
+                                    <li className="w-fit py-2 loyalty-card--btn">
                                         <Link className="text-black inline-block mr-2" href="#">Loyalty Card</Link>
                                         <div className="inline-block  align-middle w-[30px] h-[30px]">
                                             <img className="w-fit h-auto" src="/loyalty_button_asset.png"/>
@@ -108,8 +108,8 @@ const Drawer = ({isOpen, onClose})=>{
                                 <li className="mb-3">Support Us</li>
                             </ul>*/}
                         </div>
-                        <div className=" w-full  mt-[3rem] md:mt-[4rem]">
-                            <ul className="list-none w-full md:grid md:gap-x-8  md:grid-rows-5 md:grid-flow-col text-start font-semibold text-[1.44rem]">
+                        <div className=" md:w-[50%]  mt-[3rem] md:mt-[4rem]">
+                            <ul className="list-none w-full md:grid md:gap-x-8  md:grid-rows-5 md:grid-flow-col text-start font-bold text-[1.44rem]">
                                 {Categories?.length && Categories?.map((category, index)=>(
                                     <li className={`py-4 border-black/[.1] ${!index ? "border-b-[1px]" : index === (Categories.length - 1) ? "border-b-[1px] md:border-b-0" : index  % (((parseInt(index/5)+ 1)* 5)-1) ? "border-b-[1px]": "border-b-[1px] md:border-b-0"} ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]`} key={index}><Link href={`/${category?.attributes?.slug}`}>{category?.attributes?.name}</Link></li>
                                     
@@ -146,6 +146,7 @@ const Drawer = ({isOpen, onClose})=>{
                             </div>*/}
                         </div>
                     </div>
+                    <div className="w-[20px]"></div>
                 </div>
             </nav>
             

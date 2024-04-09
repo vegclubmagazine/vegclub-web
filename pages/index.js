@@ -1,18 +1,116 @@
-import { API } from "../config/api";
+import { API, BASE_URL } from "../config/api";
 import Layout from "../defaults/Layout";
-import {useEffect} from "react";
+import {useEffect,useState} from "react";
 import {PAGINATION_LIMIT} from "../config/meta.js";
 import { slugify } from "../lib/utils.js";
 import Link from "next/link.js";
 import Moment from "react-moment";
 import AdUnit from "../components/AdUnit.jsx";
 import SquareAdUnit from "../components/SquareAdUnit.jsx";
-
+import GenericArticleFormat from "../components/GenericArticleFormat.jsx";
+import Loader from "../components/Loader.jsx";
 
 const qs = require("qs");
 
 
 const Home = ({articles})=>{
+    const [isLoading, setIsLoading] = useState(false);
+    const [atLastPage, setAtLastPage] = useState(false);
+    const [LatestArticles,setLatestArticles] = useState([...articles?.nonFeatureArticles?.slice(1)]);
+    const [page,setPage] = useState(1);
+
+    const loadArticles = ()=>
+    {
+        setIsLoading(true);
+        setPage(prev => prev += 1);
+
+    }
+    useEffect(()=> 
+    {
+        
+        if(page > 1){
+        
+            const query = `query getLatestNonFeatureArticles($filtervar:ArticleFiltersInput){
+                                articles(filters:$filtervar, pagination:{page:${page}, pageSize:${articles?.nonFeatureArticles?.length || 10}})
+                                {
+                                    meta{
+                                        pagination{
+                                            pageCount
+                                        }
+                                    }
+                                    
+                                    data{
+                                        attributes{
+                                            title
+                                            slug
+                                            description
+                                            date
+                                            media{
+                                                data{
+                                                    attributes{
+                                                        url
+                                                    }
+                                                }
+                                            }
+                                            category{
+                                                data{
+                                                    attributes{
+                                                        name
+                                                        slug
+                                                    }
+                                                }
+                                            }
+                                            author{
+                                                data{
+                                                    attributes{
+                                                        name
+                                                    }
+                                                }
+                                            }
+                                            
+                                        }
+                                    }
+                                }
+            }`;
+
+            const variables = {
+                filtervar:{
+                    featureArticle:{
+                        eq:false
+                    }
+
+                }
+            };
+
+            fetch
+                (`${BASE_URL}/graphql`,
+                {
+                    method:"POST",
+                    headers:{
+                        "Content-Type":"application/json",
+                        Accept:"application/json",
+                    },
+                    body:JSON.stringify({
+                        query,
+                        variables
+
+                    })
+                })
+                .then((res)=>{
+                    return res.json();
+                })
+                .then(({data}) =>{
+                    setIsLoading(false);
+                    
+                    setAtLastPage(page >= data.articles.meta.pagination.pageCount);
+                    setLatestArticles(prev => [...prev,...data.articles.data]);
+                })
+                .catch((err)=>{
+                    console.log(err);
+                })
+        }
+
+    },[page])
 
 
     
@@ -34,14 +132,14 @@ const Home = ({articles})=>{
                                     }
                         ></img>  
                     </div>
-                    <div className="relative inline-block py-[40px] bottom-[40px] left-[10%] md:left-[0%]  bg-[#000] text-start text-white w-[90%] md:w-[75%] lg:w-[50%]">
+                    <div className="relative inline-block py-[40px] pr-[40px] bottom-[40px] left-[10%] md:left-[0%]  bg-[#000] text-start text-white w-[90%] md:w-[75%] lg:w-[50%]">
                         {/*<p className="w-full bg-[#000] text-start text-[#fff] border-box pl-1 text-[0.6rem]"> Damon Winter <span className="text-[#01e2c2] ml-2 mr-2">/</span> Vegclub Magazine <span className="text-[#01e2c2] ml-2 mr-2">/</span> Redux</p>*/}
-                        <div className="w-[90%] mx-auto ">
+                        <div className="pl-[40px]">
                             <p className="uppercase font-semibold italic">{articles?.featureArticles[0]?.attributes?.category?.data?.attributes?.name}</p>
                             <h1 className="mt-4 font-semibold leading-[1.5] text-[1.44rem] lg:text-[1.728rem]  duration-[.34s] ease-in-out hover:text-white/[.6]"><Link href={`/article/${articles?.featureArticles[0]?.attributes?.slug}`}>{articles?.featureArticles[0]?.attributes?.title}</Link></h1>
                             <h2 className="mt-4 text-[#a2a2a2] text-[1rem] lg:hidden">{articles?.featureArticles[0]?.attributes?.description}</h2>
                             <div className="mt-4 text-[0.833rem]">
-                                <p className="inline-block uppercase italic mr-1">{articles?.featureArticles[0]?.attributes?.author?.data?.attributes?.name}</p>
+                                <p className="inline-block uppercase font-light italic mr-1">{articles?.featureArticles[0]?.attributes?.author?.data?.attributes?.name}</p>
                                 <span className="text-[#01e2c2]">/</span>
                                 <Moment className="inline-block font-semibold uppercase italic text-[0.833rem]" format="Do MMM YYYY">{articles?.featureArticles[0]?.attributes?.date}</Moment>
                             </div>
@@ -55,7 +153,7 @@ const Home = ({articles})=>{
                         </div>
                     </div>
                 </div>
-                <div className="hidden md:grid md:grid-rows-2 lg:grid-rows-[60%_40%]">
+                <div className="hidden md:grid md:grid-rows-[60%_40%]">
                     <div className="border-[#000]/[.1] border-b-[1px]">
                         <div className="w-full aspect-[16/9]">
                             <div className="h-full object-cover overflow-y-hidden bg-[#cacaca]">
@@ -74,7 +172,9 @@ const Home = ({articles})=>{
                             </div>
                         </div>
                         <div className="w-[90%] mx-auto pt-[40px] pr-[40px]">
-                            <h1 className="font-semibold text-[1.44rem] lg:text-[1.728rem] duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/article/${articles?.featureArticles[1]?.attributes?.slug}`}>{articles?.featureArticles[1]?.attributes?.title}</Link></h1>
+                            <h3 className = "article-title text-[0.833rem] inline-block uppercase italic font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`/category/${articles?.featureArticles[1]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.featureArticles[1]?.attributes?.category?.data?.attributes?.name}</Link></span></h3>                
+
+                            <h1 className="mt-4 font-semibold text-[1.44rem] lg:text-[1.728rem] duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/article/${articles?.featureArticles[1]?.attributes?.slug}`}>{articles?.featureArticles[1]?.attributes?.title}</Link></h1>
                             <div className="mt-4 text-[0.833rem]">
                                 <p className="inline-block font-light  uppercase italic mr-1">{articles?.featureArticles[1]?.attributes?.author?.data?.attributes?.name}</p>
                                 
@@ -85,7 +185,9 @@ const Home = ({articles})=>{
                     <div className="">
                         
                         <div className="h-full pt-[40px] w-[90%] mx-auto pr-[40px]">
-                            <h1 className=" font-semibold text-[1.44rem] lg:text-[1.728rem] duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/article/${articles?.featureArticles[2]?.attributes?.slug}`}>{articles?.featureArticles[2]?.attributes?.title}</Link></h1>
+                            <h3 className = "article-title text-[0.833rem] inline-block uppercase italic font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`/category/${articles?.featureArticles[2]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.featureArticles[2]?.attributes?.category?.data?.attributes?.name}</Link></span></h3>                
+
+                            <h1 className="mt-4 font-semibold text-[1.44rem] lg:text-[1.728rem] duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/article/${articles?.featureArticles[2]?.attributes?.slug}`}>{articles?.featureArticles[2]?.attributes?.title}</Link></h1>
                             <div className="mt-4 text-[0.833rem]">
                                 <p className="inline-block font-light  uppercase italic mr-1">{articles?.featureArticles[2]?.attributes?.author?.data?.attributes?.name}</p>
                                 
@@ -107,17 +209,18 @@ const Home = ({articles})=>{
                             index < 2  ?(
                                 <div className="border-[#000]/[.1] border-b-[1px] md:border-r-[1px] md:hidden" key={index}>
                                     <div className="flex flex-row  md:grid md:grid-cols-1 h-fit">
-                                        <div className="flex grow flex-col justify-center md:hidden py-[20px] pr-[20px] ml-[5%]">
-                                            
-                                            <h1 className="md:text-[1.44rem] lg:text-[1.728rem] font-semibold"><Link href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></h1>
+                                        <div className="flex grow flex-col pl-[40px] justify-center md:hidden py-[20px] pr-[20px]">
+                                            <h3 className = "article-title text-[0.833rem] inline-block uppercase italic font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></span></h3>                
+    
+                                            <h1 className="mt-3 md:text-[1.44rem] lg:text-[1.728rem] font-semibold"><Link href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></h1>
                                             <div className="mt-3 text-[0.833rem]">
                                                 <p className="inline-block font-light uppercase italic mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
                                                 <Moment className="inline-block font-semibold uppercase italic text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
                                             </div>
                                         </div>
                                         <div>
-                                            <div className="w-[150px] overflow-y-hidden object-cover md:h-auto md:w-full aspect-square md:aspect-[16/9] mx-auto bg-[#CACACA]">
-                                                <img    className="h-full w-auto" 
+                                            <div className="w-[150px] overflow-hidden md:h-auto md:w-full aspect-square md:aspect-[16/9] mx-auto bg-[#CACACA]">
+                                                <img    className="h-full object-cover w-auto" 
                                                         src={   article?.attributes?.media?.data?.attributes?.url ||
                                                                 article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
                                                                 article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
@@ -132,9 +235,10 @@ const Home = ({articles})=>{
                                                 ></img>  
                                             </div>
                                         </div>
-                                        <div className="hidden md:block w-[90%] mt-4 mx-auto pb-3">
-                                    
-                                            <h1 className="font-semibold text-[1.44rem] "><Link href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></h1>
+                                        <div className="hidden md:block w-[85%] mt-4 mx-auto pb-3">
+                                            <h3 className = "article-title text-[0.833rem] inline-block uppercase italic font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></span></h3>                
+
+                                            <h1 className="mt-4 font-semibold text-[1.44rem] "><Link href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></h1>
                                             <div className="mt-4 text-[0.833rem]">
                                                 <p className="inline-block font-light  uppercase italic mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
                                                 
@@ -148,17 +252,18 @@ const Home = ({articles})=>{
                             ):(
                                 <div className="border-[#000]/[.1] border-b-[1px] md:border-r-[1px] " key={index}>
                                     <div className="flex flex-row md:grid md:grid-cols-1 h-fit">
-                                        <div className="flex grow flex-col justify-center md:hidden py-[20px] pr-[20px] ml-[5%]">
-                                            
-                                            <h1 className="md:text-[1.44rem] lg:text-[1.728rem] font-semibold"><Link className="duration-[.32s] ease-in-out hover:text-black/[.4]" href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></h1>
+                                        <div className="flex grow flex-col pl-[40px] justify-center md:hidden py-[20px] pr-[20px]">
+                                            <h3 className = "article-title text-[0.833rem]  inline-block uppercase italic font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></span></h3>                
+
+                                            <h1 className="mt-3 md:text-[1.44rem] lg:text-[1.728rem] font-semibold"><Link className="duration-[.32s] ease-in-out hover:text-black/[.4]" href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></h1>
                                             <div className="mt-3 text-[0.833rem]">
                                                 <p className="inline-block font-light uppercase italic mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
-                                                <Moment className="inline-block font-semibold uppercase italic text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
+                                                <Moment className="inline-block font-semibold uppercase italic" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
                                             </div>
                                         </div>
                                         <div>
-                                            <div className="w-[150px] overflow-y-hidden object-cover md:h-auto md:w-full aspect-square md:aspect-[16/9] mx-auto bg-[#CACACA]">
-                                                <img    className="w-full h-auto" 
+                                            <div className="w-[150px] overflow-hidden object-cover md:h-auto md:w-full aspect-square md:aspect-[16/9] mx-auto bg-[#CACACA]">
+                                                <img    className="h-full w-auto md:w-full md:h-auto" 
                                                         src={   article?.attributes?.media?.data?.attributes?.url ||
                                                                 article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
                                                                 article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
@@ -174,8 +279,9 @@ const Home = ({articles})=>{
                                             </div>
                                         </div>
                                         <div className="hidden md:block w-[90%] mt-4 mx-auto pb-3">
-                                    
-                                            <h1 className="font-semibold text-[1.44rem] "><Link className="duration-[.32s] ease-in-out hover:text-black/[.4]" href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></h1>
+                                            <h3 className = "article-title text-[0.833rem]  inline-block uppercase italic font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></span></h3>                
+
+                                            <h1 className="mt-4 font-semibold text-[1.44rem] "><Link className="duration-[.32s] ease-in-out hover:text-black/[.4]" href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></h1>
                                             <div className="mt-4 text-[0.833rem]">
                                                 <p className="inline-block font-light uppercase italic mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
                                                 
@@ -200,16 +306,22 @@ const Home = ({articles})=>{
                     <AdUnit/>
                 </div>
             </section>
-            <section className="w-full">
-                <div className="w-full border-[#cacaca] border-b-[1px] pb-[2rem] md:pb-0">
+            <section className="w-full border-black/[.1]">
+                <div className="border-b-[1px] text-[2.986rem] font-bold  uppercase pt-5 pb-3">
+                    <div className="w-fit pl-[40px]">
+                        <h2 className="leading-[0.8]">The</h2>
+                        <h2>Latest</h2>
+                    </div>
+                </div>
+                <div className="w-full  border-b-[1px] pb-[2rem] md:pb-0">
                     <div className="bg-[#000] w-full md:grid md:grid-cols-[2fr_1fr] items-center">
                         <div className="hidden  overflow-y-hidden md:block w-full aspect-[16/9]  bg-[#cacaca]">
                             <img    className="w-full h-auto" 
-                                    src={    articles?.lifestyleAndFood[0]?.attributes?.media?.data?.attributes?.url ||
-                                            articles?.lifestyleAndFood[0]?.attributes?.media?.data?.attributes?.formats?.large?.url ||
-                                            articles?.lifestyleAndFood[0]?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
-                                            articles?.lifestyleAndFood[0]?.attributes?.media?.data?.attributes?.formats?.small?.url ||
-                                            articles?.lifestyleAndFood[0]?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url 
+                                    src={   articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.url ||
+                                            articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.large?.url ||
+                                            articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
+                                            articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.small?.url ||
+                                            articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url 
                                            
                                         
 
@@ -217,31 +329,31 @@ const Home = ({articles})=>{
                                         }
                             ></img>                          
                         </div>
-                        <div className="w-[90%] md:w-full mx-auto md:pl-[20px] h-fit  pt-[20px] pb-[80px]">
-                            <h3 className = "text-white article-title inline-block uppercase italic font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`category/${articles?.lifestyleAndFood[0]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.lifestyleAndFood[0]?.attributes?.category?.data?.attributes?.name}</Link></span>
+                        <div className="w-[85%] md:w-full mx-auto md:pl-[20px] h-fit  pt-[20px] pb-[80px]">
+                            <h3 className = "text-white article-title inline-block uppercase italic font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`category/${articles?.nonFeatureArticles[0]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.nonFeatureArticles[0]?.attributes?.category?.data?.attributes?.name}</Link></span>
                                 
                             </h3>
-                            <h1 className="text-[1.44rem] md:text-[1.728rem] lg:text-[2.074rem] text-white mt-4 font-semibold duration-[.34s] ease-in-out hover:text-white/[.6]"><Link href={`article/${articles?.lifestyleAndFood[0]?.attributes?.slug}`}>{articles?.lifestyleAndFood[0]?.attributes?.title}</Link></h1>
+                            <h1 className="text-[1.44rem] md:text-[1.728rem] lg:text-[2.074rem] text-white mt-4 font-semibold duration-[.34s] ease-in-out hover:text-white/[.6]"><Link href={`article/${articles?.nonFeatureArticles[0]?.attributes?.slug}`}>{articles?.nonFeatureArticles[0]?.attributes?.title}</Link></h1>
                             {/*<div className="h-fit w-fit inline-block align-middle">
                                 <i className=" inline-block cursor-pointer ml-2 h-[10px] w-[10px] border-[#40e0d0] border-t-[1px] border-r-[1px] rotate-45"></i>
                             </div>*/}
-                            <p className="mt-4 text-[#a2a2a2] text-[1rem]">{articles?.lifestyleAndFood[0]?.attributes?.description}</p>
+                            <p className="mt-4 text-[#a2a2a2] text-[1rem]">{articles?.nonFeatureArticles[0]?.attributes?.description}</p>
 
                             <div className="mt-4 text-white text-[0.833rem]">
-                                <p className="inline-block uppercase italic mr-1">{articles?.lifestyleAndFood[0]?.attributes?.author?.data?.attributes?.name}</p>
+                                <p className="inline-block font-light uppercase italic mr-1">{articles?.nonFeatureArticles[0]?.attributes?.author?.data?.attributes?.name}</p>
                                 <span className="text-[#01e2c2]">/</span>
-                                <Moment className="inline-block font-semibold uppercase italic text-[0.833rem]" format="Do MMM YYYY">{articles?.lifestyleAndFood[0]?.attributes?.date}</Moment>
+                                <Moment className="inline-block font-semibold uppercase italic text-[0.833rem]" format="Do MMM YYYY">{articles?.nonFeatureArticles[0]?.attributes?.date}</Moment>
                             </div>
                         </div>
                         
                     </div>
-                    <div className="block md:hidden aspect-[16/9] overflow-y-hidden w-[90%]  mx-auto  mt-[-50px] bg-[#CACACA]">
+                    <div className="block md:hidden aspect-[16/9] overflow-y-hidden w-[85%]  mx-auto  mt-[-50px] bg-[#CACACA]">
                             <img    className="w-full h-auto" 
-                                    src={   articles?.lifestyleAndFood[0]?.attributes?.media?.data?.attributes?.url ||
-                                            articles?.lifestyleAndFood[0]?.attributes?.media?.data?.attributes?.formats?.large?.url ||
-                                            articles?.lifestyleAndFood[0]?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
-                                            articles?.lifestyleAndFood[0]?.attributes?.media?.data?.attributes?.formats?.small?.url ||
-                                            articles?.lifestyleAndFood[0]?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url
+                                    src={   articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.url ||
+                                            articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.large?.url ||
+                                            articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
+                                            articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.small?.url ||
+                                            articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url
                                             
                                         
 
@@ -251,56 +363,12 @@ const Home = ({articles})=>{
 
                     </div>
                 </div>
-                <div className="border-[#000]/[.1] lg:grid lg:grid-cols-[2fr_1fr]">
+                <div className="border-[#000]/[.1] border-b-[1px] lg:grid lg:grid-cols-[2fr_1fr]">
                     <ul className="list-none text-start md:border-r-[1px]">
-                        {articles?.lifestyleAndFood?.slice(1).map((article, index)=>(
+                        {LatestArticles?.map((article, index)=>(
                             
-                            <li className="border-b-[1px] md:py-[40px]" key={index}>
-                                <div className="flex flex-row lg:grid lg:grid-cols-2  h-full">
-                                    
-                                    <div className="hidden  md:block w-[33.3%] lg:w-full aspect-[16/9] object-cover overflow-y-hidden max-h-[248px]">
-                                        <img    className="w-full h-auto" 
-                                                src={   article?.attributes?.media?.data?.attributes?.url ||
-                                                        article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
-                                                        article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
-                                                        article?.attributes?.media?.data?.attributes?.formats?.small?.url ||
-                                                        article?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url 
-                                                        
-                                                    
-
-
-                                                    }
-                                        ></img>  
-                                    </div>
-                                    
-                                    <div className="py-[40px] justify-center flex flex-col grow ml-[5%] lg:block md:ml-0 pr-[40px] md:pl-[20px] text-black">
-                                        
-                                        <h1 className="font-semibold md:text-[1.44rem] lg:text-[1.728rem] duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></h1>
-                                        <h2 className="hidden md:block mt-4">{article?.attributes?.description}</h2>
-                                        <div className="mt-4 text-[0.833rem]">
-                                            <p className="inline-block uppercase font-light italic mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
-                                        
-                                            <Moment className="inline-block font-semibold uppercase italic text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className="w-[150px] overflow-y-hidden object-cover md:hidden h-full md:h-auto md:w-[80%] md:mx-auto  aspect-square md:aspect-[16/9] mx-auto bg-[#CACACA]">
-                                            <img    className="h-full w-auto" 
-                                                    src={   article?.attributes?.media?.data?.attributes?.url ||
-                                                            article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
-                                                            article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
-                                                            article?.attributes?.media?.data?.attributes?.formats?.small?.url ||
-                                                            article?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url 
-                                                            
-                                                        
-
-
-                                                        }
-                                            ></img>  
-                                        </div>
-                                    </div>
-
-                                </div>
+                            <li className={`${index < LatestArticles.length - 1 ? "border-b-[1px]":""}`} key={index}>
+                                <GenericArticleFormat article={article}/>
                             </li>
                         ))}
                     </ul>
@@ -308,116 +376,22 @@ const Home = ({articles})=>{
                         <SquareAdUnit/>
                     </div>
                 </div>
-            </section>
-            <section className="w-full">
-                <div className="w-full border-[#cacaca] border-b-[1px] pb-[2rem] md:pb-0">
-                    <div className="bg-[#000] w-full md:grid md:grid-cols-[2fr_1fr] items-center">
-                        <div className="hidden  overflow-y-hidden md:block w-full aspect-[16/9]  bg-[#cacaca]">
-                            <img    className="w-full h-auto" 
-                                    src={   articles?.news[0]?.attributes?.media?.data?.attributes?.url ||
-                                            articles?.news[0]?.attributes?.media?.data?.attributes?.formats?.large?.url ||
-                                            articles?.news[0]?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
-                                            articles?.news[0]?.attributes?.media?.data?.attributes?.formats?.small?.url ||
-                                            articles?.news[0]?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url 
-                                            
-                                        
-
-
-                                        }
-                            ></img>                       
-                         </div>
-                        <div className="w-[90%] md:w-full mx-auto md:pl-[20px] h-fit  pt-[20px] pb-[80px]"> 
-                            <h3 className = "text-white article-title inline-block uppercase italic font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`category/${articles?.news[0]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.news[0]?.attributes?.category?.data?.attributes?.name}</Link></span>
-                                
-                            </h3>
-                            <h1 className="text-[1.44rem] md:text-[1.728rem] lg:text-[2.074rem] text-white mt-4 font-semibold duration-[.34s] ease-in-out hover:text-white/[.6]"><Link href={`article/${articles?.news[0]?.attributes?.slug}`}>{articles?.news[0]?.attributes?.title}</Link></h1>
-                            {/*<div className="h-fit w-fit inline-block align-middle">
-                                <i className=" inline-block cursor-pointer ml-2 h-[10px] w-[10px] border-[#40e0d0] border-t-[1px] border-r-[1px] rotate-45"></i>
-                            </div>*/}
-                            <p className="mt-4 text-[#a2a2a2] text-[1rem]">{articles?.news[0]?.attributes?.description}</p>
-
-                            <div className="mt-4 text-white text-[0.833rem]">
-                                <p className="inline-block uppercase italic mr-1">{articles?.news[0]?.attributes?.author?.data?.attributes?.name}</p>
-                                <span className="text-[#01e2c2]">/</span>
-                                <Moment className="inline-block font-semibold uppercase italic ml-2 text-[0.833rem]" format="MMMM Do YYYY">{articles?.news[0]?.attributes?.date}</Moment>
-                            </div>
-                        </div>
+                {atLastPage ||(
+                    <div className="py-[80px]">
                         
+                        {isLoading ? 
+                        ( 
+                            <Loader/>
+                        ):(
+
+                            <div className="w-fit mx-auto uppercase underline font-bold text-[2.986rem] cursor-pointer transition-all ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]" onClick={()=>{loadArticles();}}>Load More</div>
+                        
+                        )}
+                       
                     </div>
-                    <div className="block md:hidden aspect-[16/9] overflow-y-hidden w-[90%]  mx-auto  mt-[-50px] bg-[#CACACA]">
-                            <img    className="w-full h-auto" 
-                                    src={   articles?.news[0]?.attributes?.media?.data?.attributes?.url ||
-                                            articles?.news[0]?.attributes?.media?.data?.attributes?.formats?.large?.url ||
-                                            articles?.news[0]?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
-                                            articles?.news[0]?.attributes?.media?.data?.attributes?.formats?.small?.url ||
-                                            articles?.news[0]?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url
-                                            
-                                        
-
-
-                                        }
-                            ></img>  
-
-                    </div>
-                </div>
-                <div className="border-[#000]/[.1]   lg:grid lg:grid-cols-[2fr_1fr]">
-                    <ul className="list-none text-start md:border-r-[1px]">
-                        {articles?.news?.slice(1).map((article, index)=>(
-                            
-                            <li className="border-b-[1px] md:py-[40px]" key={index}>
-                                <div className="flex justify-center flex-row lg:grid lg:grid-cols-2  h-full">
-                                    
-                                    <div className="hidden object-cover  md:block w-[33.3%] lg:w-full aspect-[16/9] overflow-y-hidden max-h-[248px]">
-                                        <img    className="w-full h-auto" 
-                                                src={   article?.attributes?.media?.data?.attributes?.url ||
-                                                    article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
-                                                        article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
-                                                        article?.attributes?.media?.data?.attributes?.formats?.small?.url ||
-                                                        article?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url
-                                                        
-                                                    
-
-
-                                                    }
-                                        ></img>                                     
-                                    </div>
-                                    
-                                    <div className="py-[40px] pr-[40px] flex grow flex-col ml-[5%] md:block md:ml-0 md:pl-[20px]">
-                                        
-                                        <h1 className="font-semibold md:text-[1.44rem] lg:text-[1.728rem]  duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></h1>
-                                        <h2 className="hidden md:block mt-4">{article?.attributes?.description}</h2>
-                                        <div className="mt-4 text-[0.833rem]">
-                                            <p className="inline-block uppercase font-light italic mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
-                                        
-                                            <Moment className="inline-block font-semibold uppercase italic text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className="md:hidden w-[150px] object-cover md:h-auto md:w-[80%] md:mx-auto  aspect-square md:aspect-[16/9] mx-auto bg-[#CACACA]">
-                                            <img    className="h-full w-auto" 
-                                                    src={   article?.attributes?.media?.data?.attributes?.url ||
-                                                            article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
-                                                            article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
-                                                            article?.attributes?.media?.data?.attributes?.formats?.small?.url ||
-                                                            article?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url
-                                                            
-                                                        
-
-
-                                                        }
-                                            ></img>  
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
-                    <div className="hidden lg:block w-fit pt-[40px] pl-[20px]">
-                        <SquareAdUnit/>
-                    </div>
-                </div>
+                )}
             </section>
+          
         </Layout>
     )
 }
@@ -427,13 +401,10 @@ export async function getServerSideProps({req,res}){
         "Cache-Control",
         "public", "s-maxage=604800", "stale-while-revalidate=84600"
     )
-    //get most recent
-    //get articles based on genre
-    //spotlight specific articles specified
+    // sort fetched articles into feature and non-feature articles
+    
     var feature_articles = [],
-        non_feature_articles = [],
-        lifestyle_and_food,
-        news;
+        non_feature_articles = [];
     
     const filters = qs.stringify(
         {
@@ -478,22 +449,13 @@ export async function getServerSideProps({req,res}){
 
     }
    
-    lifestyle_and_food = non_feature_articles?.filter((article) =>
-    {
-        return article?.attributes?.category?.data?.attributes?.name === "Lifestyle & Food"
-    })
-
-    news = non_feature_articles?.filter((article) =>
-    {
-        return article?.attributes?.category?.data?.attributes?.name === "News"
-    })
      
     return {
         props:{
             articles: {
                 featureArticles: feature_articles || null,
-                lifestyleAndFood: lifestyle_and_food || null,
-                news: news || null
+                nonFeatureArticles: non_feature_articles || null,
+                
                 
             }
         }
