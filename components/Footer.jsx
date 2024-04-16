@@ -22,12 +22,14 @@ const Footer  = ({})=>
                         
                         <Link href="/team">Team</Link>
                         
+                        
+                        
+                        <Link href="#">Loyalty Card</Link>
+
                         <div>
                             <Link className="inline-block mr-3" href="mailto:contact@vegclubmagazine.com">contact</Link>
                             <MdOpenInNew className="inline-block align-middle"></MdOpenInNew>
                         </div>
-                        
-                        <Link href="#">Loyalty Card</Link>
                         
                     </div>
                     <div className="mt-5 text-center text-[1.2rem] text-[#A2A2A2]">
