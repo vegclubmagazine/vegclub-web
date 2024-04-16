@@ -3,7 +3,10 @@ import {
     FaInstagram,
     FaLinkedinIn,
     FaTwitter,
+    
 } from "react-icons/fa";
+
+import {MdOpenInNew} from "react-icons/md";
 
 import Link from "next/link";
 import { useState,useEffect, useRef, useContext} from "react";
@@ -67,6 +70,14 @@ const Drawer = ({isOpen, onClose})=>{
                                         </div>
 
                                     </li>
+                                    <li className="cursor-pointer py-2 w-fit ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]">
+                                        <Link className="inline-block mr-3 align-middle" href={`mailto:contact@vegclubmagazine.com`} >Contact</Link>
+                                        
+                                        <MdOpenInNew className="inline-block"></MdOpenInNew>
+                       
+                                        
+                                    </li>
+
                                 
                                 </ul>
                             </div>
