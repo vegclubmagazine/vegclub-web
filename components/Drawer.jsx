@@ -34,6 +34,7 @@ const Drawer = ({isOpen, onClose})=>{
         
 
     }
+   
     
 
     return (
@@ -56,7 +57,9 @@ const Drawer = ({isOpen, onClose})=>{
                         <div className="md:w-[50%] border-black/[.1]">
                             <div className="mt-[4rem] pt-4 uppercase text-[2.074rem] font-bold">
                                 <ul className="list-none">
-                                    <li className="cursor-pointer w-fit ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]"><Link href={`/category/news`} ><span className="">Watch</span></Link></li>
+                                    <li className="cursor-pointer py-2 w-fit ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]"><Link href={`/about`} ><span className="">About</span></Link></li>
+
+                                    <li className="cursor-pointer w-fit py-2 ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]"><Link href={`/team`} ><span className="">Team</span></Link></li>
                                     <li className="w-fit py-2 loyalty-card--btn">
                                         <Link className="text-black inline-block mr-2" href="#">Loyalty Card</Link>
                                         <div className="inline-block  align-middle w-[30px] h-[30px]">
