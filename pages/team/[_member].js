@@ -40,11 +40,11 @@ const Member = ({member, articles, meta}) =>
                     </div>
                     <div className="border-black px-[40px]  border-b-[1px] py-[10px] grid md:grid-cols-[2fr_1fr]">
                         <div className="block md:hidden  bg-[#cacaca] mt-5  md:mt-0 w-full mx-auto  w-[80%] max-w-[200px]  aspect-square">
-                                <img src={member?.attributes?.media?.data?.attributes?.url ||
-                                        member?.attributes?.media?.data?.attributes?.formats?.large?.url ||
-                                        member?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
-                                        member?.attributes?.media?.data?.attributes?.formats?.small?.url ||
-                                        member?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url
+                                <img src={member?.attributes?.image?.data?.attributes?.url ||
+                                        member?.attributes?.image?.data?.attributes?.formats?.large?.url ||
+                                        member?.attributes?.image?.data?.attributes?.formats?.medium?.url ||
+                                        member?.attributes?.image?.data?.attributes?.formats?.small?.url ||
+                                        member?.attributes?.image?.data?.attributes?.formats?.thumbnail?.url
                                         } 
                                     className="w-full h-auto object-cover"
                                 />
@@ -92,11 +92,11 @@ const Member = ({member, articles, meta}) =>
                             </ul>
                         </div>
                         <div className="hidden md:block bg-[#cacaca] w-full max-w-[350px]  aspect-square">
-                            <img src={member?.attributes?.media?.data?.attributes?.url ||
-                                      member?.attributes?.media?.data?.attributes?.formats?.large?.url ||
-                                      member?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
-                                      member?.attributes?.media?.data?.attributes?.formats?.small?.url ||
-                                      member?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url
+                            <img src={member?.attributes?.image?.data?.attributes?.url ||
+                                      member?.attributes?.image?.data?.attributes?.formats?.large?.url ||
+                                      member?.attributes?.image?.data?.attributes?.formats?.medium?.url ||
+                                      member?.attributes?.image?.data?.attributes?.formats?.small?.url ||
+                                      member?.attributes?.image?.data?.attributes?.formats?.thumbnail?.url
                                     } 
                                  className="w-full h-auto object-cover"
                             />
@@ -119,11 +119,11 @@ const Member = ({member, articles, meta}) =>
                                     <div className="flex flex-row  justify-center border-black/[.1] border-b-[1px] lg:grid lg:grid-cols-2 md:py-[40px]" key={index}>
                                         <div className="hidden bg-[#cacaca] md:block md:w-[33.33%] max-h-[248px] aspect-[16/9] lg:w-full">
                                             <img  className="h-full w-auto" 
-                                                  src={   article?.attributes?.media?.data?.attributes?.url ||
-                                                        article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
-                                                        article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
-                                                        article?.attributes?.media?.data?.attributes?.formats?.small?.url ||
-                                                        article?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url
+                                                  src={   article?.attributes?.image?.data?.attributes?.url ||
+                                                        article?.attributes?.image?.data?.attributes?.formats?.large?.url ||
+                                                        article?.attributes?.image?.data?.attributes?.formats?.medium?.url ||
+                                                        article?.attributes?.image?.data?.attributes?.formats?.small?.url ||
+                                                        article?.attributes?.image?.data?.attributes?.formats?.thumbnail?.url
                                                         
                                                     
 
@@ -147,11 +147,11 @@ const Member = ({member, articles, meta}) =>
                                         </div>
                                         <div className="md:hidden w-[150px] object-cover   aspect-square  bg-[#CACACA]">
                                                         <img    className="h-full w-auto" 
-                                                                src={   article?.attributes?.media?.data?.attributes?.url ||
-                                                                        article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
-                                                                        article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
-                                                                        article?.attributes?.media?.data?.attributes?.formats?.small?.url ||
-                                                                        article?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url
+                                                                src={   article?.attributes?.image?.data?.attributes?.url ||
+                                                                        article?.attributes?.image?.data?.attributes?.formats?.large?.url ||
+                                                                        article?.attributes?.image?.data?.attributes?.formats?.medium?.url ||
+                                                                        article?.attributes?.image?.data?.attributes?.formats?.small?.url ||
+                                                                        article?.attributes?.image?.data?.attributes?.formats?.thumbnail?.url
                                                                         
                                                                     
 
@@ -227,7 +227,7 @@ export async function getServerSideProps({req,res,params,query}){
                                         title
                                         slug
                                         description
-                                        media{
+                                        image{
                                             data{
                                                 attributes{
                                                     url
