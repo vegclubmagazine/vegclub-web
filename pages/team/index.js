@@ -44,10 +44,10 @@ const Team = ({excerpt,team}) =>
                                 <h2 className="text-[1.44rem] lg:text-[1.728rem] font-semibold duration-[.32s] ease-in-out hover:text-black/[.4]"><Link href={`team/${slugify(member?.attributes?.name)}`}>{member?.attributes?.name}</Link></h2>
                                 <p className="text-[1.2rem]  font-light mt-3">{member?.attributes?.position}</p>
                                 <ul className="list-none mt-3 text-black text-[1.44rem]">
-                                    {member?.attributes?.instagram && (<FaInstagramSquare className="inline-block mr-5"></FaInstagramSquare>)}
-                                    {member?.attributes?.Facebook && (<FaFacebookSquare className="inline-block mr-5"></FaFacebookSquare>)}
-                                    {member?.attributes?.twitter && (<FaTwitterSquare className="inline-block mr-5"></FaTwitterSquare>)}
-                                    {member?.attributes?.linkedin && (<FaLinkedin className="inline-block"></FaLinkedin>)}
+                                    {member?.attributes?.instagram && (<Link href={`${member?.attributes?.instagram}`}><FaInstagramSquare className="inline-block mr-5"></FaInstagramSquare></Link>)}
+                                    {member?.attributes?.Facebook && (<Link href={`${member?.attributes?.Facebook}`}><FaFacebookSquare className="inline-block mr-5"></FaFacebookSquare></Link>)}
+                                    {member?.attributes?.twitter && (<Link href={`${member?.attributes?.twitter}`}><FaTwitterSquare className="inline-block mr-5"></FaTwitterSquare></Link>)}
+                                    {member?.attributes?.linkedin && (<Link href={`${member?.attributes?.linkedin}`}><FaLinkedin className="inline-block"></FaLinkedin></Link>)}
 
                                 </ul>
 

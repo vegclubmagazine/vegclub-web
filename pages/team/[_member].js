@@ -34,7 +34,7 @@ const Member = ({member, articles, meta}) =>
     return (
         <Layout title={`${member?.attributes?.name } | Vegclub Magazine`}>
             <div className="">
-                <div className="bg-black text-white  pt-5 pb-5">
+                <div className="bg-black text-white mx-auto xl:w-[80%] py-5">
                     <div className="pl-0 md:pl-[40px] border-[#333] pb-2  border-b-[1px]">
                         <h1 className=" text-[2.488rem] w-fit mx-auto md:mx-0 font-semibold">{member?.attributes?.name}</h1>
                     </div>
@@ -53,33 +53,40 @@ const Member = ({member, articles, meta}) =>
                             
                             <h2 className="text-[1.44rem] w-fit mx-auto  md:mx-0 font-semibold">{member?.attributes?.position}</h2>
                             <p className="text-[1.2rem] text-[#a2a2a2] w-fit mx-auto md:mx-0 mt-2">{member?.attributes?.pronouns}</p>
-                            <p className="mt-8 text-[#a2a2a2] leading-[1.6]">{member?.attributes?.bio}</p>
+                            <p className="mt-8 text-[#a2a2a2] leading-[1.9]">{member?.attributes?.bio}</p>
                             <ul className="list-none mt-8 mx-auto md:mx-0 w-fit">
                                {member?.attributes?.instagram &&( 
                                     <li className="inline-block mr-5">
-                                        <FaInstagram className="inline-block text-[1.2rem] sm:text-[1.2rem] md:text-[1.728rem] mr-5"></FaInstagram>
-                                        <p className="text-[.833rem] text-[#a2a2a2] hidden md:inline-block">Instagram</p>
+                                        <Link href={`${member?.attributes?.instagram}`}>
+                                            <FaInstagram className="inline-block text-[1.2rem] sm:text-[1.2rem] md:text-[1.728rem] mr-5"></FaInstagram>
+                                            <p className="text-[.833rem] text-[#a2a2a2] hidden md:inline-block">Instagram</p>
+                                        </Link>
                                     </li>
                                )}
                                 
                                {member?.attributes?.linkedin && (
                                     <li className="inline-block mr-5">
-                                        <FaLinkedin className="inline-block text-[1.2rem] sm:text-[1.44rem] md:text-[1.728rem] mr-5"></FaLinkedin>
-                                        <p className="text-[.833rem] text-[#a2a2a2] hidden md:inline-block">LinkedIn</p>
+                                        <Link href={`${member?.attributes?.linkedin}`}>
+                                            <FaLinkedin className="inline-block text-[1.2rem] sm:text-[1.44rem] md:text-[1.728rem] mr-5"></FaLinkedin>
+                                            <p className="text-[.833rem] text-[#a2a2a2] hidden md:inline-block">LinkedIn</p>
+                                        </Link>
                                     </li>
                                )}
                                 
                                 {member?.attributes?.twitter && (
                                     <li className="inline-block mr-5">
-                                        <FaTwitter className="inline-block mr-5 text-[1.2rem] sm:text-[1.44rem] md:text-[1.728rem]"></FaTwitter>
-                                        <p className="text-[.833rem] text-[#a2a2a2] hidden md:inline-block">Twitter</p>
-
+                                        <Link href={`${member?.attributes?.twitter}`}>
+                                            <FaTwitter className="inline-block mr-5 text-[1.2rem] sm:text-[1.44rem] md:text-[1.728rem]"></FaTwitter>
+                                            <p className="text-[.833rem] text-[#a2a2a2] hidden md:inline-block">Twitter</p>
+                                        </Link>
                                     </li>
                                 )}
                                 {member?.attributes?.Facebook &&(
                                     <li className="inline-block mr-5">
-                                        <FaFacebookF className="inline-block mr-5 text-[1.2rem] sm:text-[1.44rem] md:text-[1.728rem]"></FaFacebookF>
-                                        <p className="text-[.833rem] text-[#a2a2a2] hidden md:inline-block">Facebook</p>
+                                        <Link href={`${member?.attributes?.Facebook}`}>
+                                            <FaFacebookF className="inline-block mr-5 text-[1.2rem] sm:text-[1.44rem] md:text-[1.728rem]"></FaFacebookF>
+                                            <p className="text-[.833rem] text-[#a2a2a2] hidden md:inline-block">Facebook</p>
+                                        </Link>
                                     </li>
                                 )}
                             </ul>
@@ -175,7 +182,9 @@ const Member = ({member, articles, meta}) =>
                         </div>
                     </div>)
                     :(
-                        <div className="mx-auto w-fit text-[2.072rem] md:text-[2.488rem] font-bold text-black/[.4] py-8">No Results</div>
+                        <div className="w-fit mx-auto border-[#000]/[.1] text-[2.072rem] md:text-[2.488rem] font-bold text-black/[.4] py-8">
+                            No Results
+                        </div>
                     )}
             </div>
 
