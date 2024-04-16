@@ -10,6 +10,7 @@ import {
     FaLinkedinIn,
     FaLinkedin,
     FaInstagramSquare,
+    FaTiktok,
 
     
     FaTwitter,
@@ -53,7 +54,14 @@ const Team = ({excerpt,team}) =>
                                         {member?.attributes?.Facebook && (<Link href={`${member?.attributes?.Facebook}`}><FaFacebookSquare className="inline-block mr-5"></FaFacebookSquare></Link>)}
                                         {member?.attributes?.twitter && (<Link href={`${member?.attributes?.twitter}`}><FaTwitterSquare className="inline-block mr-5"></FaTwitterSquare></Link>)}
                                         {member?.attributes?.linkedin && (<Link href={`${member?.attributes?.linkedin}`}><FaLinkedin className="inline-block"></FaLinkedin></Link>)}
-
+                                        {member?.attributes?.tiktok && (
+                                            <li className="inline-block mr-5">
+                                                    <Link href={`${member?.attributes?.tiktok}`}>
+                                                        <FaTiktok className="inline-block mr-5 text-[1.2rem] sm:text-[1.44rem] md:text-[1.728rem]"></FaTiktok>
+                                                        <p className="text-[.833rem] text-[#a2a2a2] hidden md:inline-block">Facebook</p>
+                                                    </Link>
+                                            </li>
+                                        )}
                                     </ul>
 
                                 </div>

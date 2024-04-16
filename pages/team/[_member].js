@@ -9,6 +9,7 @@ import {
     FaLinkedinIn,
     FaLinkedin,
     FaInstagramSquare,
+    FaTiktok,
     
 
     
@@ -89,6 +90,15 @@ const Member = ({member, articles, meta}) =>
                                         </Link>
                                     </li>
                                 )}
+                                {member?.attributes?.tiktok && (
+                                    <li className="inline-block mr-5">
+                                            <Link href={`${member?.attributes?.tiktok}`}>
+                                                <FaTiktok className="inline-block mr-5 text-[1.2rem] sm:text-[1.44rem] md:text-[1.728rem]"></FaTiktok>
+                                                <p className="text-[.833rem] text-[#a2a2a2] hidden md:inline-block">Facebook</p>
+                                            </Link>
+                                    </li>
+                                )}
+                                
                             </ul>
                         </div>
                         <div className="hidden md:block bg-[#cacaca] w-full max-w-[350px]  aspect-square">
