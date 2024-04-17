@@ -10,6 +10,7 @@ import {
     FaLinkedinIn,
     FaLinkedin,
     FaInstagramSquare,
+    FaInstagram,
     FaTiktok,
 
     
@@ -21,6 +22,8 @@ import {
 import { slugify } from "../../lib/utils";
 import { API } from "../../config/api";
 import { useEffect } from "react";
+import { GlobalContext } from "../../context/GlobalContext";
+import {useContext} from "react";
 
 const qs = require("qs");
 
@@ -28,9 +31,7 @@ const qs = require("qs");
 
 const Team = ({excerpt,team}) =>
 {
-    useEffect(()=>{
-        console.log(team[3]?.attributes?.image)
-    },[])
+    const {isMemberAuthor} = useContext(GlobalContext);
    
     return (
         <Layout title="Meet The Team | Vegclub Magazine">
@@ -39,32 +40,44 @@ const Team = ({excerpt,team}) =>
                 <h1 className="w-fit uppercase font-semibold text-[2.488rem]">Team</h1>
             </div>
             <div className="xl:grid xl:grid-cols-[2fr_1fr]">
-                <div className="grid px-[40px] py-[40px] grid-cols-2 md:grid-cols-3  gap-x-5 gap-y-[5rem] auto-rows-max border-black/[.1] border-b-[1px] xl:border-r-[1px]">
+                <div className="border-black/[.1] xl:border-r-[1px]">
                     {team?.map((member,index)=>(
-                            <div className="" key={index}>
-                                <div className="aspect-square  max-h-[240px] max-w-[240px] overflow-hidden  w-[80%]">
+                            <div className="flex flex-row border-b-[1px] p-[40px]" key={index}>
+                                <div className="min-w-[240px] h-[240px] aspect-square overflow-hidden">
                                     
-                                    <img src={member?.attributes?.image?.data?.attributes?.url} className="w-full h-auto"/>
+                                    <img src={member?.attributes?.image?.data?.attributes?.url} className="w-full h-auto object-cover"/>
                                 </div>
-                                <div className="max-w-[240px]">
-                                    <h2 className="text-[1.44rem] lg:text-[1.728rem] font-semibold duration-[.32s] ease-in-out hover:text-black/[.4]"><Link href={`team/${slugify(member?.attributes?.name)}`}>{member?.attributes?.name}</Link></h2>
-                                    <p className="text-[1.2rem]  font-light mt-3">{member?.attributes?.position}</p>
-                                    <ul className="list-none mt-3 text-black text-[1.44rem]">
-                                        {member?.attributes?.instagram && (<Link href={`${member?.attributes?.instagram}`}><FaInstagramSquare className="inline-block mr-5"></FaInstagramSquare></Link>)}
-                                        {member?.attributes?.Facebook && (<Link href={`${member?.attributes?.Facebook}`}><FaFacebookSquare className="inline-block mr-5"></FaFacebookSquare></Link>)}
-                                        {member?.attributes?.twitter && (<Link href={`${member?.attributes?.twitter}`}><FaTwitterSquare className="inline-block mr-5"></FaTwitterSquare></Link>)}
-                                        {member?.attributes?.linkedin && (<Link href={`${member?.attributes?.linkedin}`}><FaLinkedin className="inline-block"></FaLinkedin></Link>)}
+                                <div className="flex-col flex grow pl-[20px]">
+                                    <h2 className="text-[1.44rem] lg:text-[1.728rem] font-semibold">{member?.attributes?.name}</h2>
+                                    <p className="mt-3 font-light">{member?.attributes?.pronouns}</p>
+                                    <p className="font-semibold mt-3">{member?.attributes?.position}</p>
+                                    <p className="mt-3">{member?.attributes?.bio}</p>
+                                    <ul className="list-none mt-3 text-black text-[1.728rem]">
+                                        {member?.attributes?.instagram && (<Link href={`${member?.attributes?.instagram}`}><FaInstagram className="inline-block mr-5 transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]"></FaInstagram></Link>)}
+                                        {member?.attributes?.Facebook && (<Link href={`${member?.attributes?.Facebook}`}><FaFacebook className="inline-block mr-5 duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]"></FaFacebook></Link>)}
+                                        {member?.attributes?.twitter && (<Link href={`${member?.attributes?.twitter}`}><FaTwitter className="inline-block mr-5 duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]"></FaTwitter></Link>)}
+                                        {member?.attributes?.linkedin && (<Link href={`${member?.attributes?.linkedin}`}><FaLinkedin className="inline-block duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]"></FaLinkedin></Link>)}
                                         {member?.attributes?.tiktok && (
                                             <li className="inline-block mr-5">
                                                     <Link href={`${member?.attributes?.tiktok}`}>
-                                                        <FaTiktok className="inline-block mr-5 text-[1.2rem] sm:text-[1.44rem] md:text-[1.728rem]"></FaTiktok>
-                                                        <p className="text-[.833rem] text-[#a2a2a2] hidden md:inline-block">Facebook</p>
+                                                        <FaTiktok className="inline-block mr-5 duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]"></FaTiktok>
+                                                        
                                                     </Link>
                                             </li>
                                         )}
                                     </ul>
 
+                                    {isMemberAuthor(member?.attributes?.name) && (
+                                    <div className="mt-5">
+                                        <Link href={`team/${slugify(member?.attributes?.name)}`}>
+                                            <p className="inline-block align-middle mr-2 font-semibold uppercase italic duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]">View Articles</p>
+                                            <div className="inline-block align-middle border-black/[.4] border-t-[1px] border-r-[1px] rotate-[45deg] w-[8px] h-[8px]"></div>
+                                        </Link>
+                                    </div>
+                                )}
+
                                 </div>
+                                
                             </div>
                     ))}
                         
