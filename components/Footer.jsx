@@ -27,8 +27,8 @@ const Footer  = ({})=>
                         <Link href="#">Loyalty Card</Link>
 
                         <div>
-                            <Link className="inline-block mr-3" href="mailto:contact@vegclubmagazine.com">contact</Link>
-                            <MdOpenInNew className="inline-block align-middle"></MdOpenInNew>
+                            <Link className="" href="/contact">contact</Link>
+                           
                         </div>
                         
                     </div>

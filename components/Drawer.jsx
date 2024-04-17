@@ -71,9 +71,9 @@ const Drawer = ({isOpen, onClose})=>{
 
                                     </li>
                                     <li className="cursor-pointer py-2 w-fit ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]">
-                                        <Link className="inline-block mr-3 align-middle" href={`mailto:contact@vegclubmagazine.com`} >Contact</Link>
+                                        <Link className="" href={`/contact`} >Contact</Link>
                                         
-                                        <MdOpenInNew className="inline-block"></MdOpenInNew>
+                                       
                        
                                         
                                     </li>
