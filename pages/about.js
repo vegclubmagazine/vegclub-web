@@ -10,9 +10,11 @@ const About = ({about}) =>
         <Layout title="About | Vegclub magazine"
                 desc="Vegclub magazine was founded with a passion for advocating the many benefits of living a vegan lifestyle, and sharing that passion with readers worldwide."
         >
-            <main className="w-[90%] mx-auto mt-3">
-                <h1 className="text-[2.042rem] font-semibold lg:text-[2.488rem] uppercase">About</h1>
-                <div className="lg:text-[1.2rem] pt-3">
+            <main className="border-black/[.1]">
+                <div className="pt-[40px] pl-[40px] pb-5 border-[1px]">
+                    <h1 className="text-[1.728rem] font-semibold md:text-[2.074rem] uppercase">About</h1>
+                </div>
+                <div className="lg:text-[1.2rem] pt-5 px-[40px]">
                     {about && (parse(about))}
                 </div>
             </main>
