@@ -9,7 +9,7 @@ import Link from "next/link";
 const Footer  = ({})=>
 {
     return (
-        <footer className = "bg-[#000] relative border-box py-5">
+        <footer className = "bg-[#000] relative bottom-0 border-box py-5">
             <div className="w-[90%] mx-auto">
                 <div className="border-box py-3 border-[#333333]">
                     <img  src="/vegClub_logo_white_2.png" className="mx-auto h-[2.5rem] w-auto"></img>
@@ -24,7 +24,7 @@ const Footer  = ({})=>
                         
                         
                         
-                        <Link href="#">Loyalty Card</Link>
+                        <Link href="/loyalty-card">Loyalty Card</Link>
 
                         <div>
                             <Link className="" href="/contact">contact</Link>

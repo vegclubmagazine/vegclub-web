@@ -64,7 +64,7 @@ const Drawer = ({isOpen, onClose})=>{
 
                                     <li className="cursor-pointer w-fit py-2 ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]"><Link href={`/team`} ><span className="">Team</span></Link></li>
                                     <li className="w-fit py-2 loyalty-card--btn">
-                                        <Link className="text-black inline-block mr-2" href="#">Loyalty Card</Link>
+                                        <Link className="text-black inline-block mr-2" href="/loyalty-card">Loyalty Card</Link>
                                         <div className="inline-block  align-middle w-[30px] h-[30px]">
                                             <img className="w-fit h-auto" src="/loyalty_button_asset.png"/>
                                         </div>
