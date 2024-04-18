@@ -7,7 +7,7 @@ import parse from "html-react-parser";
 const About = ({about}) =>
 {
     return (
-        <Layout title="About | Vegclub magazine"
+        <Layout title="About Us | Vegclub magazine"
                 desc="Vegclub magazine was founded with a passion for advocating the many benefits of living a vegan lifestyle, and sharing that passion with readers worldwide."
         >
             <main className="border-black/[.1]">
