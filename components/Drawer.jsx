@@ -58,7 +58,7 @@ const Drawer = ({isOpen, onClose})=>{
                     </div>
                     <div className="pl-[20px] md:flex md:flex-row md:flex-grow">
                         <div className="md:w-[50%] border-black/[.1]">
-                            <div className="mt-[4rem] pt-4 uppercase text-[1.2rem] font-bold">
+                            <div className="mt-[4rem] pt-4 uppercase text-[1.728rem] font-bold">
                                 <ul className="list-none">
                                     <li className="cursor-pointer py-2 w-fit ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]"><Link href={`/about`} ><span className="">About Us</span></Link></li>
 
