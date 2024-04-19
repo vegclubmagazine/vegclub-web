@@ -244,13 +244,13 @@ const height = (w, outline,projection) =>
         <Layout title="Loyalty Program | vegclub magazine">
             <main className="mx-auto border-black/[.1]">
                 <div className="relative pl-[40px] lg:pl-0 pt-[40px] pb-[40px] text-white  border-black bg-black">
-                    <div className="md:flex md:flex-row-reverse lg:w-[85%] lg:mx-auto">
+                    <div className="md:flex md:flex-row-reverse lg:w-[75%] lg:mx-auto">
                         <div className="w-fit mx-auto mb-[40px] md:mx-0 md:mb-0 md:pr-[80px]">
                             <img src="/discount_asset_tb-img_5.png" className="w-auto h-[150px] md:h-[200px]"/>
                         </div>
                         <div className="md:flex md:grow md:flex-col md:justify-end">
                             <h4 className="mb-1 uppercase italic text-[0.833rem] font-semibold">
-                            Loyalty card
+                            Loyalty Program
                             </h4>
                             <h1 className="max-w-[400px] lg:max-w-[600px] font-semibold text-[1.728rem] lg:text-[2.074rem]">
                                 Get <span className="font-bold italic">Discounts</span>{"    "}

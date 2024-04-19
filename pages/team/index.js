@@ -37,7 +37,7 @@ const Team = ({excerpt,team}) =>
         <Layout title="Meet The Team | Vegclub Magazine">
             
             <div className="border-black/[.1] pl-[40px] border-box py-3 border-b-[1px]">
-                <h1 className="w-fit uppercase font-semibold text-[2.488rem]">Team</h1>
+                <h1 className="w-fit uppercase font-semibold text-[2.488rem]">Meet The Team</h1>
             </div>
             <div className="xl:grid xl:grid-cols-[2fr_1fr]">
                 <div className="border-black/[.1] xl:border-r-[1px]">

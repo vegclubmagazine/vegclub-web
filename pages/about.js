@@ -12,7 +12,7 @@ const About = ({about}) =>
         >
             <main className="border-black/[.1]">
                 <div className="pt-[40px] pl-[40px] pb-5 border-[1px]">
-                    <h1 className="text-[1.728rem] font-semibold md:text-[2.074rem] uppercase">About</h1>
+                    <h1 className="text-[1.728rem] font-semibold md:text-[2.074rem] uppercase">About Us</h1>
                 </div>
                 <div className="lg:text-[1.2rem] pt-5 px-[40px]">
                     {about && (parse(about))}

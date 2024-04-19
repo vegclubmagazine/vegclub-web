@@ -9,13 +9,14 @@ import Moment from "react-moment";
 
 const Category = ({category, meta, articles}) =>
 {
+   
     
     return(
         <Layout>
             {articles?.length ? (
                 <Fragment>
-                    <div className="pb-3 border-black/[.1] w-[90%] md:w-full md:pb-3 pt-[5rem] mx-auto">
-                        <h1 className="uppercase italic font-semibold pl-[15px] text-[1.44rem] md:text-[1.728rem] lg:text-[2.0728rem]">{category}</h1>
+                    <div className="pb-3 border-black/[.1] md:pb-3 pt-[5rem] pl-[40px]">
+                        <h1 className="uppercase font-semibold  text-[1.728rem] md:text-[2.074rem] lg:text-[2.0728rem]">{category}</h1>
                     </div>
                     <div className="w-full  border-t-[1px] border-b-[1px] lg:grid lg:grid-cols-[2fr_1fr]">
                             <ul className="grid grid-cols-1 auto-rows-fr lg:border-r-[1px]">
@@ -26,7 +27,7 @@ const Category = ({category, meta, articles}) =>
                                             <div className="hidden  md:block w-full md:w-[33.3%] lg:w-full aspect-[16/9] overflow-y-hidden object-cover">
                                                     <img    className="w-full h-auto" 
 
-                                                            src={   article?.attriibutes?.media?.data?.attributes?.url ||
+                                                            src={   article?.attributes?.media?.data?.attributes?.url ||
                                                                     article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
                                                                     article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
                                                                     article?.attributes?.media?.data?.attributes?.formats?.small?.url ||
@@ -39,7 +40,7 @@ const Category = ({category, meta, articles}) =>
                                                     ></img>                                             
                                             </div>
                                             
-                                            <div className="py-[40px] md:py-0 pr-[40px] flex grow flex-col ml-[5%] lg:block md:ml-0 md:pl-[20px]">
+                                            <div className="pt-[40px] md:py-0 px-[40px] flex grow flex-col lg:block md:ml-0 md:pl-[20px]">
                                                 
                                                 <h1 className="font-semibold md:text-[1.728rem] lg:text-[2.074rem] duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></h1>
                                                 <h2 className="hidden md:block mt-4">{article?.attributes?.description}</h2>
@@ -51,8 +52,8 @@ const Category = ({category, meta, articles}) =>
                                             </div>
                                             <div>
                                                 <div className="md:hidden w-[150px] md:h-auto md:w-[80%] object-cover md:mx-auto  aspect-square md:aspect-[16/9] mx-auto bg-[#CACACA]">
-                                                    <img    className="w-full h-auto" 
-                                                            src={   article?.attriibutes?.media?.data?.attributes?.url ||
+                                                    <img    className="h-full w-auto object-cover" 
+                                                            src={   article?.attributes?.media?.data?.attributes?.url ||
                                                                     article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
                                                                     article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
                                                                     article?.attributes?.media?.data?.attributes?.formats?.small?.url ||
@@ -117,7 +118,7 @@ export async function getServerSideProps({req,res,query, params})
     const fetch_query = `
     query ArticlesByCategory($filtervar: ArticleFiltersInput)
     {
-        articles(filters:$filtervar, pagination:{page:${page}, pageSize:${PAGINATION_LIMIT}})
+        articles(filters:$filtervar, pagination:{page:${page}, pageSize:${PAGINATION_LIMIT}}, sort:"date:desc")
         {
             meta{
                 pagination{
@@ -141,7 +142,7 @@ export async function getServerSideProps({req,res,query, params})
                     author{
                         data{
                             attributes{
-                                Name
+                                name
                             }
                         }
                     }
@@ -198,7 +199,7 @@ export async function getServerSideProps({req,res,query, params})
     });
 
     const {data} = await response.json();
-   
+    console.log(data);
     var visible_articles;
     for(let i = 0; i < data?.articles?.data.length; i++)
     {
