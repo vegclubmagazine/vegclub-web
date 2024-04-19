@@ -14,7 +14,7 @@ const Contact = ()=>
             
                 <div className="pt-[40px] px-[40px] grid">
                     <div>
-                        <p className="font-bold">We'd love to hear your feedback and suggestions or answer questions, so please do get in touch.
+                        <p className="">We'd love to hear your feedback and suggestions or answer questions, so please do get in touch.
 
                         </p>
                         <p className="mt-5">Here's who to contact, depending on your enquiry:
@@ -37,8 +37,8 @@ const Contact = ()=>
                             {"   "}<Link className="underline font-bold" href="mailto:press@vegclubmagazine.com">press@vegclubmagazine.com</Link>
 
                         </p>
-                        <h2 className="mt-[60px] font-semibold uppercase text-[1.44rem]">Loyalty programme</h2>
-                        <p className="mt-5">If you’d like to join our loyalty programme as a physical member or as an eatery, please send it to 
+                        <h2 className="mt-[60px] font-semibold uppercase text-[1.44rem]">Loyalty program</h2>
+                        <p className="mt-5">If you’d like to join our loyalty program as a physical member or as an eatery, please send it to 
                             
                             {"  "}<Link className="underline font-semibold" href="mailto:loyalty@vegclubmagazine.com">loyalty@vegclubmagazine.com</Link>
 
