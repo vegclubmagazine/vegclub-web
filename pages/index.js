@@ -1,6 +1,6 @@
 import { API, BASE_URL } from "../config/api";
 import Layout from "../defaults/Layout";
-import {useEffect,useState} from "react";
+import {Fragment, useEffect,useState} from "react";
 import {PAGINATION_LIMIT} from "../config/meta.js";
 import { slugify } from "../lib/utils.js";
 import Link from "next/link.js";
@@ -9,15 +9,36 @@ import AdUnit from "../components/AdUnit.jsx";
 import SquareAdUnit from "../components/SquareAdUnit.jsx";
 import GenericArticleFormat from "../components/GenericArticleFormat.jsx";
 import Loader from "../components/Loader.jsx";
+import InHouseAds from "../components/InHouseAds.jsx";
 
 const qs = require("qs");
 
 
-const Home = ({articles})=>{
+const Home = ({articles,ads})=>{
     const [isLoading, setIsLoading] = useState(false);
     const [atLastPage, setAtLastPage] = useState(false);
     const [LatestArticles,setLatestArticles] = useState([...articles?.nonFeatureArticles?.slice(1)]);
     const [page,setPage] = useState(1);
+
+    const countBeforeAd = 5;
+
+
+    const checkAds = (idx)=>
+    {
+
+        if(!idx)return null;
+        if(idx % (countBeforeAd + 1))return null;
+        
+        
+        
+        return ads[(idx/(countBeforeAd + 1)) - 1] ? true: false;
+       
+
+
+
+    }
+
+    const getAdIndex = idx => (idx/(countBeforeAd + 1)) - 1;
 
     const loadArticles = ()=>
     {
@@ -25,8 +46,10 @@ const Home = ({articles})=>{
         setPage(prev => prev += 1);
 
     }
+
     useEffect(()=> 
     {
+        
         
         if(page > 1){
         
@@ -366,10 +389,15 @@ const Home = ({articles})=>{
                 <div className="border-[#000]/[.1] border-b-[1px] lg:grid lg:grid-cols-[2fr_1fr]">
                     <ul className="list-none text-start md:border-r-[1px]">
                         {LatestArticles?.map((article, index)=>(
-                            
-                            <li className={`${index < LatestArticles.length - 1 ? "border-b-[1px]":""}`} key={index}>
-                                <GenericArticleFormat article={article}/>
-                            </li>
+                            <Fragment>
+                                {checkAds(index) && ads[getAdIndex(index)].attributes.showOnHomePage && (
+                                    <InHouseAds ad={ads[getAdIndex(index)]} key={ads[getAdIndex(index)]?.id}/>
+                                )}
+                                
+                                <li className={`${index < LatestArticles.length - 1 ? "border-b-[1px]":""}`} key={index}>
+                                    <GenericArticleFormat article={article}/>
+                                </li>
+                            </Fragment>
                         ))}
                     </ul>
                     <div className="hidden lg:block w-fit pt-[40px] pl-[20px]">
@@ -399,7 +427,7 @@ const Home = ({articles})=>{
 export async function getServerSideProps({req,res}){
     res.setHeader(
         "Cache-Control",
-        "public", "s-maxage=604800", "stale-while-revalidate=84600"
+        "public", "s-maxage=5", "stale-while-revalidate=5"
     )
     // sort fetched articles into feature and non-feature articles
     
@@ -421,9 +449,12 @@ export async function getServerSideProps({req,res}){
     )
     
     const response = await fetch(`${API}/articles?${filters}`);
-    
+    const adsResponse = await fetch(`${API}/advertisments?populate=*`);
 
     const data = await response.json();
+    const adsData = await adsResponse.json();
+
+
     var visible_articles;
     for(let i=0;i < data?.data.length; i ++)
     {
@@ -454,10 +485,13 @@ export async function getServerSideProps({req,res}){
         props:{
             articles: {
                 featureArticles: feature_articles || null,
+
                 nonFeatureArticles: non_feature_articles || null,
+
                 
                 
-            }
+            },
+            ads:adsData?.data || null,
         }
     }
 
