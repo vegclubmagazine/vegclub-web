@@ -58,20 +58,20 @@ const Drawer = ({isOpen, onClose})=>{
                     </div>
                     <div className="pl-[20px] md:flex md:flex-row md:flex-grow">
                         <div className="md:w-[50%] border-black/[.1]">
-                            <div className="mt-[4rem] pt-4 uppercase text-[2.074rem] font-bold">
+                            <div className="mt-[4rem] pt-4 uppercase text-[1.2rem] font-bold">
                                 <ul className="list-none">
-                                    <li className="cursor-pointer py-2 w-fit ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]"><Link href={`/about`} ><span className="">About</span></Link></li>
+                                    <li className="cursor-pointer py-2 w-fit ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]"><Link href={`/about`} ><span className="">About Us</span></Link></li>
 
-                                    <li className="cursor-pointer w-fit py-2 ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]"><Link href={`/team`} ><span className="">Team</span></Link></li>
+                                    <li className="cursor-pointer w-fit py-2 ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]"><Link href={`/team`} ><span className="">Meet the Team</span></Link></li>
                                     <li className="w-fit py-2 loyalty-card--btn">
-                                        <Link className="text-black inline-block mr-2" href="/loyalty-card">Loyalty Card</Link>
+                                        <Link className="text-black inline-block mr-2" href="/loyalty-card">Loyalty Program</Link>
                                         <div className="inline-block  align-middle w-[30px] h-[30px]">
                                             <img className="w-fit h-auto" src="/loyalty_button_asset.png"/>
                                         </div>
 
                                     </li>
                                     <li className="cursor-pointer py-2 w-fit ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]">
-                                        <Link className="" href={`/contact`} >Contact</Link>
+                                        <Link className="" href={`/contact`} >Contact Us</Link>
                                         
                                        
                        
