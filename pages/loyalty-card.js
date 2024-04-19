@@ -241,7 +241,7 @@ const height = (w, outline,projection) =>
     
 
     return (
-        <Layout title="Loyalty Progam | vegclub magazine">
+        <Layout title="Loyalty Program | vegclub magazine">
             <main className="mx-auto border-black/[.1]">
                 <div className="relative pl-[40px] lg:pl-0 pt-[40px] pb-[40px] text-white  border-black bg-black">
                     <div className="md:flex md:flex-row-reverse lg:w-[85%] lg:mx-auto">
