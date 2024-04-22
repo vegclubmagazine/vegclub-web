@@ -7,6 +7,7 @@ import { PAGINATION_LIMIT } from "../../config/meta.js";
 import Link from "next/link.js";
 import Moment from "react-moment";
 import SquareAdUnit from "../../components/SquareAdUnit.jsx";
+import GenericArticleFormat from "../../components/GenericArticleFormat.jsx";
 const qs = require("qs");
 
 const Search = ()=>
@@ -27,7 +28,7 @@ const Search = ()=>
     
 
     const { q: string } = qs.parse(query);
-    const searchFunc = ( ) =>
+    const searchFunc = useCallback(()=>
     {
 
         const search_query = 
@@ -53,6 +54,14 @@ const Search = ()=>
                                     attributes{
                                         url
                                         
+                                    }
+                                }
+                            }
+                            category{
+                                data{
+                                    attributes{
+                                        name
+                                        slug
                                     }
                                 }
                             }
@@ -93,26 +102,20 @@ const Search = ()=>
         const filter_variables = {
             filterVarOne:{
                 
-                title:{
-                    contains:q
-
-                },
-                or:{
-                    description:{
-                        contains:q
-                    }
-                }
+                
+                or:[{title:{contains:stringQuery}}, {description:{contains:stringQuery}}]
+                
                 
             },
 
             filterVarTwo:{
                 name:{
-                    contains:q
+                    contains:stringQuery
                 }
 
             }
         }
-        if(q){
+        if(stringQuery){
             fetch(`${BASE_URL}/graphql`,
             {
                 method:"POST",
@@ -146,13 +149,13 @@ const Search = ()=>
         }
         
 
-    }
+    },[stringQuery])
     const handleSubmit = (e) =>
     {
        
         e.preventDefault();
         
-        const query_filter = qs.stringify({q: searchInputRef.current.value});
+        const query_filter = qs.stringify({q:searchInputRef.current.value, page:"1"});
 
         router.replace({
             pathname:"/search",
@@ -161,15 +164,18 @@ const Search = ()=>
 
         searchFunc();
 
-    }
-    useEffect(()=>{
         
-        searchFunc()
-    },[])
+
+    }
     useEffect(()=>{
         
         setStringQuery(string || "")
     },[q])
+    useEffect(()=>{
+        
+        searchFunc()
+    },[])
+  
     useEffect(()=>{
         viewAuthorResults && (setViewArticleResults(false));
     },[viewAuthorResults])
@@ -221,54 +227,7 @@ const Search = ()=>
                                         <div className="lg:grid lg:grid-cols-[2fr_1fr] border-black/[.1] border-b-[1px]">
                                             <ul className="decoration-none list-none   lg:border-r-[1px]">
                                                 {ArticleResults.map((article, index)=>(
-                                                <li className={`border-box border-black/[.1] ${index < ArticleResults?.length ? "border-b-[1px]":""}`} key={index}>
-                                                        <div className="flex justify-center md:py-[40px] flex-row lg:grid lg:grid-cols-2  h-full">
-                                        
-                                                            <div className="hidden  md:block w-[33.3%] lg:w-full aspect-[16/9] object-cover overflow-y-hidden">
-                                                                <img    className="w-full h-auto" 
-                                                                        src={   article?.attributes?.media?.data?.attributes?.url ||
-                                                                            article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
-                                                                                article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
-                                                                                article?.attributes?.media?.data?.attributes?.formats?.small?.url ||
-                                                                                article?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url 
-                                                                              
-                                                                            
-
-
-                                                                            }
-                                                                ></img>  
-                                                            </div>
-                                                            
-                                                            <div className="py-[40px] pr-[40px] flex grow flex-col ml-[5%] md:block md:ml-0 md:pl-[20px]">
-                                                                
-                                                                <h1 className="font-semibold text-[1.2rem] md:text-[1.728rem] lg:text-[2.074rem]">{article?.attributes?.title}</h1>
-                                                                <h2 className="hidden md:block mt-4">{article?.attributes?.Description}</h2>
-                                                                <div className="mt-4 text-[0.833rem]">
-                                                                    <p className="inline-block uppercase italic mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
-                                                                
-                                                                    <Moment className="inline-block font-semibold uppercase italic ml-1 text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <div className="md:hidden w-[150px] object-cover md:h-auto md:w-[80%] md:mx-auto  aspect-square md:aspect-[16/9] mx-auto bg-[#CACACA]">
-                                                                <img    className="w-full h-auto" 
-                                                                        src={   article?.attributes?.media?.data?.attributes?.url ||
-                                                                            article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
-                                                                                article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
-                                                                                article?.attributes?.media?.data?.attributes?.formats?.small?.url ||
-                                                                                article?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url
-                                                                                
-                                                                            
-
-
-                                                                            }
-                                                                ></img>  
-
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </li>
+                                                   <GenericArticleFormat article={article} key={index}/>
                                                 ))}
                                             </ul>
                                             <div className="hidden lg:block pt-[40px] w-fit mx-auto">
