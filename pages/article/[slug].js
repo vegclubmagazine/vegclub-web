@@ -237,7 +237,7 @@ export async function getStaticPaths()
         params:{slug:article?.attributes.slug, id:article?.id, cat:article?.attributes?.category?.data?.attributes?.name}
     }));
 
-    return {paths, fallback:false};
+    return {paths, fallback:"blocking"};
 }
 
 
