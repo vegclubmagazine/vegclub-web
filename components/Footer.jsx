@@ -24,7 +24,7 @@ const Footer  = ({})=>
                         
                         
                         
-                        <Link href="/loyalty-card">Loyalty Card</Link>
+                        <Link href="/loyalty-card">Loyalty Program</Link>
 
                         <div>
                             <Link className="" href="/contact">contact</Link>

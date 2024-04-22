@@ -5,70 +5,45 @@ import {Fragment, useEffect} from "react";
 import { API, BASE_URL } from "../../config/api.js";
 import Link from "next/link.js";
 import Moment from "react-moment";
+import InHouseAds from "../../components/InHouseAds.jsx";
+import GenericArticleFormat from "../../components/GenericArticleFormat.jsx";
 
 
-const Category = ({category, meta, articles}) =>
+const qs=require("qs");
+
+
+const Category = ({category, meta, articles,ads}) =>
 {
-   
+    const articles_before_ad = 2;
+   const checkAds = (idx)=>
+   {
+        if(!idx)return null;
+        if(idx%(articles_before_ad + 1)) return null;
+
+        return ads[(idx/(articles_before_ad +1)) - 1] ? true:false;
+   }
+    const getAdsIdx = (idx) => (idx/(articles_before_ad + 1)) - 1;
     
     return(
         <Layout>
             {articles?.length ? (
                 <Fragment>
+                    
                     <div className="pb-3 border-black/[.1] md:pb-3 pt-[5rem] pl-[40px]">
                         <h1 className="uppercase font-semibold  text-[1.728rem] md:text-[2.074rem] lg:text-[2.0728rem]">{category}</h1>
                     </div>
                     <div className="w-full  border-t-[1px] border-b-[1px] lg:grid lg:grid-cols-[2fr_1fr]">
-                            <ul className="grid grid-cols-1 auto-rows-fr lg:border-r-[1px]">
+                            <ul className="list-none text-start lg:border-r-[1px]">
                                 {articles?.map((article, index) => (
-                                    <li className={`${index < (articles.length - 1) ? "border-b-[1px]": ""}`} key={index}>
-                                        <div className="flex justify-center flex-row lg:grid lg:grid-cols-2 md:py-[40px] h-full">
-                                                
-                                            <div className="hidden  md:block w-full md:w-[33.3%] lg:w-full aspect-[16/9] overflow-y-hidden object-cover">
-                                                    <img    className="w-full h-auto" 
 
-                                                            src={   article?.attributes?.media?.data?.attributes?.url ||
-                                                                    article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
-                                                                    article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
-                                                                    article?.attributes?.media?.data?.attributes?.formats?.small?.url ||
-                                                                    article?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url 
-                                                                   
-                                                                
-
-
-                                                                }
-                                                    ></img>                                             
-                                            </div>
-                                            
-                                            <div className="pt-[40px] md:py-0 px-[40px] flex grow flex-col lg:block md:ml-0 md:pl-[20px]">
-                                                
-                                                <h1 className="font-semibold md:text-[1.728rem] lg:text-[2.074rem] duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></h1>
-                                                <h2 className="hidden md:block mt-4">{article?.attributes?.description}</h2>
-                                                <div className="mt-4 text-[0.833rem]">
-                                                    <p className="inline-block uppercase italic mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
-                                                
-                                                    <Moment className="inline-block font-semibold uppercase italic ml-2 text-[0.833rem]" format="MMMM Do YYYY">{article?.attributes?.date}</Moment>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div className="md:hidden w-[150px] md:h-auto md:w-[80%] object-cover md:mx-auto  aspect-square md:aspect-[16/9] mx-auto bg-[#CACACA]">
-                                                    <img    className="h-full w-auto object-cover" 
-                                                            src={   article?.attributes?.media?.data?.attributes?.url ||
-                                                                    article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
-                                                                    article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
-                                                                    article?.attributes?.media?.data?.attributes?.formats?.small?.url ||
-                                                                    article?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url 
-                                                                    
-                                                                
-
-
-                                                                }
-                                                    ></img>  
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </li>
+                                    <Fragment>
+                                        {checkAds(index) && (
+                                            <InHouseAds ad={ads[getAdsIdx(index)]} key={ads[getAdsIdx(index)]?.id}/>
+                                        )}
+                                        <li className={`${index < (articles.length - 1) ? "border-b-[1px]": ""}`} key={index}>
+                                            <GenericArticleFormat article={article}/>
+                                        </li>
+                                    </Fragment>
                                 ))}
                             
                                 
@@ -114,7 +89,26 @@ export async function getServerSideProps({req,res,query, params})
 
     const {page = 1} = query;
     const {cat} = params
-    
+    const filters = qs.stringify(
+        {
+            populate:"*",
+            filters:{
+                categories:{
+                    slug:{
+                        $eq:cat
+
+                    }
+                }
+            },
+            pagination:{
+                pageSize:(Math.floor(PAGINATION_LIMIT/6)),
+                page:`${page}`
+            },
+           
+
+        },
+        {encodeValuesOnly:true}
+    )
     const fetch_query = `
     query ArticlesByCategory($filtervar: ArticleFiltersInput)
     {
@@ -151,6 +145,7 @@ export async function getServerSideProps({req,res,query, params})
                         data{
                             attributes{
                                 name
+                                slug
                             }
                         }
                     }
@@ -183,6 +178,7 @@ export async function getServerSideProps({req,res,query, params})
     
 
     const response = await fetch(`${BASE_URL}/graphql`,
+
     {
         method:"POST",
         headers:{
@@ -197,9 +193,12 @@ export async function getServerSideProps({req,res,query, params})
         )
 
     });
+    const adsResponse = await fetch(`${API}/advertisments?${filters}`);
+
 
     const {data} = await response.json();
-    console.log(data);
+    const adsData = await adsResponse.json();
+    
     var visible_articles;
     for(let i = 0; i < data?.articles?.data.length; i++)
     {
@@ -211,13 +210,15 @@ export async function getServerSideProps({req,res,query, params})
             break;
         }
     }
+
    
 
     return {
         props:{
             meta:data?.articles?.meta || null,
             articles: visible_articles || null,
-            category: data?.articles?.data[0]?.attributes?.category?.data?.attributes?.name || cat 
+            category: data?.articles?.data[0]?.attributes?.category?.data?.attributes?.name || cat ,
+            ads: adsData?.data || null,
         }
     }
 

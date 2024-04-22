@@ -108,7 +108,7 @@ const Layout = (
                         <div className={"hidden lg:inline-block   w-full font-semibold  md:text-[0.833rem] text-end"}>
                            
                             <div className="inline-block py-2  bg-black px-3 w-fit mr-[1.5rem]">
-                                    <Link className="text-[#fff]  duration-[.34s] ease-in-out hover:text-white/[.4]" href="/loyalty-card">Loyalty card</Link>
+                                    <Link className="text-[#fff]  duration-[.34s] ease-in-out hover:text-white/[.4]" href="/loyalty-card">Loyalty Program</Link>
                                     <div className="inline-block align-middle">
                                         <img src="/loyalty_button_asset.png" className="h-[15px] w-[15px]"></img>
                                     </div>

@@ -20,7 +20,7 @@ const Home = ({articles,ads})=>{
     const [LatestArticles,setLatestArticles] = useState([...articles?.nonFeatureArticles?.slice(1)]);
     const [page,setPage] = useState(1);
 
-    const countBeforeAd = 5;
+    const countBeforeAd = 1;
 
 
     const checkAds = (idx)=>
@@ -427,7 +427,7 @@ const Home = ({articles,ads})=>{
 export async function getServerSideProps({req,res}){
     res.setHeader(
         "Cache-Control",
-        "public", "s-maxage=5", "stale-while-revalidate=5"
+        "public", "s-maxage=604800", "stale-while-revalidate=86400"
     )
     // sort fetched articles into feature and non-feature articles
     
