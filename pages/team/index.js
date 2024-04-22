@@ -34,7 +34,7 @@ const Team = ({excerpt,team}) =>
     const {isMemberAuthor} = useContext(GlobalContext);
    
     return (
-        <Layout title="Meet The Team | Vegclub Magazine">
+        <Layout title="Meet The Team | VegClub Magazine">
             
             <div className="border-black/[.1] pl-[40px] border-box py-3 border-b-[1px]">
                 <h1 className="w-fit uppercase font-semibold text-[2.488rem]">Meet The Team</h1>

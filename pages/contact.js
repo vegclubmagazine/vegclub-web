@@ -7,7 +7,7 @@ const Contact = ()=>
 
 {
     return(
-        <Layout title= "Contact Us | VegClub magazine">
+        <Layout title= "Contact Us | VegClub Magazine">
             <main className="border-black/[.1] pb-[20vh]">
                 <h1 className="pl-[40px] text-[1.728rem] font-semibold uppercase pt-[40px] pb-5 border-b-[1px]">Contact Us</h1>
 
