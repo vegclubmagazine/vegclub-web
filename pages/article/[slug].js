@@ -36,6 +36,7 @@ const Article = ({article, articles}) =>
     
     useEffect(()=>
     {
+       
         
         (function(d,s,id){
             let js;
@@ -85,8 +86,8 @@ const Article = ({article, articles}) =>
                         <h1 className="mt-5 text-[1.728rem] font-semibold md:font-bold md:text-[2.074rem] lg:text-[2.448rem]">{article?.attributes?.title}</h1>
                         <p className="mt-5 font-[400] md:text-[1.2rem]">{article?.attributes?.description} </p>                           
                         <div className="mt-5 w-fit">
-                            <div className="rounded inline-block align-middle w-[48px] h-[48px] bg-[#cacaca] mr-3">
-                                <img className="w-full h-auto" src={findAuthorByID(article?.attributes?.author?.id)?.attributes?.avatar?.data?.attributes?.url}/>
+                            <div className="rounded inline-block align-middle overflow-hidden w-[48px] h-[48px] bg-[#cacaca] mr-3">
+                                <img className="w-full h-auto object-cover" src={findAuthorByID(article?.attributes?.author?.data?.id)?.attributes?.avatar?.data?.attributes?.url}/>
                             </div>
                             <div className="italic text-[0.833rem] inline-block">By <span className="underline">{article?.attributes?.author?.data?.attributes?.name}</span></div>
                         </div>
