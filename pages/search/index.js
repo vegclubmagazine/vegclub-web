@@ -1,5 +1,7 @@
+'use client'
+
 import {useEffect, useState, useRef, useCallback, Fragment } from "react";
-import {useRouter} from "next/router";
+
 import axios from "axios";
 import { BASE_URL } from "../../config/api.js";
 import Layout from "../../defaults/Layout.jsx";
@@ -7,35 +9,44 @@ import { PAGINATION_LIMIT } from "../../config/meta.js";
 import Link from "next/link.js";
 import Moment from "react-moment";
 import SquareAdUnit from "../../components/SquareAdUnit.jsx";
-import GenericArticleFormat from "../../components/GenericArticleFormat.jsx";
+
+import { useSearchParams,useRouter, usePathname } from "next/navigation.js";
+
 const qs = require("qs");
 
 const Search = ()=>
 {
     const searchInputRef = useRef();
+    
 
     const [ArticleResults,setArticleResults] = useState([]);
     const [AuthorResults, setAuthorResults] = useState([]);
     const [AuthorMeta, setAuthorMeta] = useState([]);
     const [ArticleMeta, setArticleMeta] =useState([]);
-    const [stringQuery, setStringQuery] = useState("")
-    
-    const router = useRouter();
+  
     const [viewArticleResults, setViewArticleResults] = useState(true);
     const [viewAuthorResults, setViewAuthorResults] = useState(false);
-    const {query} = router;
-    const {q,page=1} = query;
-    
 
-    const { q: string } = qs.parse(query);
+    const [Query, setQuery] = useState("");
+    const [Page, setPage] = useState("");
+    const [qCheck, setQCheck] = useState(false)
+  
+    const searchParams = useSearchParams();
+    const pathname = usePathname();
+    const {replace} = useRouter();
+
+   
+
     const searchFunc = useCallback(()=>
     {
-
+        
+       
+     
         const search_query = 
         `
             query FilterBySearch($filterVarOne: ArticleFiltersInput, $filterVarTwo: AuthorFiltersInput)
             {
-                articles(filters:$filterVarOne, pagination:{page:${page}, pageSize:${PAGINATION_LIMIT}})
+                articles(filters:$filterVarOne, pagination:{page:${Page}, pageSize:${PAGINATION_LIMIT}})
                 {
                     meta{
                         pagination{
@@ -60,8 +71,8 @@ const Search = ()=>
                             category{
                                 data{
                                     attributes{
-                                        name
                                         slug
+                                        name
                                     }
                                 }
                             }
@@ -75,7 +86,7 @@ const Search = ()=>
                         }
                     }
                 },
-                authors(filters:$filterVarTwo, pagination:{page:${page}, pageSize:${PAGINATION_LIMIT}})
+                authors(filters:$filterVarTwo, pagination:{page:${Page}, pageSize:${PAGINATION_LIMIT}})
                 {
                     meta{
                         pagination{
@@ -103,19 +114,19 @@ const Search = ()=>
             filterVarOne:{
                 
                 
-                or:[{title:{contains:stringQuery}}, {description:{contains:stringQuery}}]
+                or:[{title:{contains:Query}}, {description:{contains:Query}}]
                 
                 
             },
 
             filterVarTwo:{
                 name:{
-                    contains:stringQuery
+                    contains:Query
                 }
 
             }
         }
-        if(stringQuery){
+        if(Query){
             fetch(`${BASE_URL}/graphql`,
             {
                 method:"POST",
@@ -149,33 +160,45 @@ const Search = ()=>
         }
         
 
-    },[stringQuery])
+    },[Query])
     const handleSubmit = (e) =>
     {
        
         e.preventDefault();
         
-        const query_filter = qs.stringify({q:searchInputRef.current.value, page:"1"});
-
-        router.replace({
-            pathname:"/search",
-            query:query_filter
-        });
-
+        const params = new URLSearchParams(searchParams);
+        if (searchInputRef.current.value)params.set('q', searchInputRef.current.value);
+        
+        replace(`${pathname}?${params.toString()}`);
+        
         searchFunc();
+
+       
 
         
 
     }
     useEffect(()=>{
+        setQuery(searchParams.get("q")?.toString() || "");
+        setPage(searchParams.get("page")?.toString() || "1");
+
         
-        setStringQuery(string || "")
-    },[q])
+        
+     
+    
+    },[searchParams])
+
     useEffect(()=>{
         
-        searchFunc()
-    },[])
+        if(Query === searchParams.get("q")?.toString()) searchFunc();
+    }, [searchFunc])
+
+   
+ 
+
   
+
+   
     useEffect(()=>{
         viewAuthorResults && (setViewArticleResults(false));
     },[viewAuthorResults])
@@ -192,9 +215,11 @@ const Search = ()=>
                         type="search"
                         name ="query"
                         placeholder="Search..."
-                        value={stringQuery}
+                        
+                        value={Query}
                         autoComplete="off"
-                        onChange={(e)=> setStringQuery(e.target.value)}
+                        onChange={(e)=>setQuery(e.target.value)}
+                        
                         
                         
                         
@@ -215,8 +240,8 @@ const Search = ()=>
                     <div className="mt-3">
                         <div className="border-[#cacaca] border-b-[1px]">
                             <div className="w-[80%] mx-auto leading-[2.3rem]">
-                                <button className={`w-[50%] border-[#000] ${viewArticleResults ? "border-b-[2px] text-black":"text-[#000]/[.4]"} text-center outline-none  uppercase italic font-semibold `} onClick={()=>setViewArticleResults(true)}>Articles<span className="ml-2">({ArticleResults?.length || 0})</span></button>
-                                <button className={`w-[50%] border-black  ${viewAuthorResults ? "border-b-[2px] text-black":"text-[#000]/[.4]"} text-center outline-none  uppercase italic font-semibold`} onClick={()=>setViewAuthorResults(true)}>Authors<span className="ml-2">({AuthorResults?.length || 0 })</span></button>
+                                <button className={`w-[50%] border-[#000] ${viewArticleResults ? "border-b-[2px] text-black":"text-[#000]/[.4]"} text-center outline-none  uppercase font-semibold `} onClick={()=>setViewArticleResults(true)}>Articles<span className="ml-2">({ArticleResults?.length || 0})</span></button>
+                                <button className={`w-[50%] border-black  ${viewAuthorResults ? "border-b-[2px] text-black":"text-[#000]/[.4]"} text-center outline-none  uppercase font-semibold`} onClick={()=>setViewAuthorResults(true)}>Authors<span className="ml-2">({AuthorResults?.length || 0 })</span></button>
                             </div>
                         </div>
                         <div className = "">
@@ -227,7 +252,55 @@ const Search = ()=>
                                         <div className="lg:grid lg:grid-cols-[2fr_1fr] border-black/[.1] border-b-[1px]">
                                             <ul className="decoration-none list-none   lg:border-r-[1px]">
                                                 {ArticleResults.map((article, index)=>(
-                                                   <GenericArticleFormat article={article} key={index}/>
+                                                    <li className={`border-box border-black/[.1] ${index < ArticleResults?.length - 1 ? "border-b-[1px]":""}`} key={index}>
+                                                            <div className="flex justify-center md:py-[40px] flex-row lg:grid lg:grid-cols-2  h-full">
+                                            
+                                                                <div className="hidden  md:block w-[33.3%] lg:w-full aspect-[16/9] object-cover overflow-y-hidden">
+                                                                    <img    className="w-full h-auto" 
+                                                                            src={   article?.attributes?.media?.data?.attributes?.url ||
+                                                                                article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
+                                                                                    article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
+                                                                                    article?.attributes?.media?.data?.attributes?.formats?.small?.url ||
+                                                                                    article?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url 
+                                                                                
+                                                                                
+
+
+                                                                                }
+                                                                    ></img>  
+                                                                </div>
+                                                                
+                                                                <div className="py-[20px] md:py-0 pr-[40px] flex grow flex-col max-w-[653px] pl-[40px] md:block md:ml-0 md:pl-[20px]">
+                                                                    <h3 className = "article-title text-[0.833rem] inline-block uppercase font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></span></h3>                
+
+                                                                    <h1 className="mt-4 font-semibold text-[1.2rem] md:text-[1.728rem] lg:text-[2.074rem]">{article?.attributes?.title}</h1>
+                                                                    <h2 className="hidden md:block mt-4">{article?.attributes?.description}</h2>
+                                                                    <div className="mt-4 text-[0.833rem]">
+                                                                        <p className="inline-block uppercase italic mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
+                                                                    
+                                                                        <Moment className="inline-block font-semibold uppercase italic ml-1 text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <div className="md:hidden w-[150px] overflow-hidden md:h-auto md:w-[80%] md:mx-auto  aspect-square md:aspect-[16/9] mx-auto bg-[#CACACA]">
+                                                                    <img    className="h-full w-auto object-cover " 
+                                                                            src={   article?.attributes?.media?.data?.attributes?.url ||
+                                                                                article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
+                                                                                    article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
+                                                                                    article?.attributes?.media?.data?.attributes?.formats?.small?.url ||
+                                                                                    article?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url
+                                                                                    
+                                                                                
+
+
+                                                                                }
+                                                                    ></img>  
+
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </li>
                                                 ))}
                                             </ul>
                                             <div className="hidden lg:block pt-[40px] w-fit mx-auto">
@@ -235,16 +308,16 @@ const Search = ()=>
                                             </div>
                                         </div>
                                         <div className="w-fit mx-auto py-5">
-                                            {page > 1 && (<div className="inline-block cursor-pointer  mr-3  underline italic uppercase font-semibold"><Link href={`/search?q=${string}&page=${page - 1}`}>newer</Link></div>)}
+                                            {Page > 1 && (<div className="inline-block cursor-pointer  mr-3  underline italic uppercase font-semibold"><Link href={{pathname:"/search", query:{q:`${searchParams.get('q').toString()}`, page:`${Page - 1}`}}}>newer</Link></div>)}
                                             <div className="w-fit inline-block align-middle  italic uppercase font-semibold">
                                                 <div className="text-center ">
-                                                    {page}
+                                                    {Page}
                                                 </div>
                                                 <div className="text-center  border-[#000] border-t-[3px]">
                                                     {ArticleMeta?.pageCount}
                                                 </div>
                                             </div>
-                                            {page >= ArticleMeta?.pageCount || (<div className="inline-block ml-3 cursor-pointer  underline italic uppercase font-semibold"><Link href={`/search?q=${string}&page=${page + 1}`}>older</Link></div>)}
+                                            {Page >= ArticleMeta?.pageCount || (<div className="inline-block ml-3 cursor-pointer  underline italic uppercase font-semibold"><Link href={{pathname:"/search", query:{q:`${searchParams.get('q').toString()}`, page:`${Page + 1}`}}}>older</Link></div>)}
                                         </div>
                                     </Fragment>
                                 ):(
@@ -289,7 +362,7 @@ const Search = ()=>
                                                                 ></img>  
                                                             </div>
                                                             
-                                                            <div className="py-[40px] pr-[40px] flex grow flex-col ml-[5%] md:block md:ml-0 md:pl-[20px]">
+                                                            <div className="py-[20px] pl-[40px] pr-[40px] flex grow flex-col md:block md:ml-0 md:pl-[20px]">
                                                                 
                                                                 <h1 className="font-semibold text-[1.2rem] md:text-[1.728rem] lg:text-[2.074rem]">{author?.attributes?.name}</h1>
                                                                 {/*<h2 className="hidden md:block mt-4">{article?.attributes?.Description}</h2>*/}
@@ -301,7 +374,7 @@ const Search = ()=>
                                                             </div>
                                                             <div>
                                                                 <div className="md:hidden w-[150px] object-cover md:h-auto md:w-[80%] md:mx-auto  aspect-square md:aspect-[16/9] mx-auto bg-[#CACACA]">
-                                                                    <img    className="w-full h-auto" 
+                                                                    <img    className="h-full w-auto" 
                                                                             src={   author?.attributes?.avatar?.data?.attributes?.url ||
                                                                                 author?.attributes?.avatar?.data?.attributes?.formats?.large?.url ||
                                                                                     author?.attributes?.avatar?.data?.attributes?.formats?.medium?.url ||
@@ -325,16 +398,16 @@ const Search = ()=>
                                             </div>
                                         </div>
                                         <div className="w-fit mx-auto py-5">
-                                            {page > 1 && (<div className="inline-block cursor-pointer  mr-3  underline italic uppercase font-semibold"><Link href={`/search?q=${string}&page=${page - 1}`}>newer</Link></div>)}
+                                            {Page > 1 && (<div className="inline-block cursor-pointer  mr-3  underline italic uppercase font-semibold"><Link href={{pathname:"/search", query:{q:`${searchParams.get('q').toString()}`, page:`${Page - 1}`}}}>newer</Link></div>)}
                                             <div className="w-fit inline-block align-middle  italic uppercase font-semibold">
                                                 <div className="text-center ">
-                                                    {page}
+                                                    {Page}
                                                 </div>
                                                 <div className="text-center  border-[#000] border-t-[3px]">
                                                     {AuthorMeta?.pageCount}
                                                 </div>
                                             </div>
-                                            {page >= AuthorMeta?.pageCount || (<div className="inline-block ml-3 cursor-pointer  underline italic uppercase font-semibold"><Link href={`/search?q=${string}&page=${page + 1}`}>older</Link></div>)}
+                                            {Page >= AuthorMeta?.pageCount || (<div className="inline-block ml-3 cursor-pointer  underline italic uppercase font-semibold"><Link href={{pathname:"/search", query:{q:`${searchParams.get('q').toString()}`, page:`${Page + 1}`}}}>older</Link></div>)}
                                         </div>
                                     </Fragment>
                             ):(

@@ -21,8 +21,8 @@ const GenericArticleFormat = ({article}) =>
                 ></img>  
             </div>
             
-            <div className="py-[20px] md:py-0 justify-center flex flex-col grow pl-[40px] lg:block  pr-[40px] md:pl-[20px] text-black">
-                <h3 className = "article-title text-[0.833rem] md:text-[1rem] inline-block uppercase italic font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></span></h3>                
+            <div className="py-[20px] md:py-0 justify-center max-w-[653px] flex flex-col grow pl-[40px] lg:block  pr-[40px] md:pl-[20px] text-black">
+                <h3 className = "article-title text-[0.833rem] inline-block uppercase  font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></span></h3>                
                                 
                 <h1 className="font-semibold mt-4 md:text-[1.44rem] lg:text-[1.728rem] duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></h1>
                 <h2 className="hidden md:block mt-4">{article?.attributes?.description}</h2>
