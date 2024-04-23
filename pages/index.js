@@ -172,7 +172,7 @@ const Home = ({articles,ads})=>{
                     </div>
                     <div className="hidden relative bottom-[40px] p-[40px] lg:inline-block align-top w-[50%]">
                         <div className="pt-[40px]">
-                            <p>{articles?.featureArticles[0]?.attributes?.description}</p>
+                            <p className="line-clamp-3">{articles?.featureArticles[0]?.attributes?.description}</p>
                         </div>
                     </div>
                 </div>
