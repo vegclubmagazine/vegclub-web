@@ -162,9 +162,9 @@ const Home = ({articles,ads})=>{
                             <h1 className="mt-4 font-semibold leading-[1.5] text-[1.44rem] lg:text-[1.728rem]  duration-[.34s] ease-in-out hover:text-white/[.6]"><Link href={`/article/${articles?.featureArticles[0]?.attributes?.slug}`}>{articles?.featureArticles[0]?.attributes?.title}</Link></h1>
                             <h2 className="mt-4 text-[#a2a2a2] text-[1rem] lg:hidden">{articles?.featureArticles[0]?.attributes?.description}</h2>
                             <div className="mt-4 text-[0.833rem]">
-                                <p className="inline-block uppercase font-light italic mr-1">{articles?.featureArticles[0]?.attributes?.author?.data?.attributes?.name}</p>
+                                <p className="inline-block uppercase font-light  mr-1">{articles?.featureArticles[0]?.attributes?.author?.data?.attributes?.name}</p>
                                 
-                                <Moment className="inline-block font-semibold uppercase italic text-[0.833rem]" format="Do MMM YYYY">{articles?.featureArticles[0]?.attributes?.date}</Moment>
+                                <Moment className="inline-block font-semibold uppercase  text-[0.833rem]" format="Do MMM YYYY">{articles?.featureArticles[0]?.attributes?.date}</Moment>
                             </div>
                         </div>
                         <div className="absolute h-[200%] w-[100%] bg-black"></div>
@@ -176,7 +176,7 @@ const Home = ({articles,ads})=>{
                         </div>
                     </div>
                 </div>
-                <div className="hidden md:grid md:grid-rows-[60%_40%]">
+                <div className="hidden md:grid ">
                     <div className="border-[#000]/[.1] border-b-[1px]">
                         <div className="w-full aspect-[16/9]">
                             <div className="h-full object-cover overflow-y-hidden bg-[#cacaca]">
@@ -194,27 +194,27 @@ const Home = ({articles,ads})=>{
                                 ></img> 
                             </div>
                         </div>
-                        <div className="w-[90%] mx-auto pt-[40px] pr-[40px]">
+                        <div className=" mx-auto p-[40px]">
                             <h3 className = "article-title text-[0.833rem] inline-block uppercase  font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`/category/${articles?.featureArticles[1]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.featureArticles[1]?.attributes?.category?.data?.attributes?.name}</Link></span></h3>                
 
-                            <h1 className="mt-4 font-semibold text-[1.44rem] lg:text-[1.728rem] duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/article/${articles?.featureArticles[1]?.attributes?.slug}`}>{articles?.featureArticles[1]?.attributes?.title}</Link></h1>
+                            <h1 className="mt-4 font-semibold text-[1.44rem] lg:text-[1.728rem] duration-[.34s] ease-in-out hover:text-black/[.4] md:line-clamp-3 lg:line-clamp-4"><Link href={`/article/${articles?.featureArticles[1]?.attributes?.slug}`}>{articles?.featureArticles[1]?.attributes?.title}</Link></h1>
                             <div className="mt-4 text-[0.833rem]">
-                                <p className="inline-block font-light  uppercase italic mr-1">{articles?.featureArticles[1]?.attributes?.author?.data?.attributes?.name}</p>
+                                <p className="inline-block font-light  uppercase  mr-1">{articles?.featureArticles[1]?.attributes?.author?.data?.attributes?.name}</p>
                                 
-                                <Moment className="inline-block font-semibold uppercase italic text-[0.833rem]" format="MMMM Do YYYY">{articles?.featureArticles[1]?.attributes?.date}</Moment>
+                                <Moment className="inline-block font-semibold uppercase text-[0.833rem]" format="MMMM Do YYYY">{articles?.featureArticles[1]?.attributes?.date}</Moment>
                             </div>
                         </div>
                     </div>
                     <div className="">
                         
-                        <div className="h-full pt-[40px] w-[90%] mx-auto pr-[40px]">
+                        <div className="p-[40px]">
                             <h3 className = "article-title text-[0.833rem] inline-block uppercase font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`/category/${articles?.featureArticles[2]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.featureArticles[2]?.attributes?.category?.data?.attributes?.name}</Link></span></h3>                
 
-                            <h1 className="mt-4 font-semibold text-[1.44rem] lg:text-[1.728rem] duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/article/${articles?.featureArticles[2]?.attributes?.slug}`}>{articles?.featureArticles[2]?.attributes?.title}</Link></h1>
+                            <h1 className="mt-4 font-semibold text-[1.44rem] lg:text-[1.728rem] duration-[.34s] md:line-clamp-3 lg:line-clamp-4 ease-in-out hover:text-black/[.4]"><Link href={`/article/${articles?.featureArticles[2]?.attributes?.slug}`}>{articles?.featureArticles[2]?.attributes?.title}</Link></h1>
                             <div className="mt-4 text-[0.833rem]">
-                                <p className="inline-block font-light  uppercase italic mr-1">{articles?.featureArticles[2]?.attributes?.author?.data?.attributes?.name}</p>
+                                <p className="inline-block font-light  uppercase  mr-1">{articles?.featureArticles[2]?.attributes?.author?.data?.attributes?.name}</p>
                                 
-                                <Moment className="inline-block font-semibold uppercase italic text-[0.833rem]" format="MMMM Do YYYY">{articles?.featureArticles[2]?.attributes?.date}</Moment>
+                                <Moment className="inline-block font-semibold uppercase  text-[0.833rem]" format="MMMM Do YYYY">{articles?.featureArticles[2]?.attributes?.date}</Moment>
                             </div>
                         </div>
                     </div>
@@ -226,19 +226,19 @@ const Home = ({articles,ads})=>{
             </section>*/}
             <section className="w-full  border-box h-fit pb-3">
                 <div className="md:grid md:grid-cols-3">
-                    {/*<h1 className=" text-center font-bold italic text-[1.44rem]">Recent stories</h1>*/}
+                    {/*<h1 className=" text-center font-bold  text-[1.44rem]">Recent stories</h1>*/}
                         {articles?.featureArticles?.slice(1,6)?.map((article, index)=>(
 
                             index < 2  ?(
                                 <div className="border-[#000]/[.1] border-b-[1px] md:border-r-[1px] md:hidden" key={index}>
                                     <div className="flex flex-row  md:grid md:grid-cols-1 h-fit">
                                         <div className="flex grow flex-col pl-[40px] justify-center md:hidden py-[20px] pr-[20px]">
-                                            <h3 className = "article-title text-[0.833rem] inline-block  italic font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></span></h3>                
+                                            <h3 className = "article-title text-[0.833rem] inline-block   font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></span></h3>                
     
                                             <h1 className="mt-3 md:text-[1.44rem] lg:text-[1.728rem] font-semibold"><Link href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></h1>
                                             <div className="mt-3 text-[0.833rem]">
-                                                <p className="inline-block font-light uppercase italic mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
-                                                <Moment className="inline-block font-semibold uppercase italic text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
+                                                <p className="inline-block font-light uppercase  mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
+                                                <Moment className="inline-block font-semibold uppercase  text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
                                             </div>
                                         </div>
                                         <div>
@@ -259,13 +259,13 @@ const Home = ({articles,ads})=>{
                                             </div>
                                         </div>
                                         <div className="hidden md:block w-[85%] mt-4 mx-auto pb-3">
-                                            <h3 className = "article-title text-[0.833rem] inline-block italic font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></span></h3>                
+                                            <h3 className = "article-title text-[0.833rem] inline-block  font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></span></h3>                
 
                                             <h1 className="mt-4 font-semibold text-[1.44rem] "><Link href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></h1>
                                             <div className="mt-4 text-[0.833rem]">
-                                                <p className="inline-block font-light  uppercase italic mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
+                                                <p className="inline-block font-light  uppercase  mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
                                                 
-                                                <Moment className="inline-block font-semibold uppercase italic text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
+                                                <Moment className="inline-block font-semibold uppercase  text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
                                             </div>
                                 
                                         </div>
@@ -280,8 +280,8 @@ const Home = ({articles,ads})=>{
 
                                             <h1 className="mt-3 md:text-[1.44rem] lg:text-[1.728rem] font-semibold"><Link className="duration-[.32s] ease-in-out hover:text-black/[.4]" href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></h1>
                                             <div className="mt-3 text-[0.833rem]">
-                                                <p className="inline-block font-light uppercase italic mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
-                                                <Moment className="inline-block font-semibold uppercase italic" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
+                                                <p className="inline-block font-light uppercase  mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
+                                                <Moment className="inline-block font-semibold uppercase " format="Do MMM YYYY">{article?.attributes?.date}</Moment>
                                             </div>
                                         </div>
                                         <div>
@@ -301,14 +301,14 @@ const Home = ({articles,ads})=>{
                                                 ></img>  
                                             </div>
                                         </div>
-                                        <div className="hidden md:block w-[90%] mt-4 mx-auto pb-3">
+                                        <div className="hidden md:block p-[40px]">
                                             <h3 className = "article-title text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></span></h3>                
 
-                                            <h1 className="mt-4 font-semibold text-[1.44rem] "><Link className="duration-[.32s] ease-in-out hover:text-black/[.4]" href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></h1>
+                                            <h1 className="mt-4 font-semibold text-[1.44rem] md:line-clamp-3 lg:line-clamp-4 "><Link className="duration-[.32s] ease-in-out hover:text-black/[.4]" href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></h1>
                                             <div className="mt-4 text-[0.833rem]">
-                                                <p className="inline-block font-light uppercase italic mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
+                                                <p className="inline-block font-light uppercase  mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
                                                 
-                                                <Moment className="inline-block font-semibold uppercase italic text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
+                                                <Moment className="inline-block font-semibold uppercase  text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
                                             </div>
                                 
                                         </div>
@@ -352,7 +352,7 @@ const Home = ({articles,ads})=>{
                                         }
                             ></img>                          
                         </div>
-                        <div className="w-[85%] md:w-full mx-auto md:pl-[20px] h-fit  pt-[20px] pb-[80px]">
+                        <div className="w-[85%] md:w-full mx-auto md:px-[40px] h-fit  pt-[20px] pb-[80px]">
                             <h3 className = "text-white text-[0.833rem] article-title inline-block uppercase  font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`category/${articles?.nonFeatureArticles[0]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.nonFeatureArticles[0]?.attributes?.category?.data?.attributes?.name}</Link></span>
                                 
                             </h3>
@@ -363,9 +363,9 @@ const Home = ({articles,ads})=>{
                             <p className="mt-4 text-[#a2a2a2] text-[1rem]">{articles?.nonFeatureArticles[0]?.attributes?.description}</p>
 
                             <div className="mt-4 text-white text-[0.833rem]">
-                                <p className="inline-block font-light uppercase italic mr-1">{articles?.nonFeatureArticles[0]?.attributes?.author?.data?.attributes?.name}</p>
+                                <p className="inline-block font-light uppercase  mr-1">{articles?.nonFeatureArticles[0]?.attributes?.author?.data?.attributes?.name}</p>
                                 
-                                <Moment className="inline-block font-semibold uppercase italic text-[0.833rem]" format="Do MMM YYYY">{articles?.nonFeatureArticles[0]?.attributes?.date}</Moment>
+                                <Moment className="inline-block font-semibold uppercase  text-[0.833rem]" format="Do MMM YYYY">{articles?.nonFeatureArticles[0]?.attributes?.date}</Moment>
                             </div>
                         </div>
                         
