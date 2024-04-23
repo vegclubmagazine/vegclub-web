@@ -43,34 +43,34 @@ const Drawer = ({isOpen, onClose})=>{
     return (
         <Fragment>
             <div className={`${isOpen ? "fixed opacity-[.1]":"hidden opacity-0"} bg-[#000] h-screen w-screen top-0 right-0 transition-opacity ease-out duration-300 z-[9998]`}></div>
-            <nav className ={`${isOpen ?"visible scale-y-100":"invisible scale-y-0"} fixed top-0 duration-[.34s] origin-top-right transition-visibility ease-[cubic-bezier(0.19,1,0.22,1)]   overflow-x-hidden w-screen h-screen md:h-fit md:pb-[3rem] bg-[#fff] z-[9999]`}>
+            <nav className ={`${isOpen ?"visible scale-y-100":"invisible scale-y-0"} fixed top-0 duration-[.34s] origin-top-right transition-visibility ease-[cubic-bezier(0.19,1,0.22,1)]   overflow-x-hidden w-screen h-screen md:h-fit md:pb-[3rem] bg-[#18181b] z-[9999]`}>
                 <div className={`${isOpen ? "opacity-100 duration-300 delay-[250ms] ease-in transition-opacity": "opacity-0"} px-[20px] pt-[20px] relative`}>
-                    <div className="relative mb-2 pb-2 border-black/[.1] border-b-[1px] h-fit">
+                    <div className="relative mb-2 pb-2 border-[#333] border-b-[1px] h-fit">
                         <button className="w-[20%] pl-[20px] align-middle" aria-label="Close Menu" onClick={()=>{onClose();}}>
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fillRule="evenodd" clipRule="evenodd" d="M16 1.77778L14.2222 0L8 6.22222L1.77778 0L0 1.77778L6.22222 8L0 14.2222L1.77778 16L8 9.77778L14.2222 16L16 14.2222L9.77778 8L16 1.77778Z" fill="black"></path>
+                                <path fillRule="evenodd" clipRule="evenodd" d="M16 1.77778L14.2222 0L8 6.22222L1.77778 0L0 1.77778L6.22222 8L0 14.2222L1.77778 16L8 9.77778L14.2222 16L16 14.2222L9.77778 8L16 1.77778Z" fill="white"></path>
                             </svg>
                         </button>
                         <div className="inline-block align-middle w-[80%]">
-                            <img src="/vegClub_logo_org_2.png" alt="Header" className="h-[2.8rem] relative left-[30%] translate-x-[-30%]"></img>
+                            <img src="/vegClub_logo_white_2.png" alt="Header" className="h-[2.8rem] relative left-[30%] translate-x-[-30%]"></img>
 
                         </div>
                     </div>
                     <div className="pl-[20px] md:flex md:flex-row md:flex-grow">
                         <div className="md:w-[50%] border-black/[.1]">
-                            <div className="mt-[4rem] pt-4 uppercase text-[1.728rem] font-bold">
+                            <div className="mt-[4rem] pt-4 text-white uppercase text-[1.728rem] font-bold">
                                 <ul className="list-none">
-                                    <li className="cursor-pointer py-2 w-fit ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]"><Link href={`/about`} ><span className="">About Us</span></Link></li>
+                                    <li className="cursor-pointer py-2 w-fit ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-white/[.4]"><Link href={`/about`} ><span className="">About Us</span></Link></li>
 
-                                    <li className="cursor-pointer w-fit py-2 ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]"><Link href={`/team`} ><span className="">Meet the Team</span></Link></li>
-                                    <li className="w-fit py-2 loyalty-card--btn">
-                                        <Link className="text-black inline-block mr-2" href="/loyalty-card">Loyalty Program</Link>
-                                        <div className="inline-block  align-middle w-[30px] h-[30px]">
+                                    <li className="cursor-pointer w-fit py-2 ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-white/[.4]"><Link href={`/team`} ><span className="">Meet the Team</span></Link></li>
+                                    <li className="w-fit py-2">
+                                        <Link className="inline-block mr-2 transition=all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.4]" href="/loyalty-card">Loyalty Program</Link>
+                                        {/*<div className="inline-block  align-middle w-[30px] h-[30px]">
                                             <img className="w-fit h-auto" src="/loyalty_button_asset.png"/>
-                                        </div>
+                                        </div>*/}
 
                                     </li>
-                                    <li className="cursor-pointer py-2 w-fit ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]">
+                                    <li className="cursor-pointer py-2 w-fit ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-white/[.4]">
                                         <Link className="" href={`/contact`} >Contact Us</Link>
                                         
                                        
@@ -82,30 +82,30 @@ const Drawer = ({isOpen, onClose})=>{
                                 </ul>
                             </div>
                             <form data-action="Search" role="search" onSubmit={(e)=>handleSubmit(e)} className=" w-[100%] md:w-[90%] mt-[3rem] md:mt-[1rem]">
-                                <div className="relative w-[100%] bg-[#f4f4f4] inline-block align-bottom">
+                                <div className="relative w-[100%] bg-[#a2a2a2] inline-block align-bottom">
                                     <button type="submit" className="search-btn absolute">
                                         <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fillRule="evenodd" clipRule="evenodd" d="M6.55892 10.7328C8.86408 10.7328 10.7328 8.86408 10.7328 6.55892C10.7328 4.25376 8.86408 2.38506 6.55892 2.38506C4.25376 2.38506 2.38506 4.25376 2.38506 6.55892C2.38506 8.86408 4.25376 10.7328 6.55892 10.7328ZM6.55892 13.1178C10.1813 13.1178 13.1178 10.1813 13.1178 6.55892C13.1178 2.93653 10.1813 0 6.55892 0C2.93653 0 0 2.93653 0 6.55892C0 10.1813 2.93653 13.1178 6.55892 13.1178Z" fill="black"></path>
-                                            <path fillRule="evenodd" clipRule="evenodd" d="M14.5219 15.9015C14.3906 16.0328 14.1777 16.0328 14.0464 15.9015L9.18249 11.0376L11.0376 9.18249L15.9015 14.0464C16.0328 14.1777 16.0328 14.3906 15.9015 14.5219L14.5219 15.9015Z" fill="black">
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M6.55892 10.7328C8.86408 10.7328 10.7328 8.86408 10.7328 6.55892C10.7328 4.25376 8.86408 2.38506 6.55892 2.38506C4.25376 2.38506 2.38506 4.25376 2.38506 6.55892C2.38506 8.86408 4.25376 10.7328 6.55892 10.7328ZM6.55892 13.1178C10.1813 13.1178 13.1178 10.1813 13.1178 6.55892C13.1178 2.93653 10.1813 0 6.55892 0C2.93653 0 0 2.93653 0 6.55892C0 10.1813 2.93653 13.1178 6.55892 13.1178Z" fill="white"></path>
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M14.5219 15.9015C14.3906 16.0328 14.1777 16.0328 14.0464 15.9015L9.18249 11.0376L11.0376 9.18249L15.9015 14.0464C16.0328 14.1777 16.0328 14.3906 15.9015 14.5219L14.5219 15.9015Z" fill="white">
                                             </path>
                                         </svg>
                                     </button>
                                     <input type="search"
                                       name="q" 
                                       placeholder="Search VegClub..." 
-                                     className="z-[1] w-[100%] placeholder:text-[#cacaca] pl-[45px] h-[45px] border-[#cacaca] bg-transparent relative outline-[#01e2c2]"
+                                     className="z-[1] w-[100%] placeholder:text-white/[.6] pl-[45px] h-[45px] border-[#cacaca] bg-transparent relative font-semibold text-white  outline-[#01e2c2]"
                                      ref={searchInputRef}
                                      ></input>
                                 </div>
                                 
                             </form>
-                            <div className="w-fit  mt-[3rem] md:mt-[2rem]">
+                            <div className="w-fit  mt-[3rem] text-white md:mt-[2rem]">
                                     
-                                 <Link href="https://www.instagram.com/vegclubmagazine/" className=" inline-block text-[1.44rem]  no-underline ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]" passHref>
+                                 <Link href="https://www.instagram.com/vegclubmagazine/" className=" inline-block text-[1.44rem]  no-underline ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-white/[.4]" passHref>
                                         <FaInstagram></FaInstagram>
                                 </Link>
                                     
-                                <Link href="#" className="inline-block text-[1.44rem]  ml-5 no-underline ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]" passHref>
+                                <Link href="#" className="inline-block text-[1.44rem]  ml-5 no-underline ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-white/[.4]" passHref>
                                     <FaLinkedinIn></FaLinkedinIn>
                                 </Link>
 
@@ -122,10 +122,10 @@ const Drawer = ({isOpen, onClose})=>{
                                 <li className="mb-3">Support Us</li>
                             </ul>*/}
                         </div>
-                        <div className=" md:w-[50%]  mt-[3rem] md:mt-[4rem]">
+                        <div className=" md:w-[50%] text-white  mt-[3rem] md:mt-[4rem]">
                             <ul className="list-none w-full md:grid md:gap-x-8  md:grid-rows-5 md:grid-flow-col text-start font-bold text-[1.44rem]">
                                 {Categories?.length && Categories?.map((category, index)=>(
-                                    <li className={`py-4 border-black/[.1] ${!index ? "border-b-[1px]" : index === (Categories.length - 1) ? "border-b-[1px] md:border-b-0" : index  % (((parseInt(index/5)+ 1)* 5)-1) ? "border-b-[1px]": "border-b-[1px] md:border-b-0"} ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-black/[.4]`} key={index}><Link href={`/category/${category?.attributes?.slug}`}>{category?.attributes?.name}</Link></li>
+                                    <li className={`py-4 border-[#333] ${!index ? "border-b-[1px]" : index === (Categories.length - 1) ? "border-b-[1px] md:border-b-0" : index  % (((parseInt(index/5)+ 1)* 5)-1) ? "border-b-[1px]": "border-b-[1px] md:border-b-0"} ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-white/[.4]`} key={index}><Link href={`/category/${category?.attributes?.slug}`}>{category?.attributes?.name}</Link></li>
                                     
                                 ))}   
                             </ul>
