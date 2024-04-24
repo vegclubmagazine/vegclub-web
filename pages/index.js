@@ -195,7 +195,7 @@ const Home = ({articles,ads})=>{
                             </div>
                         </div>
                         <div className=" mx-auto p-[40px]">
-                        <h3 className = "text-white text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.34s] ease-in-out hover:text-white/[.6]"><Link href={`/category/${articles?.featureArticles[1]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.featureArticles[1]?.attributes?.category?.data?.attributes?.name}</Link></h3>                
+                        <h3 className = " text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/category/${articles?.featureArticles[1]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.featureArticles[1]?.attributes?.category?.data?.attributes?.name}</Link></h3>                
                             <h1 className="article-title mt-4 font-semibold w-fit leading-[1.5] text-[1.44rem] lg:text-[1.728rem]"><span className="underline_span"><Link href={`/article/${articles?.featureArticles[1]?.attributes?.slug}`}>{articles?.featureArticles[1]?.attributes?.title}</Link></span></h1>
                             <div className="mt-4 text-[0.833rem]">
                                 <p className="inline-block font-light  uppercase  mr-1">{articles?.featureArticles[1]?.attributes?.author?.data?.attributes?.name}</p>
@@ -207,7 +207,7 @@ const Home = ({articles,ads})=>{
                     <div className="">
                         
                         <div className="p-[40px]">
-                        <h3 className = "text-white text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.34s] ease-in-out hover:text-white/[.6]"><Link href={`/category/${articles?.featureArticles[2]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.featureArticles[2]?.attributes?.category?.data?.attributes?.name}</Link></h3>                
+                        <h3 className = "text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/category/${articles?.featureArticles[2]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.featureArticles[2]?.attributes?.category?.data?.attributes?.name}</Link></h3>                
                             <h1 className="article-title mt-4 font-semibold w-fit leading-[1.5] text-[1.44rem] lg:text-[1.728rem]"><span className="underline_span"><Link href={`/article/${articles?.featureArticles[2]?.attributes?.slug}`}>{articles?.featureArticles[2]?.attributes?.title}</Link></span></h1>
                             <div className="mt-4 text-[0.833rem]">
                                 <p className="inline-block font-light  uppercase  mr-1">{articles?.featureArticles[2]?.attributes?.author?.data?.attributes?.name}</p>
