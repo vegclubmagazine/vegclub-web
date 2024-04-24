@@ -99,7 +99,7 @@ const Layout = (
             
             <nav className={`fixed top-0 w-full z-[999] `}>
                 {minNav || (
-                    <div className="py-3 hidden md:block text-end pr-[40px] border-[#333]  bg-black">
+                    <div className="py-3 hidden md:block text-end pr-[40px] border-[#333] border-b-[1px]  bg-black">
                             <div className="inline-block text-[0.833rem] py-2  bg-[#01e2c2] px-3 w-fit">
                                 <Link className=" duration-[.34s] ease-in-out font-semibold uppercase hover:text-black/[.4]" href="/loyalty-card">Loyalty Program</Link>
                                 {/*<div className="inline-block align-middle">
@@ -111,7 +111,7 @@ const Layout = (
                 )}
 
              
-                <div className={`w-full grid  items-center bg-[#18181b] grid-cols-3 ${minNav ? "h-[4.5rem] drop-shadow-md":"h-[6rem] md:grid-cols-2"} transition-all duration-[0.34s] ease-in-out  border-[#333]`}>
+                <div className={`w-full grid  items-center bg-[#18181b] grid-cols-3 ${minNav ? "h-[4.5rem] drop-shadow-md":"h-[6rem] md:grid-cols-2"} transition-all duration-[0.34s] ease-in-out  border-[#333] border-b-[1px]`}>
                     <div className="inline-block align-middle w-fit">
                         
                         <div className="pl-[30px] inline-block align-middle  h-fit w-fit">
@@ -166,9 +166,9 @@ const Layout = (
                 </div>
                 
                 <div className="hidden lg:block py-5 bg-[#000] px-[40px]">
-                    <ul className="text-white w-fit inline-block alig-middle font-semibold">
+                    <ul className="text-white w-fit inline-block font-semibold">
                         {Categories?.map((category, index)=>(
-                            <li className="inline-block mr-5" key={category?.id}>{category?.attributes?.name}</li>
+                            <li className="inline-block mr-5 curor-pointer ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-white/[.6]" key={category?.id}><Link href={`/category/${category?.attributes?.slug}`}>{category?.attributes?.name}</Link></li>
                         ))}
                     </ul>
                 </div>
