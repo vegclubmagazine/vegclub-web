@@ -22,14 +22,14 @@ const GenericArticleFormat = ({article}) =>
             </div>
             
             <div className="py-[20px] md:py-0 justify-center max-w-[653px] flex flex-col grow pl-[40px] lg:block  pr-[40px] md:pl-[20px] text-black">
-                <h3 className = "article-title text-[0.833rem] inline-block uppercase  font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></span></h3>                
+                <h3 className = "text-[0.833rem] inline-block uppercase  font-semibold cursor-pointer w-fit duratin-[.34s] transition-all ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></h3>                
                                 
-                <h1 className="font-semibold mt-4 md:text-[1.44rem] lg:text-[1.728rem] duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></h1>
+                <h1 className="article-title font-semibold mt-4 md:text-[1.44rem] lg:text-[1.728rem]"><span className="underline_span"><Link href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></span></h1>
                 <h2 className="hidden md:block mt-4">{article?.attributes?.description}</h2>
                 <div className="mt-4 text-[0.833rem]">
-                    <p className="inline-block uppercase font-light italic mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
+                    <p className="inline-block uppercase font-light  mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
                 
-                    <Moment className="inline-block font-semibold uppercase italic text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
+                    <Moment className="inline-block font-semibold uppercase  text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
                 </div>
             </div>
             <div>
