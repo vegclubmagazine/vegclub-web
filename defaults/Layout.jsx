@@ -76,7 +76,7 @@ const Layout = (
                 <meta httpEquiv="X-UA-Compatible" content="IE=edge"></meta>
                 
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-                <title>{ title || "Vegclub magazine" }</title>
+                <title>{ title || "VegClub Magazine" }</title>
                 <meta name="keywords" content={keywords}></meta>
                 <meta name="description" content={desc}></meta>
                 <link rel="shortcut icon" href="favicon.ico"></link>
@@ -99,9 +99,9 @@ const Layout = (
             
             <nav className={`fixed top-0 w-full z-[999] `}>
                 {minNav || (
-                    <div className="py-3 hidden md:block text-end pr-[40px] border-[#333] border-b-[1px] bg-black">
+                    <div className="py-3 hidden md:block text-end pr-[40px] border-[#333]  bg-black">
                             <div className="inline-block text-[0.833rem] py-2  bg-[#01e2c2] px-3 w-fit">
-                                <Link className=" duration-[.34s] ease-in-out font-semibold uppercase hover:text-white/[.4]" href="/loyalty-card">Loyalty Program</Link>
+                                <Link className=" duration-[.34s] ease-in-out font-semibold uppercase hover:text-black/[.4]" href="/loyalty-card">Loyalty Program</Link>
                                 {/*<div className="inline-block align-middle">
                                     <img src="/loyalty_button_asset.png" className="h-[15px] w-[15px]"></img>
                                 </div>*/}
@@ -111,7 +111,7 @@ const Layout = (
                 )}
 
              
-                <div className={`w-full grid  items-center bg-[#18181b] grid-cols-3 ${minNav ? "h-[4.5rem] drop-shadow-md":"h-[6rem] md:grid-cols-2"} transition-all duration-[0.34s] ease-in-out  border-[#333] border-b-[1px]`}>
+                <div className={`w-full grid  items-center bg-[#18181b] grid-cols-3 ${minNav ? "h-[4.5rem] drop-shadow-md":"h-[6rem] md:grid-cols-2"} transition-all duration-[0.34s] ease-in-out  border-[#333]`}>
                     <div className="inline-block align-middle w-fit">
                         
                         <div className="pl-[30px] inline-block align-middle  h-fit w-fit">
@@ -165,7 +165,7 @@ const Layout = (
                     )}
                 </div>
                 
-                <div className="hidden lg:block py-5 bg-black px-[40px]">
+                <div className="hidden lg:block py-5 bg-[#000] px-[40px]">
                     <ul className="text-white w-fit inline-block alig-middle font-semibold">
                         {Categories?.map((category, index)=>(
                             <li className="inline-block mr-5" key={category?.id}>{category?.attributes?.name}</li>
@@ -196,7 +196,7 @@ const Layout = (
 export default Layout;
 
 Layout.defaultProps = {
-    title: "Vegclub magazine",
+    title: "VegClub Magazine",
     page: "Home",
     image: "vegClub_logo_org_2.png",
     keywords:

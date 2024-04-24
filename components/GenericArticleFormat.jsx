@@ -6,7 +6,7 @@ const GenericArticleFormat = ({article}) =>
     return (
         <div className="flex  md:py-[40px] flex-row lg:grid lg:grid-cols-2  h-full">
                                     
-            <div className="hidden  md:block w-[33.3%] lg:w-full aspect-[16/9] object-cover overflow-y-hidden max-h-[248px]">
+            <div className="hidden  md:block min-w-[33%] w-[33.3%] lg:w-full aspect-[16/9] object-cover overflow-y-hidden max-h-[248px]">
                 <img    className="w-full h-auto" 
                         src={   article?.attributes?.media?.data?.attributes?.url ||
                                 article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
