@@ -25,7 +25,7 @@ const GenericArticleFormat = ({article}) =>
                 <h3 className = "text-[0.833rem] inline-block uppercase  font-semibold cursor-pointer w-fit duratin-[.34s] transition-all ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></h3>                
                                 
                 <h1 className="article-title font-semibold mt-4 md:text-[1.44rem] lg:text-[1.728rem]"><span className="underline_span"><Link href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></span></h1>
-                <h2 className="hidden md:block mt-4">{article?.attributes?.description}</h2>
+                <h2 className="hidden  mt-4 md:line-clamp-4">{article?.attributes?.description}</h2>
                 <div className="mt-4 text-[0.833rem]">
                     <p className="inline-block uppercase font-light  mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
                 

@@ -274,7 +274,7 @@ const Search = ()=>
                                                                     <h3 className = "article-title text-[0.833rem] inline-block uppercase font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></span></h3>                
 
                                                                     <h1 className="mt-4 font-semibold text-[1.2rem] md:text-[1.728rem] lg:text-[2.074rem]">{article?.attributes?.title}</h1>
-                                                                    <h2 className="hidden md:block mt-4">{article?.attributes?.description}</h2>
+                                                                    <h2 className="hidden mt-4 md:line-clamp-5">{article?.attributes?.description}</h2>
                                                                     <div className="mt-4 text-[0.833rem]">
                                                                         <p className="inline-block uppercase italic mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
                                                                     

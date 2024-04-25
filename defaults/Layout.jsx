@@ -4,13 +4,16 @@ import Image from "next/image";
 import {Fade as Hamburger} from "hamburger-react";
 import { faSearch, FaInstagram, FaLinkedinIn} from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState, useEffect,useContext} from "react";
+import { useRouter } from "next/router";
+import { useState, useEffect,useContext,useRef} from "react";
 import { useScrollDirection } from "react-use-scroll-direction";
 import Drawer from "../components/Drawer";
 import Footer from "../components/Footer";
 import { slugify } from "../lib/utils";
 import { BASE_URL } from "../config/api";
 import { GlobalContext} from "../context/GlobalContext";
+
+const qs=require('qs');
 
 const Layout = (
 {   title,
@@ -41,6 +44,26 @@ const Layout = (
     {
         return setIsOpen(false);
     }
+    const router = useRouter();
+    const navSearchInputRef = useRef(null);
+    
+    const handleSubmit = (e) =>
+    {
+        e.preventDefault();
+        const search_query = qs.stringify({
+            q:navSearchInputRef.current.value
+        })
+
+        router.replace({
+            pathname:'/search',
+            query:search_query
+        })
+        
+
+    }
+    
+    
+    
     const controlNavBar = ()=>
     {
         if(window.scrollY > 80)
@@ -155,8 +178,8 @@ const Layout = (
                                     <input type="search"
                                       name="q" 
                                       placeholder="Search VegClub..." 
-                                     className="z-[1] w-[100%] placeholder:text-[#000] pl-[45px] h-[45px] border-[#cacaca] bg-transparent relative outline-[#01e2c2]"
-                                     
+                                      className="z-[1] w-[100%] placeholder:text-[#000] pl-[45px] h-[45px] border-[#cacaca] bg-transparent relative outline-[#01e2c2]"
+                                      ref={navSearchInputRef}
                                      ></input>
                                 </div>
                                 
@@ -168,7 +191,7 @@ const Layout = (
                 <div className="hidden lg:block py-5 bg-[#000] px-[40px]">
                     <ul className="text-white w-fit inline-block font-semibold">
                         {Categories?.map((category, index)=>(
-                            <li className="inline-block mr-5 curor-pointer ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-white/[.6]" key={category?.id}><Link href={`/category/${category?.attributes?.slug}`}>{category?.attributes?.name}</Link></li>
+                            <li className="inline-block mr-5 pr-2 curor-pointer ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-white/[.6]" key={category?.id}><Link href={`/category/${category?.attributes?.slug}`}>{category?.attributes?.name}</Link></li>
                         ))}
                     </ul>
                 </div>
