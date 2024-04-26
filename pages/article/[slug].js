@@ -79,17 +79,17 @@ const Article = ({article, articles}) =>
                 }
 
                 >
-            <div className="w-[90%] mx-auto pt-[2rem] border-[#000] border-t-[3px]">
+            <div className="w-[90%] mx-auto pt-[2rem] border-[#000]">
                 <main>
                     <div className="text-start  lg:w-[80%] lg:mx-auto pb-2 border-black/[.1] border-b-[1px]">
-                        <h2 className="italic font-bold md:text-[1.2rem] uppercase">{article?.attributes?.category?.data?.attributes?.name}</h2>
+                        <h2 className="font-bold md:text-[1.2rem] uppercase cursor-pointer duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></h2>
                         <h1 className="mt-5 text-[1.728rem] font-semibold md:font-bold md:text-[2.074rem] lg:text-[2.448rem]">{article?.attributes?.title}</h1>
                         <p className="mt-5 font-[400] md:text-[1.2rem]">{article?.attributes?.description} </p>                           
                         <div className="mt-5 w-fit">
                             <div className="rounded inline-block align-middle overflow-hidden w-[48px] h-[48px] bg-[#cacaca] mr-3">
                                 <img className="w-full h-auto object-cover" src={findAuthorByID(article?.attributes?.author?.data?.id)?.attributes?.avatar?.data?.attributes?.url}/>
                             </div>
-                            <div className="italic text-[0.833rem] inline-block">By <span className="underline">{article?.attributes?.author?.data?.attributes?.name}</span></div>
+                            <div className="text-[0.833rem] inline-block">By <span className="underline">{article?.attributes?.author?.data?.attributes?.name}</span></div>
                         </div>
                     </div>
                     <div className="w-full border-[#CACACA] mx-auto lg:w-[80%] py-5">
@@ -133,7 +133,7 @@ const Article = ({article, articles}) =>
                             
 
                         </div>
-                        <div className="mt-1 text-[0.694rem] uppercase tracking-[0.03rem] text-[#cacaca]  mx-auto">Image caption</div>
+                        <div className="mt-1 text-[0.694rem] uppercase tracking-[0.03rem] text-[#cacaca]  mx-auto">{article?.attributes?.media?.data?.attributes?.alternativeText}</div>
                         {/*<div className="w-full mx-auto md:w-[70%] lg:w-[83.33%] pb-3 border-[#cacaca] border-b-[1px]">
                             <div className={`${shareBtnActive ? "share-btn--expanded": "share-btn--retract"} mt-5`}>
                                 <button className={`w-fit border-box ${shareBtnActive ? "bg-[#01e2c2] pl-3" : "border-[#cacaca] border-[1px] px-3"}  py-2`} onClick={()=> setShareBtnActive( shareBtnActive ? 0: 1)}>
@@ -164,7 +164,7 @@ const Article = ({article, articles}) =>
                         {/*<p className="font-semibold  leading-[1.7] italic">
                             When Golden was a young curator in the nineties, her shows, centering Black artists, were unprecedented. Today, those artists are the stars of the art market.
                         </p>*/}
-                        <div className="mt-[3rem] article-preview leading-[1.7] mb-5">
+                        <div className="mt-[3rem] article-preview leading-[1.8] mb-5 lg:text-[1.2rem]">
                             {parse(article?.attributes?.content)}
                         </div>
                     </section>
