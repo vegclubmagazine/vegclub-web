@@ -164,7 +164,7 @@ const Article = ({article, articles}) =>
                         {/*<p className="font-semibold  leading-[1.7] italic">
                             When Golden was a young curator in the nineties, her shows, centering Black artists, were unprecedented. Today, those artists are the stars of the art market.
                         </p>*/}
-                        <div className="mt-[3rem] article-preview leading-[1.8] mb-5 lg:text-[1.2rem]">
+                        <div className="mt-[3rem] article-preview leading-[1.8] mb-5 md:text-[1.2rem]">
                             {parse(article?.attributes?.content)}
                         </div>
                     </section>
