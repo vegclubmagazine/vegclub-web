@@ -38,7 +38,7 @@ const Footer  = ({})=>
                 
                 <div className="border-box py-5 border-[#333333] border-b-[1px]">
                     {/*<h4 className="italic mb-5 text-[#fff] font-semibold uppercase">More</h4>*/}
-                    <div className="text-[#fff] text-[0.694rem] md:text-[0.833rem] w-fit font-light uppercase  mx-auto">
+                    <div className="text-[#fff] text-[0.694rem] md:text-[0.833rem] w-fit font-semibold uppercase  mx-auto">
                         <Link className="inline-block mr-5 cursor-pointer transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.6]" href="/about">About</Link>
                         
                         <Link className="inline-block mr-5 transition-all cursor-pointer duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.6]"  href="/team">Team</Link>
@@ -78,10 +78,10 @@ const Footer  = ({})=>
             </div>
             <div className="bg-[#18181b] py-5">
                 <div className="text-center">
-                    <div className="w-fit inline-block mr-3">
+                    <div className="w-fit mx-auto mb-5">
                         <img className="w-auto h-[2.2rem] md:h-[2.8rem]" src="/vegClub_logo_white_2.png"/>
                     </div>
-                    <div className="inline-block w-fit text-start align-top">
+                    <div className="w-fit  mx-auto">
                         <div className="text-[0.6rem] md:text-[0.694rem] text-[#fff] uppercase font-light"><span className="font-bold">©</span>{" "} Vegclub Magazine 2024. All rights reserved.</div>
                         <div className="text-center text-[0.6rem] md:text-[0.694rem] mt-2 font-light uppercase text-[#fff]">
                             <p className="inline-block border-[#333] pr-1 w-fit border-r-[1px]">Privacy Policy</p>
