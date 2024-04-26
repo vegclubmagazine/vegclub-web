@@ -141,8 +141,8 @@ const Home = ({articles,ads})=>{
         <Layout>
             <section className="block md:grid md:grid-cols-[2fr_1fr] overflow-y-hidden">
                 <div className="relative border-[#000]/[.1] border-r-[1px]">
-                    <div className="w-full bg-[#000]/[.1] overflow-y-hidden aspect-[4/3] md:aspect-[16/9]">
-                        <img    className="object-cover w-full" 
+                    <div className="w-full bg-[#000]/[.1] overflow-y-hidden aspect-[4/5] xs:max-h-[480px] sm:max-h-max sm:aspect-[4/3] md:aspect-[16/9]">
+                        <img    className="object-cover h-full w-auto  sm:w-full sm:h-auto" 
                                 src={   articles?.featureArticles[0]?.attributes?.media?.data?.attributes?.url ||
                                         articles?.featureArticles[0]?.attributes?.media?.data?.attributes?.formats?.large?.url ||
                                         articles?.featureArticles[0]?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
