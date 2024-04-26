@@ -170,47 +170,48 @@ const Article = ({article, articles}) =>
                     </section>
                     <section className="mt-[3rem] border-box py-5 bg-[#01e2c2] w-[100vw] ml-[-5.5%]">
                         <div className="w-[90%]  mx-auto mt-5">
-                            <h2 className="uppercase text-[1.2rem] md:text-[1.44rem]  italic">More from {" "} <span className="font-semibold underline cursor-pointer"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.name}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></span></h2>
+                            <h2 className="uppercase text-[1.2rem] md:text-[1.44rem]">More from {" "} <span className="font-semibold underline cursor-pointer"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.name}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></span></h2>
                             <div className="mt-[2rem]">
                                 <ul className="list-none border-[#00b89d] md:grid md:grid-cols-3 md:auto-rows-fr md:border-b-[1px] ">
                                     {articles?.map((art, index) => (
-                                        <li className={`mt-3 border-box border-[#00b89d] border-b-[1px] md:border-b-0 ${(index + 1) % 3 ? "md:border-r-[1px]":""} pb-5`} key={index}>
-                                            <div className="grid grid-cols-[70%_30%] grid-rows-1 md:grid-cols-1">
-                                                <div className="hidden md:block w-full object-cover bg-[#00b89d] aspect-[16/9]">
-                                                        <img    className="w-full"
+                                        <li className={`mt-3 border-box border-[#00b89d] border-b-[1px] md:border-b-0 ${(index + 1) % 3 ? "md:border-r-[1px]":""}`} key={index}>
+                                            <div className="flex flex-row justify-center md:grid md:grid-cols-1">
+                                                <div className="hidden md:block w-full overflow-hidden bg-[#00b89d] aspect-[16/9]">
+                                                        <img    className="w-full object-cover"
                                                                 src = {
+                                                                        art?.attributes?.media?.data?.attributes?.url ||
                                                                         art?.attributes?.media?.data?.attributes?.formats?.large?.url ||
                                                                         art?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
                                                                         art?.attributes?.media?.data?.attributes?.formats?.small?.url ||
-                                                                        art?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url ||
-                                                                        art?.attriibutes?.media?.data?.attributes?.url
-                                                                    }
-                                                        ></img>
-
-                                                </div>
-                                                <div className="w-full text-black mt-[2rem] mx-auto md:w-[90%]">
-                                                    <h2 className="font-semibold text-[1.2rem] leading-[1.125]">{art?.attributes?.title}</h2>
-                                                    <p className="hidden md:block lg:hidden mt-[1rem]">{art?.attributes?.description}</p>
-                                                <div className="flex w-fit mt-[1rem] flex-row">
-                                                        <p className="text-[0.833rem] uppercase italic">{art?.attributes?.author?.data?.attributes?.name}</p>
-                                                        <Moment className="font-semibold uppercase italic ml-1 text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
-
-                                                    </div>
-                                                </div>
-                                                <div className="block md:hidden"> 
-                                                    <div className="h-full aspect-square object-cover mx-auto bg-[#00b89d]">
-                                                        <img    className="w-full"
-                                                                src = { art?.attributes?.media?.data?.attributes?.url ||
-                                                                        art?.attributes?.media?.data?.attributes?.formats?.large?.url ||
-                                                                        art?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
-                                                                        art?.attributes?.media?.data?.attributes?.formats?.small?.url ||
-                                                                        art?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url 
+                                                                        art?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url
                                                                         
                                                                     }
                                                         ></img>
 
+                                                </div>
+                                                <div className="flex grow flex-col justify-center pr-[40px] md:block  md:p-[40px]">
+                                                    <h2 className="font-semibold text-[1.2rem]">{art?.attributes?.title}</h2>
+                                                    <p className="hidden mt-[1rem]">{art?.attributes?.description}</p>
+                                                    <div className="w-fit mt-8">
+                                                        <p className="inline-block text-[0.833rem] uppercase font-light">{art?.attributes?.author?.data?.attributes?.name}</p>
+                                                        <Moment className="inline-block font-semibold uppercase  ml-1 text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
+
                                                     </div>
                                                 </div>
+                                                
+                                                <div className="md:hidden w-[150px] aspect-square bg-[#00b89d]">
+                                                    <img    className="h-full w-auto object-cover"
+                                                            src = { art?.attributes?.media?.data?.attributes?.url ||
+                                                                    art?.attributes?.media?.data?.attributes?.formats?.large?.url ||
+                                                                    art?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
+                                                                    art?.attributes?.media?.data?.attributes?.formats?.small?.url ||
+                                                                    art?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url 
+                                                                    
+                                                                }
+                                                    ></img>
+
+                                                </div>
+                                                
 
                                             </div>
                                         </li>
@@ -235,7 +236,7 @@ export async function getStaticPaths()
     const response = await fetch(`${API}/articles`);
     const {data} = await response.json();
     const paths = data?.map((article)=>({
-        params:{slug:article?.attributes.slug, id:article?.id, cat:article?.attributes?.category?.data?.attributes?.name}
+        params:{slug:article?.attributes.slug}
     }));
 
     return {paths, fallback:"blocking"};
@@ -243,13 +244,15 @@ export async function getStaticPaths()
 
 
 export async function getStaticProps({params}){
-    const {slug,id,cat} = params;
-
+    const {slug} = params;
+    
     const filters = qs.stringify(
         {
             populate:"*",
-            slug:{
-                $eq: slug
+            filters:{
+                slug:{
+                    $eq: slug
+                },
             },
 
         },
@@ -262,6 +265,8 @@ export async function getStaticProps({params}){
 
     const {data} = await response.json();
 
+    
+
     //get articles of the same genre
 
     const fetch_query = 
@@ -272,17 +277,24 @@ export async function getStaticProps({params}){
                 data{
                     id
                     attributes{
-                        Title
-                        Description
+                        title
+                        description
                         author{
                             data{
                                 id
                                 attributes{
-                                    Name
+                                    name
                                 }
                             }
                         }
-                        Date
+                        media{
+                            data{
+                                attributes{
+                                    url
+                                }
+                            }
+                        }
+                        date
                     }
                 }
             }
@@ -291,19 +303,21 @@ export async function getStaticProps({params}){
     `
     const fetch_query_variables = 
     {
-        filtevar:{
-            category:{
+        filtervar:{
+           
+           and:[{category:{
                 name:{
-                    eq:data[0]?.attributes?.category?.data?.attributes?.name || cat
+                    eq:data[0]?.attributes?.category?.data?.attributes?.name
                 }
             },
-            and:{
-                id:{
-                    not:{
-                        eq: data[0]?.id || id
+            },
+            {
+                not:{
+                    id:{
+                        eq:data[0]?.id
                     }
                 }
-            }
+            }]
             
         }
     }
