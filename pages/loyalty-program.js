@@ -250,12 +250,13 @@ const height = (w, outline,projection) =>
                             <img src="/discount_asset_tb-img_5.png" className="w-auto h-[150px] md:h-[200px]"/>
                         </div>
                         <div className="md:flex md:grow md:flex-col md:justify-end">
-                            <h4 className="mb-1 uppercase italic text-[0.833rem] font-semibold">
+                            <h4 className="mb-1 uppercase text-[0.833rem] font-semibold">
                             Loyalty Program
                             </h4>
                             <h1 className="max-w-[400px] lg:max-w-[600px] font-semibold text-[1.728rem] lg:text-[2.074rem]">
                                 Get <span className="font-bold italic">Discounts</span>{"    "}
-                                At Our Favourite Vegan <span className="font-bold italic">Restaurants</span>
+                                At Your Favourite Vegan <span className="font-bold italic">Eateries</span>{" "}
+                                Across Europe.
                             </h1>
                         </div>
                     </div>
@@ -271,15 +272,16 @@ const height = (w, outline,projection) =>
                     <div className="grid grid-cols-2">
                         <div className="border-r-[1px]">
                             <h3 className="text-[1.44rem] md:text-[1.728rem] uppercase w-fit mx-auto">Price</h3>
-                            <p className="mt-5 text-[1rem] text-center">A one off payment of</p>
-                            <div className="w-fit mx-auto font-bold text-[1.44rem] text-center">£50</div>
+                            <p className="mt-5 text-[1rem] text-center">A single payment of</p>
+                            <div className="w-fit mx-auto font-bold text-[1.44rem] text-center">£35</div>
+                            <div className="text-center font-normal text-[1rem] text-black/[.4]">*Including postage</div>
                         </div>
                         <div className="">
                             <h3 className="text-[1.44rem] md:text-[1.728rem] uppercase w-fit mx-auto">Reward</h3>
-                            <p className="mt-5 text-[1rem] text-center">A lifetime discount of</p>
+                            <p className="mt-5 text-[1rem] text-center">A lifetime discount from</p>
                             <div className="w-fit mx-auto font-bold text-[1.738rem]">
-                                <p className="w-fit mx-auto text-[1.44rem]">%15</p>
-                                <p className="text-center font-normal text-[1rem] text-black/[.4]">At selected restaurants across europe</p>
+                                <p className="w-fit mx-auto text-[1.44rem]">5% - 20%</p>
+                                <p className="text-center font-normal text-[1rem] text-black/[.4]">At selected eateries across europe</p>
                             </div>
                         </div>
                     </div>
@@ -291,30 +293,34 @@ const height = (w, outline,projection) =>
                 <div className="lg:grid lg:grid-cols-[2fr_1fr]">
                     <ul className="text-[1.2rem] border-b-[1px] border-r-[1px]">
                         <li className="flex p-[40px] flex-row border-b-[1px]">
-                            <div className="w-[150px]">
-                                    <img src="/discount_asset_deliver-img.png" className="w-full h-auto"></img>
+                            <div className="min-w-[70px] w-[150px]">
+                                   <img src="/discount_asset_deliver-img.png" className="w-full h-auto"></img>
                             </div>
                             <div className="flex grow pl-[20px]">
-                                <p className="font-bold italic text-[1.2rem] sm:text-[1.728rem] mr-5">1.</p>
-                                <p className="text-[1rem] sm:text-[1.2rem]">Order our discount card and get it hand delivered by our dedicated staff.</p>
+                                <p className="font-bold text-[1.2rem] sm:text-[1.728rem] mr-5">1.</p>
+                                <p className="text-[1rem] sm:text-[1.2rem]">For a single payment of £35, you can purchase our VegClub Loyalty Card and have it delivered by our dedicated staff. What's more, it's a lifetime card.</p>
                             </div>
                         </li>
                         <li className="flex p-[40px]  flex-row border-b-[1px]">
                             <div className="flex grow  pr-[20px]">
-                                <p className="font-bold italic text-[1.2rem] sm:text-[1.728rem] mr-5">2.</p>
-                                <p className="text-[1rem] sm:text-[1.2rem]">Bring it along with you to any restaurant we've partnered with the next time youre feeling pekish and enjoy your meal at a discount</p>
+                                <p className="font-bold text-[1.2rem] sm:text-[1.728rem] mr-5">2.</p>
+                                <p className="text-[1rem] sm:text-[1.2rem]">Bring it along with you to any restaurant we've partnered with the next time you’re feeling peckish, and enjoy your meal at a discount ranging from 5% to 20%.</p>
                             </div>
-                            <div className="w-[250px]">
-                                <img src="/discount_asset_card-reader.png" className="w-full h-auto"/>
+                            <div className="min-w-[70px] w-[150px]">
+                                <img src="/discount_asset_pallete_2.png" className="w-full h-auto"/>
                             </div>
                         </li>
                         <li className="flex p-[40px] flex-row border-b-[1px]">
-                            <div className="w-[150px]">
-                                <img src="/discount_asset_binoculars.png" className="w-full h-auto"/>
+                            <div className="min-w-[70px] w-[150px]">
+                               <img src="/discount_asset_storefront.png" className="w-full h-auto"/>
                             </div>
                             <div className="flex grow pl-[20px]">
-                                <p className="font-bold italic text-[1.2rem] sm:text-[1.728rem] mr-5">3.</p>
-                                <p className="text-[1rem] sm:text-[1.2rem]">Stay on the look out for future recommendations. We'll always be looking to provide you with new culinary experiences</p>
+                                <p className="font-bold  text-[1.2rem] sm:text-[1.728rem] mr-5">3.</p>
+                                <p className="text-[1rem] sm:text-[1.2rem]">Keep an eye out for future recommendations and special offers through our website and social media. We'll always be seeking to provide you with the finest of the vegan scene in Europe.
+                                    <br></br>
+                                    <br></br>
+                                    For more information, please send an email to {" "}  <span className="font-semibold underline"><Link href="mailto:loaylty@vegclubmagazine.com">loyalty@vegclubmagazine.com.</Link></span>
+                                </p>
                             </div>
                         </li>
 
