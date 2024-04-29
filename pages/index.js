@@ -324,7 +324,7 @@ const Home = ({articles,ads})=>{
             <section className="h-fit w-full  border-box border-[#000]/[.1] border-b-[1px]  pt-3 pb-4 text-center">
                 <p className="text-[0.634rem] text-[#CACACA] uppercase">Advertisement</p>
                 <div className="mx-auto w-fit mt-2">
-                    <InHouseAds ad={ads[0]}/>
+                    {/*<InHouseAds ad={ads[0]}/>*/}
                 </div>
             </section>
             <section className="w-full border-black/[.1]">
