@@ -96,7 +96,7 @@ input[type=submit]{
 .article-preview p:nth-child(1)::first-letter {
   color: black;
   font-size: 6rem;
-  font-style:italic;
+  
   font-weight: 900;
   float: left;
   line-height: 0.45;
@@ -184,6 +184,9 @@ input[type=submit]{
   left:50%;
 
   transform:translate(-50%,-50%)rotate(calc(90deg + ((90deg/5) * var(--oindex))))translateY(-4rem);
+}
+.discount_tombstone{
+  background:url("/discount_asset_tb-bg.jpeg") 0% 0%/ cover no-repeat;
 }
 
 @keyframes opacity{
