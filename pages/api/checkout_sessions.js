@@ -7,6 +7,11 @@ export default async function handler(req,res)
     if(req.method === "POST"){
         try{
             const session = await stripe.checkout.sessions.create({
+                billing_address_collection:"auto",
+                shipping_address_collection:{
+
+                 allowed_countries:["GB", "US"],
+                },
 
                 line_items:[
                     {
