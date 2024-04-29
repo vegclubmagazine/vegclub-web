@@ -54,7 +54,7 @@ const Drawer = ({isOpen, onClose})=>{
                             </svg>
                         </button>
                         <div className="inline-block align-middle w-[80%]">
-                            <img src="/vegClub_logo_white_2.png" alt="Header" className="h-[2.8rem] relative left-[30%] translate-x-[-30%]"></img>
+                            <Link href="/"><img src="/vegClub_logo_white_2.png" alt="Header" className="h-[2.8rem] relative left-[30%] translate-x-[-30%]"></img></Link>
 
                         </div>
                     </div>
