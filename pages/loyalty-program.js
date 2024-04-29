@@ -294,7 +294,7 @@ const height = (w, outline,projection) =>
                     <ul className="text-[1.2rem] border-b-[1px] border-r-[1px]">
                         <li className="flex p-[40px] flex-row border-b-[1px]">
                             <div className="min-w-[70px] w-[150px]">
-                                   <img src="/discount_asset_deliver-img.png" className="w-full h-auto"></img>
+                                   <img src="/discount_asset_letter.png" className="w-full h-auto"></img>
                             </div>
                             <div className="flex grow pl-[20px]">
                                 <p className="font-bold text-[1.2rem] sm:text-[1.728rem] mr-5">1.</p>
