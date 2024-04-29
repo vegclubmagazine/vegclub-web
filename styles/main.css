@@ -103,6 +103,17 @@ input[type=submit]{
   text-transform:uppercase;
   margin: 0.1em 0.1em 0.2em 0;
 }
+.article-preview a,
+.article-preview a span,
+.article-preview a strong,
+.article-preview a strong u,
+.article-preview a span u{
+  color:black;
+  
+  text-decoration-color:#01e2c2;
+  text-decoration-thickness:5px;
+  text-underline-offset: 4px;
+}
 .share-methods--ctnr{
   display:none !important;
   transition: display 0.34s ease-in;
