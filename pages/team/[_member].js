@@ -23,6 +23,7 @@ import Moment from "react-moment";
 import { PAGINATION_LIMIT } from "../../config/meta";
 import {API, BASE_URL} from "../../config/api.js";
 import { slugToName } from "../../lib/utils.js";
+import GenericArticleFormat from "../../components/GenericArticleFormat.jsx";
 
 const qs = require("qs");
 
@@ -59,7 +60,7 @@ const Member = ({member, articles, meta}) =>
                                {member?.attributes?.instagram &&( 
                                     <li className="inline-block mr-5">
                                         <Link href={`${member?.attributes?.instagram}`}>
-                                            <FaInstagram className="inline-block text-[1.2rem] sm:text-[1.2rem] md:text-[1.728rem] mr-5"></FaInstagram>
+                                            <FaInstagram className="inline-block text-[1.44rem] md:text-[1.728rem] ease-[cubic-bezier(0.19,1,0.22,1)] duration-[.34s] hover:text-white/[.6] "></FaInstagram>
                                             <p className="text-[.833rem] text-[#a2a2a2] hidden md:inline-block">Instagram</p>
                                         </Link>
                                     </li>
@@ -68,7 +69,7 @@ const Member = ({member, articles, meta}) =>
                                {member?.attributes?.linkedin && (
                                     <li className="inline-block mr-5">
                                         <Link href={`${member?.attributes?.linkedin}`}>
-                                            <FaLinkedin className="inline-block text-[1.2rem] sm:text-[1.44rem] md:text-[1.728rem] mr-5"></FaLinkedin>
+                                            <FaLinkedin className="inline-block text-[1.44rem] md:text-[1.728rem] ease-[cubic-bezier(0.19,1,0.22,1)] duration-[.34s] hover:text-white/[.6]"></FaLinkedin>
                                             <p className="text-[.833rem] text-[#a2a2a2] hidden md:inline-block">LinkedIn</p>
                                         </Link>
                                     </li>
@@ -77,7 +78,7 @@ const Member = ({member, articles, meta}) =>
                                 {member?.attributes?.twitter && (
                                     <li className="inline-block mr-5">
                                         <Link href={`${member?.attributes?.twitter}`}>
-                                            <FaTwitter className="inline-block mr-5 text-[1.2rem] sm:text-[1.44rem] md:text-[1.728rem]"></FaTwitter>
+                                            <FaTwitter className="inline-block  text-[1.44rem] md:text-[1.728rem] ease-[cubic-bezier(0.19,1,0.22,1)] duration-[.34s] hover:text-white/[.6]"></FaTwitter>
                                             <p className="text-[.833rem] text-[#a2a2a2] hidden md:inline-block">Twitter</p>
                                         </Link>
                                     </li>
@@ -85,7 +86,7 @@ const Member = ({member, articles, meta}) =>
                                 {member?.attributes?.Facebook &&(
                                     <li className="inline-block mr-5">
                                         <Link href={`${member?.attributes?.Facebook}`}>
-                                            <FaFacebookF className="inline-block mr-5 text-[1.2rem] sm:text-[1.44rem] md:text-[1.728rem]"></FaFacebookF>
+                                            <FaFacebookF className="inline-block  text-[1.44rem] md:text-[1.728rem] ease-[cubic-bezier(0.19,1,0.22,1)] duration-[.34s] hover:text-white/[.6]"></FaFacebookF>
                                             <p className="text-[.833rem] text-[#a2a2a2] hidden md:inline-block">Facebook</p>
                                         </Link>
                                     </li>
@@ -93,7 +94,7 @@ const Member = ({member, articles, meta}) =>
                                 {member?.attributes?.tiktok && (
                                     <li className="inline-block mr-5">
                                             <Link href={`${member?.attributes?.tiktok}`}>
-                                                <FaTiktok className="inline-block mr-5 text-[1.2rem] sm:text-[1.44rem] md:text-[1.728rem]"></FaTiktok>
+                                                <FaTiktok className="inline-block  text-[1.44rem] md:text-[1.728rem] cursor-pointer ease-[cubic-bezier(0.19,1,0.22,1)] duration-[.34s] hover:text-white/[.6]"></FaTiktok>
                                                 <p className="text-[.833rem] text-[#a2a2a2] hidden md:inline-block">Facebook</p>
                                             </Link>
                                     </li>
@@ -126,58 +127,15 @@ const Member = ({member, articles, meta}) =>
                             <div className="border-r-[1px]">
                                 {articles?.map((article, index)=>(
                                     
-                                    <div className="flex flex-row  justify-center border-black/[.1] border-b-[1px] lg:grid lg:grid-cols-2 md:py-[40px]" key={index}>
-                                        <div className="hidden bg-[#cacaca] md:block md:w-[33.33%] max-h-[248px] aspect-[16/9] lg:w-full">
-                                            <img  className="h-full w-auto" 
-                                                  src={   article?.attributes?.image?.data?.attributes?.url ||
-                                                        article?.attributes?.image?.data?.attributes?.formats?.large?.url ||
-                                                        article?.attributes?.image?.data?.attributes?.formats?.medium?.url ||
-                                                        article?.attributes?.image?.data?.attributes?.formats?.small?.url ||
-                                                        article?.attributes?.image?.data?.attributes?.formats?.thumbnail?.url
-                                                        
-                                                    
-
-
-                                                    }
-                                            ></img>  
-
-                                        </div>
-                                        <div className="pr-[40px] justify-center flex grow flex-col ml-[5%] md:block md:ml-0 md:pl-[20px]">
-                                                    
-                                                    <h1 className="font-semibold md:text-[1.44rem] lg:text-[1.728rem]  duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></h1>
-                                                    <h3 className="hidden md:block mt-4">{article?.attributes?.description}</h3>
-                                                    <div className="mt-4 text-[0.833rem]">
-                                                        <p className="inline-block uppercase font-light italic mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
-                                                    
-                                                        <Moment className="inline-block font-semibold uppercase italic text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
-                                                    </div>
-                                                    
-                                                
-                                                
-                                        </div>
-                                        <div className="md:hidden w-[150px] object-cover   aspect-square  bg-[#CACACA]">
-                                                        <img    className="h-full w-auto" 
-                                                                src={   article?.attributes?.image?.data?.attributes?.url ||
-                                                                        article?.attributes?.image?.data?.attributes?.formats?.large?.url ||
-                                                                        article?.attributes?.image?.data?.attributes?.formats?.medium?.url ||
-                                                                        article?.attributes?.image?.data?.attributes?.formats?.small?.url ||
-                                                                        article?.attributes?.image?.data?.attributes?.formats?.thumbnail?.url
-                                                                        
-                                                                    
-
-
-                                                                    }
-                                                        ></img>  
-                                        </div>
-                                    </div>
+                                    <GenericArticleFormat article={article} key={index}/>
                                 ))}
                                 
                             </div>
                             
                         </div>
                         <div className="py-5 w-fit mx-auto">
-                                {meta?.pagination?.page > 1 && (<div className="inline-block cursor-pointer  mr-3  underline italic uppercase font-semibold"><Link href={`/team/${member}/?page=${(meta?.pagination?.page || 1) + 1}`}>newer</Link></div>)}
-                                <div className="w-fit inline-block align-middle  italic uppercase font-semibold">
+                                {meta?.pagination?.page > 1 && (<div className="inline-block cursor-pointer  mr-3  underline italic uppercase font-semibold"><Link href={`/team/${member}/?page=${(meta?.pagination?.page || 1) - 1}`}>newer</Link></div>)}
+                                <div className="w-fit inline-block align-middle  uppercase font-semibold">
                                         <div className="text-center ">
                                             {meta?.pagination?.page || 1}
                                         </div>
@@ -185,7 +143,7 @@ const Member = ({member, articles, meta}) =>
                                             {meta?.pagination?.pageCount || 1}
                                         </div>
                                 </div>
-                                {meta?.pagination?.page >= meta?.pagination?.pageCount || (<div className="inline-block ml-3 cursor-pointer  underline italic uppercase font-semibold"><Link href={`/team/${member}/?page=${(meta?.pagination?.page || 1) + 1}`}>older</Link></div>)}
+                                {meta?.pagination?.page >= meta?.pagination?.pageCount || (<div className="inline-block ml-3 cursor-pointer  underline  uppercase font-semibold"><Link href={`/team/${member}/?page=${(meta?.pagination?.page || 1) + 1}`}>older</Link></div>)}
                                 
 
 
@@ -228,6 +186,7 @@ export async function getServerSideProps({req,res,params,query}){
                                   articles(filters:$filtervarOne, pagination:{page:${page}, pageSize:${PAGINATION_LIMIT}}){
                                     meta{
                                         pagination{
+                                            page
                                             pageCount
                                         }
                                     }
@@ -237,7 +196,15 @@ export async function getServerSideProps({req,res,params,query}){
                                         title
                                         slug
                                         description
-                                        image{
+                                        category{
+                                            data{
+                                                attributes{
+                                                    slug
+                                                    name
+                                                }
+                                            }
+                                        }
+                                        media{
                                             data{
                                                 attributes{
                                                     url
@@ -261,10 +228,12 @@ export async function getServerSideProps({req,res,params,query}){
     const currentDate = new Date().toISOString();
     const articles_query_variables = {
       filtervarOne:{
-        articles:{
+
+        and:[
+        {
           author:{
-            fullname:{
-              eq:_member
+            name:{
+              eq:slugToName(_member)
             }
           }
          
@@ -272,13 +241,13 @@ export async function getServerSideProps({req,res,params,query}){
           
 
         },
-        and:{
-          articles:{
-            PublishDate:{
+        {
+          
+            publishedAt:{
               lt: currentDate
             }
-          }
-        }
+          
+        }]
        
       }
 

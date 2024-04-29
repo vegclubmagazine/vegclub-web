@@ -26,6 +26,7 @@ import {useEffect, useRef, useContext} from "react";
 import parse from "html-react-parser";
 import Moment from "react-moment";
 import { GlobalContext } from "../../context/GlobalContext.js";
+import { slugify } from "../../lib/utils.js";
 
 const qs = require('qs');
 
@@ -89,7 +90,7 @@ const Article = ({article, articles}) =>
                             <div className="rounded inline-block align-middle overflow-hidden w-[48px] h-[48px] bg-[#cacaca] mr-3">
                                 <img className="w-full h-auto object-cover" src={findAuthorByID(article?.attributes?.author?.data?.id)?.attributes?.avatar?.data?.attributes?.url}/>
                             </div>
-                            <div className="text-[0.833rem] inline-block">By <span className="underline">{article?.attributes?.author?.data?.attributes?.name}</span></div>
+                            <div className="text-[0.833rem] inline-block">By <span className="underline cursor-pointer"><Link href={`/team/${slugify(article?.attributes?.author?.data?.attributes?.name)}`}>{article?.attributes?.author?.data?.attributes?.name}</Link></span></div>
                         </div>
                     </div>
                     <div className="w-full border-[#CACACA] mx-auto lg:w-[80%] py-5">
