@@ -93,7 +93,7 @@ input[type=submit]{
 }
 
 
-.article-preview p:nth-child(1)::first-letter {
+.article-preview > p:nth-child(1)::first-letter {
   color: black;
   font-size: 6rem;
   
@@ -101,7 +101,7 @@ input[type=submit]{
   float: left;
   line-height: 0.45;
   text-transform:uppercase;
-  margin: 0.1em 0.25em 0.1em 0;
+  margin: 0.1em 0.1em 0.2em 0;
 }
 .share-methods--ctnr{
   display:none !important;
