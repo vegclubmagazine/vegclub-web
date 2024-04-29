@@ -124,7 +124,7 @@ const Layout = (
                 {minNav || (
                     <div className="py-3 hidden md:block text-end pr-[40px] border-[#333] border-b-[1px]  bg-black">
                             <div className="inline-block text-[0.833rem] py-2  bg-[#01e2c2] px-3 w-fit">
-                                <Link className=" duration-[.34s] ease-in-out font-semibold uppercase hover:text-black/[.4]" href="/loyalty-card">Loyalty Program</Link>
+                                <Link className=" duration-[.34s] ease-in-out font-semibold uppercase hover:text-black/[.4]" href="/loyalty-program">Loyalty Program</Link>
                                 {/*<div className="inline-block align-middle">
                                     <img src="/loyalty_button_asset.png" className="h-[15px] w-[15px]"></img>
                                 </div>*/}
