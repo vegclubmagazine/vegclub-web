@@ -43,16 +43,16 @@ const Team = ({excerpt,team}) =>
                 <div className="border-black/[.1] xl:border-r-[1px]  mb-[40px]">
                     {team?.map((member,index)=>(
                             <div className="md:flex md:flex-row border-b-[1px] px-[20px] py-[40px] sm:px-[40px]" key={index}>
-                                <div className="inline-block align-middle sm:align-top w-[170px] sm:min-w-[240px] max-w-[240px] sm:h-[240px] aspect-square overflow-hidden">
+                                <div className="inline-block align-top md:align-middle  w-[170px] sm:min-w-[240px] max-w-[240px] sm:h-[240px] aspect-square overflow-hidden">
                                     
                                     <img src={member?.attributes?.image?.data?.attributes?.url} className="w-full h-auto object-cover"/>
                                     
                                 </div>
-                                <div className="inline-block align-middle md:hidden pl-[20px] max-w-[160px] sm:max-w-fit">
-                                        <h2 className="text-[1.2rem] sm:text-[1.44rem] lg:text-[1.728rem] font-semibold">{member?.attributes?.name}</h2>
+                                <div className="inline-block text-[1.2rem]  md:hidden pl-[20px] max-w-[160px] sm:max-w-fit">
+                                        <h2 className="text-[1.44rem] lg:text-[1.728rem] font-bold">{member?.attributes?.name}</h2>
                                         <p className="mt-3 font-light">{member?.attributes?.pronouns}</p>
                                         <p className="font-semibold mt-3">{member?.attributes?.position}</p>
-                                        <ul className="list-none mt-3 text-black text-[1.2rem] sm:text-[1.728rem]">
+                                        <ul className="list-none mt-3 text-black text-[1.44rem] sm:text-[1.728rem]">
                                             {member?.attributes?.instagram && (<Link href={`${member?.attributes?.instagram}`}><FaInstagram className="inline-block mr-5 transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]"></FaInstagram></Link>)}
                                             {member?.attributes?.Facebook && (<Link href={`${member?.attributes?.Facebook}`}><FaFacebook className="inline-block mr-5 duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]"></FaFacebook></Link>)}
                                             {member?.attributes?.twitter && (<Link href={`${member?.attributes?.twitter}`}><FaTwitter className="inline-block mr-5 duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]"></FaTwitter></Link>)}
@@ -70,19 +70,19 @@ const Team = ({excerpt,team}) =>
                                         {isMemberAuthor(member?.attributes?.name) && (
                                             <div className="mt-5">
                                                 <Link href={`team/${slugify(member?.attributes?.name)}`}>
-                                                    <p className="inline-block text-[.833rem] sm:text-[1rem] align-middle mr-2 font-semibold uppercase duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]">View Articles</p>
+                                                    <p className="inline-block text-[1rem]  sm:text-[1.2rem] align-middle mr-2 font-semibold uppercase duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]">View Articles</p>
                                                     <div className="inline-block align-middle border-black/[.4] border-t-[1px] border-r-[1px] rotate-[45deg] w-[8px] h-[8px]"></div>
                                                 </Link>
                                             </div>
                                         )}
 
                                 </div>
-                                <div className="block mt-5 leading-relaxed  md:hidden">
+                                <div className="block mt-5 text-[1.2rem] leading-relaxed  md:hidden">
                                     <p className="mt-3">{member?.attributes?.bio}</p>
 
                                 </div>
-                                <div className="hidden md:flex md:flex-col md:grow md:pl-[20px]">
-                                    <h2 className="text-[1.44rem] lg:text-[1.728rem] font-semibold">{member?.attributes?.name}</h2>
+                                <div className="hidden md:flex text-[1.2rem] md:flex-col md:grow md:pl-[20px]">
+                                    <h2 className="text-[1.44rem] lg:text-[1.728rem] font-bold">{member?.attributes?.name}</h2>
                                     <p className="mt-3 font-light">{member?.attributes?.pronouns}</p>
                                     <p className="font-semibold mt-3">{member?.attributes?.position}</p>
                                     <p className="mt-3">{member?.attributes?.bio}</p>
@@ -104,7 +104,7 @@ const Team = ({excerpt,team}) =>
                                     {isMemberAuthor(member?.attributes?.name) && (
                                         <div className=" mt-5">
                                             <Link href={`team/${slugify(member?.attributes?.name)}`}>
-                                                <p className="inline-block text-[.833rem] sm:text-[1rem] align-middle mr-2 font-semibold uppercase duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]">View Articles</p>
+                                                <p className="inline-block  sm:text-[1.2rem] align-middle mr-2 font-semibold uppercase duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]">View Articles</p>
                                                 <div className="inline-block align-middle border-black/[.4] border-t-[1px] border-r-[1px] rotate-[45deg] w-[8px] h-[8px]"></div>
                                             </Link>
                                         </div>
