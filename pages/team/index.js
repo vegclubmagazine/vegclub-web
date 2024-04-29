@@ -40,7 +40,7 @@ const Team = ({excerpt,team}) =>
                 <h1 className="w-fit uppercase font-semibold text-[2.488rem]">Meet The Team</h1>
             </div>
             <div className="xl:grid xl:grid-cols-[2fr_1fr]">
-                <div className="border-black/[.1] xl:border-r-[1px]">
+                <div className="border-black/[.1] xl:border-r-[1px]  mb-[40px]">
                     {team?.map((member,index)=>(
                             <div className="md:flex md:flex-row border-b-[1px] px-[20px] py-[40px] sm:px-[40px]" key={index}>
                                 <div className="inline-block align-middle sm:align-top w-[170px] sm:min-w-[240px] max-w-[240px] sm:h-[240px] aspect-square overflow-hidden">
@@ -48,7 +48,7 @@ const Team = ({excerpt,team}) =>
                                     <img src={member?.attributes?.image?.data?.attributes?.url} className="w-full h-auto object-cover"/>
                                     
                                 </div>
-                                <div className="inline-block align-middle md:hidden pl-[20px] max-w-[150px] sm:max-w-fit">
+                                <div className="inline-block align-middle md:hidden pl-[20px] max-w-[160px] sm:max-w-fit">
                                         <h2 className="text-[1.2rem] sm:text-[1.44rem] lg:text-[1.728rem] font-semibold">{member?.attributes?.name}</h2>
                                         <p className="mt-3 font-light">{member?.attributes?.pronouns}</p>
                                         <p className="font-semibold mt-3">{member?.attributes?.position}</p>

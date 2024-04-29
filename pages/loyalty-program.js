@@ -285,7 +285,7 @@ const height = (w, outline,projection) =>
                             </div>
                         </div>
                     </div>
-                    <div className="mt-8 cursor-pointer w-fit mx-auto bg-black p-3 text-white uppercase font-semibold"><Link href="/checkout">Buy now</Link></div>
+                    <div className="mt-8 cursor-pointer w-fit mx-auto bg-black p-3 text-white uppercase font-semibold"><Link href="/checkout">Purchase now</Link></div>
                 </div>
                 <div className="border-t-[1px] border-b-[1px] py-5 pl-[40px]" ref={scrollYThresholdRef}>
                     <h2 className="text-[1.728rem] lg:text-[2.074rem] uppercase font-semibold">How does it work ?</h2>
@@ -329,7 +329,7 @@ const height = (w, outline,projection) =>
    
                
                 <div className={`${isScrollPassedThreshold ? "fixed":"hidden"} bg-white w-[100vw] top-[63px] drop-shadow-md py-2`}>
-                        <div className="cursor-pointer w-fit mx-auto  p-3  uppercase transition-all font-semibold duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]"><Link href="/checkout">Buy now</Link></div>
+                        <div className="cursor-pointer w-fit mx-auto  p-3  uppercase transition-all font-semibold duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]"><Link href="/checkout">Purchase now</Link></div>
 
                 </div>
                 

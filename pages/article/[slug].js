@@ -170,7 +170,7 @@ const Article = ({article, articles}) =>
                     </section>
                     <section className="mt-[3rem] border-box py-5 bg-[#01e2c2] w-[100vw] ml-[-5.5%]">
                         <div className="w-[90%]  mx-auto mt-5">
-                            <h2 className="uppercase text-[1.2rem] md:text-[1.44rem]">More from {" "} <span className="font-semibold underline cursor-pointer"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.name}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></span></h2>
+                            <h2 className="uppercase text-[1.2rem] md:text-[1.44rem]">More from {" "} <span className="font-semibold underline cursor-pointer"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></span></h2>
                             <div className="mt-[2rem]">
                                 <ul className="list-none border-[#00b89d] md:grid md:grid-cols-3 md:auto-rows-fr md:border-b-[1px] ">
                                     {articles?.map((art, index) => (
