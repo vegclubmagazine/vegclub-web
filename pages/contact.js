@@ -12,12 +12,12 @@ const Contact = ()=>
                 <h1 className="pl-[40px] text-[1.728rem] font-semibold uppercase pt-[40px] pb-5 border-b-[1px]">Contact Us</h1>
 
             
-                <div className="pt-[40px] px-[40px] grid">
+                <div className="pt-[40px] px-[40px] grid text-[1.2rem]">
                     <div>
                         <p className="">We'd love to hear your feedback and suggestions or answer questions, so please do get in touch.
 
                         </p>
-                        <p className="mt-5">Here's who to contact, depending on your enquiry:
+                        <p className="mt-3">Here's who to contact, depending on your enquiry:
                         </p>
                         <h2 className="mt-[60px]  font-semibold uppercase text-[1.44rem]">Advertising</h2>
                         <p className="mt-5">If you'd like to discuss advertising opportunities, please email
