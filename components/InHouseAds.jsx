@@ -2,16 +2,17 @@ import Link from "next/link";
 //remove white-space
 //
 
-const InHouseAds = ({ad})=>
+const InHouseAds = ({ad, size, orientation})=>
 {
+    
+    
     return (
-        <div className="border-black/[.1] border-b-[1px]">
-            <Link href={ad?.attributes?.url} className="w-full cursor pointer">
-                {/*<div className="text-[0.694rem] w-fit mx-auto text-[#CACACA] uppercase">Advertisement</div>*/}
+        <div className="border-black/[.1]">
+            <Link href={ad?.attributes?.url || "#"} className="w-full cursor pointer">
 
-                <div className={`relative w-full mx-auto overflow-hidden   bg-[#cacaca]`}>
-                    <img className="w-fit h-auto object-cover" src={ad?.attributes?.image?.data?.attributes?.url}/>
-                    <div className="absolute right-3 bottom-3 px-3 bg-black text-white text-[0.833rem] font-semibold uppercase">Advertisment</div>
+                <div className={`relative mt-3 w-[300px] h-[250px] ad_${size} border-black/[.3] border-[1px] mx-auto overflow-hidden`} data-orientation={`${orientation || ""}`}>
+                    <img className={`${orientation === "vertical" ? "h-full w-auto":"w-full h-auto"} object-cover`} src={ad?.attributes?.image?.data?.attributes?.url}/>
+                    <div className="absolute top-3 left-2 drop-shadow-lg w-fit px-2 rounded-md bg-[#f5f5f5] text-[0.69rem] tracking-[.05rem]">Ad</div>
                 </div>
             </Link>
         </div>

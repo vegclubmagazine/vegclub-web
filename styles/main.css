@@ -200,6 +200,38 @@ input[type=submit]{
   background:url("/discount_asset_tb-bg.jpeg") 0% 0%/ cover no-repeat;
 }
 
+.ad_large[data-orientation="horizontal"]
+{
+  width:970px !important;
+  height:250px !important;
+}
+.ad_large[data-orientation="vertical"]
+{
+  height: 520px !important;
+  width: 150px !important;
+
+}
+
+.ad_medium[data-orientation="horizontal"]
+{
+  width: 728px !important;
+  height: 90px !important;
+
+}
+
+.ad_medium[data-orientation="vertical"]
+{
+  width: 150px !important;
+  height: 420px !important;
+}
+
+.ad_small[data-orientation="horizontal"]
+{
+  width:320px !important;
+  height:50px !important;
+
+}
+
 @keyframes opacity{
   from{
     opacity: 0;

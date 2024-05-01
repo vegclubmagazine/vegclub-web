@@ -15,6 +15,7 @@ const qs = require("qs");
 
 
 const Home = ({articles,ads})=>{
+   
     const [isLoading, setIsLoading] = useState(false);
     const [atLastPage, setAtLastPage] = useState(false);
     const [LatestArticles,setLatestArticles] = useState([...articles?.nonFeatureArticles?.slice(1)]);
@@ -142,7 +143,7 @@ const Home = ({articles,ads})=>{
             <section className="block md:grid md:grid-cols-[2fr_1fr] overflow-y-hidden">
                 <div className="relative border-[#000]/[.1] border-r-[1px]">
                     <div className="w-full bg-[#000]/[.1] overflow-y-hidden aspect-[4/5] xs:max-h-[480px] sm:max-h-max sm:aspect-[4/3] md:aspect-[16/9]">
-                        <img    className="object-cover h-full w-auto  sm:w-full sm:h-auto" 
+                        <img    className="object-cover h-full w-auto  md:w-full md:h-auto" 
                                 src={   articles?.featureArticles[0]?.attributes?.media?.data?.attributes?.url ||
                                         articles?.featureArticles[0]?.attributes?.media?.data?.attributes?.formats?.large?.url ||
                                         articles?.featureArticles[0]?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
@@ -153,7 +154,7 @@ const Home = ({articles,ads})=>{
 
 
                                     }
-                        ></img>  
+                        ></img>   
                     </div>
                     <div className="relative inline-block py-[40px] pr-[40px] bottom-[40px] left-[10%] md:left-[0%]  bg-[#000] text-start text-white w-[90%] md:w-[75%] lg:w-[50%]">
                         {/*<p className="w-full bg-[#000] text-start text-[#fff] border-box pl-1 text-[0.6rem]"> Damon Winter <span className="text-[#01e2c2] ml-2 mr-2">/</span> Vegclub Magazine <span className="text-[#01e2c2] ml-2 mr-2">/</span> Redux</p>*/}
@@ -172,11 +173,18 @@ const Home = ({articles,ads})=>{
                     </div>
                     <div className="hidden relative bottom-[40px] p-[40px] lg:inline-block align-top w-[50%]">
                         <div className="pt-[40px]">
-                            <p className="line-clamp-3">{articles?.featureArticles[0]?.attributes?.description}</p>
+                            {ads.square?.length ? (
+                                <Fragment>
+                                    <p className="text-[0.634rem] w-fit mx-auto mb-2 text-[#CACACA] uppercase">Advertisement</p>
+
+                                    <InHouseAds ad={ads.square[0]}/>
+                                </Fragment>
+                            ):""}
+                            {/*<p className="line-clamp-3">{articles?.featureArticles[0]?.attributes?.description}</p>*/}
                         </div>
                     </div>
                 </div>
-                <div className="hidden md:grid ">
+                <div className="hidden md:grid">
                     <div className="border-[#000]/[.1] border-b-[1px]">
                         <div className="w-full aspect-[16/9]">
                             <div className="h-full object-cover overflow-y-hidden bg-[#cacaca]">
@@ -321,10 +329,28 @@ const Home = ({articles,ads})=>{
                     
                 </div>
             </section>
-            <section className="h-fit w-full  border-box border-[#000]/[.1] border-b-[1px]  pt-3 pb-4 text-center">
+            <section className="h-fit w-full  border-box border-[#000]/[.1] border-b-[1px]  pt-3 pb-8 text-center">
                 <p className="text-[0.634rem] text-[#CACACA] uppercase">Advertisement</p>
                 <div className="mx-auto w-fit mt-2">
-                    {/*<InHouseAds ad={ads[0]}/>*/}
+                    <div className="hidden lg:block">
+                        {ads.large.horizontal?.length ? (
+                            <InHouseAds ad={ads.large.horizontal[0]} size={"large"} orientation={"horizontal"}/>
+                        ):""}
+
+                    </div>
+                    <div className="hidden md:block lg:hidden">
+                        {ads.medium.horizontal?.length ? (
+                            <InHouseAds ad={ads.medium.horizontal[0]} size={"medium"} orientation={"horizontal"}/>
+
+
+                        ):""}
+                    </div>
+                    <div className="block md:hidden">
+                        {ads.small.horizontal?.length ?(
+                            <InHouseAds ad={ads.small.horizontal[0]} size={"small"} orientation={"horizontal"}/>
+
+                        ):""}
+                    </div>
                 </div>
             </section>
             <section className="w-full border-black/[.1]">
@@ -388,9 +414,7 @@ const Home = ({articles,ads})=>{
                     <ul className="list-none text-start md:border-r-[1px]">
                         {LatestArticles?.map((article, index)=>(
                             <Fragment>
-                                {checkAds(index) && ads[getAdIndex(index)].attributes.showOnHomePage && (
-                                    <InHouseAds ad={ads[getAdIndex(index)]} key={ads[getAdIndex(index)]?.id}/>
-                                )}
+                               
                                 
                                 <li className={`${index < LatestArticles.length - 1 ? "border-b-[1px]":""}`} key={index}>
                                     <GenericArticleFormat article={article}/>
@@ -398,8 +422,16 @@ const Home = ({articles,ads})=>{
                             </Fragment>
                         ))}
                     </ul>
-                    <div className="hidden lg:block w-fit pt-[40px] pl-[20px]">
-                        <SquareAdUnit/>
+                    <div className="hidden lg:block w-fit pt-[40px] mx-auto">
+                        {ads.medium.vertical?.length ?(
+                            <Fragment>
+                                <p className="text-[0.634rem] w-fit mx-auto text-[#CACACA] uppercase">Advertisement</p>
+                                <div className="mt-2 w-fit">
+                            
+                                    <InHouseAds ad={ads.medium.vertical[0]} size="medium" orientation="vertical"/>
+                                </div>
+                            </Fragment>
+                        ):""}
                     </div>
                 </div>
                 {atLastPage ||(
@@ -430,7 +462,15 @@ export async function getServerSideProps({req,res}){
     // sort fetched articles into feature and non-feature articles
     
     var feature_articles = [],
-        non_feature_articles = [];
+        non_feature_articles = [],
+        ads_square = [],
+        ads_large_horizontal = [],
+        ads_large_vertical = [],
+
+        ads_medium_horizontal = [],
+        ads_medium_vertical = [],
+        ads_small_horizontal = [],
+        ads_small_vertical = [];
     
     const filters = qs.stringify(
         {
@@ -445,9 +485,28 @@ export async function getServerSideProps({req,res}){
         },
         {encodeValuesOnly:true}
     )
+
+    const ad_filters = qs.stringify(
+        {
+            populate:"*",
+            pagination:{
+                pageSize:PAGINATION_LIMIT,
+                page:"1"
+            },
+            filters:{
+                showOnHomePage:{
+                    $eq:true
+                }
+            },
+            sort:["publishedAt:desc"]
+        }
+    )
     
+
+
+
     const response = await fetch(`${API}/articles?${filters}`);
-    const adsResponse = await fetch(`${API}/advertisments?populate=*`);
+    const adsResponse = await fetch(`${API}/advertisments?${ad_filters}`);
 
     const data = await response.json();
     const adsData = await adsResponse.json();
@@ -477,6 +536,43 @@ export async function getServerSideProps({req,res}){
         }
 
     }
+    for(let i = 0, ads = adsData?.data; i < ads?.length; i++){
+        if(ads[i].attributes.shape === "rectangle"){
+            if(ads[i].attributes.size === "large"){
+                
+                if(ads[i].attributes.orientation === "horizontal"){
+                    ads_large_horizontal.push(ads[i])
+                }
+                else{
+                    ads_large_vertical.push(ads[i])
+
+                }
+            }
+            else {
+                if(ads[i].attributes.size === "medium"){
+                    if(ads[i].attributes.orientation === "horizontal"){
+                        ads_medium_horizontal.push(ads[i])
+                    }
+                    else{
+                        ads_medium_vertical.push(ads[i])
+    
+                    }
+                }
+                else{
+                    if(ads[i].attributes.orientation === "horizontal"){
+                        ads_small_horizontal.push(ads[i])
+                    }
+                    else{
+                        ads_small_vertical.push(ads[i])
+    
+                    }
+                }
+            }
+        }
+        else{
+            ads_square.push(ads[i]);
+        }
+    }
    
      
     return {
@@ -489,7 +585,21 @@ export async function getServerSideProps({req,res}){
                 
                 
             },
-            ads:adsData?.data || null,
+            ads:{
+                square: ads_square || null,
+                large:{
+                    horizontal: ads_large_horizontal || null,
+                    vertical: ads_large_vertical || null,
+                },
+                medium:{
+                    horizontal: ads_medium_horizontal || null,
+                    vertical: ads_medium_vertical || null,
+                },
+                small:{
+                    horizontal: ads_small_horizontal || null,
+                    vertical: ads_small_vertical || null,
+                },
+            }
         }
     }
 
