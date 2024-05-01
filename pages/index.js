@@ -160,7 +160,7 @@ const Home = ({articles,ads})=>{
                         {/*<p className="w-full bg-[#000] text-start text-[#fff] border-box pl-1 text-[0.6rem]"> Damon Winter <span className="text-[#01e2c2] ml-2 mr-2">/</span> Vegclub Magazine <span className="text-[#01e2c2] ml-2 mr-2">/</span> Redux</p>*/}
                         <div className="pl-[40px]">
                             <h3 className = "text-white text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.34s] ease-in-out hover:text-white/[.6]"><Link href={`/category/${articles?.featureArticles[0]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.featureArticles[0]?.attributes?.category?.data?.attributes?.name}</Link></h3>                
-                            <h1 className="article-title mt-4 font-bold w-fit leading-[1.5] text-[1.44rem] lg:text-[1.728rem]"><span className="underline_span"><Link href={`/article/${articles?.featureArticles[0]?.attributes?.slug}`}>{articles?.featureArticles[0]?.attributes?.title}</Link></span></h1>
+                            <h1 className="article-title mt-4 font-bold w-fit leading-[1.5] text-[1.728rem] lg:text-[2.488rem]"><span className="underline_span"><Link href={`/article/${articles?.featureArticles[0]?.attributes?.slug}`}>{articles?.featureArticles[0]?.attributes?.title}</Link></span></h1>
                             <h2 className="mt-4 text-[#a2a2a2] text-[1rem] line-clamp-4 lg:hidden">{articles?.featureArticles[0]?.attributes?.description}</h2>
                             <div className="mt-4 text-[0.833rem]">
                                 <p className="inline-block uppercase font-light  mr-1">{articles?.featureArticles[0]?.attributes?.author?.data?.attributes?.name}</p>
@@ -171,7 +171,7 @@ const Home = ({articles,ads})=>{
                         <div className="absolute h-[200%] w-[100%] bg-black"></div>
                         
                     </div>
-                    <div className="hidden relative p-[40px]   lg:inline-block align-top w-[50%]">
+                    <div className="hidden relative p-[60px] bottom-[40px] lg:inline-block align-top w-[50%]">
                         <div className="w-full">
                             {/*{ads.square?.length ? (
                                 <Fragment>
@@ -180,7 +180,7 @@ const Home = ({articles,ads})=>{
                                     {/*<InHouseAds ad={ads.square[0]}/>
                                 </Fragment>
                             ):""}*/}
-                            <p className="text-[1.2rem] line-clamp-3">{articles?.featureArticles[0]?.attributes?.description}</p>
+                            <p className="leading-[1.6] text-[1.02rem] font-[410] line-clamp-3">{articles?.featureArticles[0]?.attributes?.description}</p>
                         </div>
                     </div>
                 </div>
@@ -230,7 +230,7 @@ const Home = ({articles,ads})=>{
                 <p className="text-[0.634rem] text-[#CACACA] uppercase">Advertisement</p>
                 <div className="mx-auto max-w-[450px] w-[80%] h-[90px] bg-[#CACACA] mt-2"></div>
             </section>*/}
-            <section className="w-full  border-box h-fit pb-3">
+            <section className="w-full  border-box h-fit">
                 <div className="md:grid md:grid-cols-3">
                     {/*<h1 className=" text-center font-bold  text-[1.44rem]">Recent stories</h1>*/}
                         {articles?.featureArticles?.slice(1,6)?.map((article, index)=>(
@@ -329,9 +329,9 @@ const Home = ({articles,ads})=>{
                     
                 </div>
             </section>
-            <section className="h-fit w-full  border-box border-[#000]/[.1] border-b-[1px]  pt-3 pb-8 text-center">
-                <p className="text-[0.634rem] text-[#CACACA] uppercase">Advertisement</p>
-                <div className="mx-auto w-fit mt-2">
+            <section className="h-fit w-full  border-box border-[#000]/[.1] border-b-[1px]   text-center">
+                {/*<p className="text-[0.634rem] text-[#CACACA] uppercase">Advertisement</p>*/}
+                <div className="mx-auto w-fit">
                     <div className="hidden lg:block">
                         {ads.large.horizontal?.length ? (
                             <InHouseAds ad={ads.large.horizontal[0]} size={"large"} orientation={"horizontal"}/>

@@ -202,7 +202,7 @@ input[type=submit]{
 
 .ad_large[data-orientation="horizontal"]
 {
-  width:970px !important;
+  width:1024px !important;
   height:250px !important;
 }
 .ad_large[data-orientation="vertical"]
@@ -214,8 +214,8 @@ input[type=submit]{
 
 .ad_medium[data-orientation="horizontal"]
 {
-  width: 728px !important;
-  height: 90px !important;
+  width: 768px !important;
+  height: 120px !important;
 
 }
 
@@ -227,8 +227,8 @@ input[type=submit]{
 
 .ad_small[data-orientation="horizontal"]
 {
-  width:320px !important;
-  height:50px !important;
+  width:370px !important;
+  height:100px !important;
 
 }
 
