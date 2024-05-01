@@ -241,14 +241,14 @@ const Home = ({articles,ads})=>{
                                         <div className="flex grow flex-col pl-[40px] justify-center md:hidden py-[20px] pr-[20px]">
                                             <h3 className = "text-[0.833rem] inline-block uppercase transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]  font-semibold cursor-pointer w-fit"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></h3>                
     
-                                            <h1 className="article-title mt-3 md:text-[1.44rem] lg:text-[1.728rem] font-semibold"><span className="underline_span"><Link href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></span></h1>
+                                            <h1 className="article-title mt-3 md:text-[1.44rem] lg:text-[1.728rem] line-clamp-3 font-semibold"><span className="underline_span"><Link href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></span></h1>
                                             <div className="mt-3 text-[0.833rem]">
                                                 <p className="inline-block font-light uppercase  mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
                                                 <Moment className="inline-block font-semibold uppercase  text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
                                             </div>
                                         </div>
                                         <div>
-                                            <div className="w-[150px] overflow-hidden md:h-auto md:w-full aspect-square md:aspect-[16/9] mx-auto bg-[#CACACA]">
+                                            <div className="w-[150px] h-full overflow-hidden md:h-auto md:w-full  md:aspect-[16/9] mx-auto bg-[#CACACA]">
                                                 <img    className="h-full object-cover w-auto" 
                                                         src={   article?.attributes?.media?.data?.attributes?.url ||
                                                                 article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
@@ -291,7 +291,7 @@ const Home = ({articles,ads})=>{
                                             </div>
                                         </div>
                                         <div>
-                                            <div className="w-[150px] overflow-hidden object-cover md:h-auto md:w-full aspect-square md:aspect-[16/9] mx-auto bg-[#CACACA]">
+                                            <div className="w-[150px] h-full overflow-hidden object-cover md:h-auto md:w-full  md:aspect-[16/9] mx-auto bg-[#CACACA]">
                                                 <img    className="h-full w-auto md:w-full md:h-auto" 
                                                         src={   article?.attributes?.media?.data?.attributes?.url ||
                                                                 article?.attributes?.media?.data?.attributes?.formats?.large?.url ||

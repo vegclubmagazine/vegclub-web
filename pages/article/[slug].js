@@ -100,19 +100,19 @@ const Article = ({article, articles}) =>
                                 <li className="inline-block">
                                     <FacebookShareButton url={`${SITE_URL}/article/${article?.attributes?.slug}`} quote={article?.attributes?.title}>
                                         <FaFacebookSquare className="inline-block cursor-pointer transition-opacity duration-[.32s] ease-[cubic-bezier(.19,1,.22,1)] hover:opacity-30"></FaFacebookSquare>
-                                        <Link href='#' className=" italic text-[0.833rem] font-[400] underline hidden cursor-pointer md:inline-block ml-2">Share</Link>
+                                        <Link href='#' className=" text-[0.833rem] font-[400] underline hidden cursor-pointer md:inline-block ml-2">Share</Link>
                                     </FacebookShareButton>
                                 </li>
                                 <li className="inline-block ml-5">
                                     <TwitterShareButton url={`${SITE_URL}/article/${article?.attributes?.slug}`} title={article?.attributes?.title} related={["vegclub", "vegan", "magazine"]}>
                                         <FaTwitter className="inline-block  cursor-pointer transition-opacity duration-[.32s] ease-[cubic-bezier(.19,1,.22,1)] hover:opacity-30"></FaTwitter>
-                                        <Link href='#' className=" italic text-[0.833rem] font-[400] underline hidden curosr-pointer md:inline-block ml-2">Tweet</Link>
+                                        <Link href='#' className="  text-[0.833rem] font-[400] underline hidden curosr-pointer md:inline-block ml-2">Tweet</Link>
                                     </TwitterShareButton>
                                 </li>
                                 <li className="inline-block ml-5">
                                    <button className="snapchat-share-button" data-share-url={`${SITE_URL}/article/${article?.attributes?.slug}`}>
                                         <FaSnapchatGhost className="inline-block cursor-pointer transition-opacity duration-[.32s] ease-[cubic-bezier(.19,1,.22,1)] hover:opacity-30"></FaSnapchatGhost>
-                                        <Link href='#' className=" italic text-[0.833rem] font-[400] underline cursor-pointer hidden md:inline-block ml-2">Snap</Link>
+                                        <Link href='#' className="  text-[0.833rem] font-[400] underline cursor-pointer hidden md:inline-block ml-2">Snap</Link>
                                     </button>    
                                 </li>
                             </ul>

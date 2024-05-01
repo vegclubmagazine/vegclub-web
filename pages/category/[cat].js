@@ -53,8 +53,8 @@ const Category = ({category, meta, articles,ads}) =>
 
                     </div>
                     <div className="w-fit mx-auto  py-5 md:w-full md:text-center md:">
-                    {meta?.pagination?.page > 1 && (<div className="inline-block cursor-pointer  mr-3  underline italic uppercase font-semibold"><Link href={`/category/${category}/?page=${(meta?.pagination?.page || 1) + 1}`}>newer</Link></div>)}
-                    <div className="w-fit inline-block align-middle  italic uppercase font-semibold">
+                    {meta?.pagination?.page > 1 && (<div className="inline-block cursor-pointer  mr-3  underline  uppercase font-semibold"><Link href={`/category/${category}/?page=${(meta?.pagination?.page || 1) + 1}`}>newer</Link></div>)}
+                    <div className="w-fit inline-block align-middle uppercase font-semibold">
                             <div className="text-center ">
                                 {meta?.pagination?.page}
                             </div>
@@ -62,7 +62,7 @@ const Category = ({category, meta, articles,ads}) =>
                                 {meta?.pagination?.pageCount}
                             </div>
                     </div>
-                        {meta?.pagination?.page >= meta?.pagination?.pageCount || (<div className="inline-block ml-3 cursor-pointer  underline italic uppercase font-semibold"><Link href={`/category/${category}/?page=${(meta?.pagination?.page || 1) + 1}`}>older</Link></div>)}
+                        {meta?.pagination?.page >= meta?.pagination?.pageCount || (<div className="inline-block ml-3 cursor-pointer  underline uppercase font-semibold"><Link href={`/category/${category}/?page=${(meta?.pagination?.page || 1) + 1}`}>older</Link></div>)}
                     </div>
                 </Fragment>
             ):(
