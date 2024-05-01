@@ -142,8 +142,8 @@ const Home = ({articles,ads})=>{
         <Layout>
             <section className="block md:grid md:grid-cols-[2fr_1fr] overflow-y-hidden">
                 <div className="relative border-[#000]/[.1] border-r-[1px]">
-                    <div className="w-full bg-[#000]/[.1] overflow-y-hidden aspect-[4/5] xs:max-h-[480px] sm:max-h-max sm:aspect-[4/3] md:aspect-[16/9]">
-                        <img    className="object-cover h-full w-auto  md:w-full md:h-auto" 
+                    <div className="w-full bg-[#000]/[.1] overflow-hidden h-fit  md:aspect-[16/9]">
+                        <img    className="object-cover w-full h-auto" 
                                 src={   articles?.featureArticles[0]?.attributes?.media?.data?.attributes?.url ||
                                         articles?.featureArticles[0]?.attributes?.media?.data?.attributes?.formats?.large?.url ||
                                         articles?.featureArticles[0]?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
@@ -171,13 +171,13 @@ const Home = ({articles,ads})=>{
                         <div className="absolute h-[200%] w-[100%] bg-black"></div>
                         
                     </div>
-                    <div className="hidden relative bottom-[40px] p-[40px] lg:inline-block align-top w-[50%]">
-                        <div className="pt-[40px]">
+                    <div className="hidden relative p-[40px]   lg:inline-block align-top w-[50%]">
+                        <div className="w-full">
                             {ads.square?.length ? (
                                 <Fragment>
                                     <p className="text-[0.634rem] w-fit mx-auto mb-2 text-[#CACACA] uppercase">Advertisement</p>
 
-                                    <InHouseAds ad={ads.square[0]}/>
+                                    {/*<InHouseAds ad={ads.square[0]}/>*/}
                                 </Fragment>
                             ):""}
                             {/*<p className="line-clamp-3">{articles?.featureArticles[0]?.attributes?.description}</p>*/}
