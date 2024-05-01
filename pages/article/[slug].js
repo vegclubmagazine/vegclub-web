@@ -80,12 +80,12 @@ const Article = ({article, articles}) =>
                 }
 
                 >
-            <div className="w-[90%] mx-auto pt-[2rem] border-[#000]">
-                <main>
+            <div className="pt-[2rem] border-[#000]">
+                <main className="px-[40px]">
                     <div className="text-start  lg:w-[80%] lg:mx-auto pb-2 border-black/[.1] border-b-[1px]">
                         <h2 className="font-bold md:text-[1.2rem] uppercase cursor-pointer duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></h2>
-                        <h1 className="mt-5 text-[1.728rem] font-bold md:font-bold md:text-[2.074rem] lg:text-[2.448rem]">{article?.attributes?.title}</h1>
-                        <p className="mt-5 font-[400] md:text-[1.2rem]">{article?.attributes?.description} </p>                           
+                        <h1 className="mt-5  font-bold  text-[2.448rem] lg:text-[2.986rem]">{article?.attributes?.title}</h1>
+                        <p className="mt-5 font-[400] leading-[2] md:text-[1.2rem]">btoom btoom you were at the doorstep waving your white falg through my front window </p>                           
                         <div className="mt-5 w-fit">
                             <div className="rounded inline-block align-middle overflow-hidden w-[48px] h-[48px] bg-[#cacaca] mr-3">
                                 <img className="w-full h-auto object-cover" src={findAuthorByID(article?.attributes?.author?.data?.id)?.attributes?.avatar?.data?.attributes?.url}/>
@@ -134,7 +134,7 @@ const Article = ({article, articles}) =>
                             
 
                         </div>
-                        <div className="mt-1 text-[0.694rem] uppercase tracking-[0.03rem] text-[#cacaca]  mx-auto">{article?.attributes?.media?.data?.attributes?.alternativeText}</div>
+                        <div className="mt-1 text-[0.694rem] uppercase tracking-[0.03rem] pl-[40px] mt-3 mx-auto">{article?.attributes?.media?.data?.attributes?.alternativeText}</div>
                         {/*<div className="w-full mx-auto md:w-[70%] lg:w-[83.33%] pb-3 border-[#cacaca] border-b-[1px]">
                             <div className={`${shareBtnActive ? "share-btn--expanded": "share-btn--retract"} mt-5`}>
                                 <button className={`w-fit border-box ${shareBtnActive ? "bg-[#01e2c2] pl-3" : "border-[#cacaca] border-[1px] px-3"}  py-2`} onClick={()=> setShareBtnActive( shareBtnActive ? 0: 1)}>
@@ -169,52 +169,65 @@ const Article = ({article, articles}) =>
                             {parse(article?.attributes?.content)}
                         </div>
                     </section>
-                    <section className="mt-[3rem] border-box py-5 bg-[#01e2c2] w-[100vw] ml-[-5.5%]">
-                        <div className="w-[90%]  mx-auto mt-5">
-                            <h2 className="uppercase text-[1.2rem] md:text-[1.44rem]">More from {" "} <span className="font-semibold underline cursor-pointer"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></span></h2>
+                   
+                    
+                  
+                </main>
+                <section className="mt-[80px] text-white border-box py-5 bg-[#000]">
+                        <div className="mt-5">
+                            <h2 className="uppercase cursor-pointer font-semibold text-[2.074rem] md:text-[2.488rem] pl-[40px] md:text-[1.44rem]">
+                                <p>More</p>
+                             <p>from <Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></p>
+                             </h2>
                             <div className="mt-[2rem]">
-                                <ul className="list-none border-[#00b89d] md:grid md:grid-cols-3 md:auto-rows-fr md:border-b-[1px] ">
-                                    {articles?.map((art, index) => (
-                                        <li className={`mt-3 border-box border-[#00b89d] border-b-[1px] md:border-b-0 ${(index + 1) % 3 ? "md:border-r-[1px]":""}`} key={index}>
-                                            <div className="flex flex-row justify-center md:grid md:grid-cols-1">
-                                                <div className="hidden md:block w-full overflow-hidden bg-[#00b89d] aspect-[16/9]">
-                                                        <img    className="w-full object-cover"
-                                                                src = {
-                                                                        art?.attributes?.media?.data?.attributes?.url ||
-                                                                        art?.attributes?.media?.data?.attributes?.formats?.large?.url ||
-                                                                        art?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
-                                                                        art?.attributes?.media?.data?.attributes?.formats?.small?.url ||
-                                                                        art?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url
+                                <ul className="list-none border-[#333] md:grid md:grid-cols-3 md:auto-rows-fr  ">
+                                    {articles?.map((article, index) => (
+                                        <li className={`border-box text-white border-[#333]  border-b-[1px] md:border-b-0 ${(index + 1) % 3 ? "md:border-r-[1px]":""}`} key={index}>
+                                              <div className="flex  flex-row md:grid md:grid-cols-1  h-full">
+                                                    
+                                                    <div className="hidden md:block w-full overflow-hidden bg-[#00b89d] aspect-[16/9] max-h-[248px]">
+                                                        <img    className="w-full h-auto" 
+                                                                src={   article?.attributes?.media?.data?.attributes?.url ||
+                                                                        article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
+                                                                        article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
+                                                                        article?.attributes?.media?.data?.attributes?.formats?.small?.url ||
+                                                                        article?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url 
                                                                         
-                                                                    }
-                                                        ></img>
-
-                                                </div>
-                                                <div className="flex grow flex-col justify-center pr-[40px] md:block  md:p-[40px]">
-                                                    <h2 className="font-semibold text-[1.2rem]">{art?.attributes?.title}</h2>
-                                                    <p className="hidden mt-[1rem]">{art?.attributes?.description}</p>
-                                                    <div className="w-fit mt-8">
-                                                        <p className="inline-block text-[0.833rem] uppercase font-light">{art?.attributes?.author?.data?.attributes?.name}</p>
-                                                        <Moment className="inline-block font-semibold uppercase  ml-1 text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
-
-                                                    </div>
-                                                </div>
-                                                
-                                                <div className=" flex flex-col md:hidden  w-[150px] h-full bg-[#00b89d] overflow-hidden">
-                                                    <img    className="h-full w-auto object-cover"
-                                                            src = { art?.attributes?.media?.data?.attributes?.url ||
-                                                                    art?.attributes?.media?.data?.attributes?.formats?.large?.url ||
-                                                                    art?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
-                                                                    art?.attributes?.media?.data?.attributes?.formats?.small?.url ||
-                                                                    art?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url 
                                                                     
-                                                                }
-                                                    ></img>
-
+                                        
+                                        
+                                                                    }
+                                                        ></img>  
+                                                    </div>
+                                                    
+                                                    <div className="py-[40px] md:pb-[40px] max-w-[653px] flex flex-col grow pl-[40px] md:block">
+                                                                        
+                                                        <h1 className="article-title text-white font-semibold line-clamp-3 md:line-clamp-5 md:text-[1.44rem] lg:text-[1.728rem]"><span className="underline_span"><Link href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></span></h1>
+                                                        <h2 className="hidden text-white md:line-clamp-4">{article?.attributes?.description}</h2>
+                                                        <div className="mt-4 text-[0.833rem]">
+                                                            <p className="inline-block text-white uppercase font-light  mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
+                                                        
+                                                            <Moment className="inline-block text-white font-semibold uppercase  text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className="flex flex-col w-[150px] overflow-hidden md:hidden h-full">
+                                                            <img    className="h-full object-cover w-auto" 
+                                                                    src={   article?.attributes?.media?.data?.attributes?.url ||
+                                                                            article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
+                                                                            article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
+                                                                            article?.attributes?.media?.data?.attributes?.formats?.small?.url ||
+                                                                            article?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url 
+                                                                            
+                                                                        
+                                        
+                                        
+                                                                        }
+                                                            ></img>  
+                                                        </div>
+                                                    </div>
+                                        
                                                 </div>
-                                                
-
-                                            </div>
                                         </li>
                                     ))}
                                     
@@ -223,9 +236,6 @@ const Article = ({article, articles}) =>
                             </div>
                         </div>
                     </section>
-                    
-                  
-                </main>
             </div>
         </Layout>
     )

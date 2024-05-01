@@ -376,7 +376,7 @@ const Home = ({articles,ads})=>{
                                         }
                             ></img>                          
                         </div>
-                        <div className=" mx-auto md:px-[40px] h-fit  pt-[20px] pb-[80px]">
+                        <div className=" mx-auto md:mx-0 md:px-[40px] h-fit  pt-[20px] pb-[80px]">
                             <h3 className = "text-white text-[0.833rem] inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.32s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.6]"><Link href={`category/${articles?.nonFeatureArticles[0]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.nonFeatureArticles[0]?.attributes?.category?.data?.attributes?.name}</Link>
                                 
                             </h3>
