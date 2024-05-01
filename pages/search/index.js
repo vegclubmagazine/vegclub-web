@@ -282,7 +282,7 @@ const Search = ()=>
                                                                     </div>
                                                                 </div>
                                                                 <div>
-                                                                    <div className="md:hidden w-[150px] h-full overflow-hidden md:h-auto md:w-[80%] md:mx-auto  md:aspect-[16/9] mx-auto bg-[#CACACA]">
+                                                                    <div className="flex flex-col md:hidden w-[150px] h-full overflow-hidden md:h-auto md:w-[80%] md:mx-auto  md:aspect-[16/9] mx-auto bg-[#CACACA]">
                                                                     <img    className="h-full w-auto object-cover " 
                                                                             src={   article?.attributes?.media?.data?.attributes?.url ||
                                                                                 article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
@@ -373,7 +373,7 @@ const Search = ()=>
                                                 </div>*/}
                                                             </div>
                                                             <div>
-                                                                <div className="md:hidden w-[150px] object-cover md:h-auto md:w-[80%] md:mx-auto  aspect-square md:aspect-[16/9] mx-auto bg-[#CACACA]">
+                                                                <div className="flex flex-col  md:hidden w-[150px] h-full object-cover md:h-auto md:w-[80%] md:mx-auto md:aspect-[16/9] mx-auto bg-[#CACACA]">
                                                                     <img    className="h-full w-auto" 
                                                                             src={   author?.attributes?.avatar?.data?.attributes?.url ||
                                                                                 author?.attributes?.avatar?.data?.attributes?.formats?.large?.url ||

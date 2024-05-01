@@ -200,7 +200,7 @@ const Article = ({article, articles}) =>
                                                     </div>
                                                 </div>
                                                 
-                                                <div className="md:hidden w-[150px] aspect-square bg-[#00b89d]">
+                                                <div className=" flex flex-col md:hidden  w-[150px] h-full bg-[#00b89d] overflow-hidden">
                                                     <img    className="h-full w-auto object-cover"
                                                             src = { art?.attributes?.media?.data?.attributes?.url ||
                                                                     art?.attributes?.media?.data?.attributes?.formats?.large?.url ||

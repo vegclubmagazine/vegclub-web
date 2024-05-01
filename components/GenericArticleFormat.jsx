@@ -33,7 +33,7 @@ const GenericArticleFormat = ({article}) =>
                 </div>
             </div>
             <div>
-                <div className="w-[150px] overflow-hidden md:hidden h-full md:h-auto md:w-[80%] md:mx-auto  aspect-square md:aspect-[16/9] mx-auto bg-[#CACACA]">
+                <div className="flex flex-col w-[150px] overflow-hidden md:hidden h-full md:h-auto md:w-[80%] md:mx-auto  aspect-square md:aspect-[16/9] mx-auto bg-[#CACACA]">
                     <img    className="h-full object-cover w-auto" 
                             src={   article?.attributes?.media?.data?.attributes?.url ||
                                     article?.attributes?.media?.data?.attributes?.formats?.large?.url ||

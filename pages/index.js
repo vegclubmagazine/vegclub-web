@@ -173,14 +173,14 @@ const Home = ({articles,ads})=>{
                     </div>
                     <div className="hidden relative p-[40px]   lg:inline-block align-top w-[50%]">
                         <div className="w-full">
-                            {ads.square?.length ? (
+                            {/*{ads.square?.length ? (
                                 <Fragment>
                                     <p className="text-[0.634rem] w-fit mx-auto mb-2 text-[#CACACA] uppercase">Advertisement</p>
 
-                                    {/*<InHouseAds ad={ads.square[0]}/>*/}
+                                    {/*<InHouseAds ad={ads.square[0]}/>
                                 </Fragment>
-                            ):""}
-                            {/*<p className="line-clamp-3">{articles?.featureArticles[0]?.attributes?.description}</p>*/}
+                            ):""}*/}
+                            <p className="text-[1.2rem] line-clamp-3">{articles?.featureArticles[0]?.attributes?.description}</p>
                         </div>
                     </div>
                 </div>
@@ -248,7 +248,7 @@ const Home = ({articles,ads})=>{
                                             </div>
                                         </div>
                                         <div>
-                                            <div className="w-[150px] h-full overflow-hidden md:h-auto md:w-full  md:aspect-[16/9] mx-auto bg-[#CACACA]">
+                                            <div className="flex flex-col w-[150px] h-full overflow-hidden md:h-auto md:w-full  md:aspect-[16/9] mx-auto bg-[#CACACA]">
                                                 <img    className="h-full object-cover w-auto" 
                                                         src={   article?.attributes?.media?.data?.attributes?.url ||
                                                                 article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
@@ -290,8 +290,8 @@ const Home = ({articles,ads})=>{
                                                 <Moment className="inline-block font-semibold uppercase " format="Do MMM YYYY">{article?.attributes?.date}</Moment>
                                             </div>
                                         </div>
-                                        <div>
-                                            <div className="w-[150px] h-full overflow-hidden object-cover md:h-auto md:w-full  md:aspect-[16/9] mx-auto bg-[#CACACA]">
+                                        <div className="">
+                                            <div className="flex flex-col w-[150px] h-full overflow-hidden object-cover md:h-auto md:w-full  md:aspect-[16/9] mx-auto bg-[#CACACA]">
                                                 <img    className="h-full w-auto md:w-full md:h-auto" 
                                                         src={   article?.attributes?.media?.data?.attributes?.url ||
                                                                 article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
@@ -361,7 +361,7 @@ const Home = ({articles,ads})=>{
                     </div>
                 </div>
                 <div className="w-full  border-b-[1px] pb-[2rem] md:pb-0">
-                    <div className="bg-[#000] w-full md:grid md:grid-cols-[2fr_1fr] items-center">
+                    <div className="bg-[#000] px-[40px]  w-full md:px-0 md:grid md:grid-cols-[2fr_1fr] items-center">
                         <div className="hidden  overflow-y-hidden md:block w-full aspect-[16/9]  bg-[#cacaca]">
                             <img    className="w-full h-auto" 
                                     src={   articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.url ||
@@ -376,7 +376,7 @@ const Home = ({articles,ads})=>{
                                         }
                             ></img>                          
                         </div>
-                        <div className="w-[85%] md:w-full mx-auto md:px-[40px] h-fit  pt-[20px] pb-[80px]">
+                        <div className=" mx-auto md:px-[40px] h-fit  pt-[20px] pb-[80px]">
                             <h3 className = "text-white text-[0.833rem] inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.32s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.6]"><Link href={`category/${articles?.nonFeatureArticles[0]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.nonFeatureArticles[0]?.attributes?.category?.data?.attributes?.name}</Link>
                                 
                             </h3>
@@ -394,20 +394,22 @@ const Home = ({articles,ads})=>{
                         </div>
                         
                     </div>
-                    <div className="block md:hidden aspect-[16/9] overflow-y-hidden w-[85%]  mx-auto  mt-[-50px] bg-[#CACACA]">
-                            <img    className="w-full h-auto" 
-                                    src={   articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.url ||
-                                            articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.large?.url ||
-                                            articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
-                                            articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.small?.url ||
-                                            articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url
+                    <div className="block md:hidden px-[40px] mt-[-50px]">
+                        <div className="aspect-[16/9] overflow-y-hidden bg-[#CACACA]">
+                                <img    className="w-full h-auto" 
+                                        src={   articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.url ||
+                                                articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.large?.url ||
+                                                articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
+                                                articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.small?.url ||
+                                                articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url
+                                                
                                             
-                                        
 
 
-                                        }
-                            ></img>  
+                                            }
+                                ></img>  
 
+                        </div>
                     </div>
                 </div>
                 <div className="border-[#000]/[.1] border-b-[1px] lg:grid lg:grid-cols-[2fr_1fr]">
