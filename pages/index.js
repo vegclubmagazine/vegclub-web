@@ -22,7 +22,7 @@ const Home = ({articles,ads})=>{
     const [page,setPage] = useState(1);
 
     const countBeforeAd = 1;
-
+    
 
     const checkAds = (idx)=>
     {
@@ -331,7 +331,7 @@ const Home = ({articles,ads})=>{
             </section>
             <section className="h-fit w-full  border-box border-[#000]/[.1] border-b-[1px]   text-center">
                 {/*<p className="text-[0.634rem] text-[#CACACA] uppercase">Advertisement</p>*/}
-                <div className="mx-auto w-fit">
+                <div className="w-full">
                     <div className="hidden lg:block">
                         {ads.large.horizontal?.length ? (
                             <InHouseAds ad={ads.large.horizontal[0]} size={"large"} orientation={"horizontal"}/>
@@ -459,7 +459,7 @@ const Home = ({articles,ads})=>{
 export async function getServerSideProps({req,res}){
     res.setHeader(
         "Cache-Control",
-        "public", "s-maxage=604800", "stale-while-revalidate=86400"
+        "public", "s-maxage=5", "stale-while-revalidate=5"
     )
     // sort fetched articles into feature and non-feature articles
     
