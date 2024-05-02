@@ -85,7 +85,7 @@ const Article = ({article, articles}) =>
                     <div className="text-start  lg:w-[80%] lg:mx-auto pb-2 border-black/[.1] border-b-[1px]">
                         <h2 className="font-bold md:text-[1.2rem] uppercase cursor-pointer duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></h2>
                         <h1 className="mt-5  font-bold  text-[2.448rem] lg:text-[2.986rem]">{article?.attributes?.title}</h1>
-                        <p className="mt-5 font-[400] leading-[2] md:text-[1.2rem]">btoom btoom you were at the doorstep waving your white falg through my front window </p>                           
+                        <p className="mt-5 font-[400] leading-[2] md:text-[1.2rem]">{article?.attributes?.description}</p>                           
                         <div className="mt-5 w-fit">
                             <div className="rounded inline-block align-middle overflow-hidden w-[48px] h-[48px] bg-[#cacaca] mr-3">
                                 <img className="w-full h-auto object-cover" src={findAuthorByID(article?.attributes?.author?.data?.id)?.attributes?.avatar?.data?.attributes?.url}/>
