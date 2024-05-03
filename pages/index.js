@@ -140,7 +140,31 @@ const Home = ({articles,ads})=>{
     
     return(
         <Layout>
-            <section className="block md:grid md:grid-cols-[2fr_1fr] overflow-y-hidden">
+            <section className="h-fit w-full  border-box border-[#000]/[.1]">
+                <div className="w-full">
+                    <div className="hidden lg:block border-b-[1px]   ">
+                        {ads.large.horizontal?.length ? (
+                            <InHouseAds ad={ads.large.horizontal[0]} size={"large"} orientation={"horizontal"}/>
+                        ):""}
+
+                    </div>
+                    <div className="hidden md:block lg:hidden border-b-[1px]   ">
+                        {ads.medium.horizontal?.length ? (
+                            <InHouseAds ad={ads.medium.horizontal[0]} size={"medium"} orientation={"horizontal"}/>
+
+
+                        ):""}
+                    </div>
+                    <div className="block md:hidden border-b-[1px]   ">
+                        {ads.small.horizontal?.length ?(
+                            <InHouseAds ad={ads.small.horizontal[0]} size={"small"} orientation={"horizontal"}/>
+
+                        ):""}
+                    </div>
+                </div>
+            </section>
+            
+            <section className="mt-3 block md:grid md:grid-cols-[2fr_1fr] overflow-y-hidden">
                 <div className="relative border-[#000]/[.1] border-r-[1px]">
                     <div className="w-full bg-[#000]/[.1] overflow-hidden h-fit  md:aspect-[16/9]">
                         <img    className="object-cover w-full h-auto" 
@@ -333,21 +357,21 @@ const Home = ({articles,ads})=>{
                 {/*<p className="text-[0.634rem] text-[#CACACA] uppercase">Advertisement</p>*/}
                 <div className="w-full">
                     <div className="hidden lg:block">
-                        {ads.large.horizontal?.length ? (
-                            <InHouseAds ad={ads.large.horizontal[0]} size={"large"} orientation={"horizontal"}/>
+                        {ads.large.horizontal?.length >= 2 ?  (
+                            <InHouseAds ad={ads.large.horizontal[1]} size={"large"} orientation={"horizontal"}/>
                         ):""}
 
                     </div>
                     <div className="hidden md:block lg:hidden">
-                        {ads.medium.horizontal?.length ? (
-                            <InHouseAds ad={ads.medium.horizontal[0]} size={"medium"} orientation={"horizontal"}/>
+                        {ads.medium.horizontal?.length >= 2 ? (
+                            <InHouseAds ad={ads.medium.horizontal[1]} size={"medium"} orientation={"horizontal"}/>
 
 
                         ):""}
                     </div>
                     <div className="block md:hidden">
-                        {ads.small.horizontal?.length ?(
-                            <InHouseAds ad={ads.small.horizontal[0]} size={"small"} orientation={"horizontal"}/>
+                        {ads.small.horizontal?.length >= 2 ?(
+                            <InHouseAds ad={ads.small.horizontal[1]} size={"small"} orientation={"horizontal"}/>
 
                         ):""}
                     </div>
