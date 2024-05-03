@@ -269,19 +269,19 @@ const height = (w, outline,projection) =>
     </h4>*/}
                 </div>
                 <div className="pt-[40px] pb-[20px] px-[40px]">
-                    <div className="grid grid-cols-2">
+                    <div className="grid grid-cols-2 gap-3 sm:gap-0">
                         <div className="border-r-[1px]">
-                            <h3 className="text-[1.44rem] md:text-[1.728rem] uppercase w-fit mx-auto">Price</h3>
+                            <h3 className="text-[1.2rem] sm:text-[1.44rem] md:text-[1.728rem] uppercase w-fit mx-auto">Price</h3>
                             <p className="mt-5 text-[1rem] text-center">A single payment of</p>
-                            <div className="w-fit mx-auto font-bold text-[1.44rem] text-center">£35</div>
-                            <div className="text-center font-normal text-[1rem] text-black/[.4]">*Including postage</div>
+                            <div className="w-fit mt-3 mx-auto font-bold text-[1.2rem] sm:text-[1.44rem] text-center">£35</div>
+                            <div className="text-center mt-3 font-normal text-[.833rem] sm:text-[1rem] text-black/[.4]">*Including postage</div>
                         </div>
                         <div className="">
-                            <h3 className="text-[1.44rem] md:text-[1.728rem] uppercase w-fit mx-auto">Reward</h3>
+                            <h3 className="text-[1.2rem] sm:text-[1.44rem] md:text-[1.728rem] uppercase w-fit mx-auto">Reward</h3>
                             <p className="mt-5 text-[1rem] text-center">A lifetime discount from</p>
                             <div className="w-fit mx-auto font-bold text-[1.738rem]">
-                                <p className="w-fit mx-auto text-[1.44rem]">5% - 20%</p>
-                                <p className="text-center font-normal text-[1rem] text-black/[.4]">At selected eateries across europe</p>
+                                <p className="w-fit mt-3 mx-auto text-[1.2rem] sm:text-[1.44rem]">5% - 20%</p>
+                                <p className="text-center mt-3 font-normal text-[.833rem] sm:text-[1rem] text-black/[.4]">At selected eateries across europe</p>
                             </div>
                         </div>
                     </div>
