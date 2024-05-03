@@ -357,21 +357,21 @@ const Home = ({articles,ads})=>{
                 {/*<p className="text-[0.634rem] text-[#CACACA] uppercase">Advertisement</p>*/}
                 <div className="w-full">
                     <div className="hidden lg:block">
-                        {ads.large.horizontal?.length >= 2 ?  (
-                            <InHouseAds ad={ads.large.horizontal[1]} size={"large"} orientation={"horizontal"}/>
+                        {ads.large.horizontal?.length ?  (
+                            <InHouseAds ad={ads.large.horizontal[0]} size={"large"} orientation={"horizontal"}/>
                         ):""}
 
                     </div>
                     <div className="hidden md:block lg:hidden">
-                        {ads.medium.horizontal?.length >= 2 ? (
-                            <InHouseAds ad={ads.medium.horizontal[1]} size={"medium"} orientation={"horizontal"}/>
+                        {ads.medium.horizontal?.length  ? (
+                            <InHouseAds ad={ads.medium.horizontal[0]} size={"medium"} orientation={"horizontal"}/>
 
 
                         ):""}
                     </div>
                     <div className="block md:hidden">
-                        {ads.small.horizontal?.length >= 2 ?(
-                            <InHouseAds ad={ads.small.horizontal[1]} size={"small"} orientation={"horizontal"}/>
+                        {ads.small.horizontal?.length  ?(
+                            <InHouseAds ad={ads.small.horizontal[0]} size={"small"} orientation={"horizontal"}/>
 
                         ):""}
                     </div>
