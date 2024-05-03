@@ -6,7 +6,7 @@ const Loader = ()=>
     const text_arr = loading_txt.split("");
     return (
         <div className="relative">
-            <div className="w-fit mx-auto z-[1] w-[8rem] font-extralight uppercase   text-[1.728rem] h-[8rem] rounded-[50%] relative text-ring">
+            <div className="w-fit mx-auto z-[1] w-[8rem] font-extralight uppercase text-[1.44rem]   md:text-[1.728rem] h-[8rem] rounded-[50%] relative text-ring">
                 
                 {text_arr.map((letter, index) =>(
                     <span key={index}  style={{"--index": index}}>{letter}</span>
