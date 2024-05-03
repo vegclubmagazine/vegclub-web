@@ -268,7 +268,7 @@ const height = (w, outline,projection) =>
                         Expand your palette with vegan recipes across europe
     </h4>*/}
                 </div>
-                <div className="pt-[40px] pb-[20px] px-[40px]">
+                <div className="pt-[40px] pb-[20px] sm:px-[40px]">
                     <div className="grid grid-cols-2 gap-3 sm:gap-0">
                         <div className="border-r-[1px]">
                             <h3 className="text-[1.2rem] sm:text-[1.44rem] md:text-[1.728rem] uppercase w-fit mx-auto">Price</h3>
@@ -285,7 +285,7 @@ const height = (w, outline,projection) =>
                             </div>
                         </div>
                     </div>
-                    <div className="mt-8 cursor-pointer w-fit mx-auto bg-black p-3 text-white uppercase font-semibold"><Link href="/checkout">Purchase now</Link></div>
+                    <div className="mt-8 cursor-pointer w-fit mx-auto bg-black p-3 text-white uppercase font-semibold duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] transition-all hover:text-white/[.6]"><Link href="/checkout">Purchase now</Link></div>
                 </div>
                 <div className="border-t-[1px] border-b-[1px] py-5 pl-[40px]" ref={scrollYThresholdRef}>
                     <h2 className="text-[1.728rem] lg:text-[2.074rem] uppercase font-semibold">How does it work ?</h2>
