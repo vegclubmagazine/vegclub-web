@@ -12,7 +12,7 @@ import GenericArticleFormat from "../../components/GenericArticleFormat.jsx";
 const qs=require("qs");
 
 
-const Category = ({category, meta, articles,ads}) =>
+const Category = ({category, meta, articles}) =>
 {
     const articles_before_ad = 2;
    const checkAds = (idx)=>
@@ -37,9 +37,7 @@ const Category = ({category, meta, articles,ads}) =>
                                 {articles?.map((article, index) => (
 
                                     <Fragment>
-                                        {checkAds(index) && (
-                                            <InHouseAds ad={ads[getAdsIdx(index)]} key={ads[getAdsIdx(index)]?.id}/>
-                                        )}
+                                       
                                         <li className={`${index < (articles.length - 1) ? "border-b-[1px]": ""}`} key={index}>
                                             <GenericArticleFormat article={article}/>
                                         </li>
@@ -193,11 +191,9 @@ export async function getServerSideProps({req,res,query, params})
         )
 
     });
-    const adsResponse = await fetch(`${API}/advertisments?${filters}`);
 
 
     const {data} = await response.json();
-    const adsData = await adsResponse.json();
     
     var visible_articles;
     for(let i = 0; i < data?.articles?.data.length; i++)
@@ -218,7 +214,7 @@ export async function getServerSideProps({req,res,query, params})
             meta:data?.articles?.meta || null,
             articles: visible_articles || null,
             category: data?.articles?.data[0]?.attributes?.category?.data?.attributes?.name || cat ,
-            ads: adsData?.data || null,
+      
         }
     }
 
