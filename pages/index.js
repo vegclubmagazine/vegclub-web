@@ -164,7 +164,7 @@ const Home = ({articles,ads})=>{
                 </div>
             </section>
             
-            <section className="mt-3 block md:grid md:grid-cols-[2fr_1fr] overflow-y-hidden">
+            <section className="block md:grid md:grid-cols-[2fr_1fr] overflow-y-hidden">
                 <div className="relative border-[#000]/[.1] border-r-[1px]">
                     <div className="w-full bg-[#000]/[.1] overflow-hidden h-fit  md:aspect-[16/9]">
                         <img    className="object-cover w-full h-auto" 
@@ -448,11 +448,17 @@ const Home = ({articles,ads})=>{
                             </Fragment>
                         ))}
                     </ul>
-                    <div className="hidden lg:block w-fit pt-[40px] mx-auto">
+                    <div className="hidden lg:block w-full">
+                        {ads.large.vertical?.length ? (
+                            <div className="w-full hidden lg:block">
+                            
+                                <InHouseAds ad={ads.large.vertical[0]} size="large" orientation="vertical"/>
+                            </div>
+
+                        ): ""}
                         {ads.medium.vertical?.length ?(
                             <Fragment>
-                                <p className="text-[0.634rem] w-fit mx-auto text-[#CACACA] uppercase">Advertisement</p>
-                                <div className="mt-2 w-fit">
+                                <div className="w-full hidden md:block lg:hidden">
                             
                                     <InHouseAds ad={ads.medium.vertical[0]} size="medium" orientation="vertical"/>
                                 </div>
@@ -483,7 +489,7 @@ const Home = ({articles,ads})=>{
 export async function getServerSideProps({req,res}){
     res.setHeader(
         "Cache-Control",
-        "public", "s-maxage=604800", "stale-while-revalidate=86400"
+        "public", "s-maxage=5", "stale-while-revalidate=5"
     )
     // sort fetched articles into feature and non-feature articles
     

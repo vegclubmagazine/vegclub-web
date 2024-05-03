@@ -202,7 +202,7 @@ const Layout = (
                 
             
 
-            <main className={`mt-[6rem] md:mt-[9.8rem] lg:mt-[13.5rem]`}>
+            <main className={`mt-[6rem] md:mt-[9.8rem] lg:mt-[13.8rem]`}>
                 {children}
             </main>
             <Footer></Footer>
