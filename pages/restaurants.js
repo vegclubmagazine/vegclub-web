@@ -193,7 +193,7 @@ const restaurants = ({locations, first_location}) =>
 export async function getServerSideProps ({req,res})
 {
     res.setHeader("Cache-Control",
-    "public", "s-maxage=604800", "stale-while-revalidate=86400");
+    "public", "s-maxage=604800", "stale-while-revalidate=84600");
 
 
     var sorted_locations = {}
