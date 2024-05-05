@@ -319,7 +319,7 @@ const height = (w, outline,projection) =>
                                 <p className="text-[1rem] sm:text-[1.2rem]">Keep an eye out for future recommendations and special offers through our website and social media. We'll always be seeking to provide you with the finest of the vegan scene in Europe.
                                     <br></br>
                                     <br></br>
-                                    Check out the restaurants we have to offer{" "} <span className="font-semibold underline"><Link href="/restaurants">here</Link></span>{" "} but dont forget to read our <span className="underline font-semibold"><Link href="/Loyalty.pdf">Terms & Conditions</Link></span>
+                                    Check out the restaurants we have to offer{" "} <span className="font-semibold underline"><Link href="/restaurants">here</Link></span>{" "} but dont forget to read our <span className="underline font-semibold"><Link href="/Loyalty_official.pdf">Terms & Conditions</Link></span>
                                     <br></br>
                                     <br></br>
                                     For more information, please send an email to {" "}  <span className="font-semibold underline"><Link href="mailto:loaylty@vegclubmagazine.com">loyalty@vegclubmagazine.com.</Link></span>
