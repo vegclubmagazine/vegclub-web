@@ -141,6 +141,7 @@ export async function getServerSideProps({req,res}){
     const filters = qs.stringify(
         {
             populate: "*",
+            sort:["precedence:asc"]
        
         },
         { encodeValuesOnly: true }
