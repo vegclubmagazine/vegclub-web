@@ -26,7 +26,8 @@ const GlobalProvider = ({children}) =>
         })
         .then(({data})=>
         {
-            setCategories(data)
+            const reordered_cats = reorder(data);
+            setCategories(reordered_cats)
 
 
         })
@@ -51,6 +52,56 @@ const GlobalProvider = ({children}) =>
         })
 
     }, [])
+
+    const reorder = (cat_arr) => {
+    
+
+    
+        const category_index = 
+        {
+          
+          "Food & Drink": 1,
+          "Interviews": 2,
+          "Lifestyle": 3,
+          "Fashion & Beauty": 4,
+          "Travel": 5,
+          "Health & Wellbeing": 6,
+          "Shopping": 7,
+          "Environment": 8,
+          "Entertainment":9,
+          "Sports":10,
+          
+          
+          
+        }
+        var sorted_arr = [];
+        Object.keys(category_index).forEach(function(key){
+    
+          var found = false;
+          cat_arr = cat_arr.filter(function(cat){
+    
+            if(!found && cat.attributes.name == key){
+              sorted_arr.push(cat)
+              found = true;
+              return false;
+            }
+            else{
+              return true;
+            }
+    
+          })
+    
+        })
+    
+        return sorted_arr;
+    
+    
+       
+       
+        
+    
+        
+    };
 
 
     const isMemberAuthor = (member)=>
