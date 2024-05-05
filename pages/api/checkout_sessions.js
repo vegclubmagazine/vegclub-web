@@ -10,7 +10,9 @@ export default async function handler(req,res)
                 billing_address_collection:"auto",
                 shipping_address_collection:{
 
-                 allowed_countries:["GB", "US"],
+                 allowed_countries:["GB", "US", "FR","DK","BG", "CZ","CY","AT","EE",
+                 "FI","FR","DE","GR","HU","IE","IT","LV","LT","LU","MT","NL",
+                "PL","PT","RO","SK","SI","ES","SE"],
                 },
 
                 line_items:[
