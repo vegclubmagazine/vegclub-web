@@ -71,7 +71,7 @@ const restaurants = ({locations, first_location}) =>
                             <div className="mt-[20px] flex flex-col flex-col-reverse md:mt-0 md:grid md:grid-cols-[2fr_3fr] text-[.833rem]">
                                 <div className="mt-5  md:px-[40px]">
                                     <h1 className="mt-5 px-[20px] md:px-0 font-semibold uppercase text-[1.2rem] md:text-[1.728rem]">{selection?.attributes?.name},{" "}<span className="font-normal md:text-[1.44rem]">{selection?.attributes?.country}</span></h1>
-                                    <div className="mt-5 pb-2 md:pb-0 md:w-fit px-[20px] md:px-0 uppercase border-black/[.1] border-b-[1px]">
+                                    <div className="mt-5 pb-2 md:pb-0 md:w-fit px-[20px] md:px-0 uppercase border-black/[.1] border-b-[1px] md:border-b-0">
                                         <div>{selection?.attributes?.address_line_one}</div>
                                         <div className="mt-2">{selection?.attributes?.address_line_two}</div>
                                         
@@ -82,7 +82,7 @@ const restaurants = ({locations, first_location}) =>
                                         <p className="md:inline-block mr-[40px]">discount</p>
                                         <p className="md:inline-block font-bold">{selection?.attributes?.percentDiscount}%</p>
                                     </div>
-                                    <div className="mt-5 md:w-fit uppercase px-[20px] md:px-0 pb-2 md:pb-0 border-b-[1px]">
+                                    <div className="mt-5 md:w-fit uppercase px-[20px] md:px-0 pb-2 md:pb-0 border-b-[1px] md:border-b-0">
                                         <p className="">Description</p>
                                         <p className="mt-2 leading-[2] ">{selection?.attributes?.description}</p>
 
@@ -125,7 +125,7 @@ const restaurants = ({locations, first_location}) =>
                             <div className="mt-[20px] flex flex-col flex-col-reverse md:mt-0 md:grid md:grid-cols-[2fr_3fr] text-[.833rem]">
                                 <div className="mt-5  md:px-[40px]">
                                     <h1 className="mt-5 px-[20px] md:px-0 font-semibold uppercase text-[1.2rem] md:text-[1.728rem]">{first_location?.attributes?.name},{" "}<span className="font-normal md:text-[1.44rem]">{first_location?.attributes?.country}</span></h1>
-                                    <div className="mt-5 pb-2 md:pb-0 md:w-fit px-[20px] md:px-0 uppercase border-black/[.1] border-b-[1px]">
+                                    <div className="mt-5 pb-2 md:pb-0 md:w-fit px-[20px] md:px-0 uppercase border-black/[.1] border-b-[1px] md:border-b-0">
                                         <div>{first_location?.attributes?.address_line_one}</div>
                                         <div className="mt-2">{first_location?.attributes?.address_line_two}</div>
                                         
@@ -136,7 +136,7 @@ const restaurants = ({locations, first_location}) =>
                                         <p className="md:inline-block mr-[40px]">discount</p>
                                         <p className="md:inline-block font-bold">{first_location?.attributes?.percentDiscount}%</p>
                                     </div>
-                                    <div className="mt-5 md:w-fit uppercase px-[20px] md:px-0 pb-2 md:pb-0 border-b-[1px]">
+                                    <div className="mt-5 md:w-fit uppercase px-[20px] md:px-0 pb-2 md:pb-0 border-b-[1px] md:border-b-0">
                                         <p className="">Description</p>
                                         <p className="mt-2 leading-[2] ">{first_location?.attributes?.description}</p>
 
