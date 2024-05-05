@@ -48,7 +48,7 @@ const Checkout = ()=>
                     <form className="py-[40px] bg-white " action="/api/checkout_sessions" method="POST">
                         <div className="flex flex-row w-[80%] mx-auto max-w-[500px]">
                             <div className="w-[150px] h-fit bg-[#cacaca] overflow-hidden">
-                                    <img className="w-full h-auto object-cover" src="/checkout_asset_discount-card.jpeg"/>
+                                    <img className="w-full h-auto object-cover" src="/checkout_asset_discount-card-white.jpeg"/>
                             </div>
                             <div className="flex grow pl-[20px] flex-col">
                                 <h2 className="text-[1.44rem] font-semibold">Loyalty Card</h2>
