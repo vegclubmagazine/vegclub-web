@@ -23,7 +23,7 @@ const Home = ({articles,ads})=>{
 
     const countBeforeAd = 1;
     
-
+    
     const checkAds = (idx)=>
     {
 
