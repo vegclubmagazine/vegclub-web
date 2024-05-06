@@ -12,6 +12,7 @@ import Footer from "../components/Footer";
 import { slugify } from "../lib/utils";
 import { BASE_URL } from "../config/api";
 import { GlobalContext} from "../context/GlobalContext";
+import Script from "next/script";
 
 const qs=require('qs');
 
@@ -61,7 +62,13 @@ const Layout = (
         
 
     }
-    
+    useEffect(()=>{
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-968FBW9QX9');
+    },[])
     
     
     const controlNavBar = ()=>
@@ -78,6 +85,8 @@ const Layout = (
     }
   
     useEffect(()=>{
+
+
 
         window.addEventListener("scroll", controlNavBar);
 
@@ -114,6 +123,14 @@ const Layout = (
                 <meta content={canonicalUrl || "https://vegclubmagazine.com" } property="og:url"></meta>
                 <meta property="og:description" content={desc}></meta>
                 <meta property="og:type" content="website"></meta>
+                <Script async src="https://www.googletagmanager.com/gtag/js?id=G-968FBW9QX9"></Script>
+                {/*<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+
+                    gtag('config', 'G-968FBW9QX9');
+    </script>*/}
 
             </Head>
             
@@ -221,7 +238,7 @@ export default Layout;
 Layout.defaultProps = {
     title: "VegClub Magazine",
     page: "Home",
-    image: "vegClub_logo_org_2.png",
+    image: "vegClub_logo_original.png",
     keywords:
       "vegan magazine, vegan magazine UK, vegan articles, veganism UK, veganism in the UK, rise of veganism UK, best vegan magazine UK, UK vegan magazine, vegclub UK, veg-club uk, veg club uk",
     desc: "Your trusted UK vegan magazine",
