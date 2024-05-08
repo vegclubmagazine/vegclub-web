@@ -87,7 +87,7 @@ const restaurants = ({locations, first_location}) =>
                                         <p className="mt-2 leading-[2] ">{selection?.attributes?.description}</p>
 
                                     </div>
-                                    <div className="mt-5 font-semibold px-[20px] pb-2 md:px-0 border-b-[1px] md:pb-border-b-0">*{" "}{selection?.attributes?.notes || ""}</div>
+                                    <div className="mt-5 font-semibold px-[20px] pb-2 md:px-0 border-b-[1px] md:border-b-0">*{" "}{selection?.attributes?.notes || ""}</div>
 
                                 </div>
                                 <div>
@@ -143,7 +143,7 @@ const restaurants = ({locations, first_location}) =>
                                         <p className="mt-2 leading-[2] ">{first_location?.attributes?.description}</p>
 
                                     </div>
-                                    <div className="mt-5 font-semibold px-[20px] pb-2 md:px-0 border-b-[1px] md:pb-border-b-0">*{" "}{first_location?.attributes?.notes || ""}</div>
+                                    <div className="mt-5 font-semibold px-[20px] pb-2 md:px-0 border-b-[1px] md:border-b-0">*{" "}{first_location?.attributes?.notes || ""}</div>
                                 </div>
                                 <div className="">
                                     {first_location?.attributes?.image?.data?.length && (
