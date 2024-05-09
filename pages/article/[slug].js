@@ -117,7 +117,7 @@ const Article = ({article, articles}) =>
                                 </li>
                             </ul>
                         </div>
-                        <div className="mt-5 w-full max-h-[450px] object-cover overflow-y-hidden">
+                        <div className="relative mt-5 w-full max-h-[450px] object-cover overflow-y-hidden">
                             
                             <img    className="w-full" 
                                     src={   article?.attributes?.media?.data?.attributes?.url ||
@@ -131,10 +131,11 @@ const Article = ({article, articles}) =>
 
                                         }
                             ></img>
+                            <div className="absolute bg-[#a2a2a2]/[.6] text-white rounded-lg bottom-3 right-4 text-[.833rem] px-3 py-2">{article?.attributes?.media?.data?.attributes?.alternativeText}</div>
+
                             
 
                         </div>
-                        <div className="mt-1 text-[0.694rem] uppercase tracking-[0.03rem] pl-[40px] mt-3 mx-auto">{article?.attributes?.media?.data?.attributes?.alternativeText}</div>
                         {/*<div className="w-full mx-auto md:w-[70%] lg:w-[83.33%] pb-3 border-[#cacaca] border-b-[1px]">
                             <div className={`${shareBtnActive ? "share-btn--expanded": "share-btn--retract"} mt-5`}>
                                 <button className={`w-fit border-box ${shareBtnActive ? "bg-[#01e2c2] pl-3" : "border-[#cacaca] border-[1px] px-3"}  py-2`} onClick={()=> setShareBtnActive( shareBtnActive ? 0: 1)}>
