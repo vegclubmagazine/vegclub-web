@@ -131,7 +131,7 @@ const Article = ({article, articles}) =>
 
                                         }
                             ></img>
-                            <div className="absolute bg-[#a2a2a2]/[.6] text-white rounded-lg bottom-3 right-4 text-[.833rem] px-3 py-2">{article?.attributes?.media?.data?.attributes?.alternativeText}</div>
+                            <div className="absolute bg-[#a2a2a2]/[.4] text-white rounded-lg bottom-3 right-4 text-[.833rem] px-3 py-2 font-semibold">{article?.attributes?.media?.data?.attributes?.alternativeText}</div>
 
                             
 
