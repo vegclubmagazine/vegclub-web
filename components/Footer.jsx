@@ -18,11 +18,11 @@ const Footer  = ({})=>
     </div>*/}
                  <div className="mt-5 text-center text-[1.44rem] text-[#fff]">
                         
-                        <Link href="#" className="inline-block mr-3 no-underline cursor-pointer transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.6]" passHref>
+                       {/* <Link href="#" className="inline-block mr-3 no-underline cursor-pointer transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.6]" passHref>
                             <FaInstagram></FaInstagram>
                         </Link>
                         
-                        {/*<span className="text-[#d6f31f] font-semibold">/</span>*/}
+                        {/*<span className="text-[#d6f31f] font-semibold">/</span>
                         <Link href="#" className="inline-block mr-3 no-underline cursor-pointer transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.6]" passHref>
                             <FaLinkedinIn></FaLinkedinIn>
                         </Link>
@@ -31,6 +31,9 @@ const Footer  = ({})=>
                         </Link>
                         <Link href="#" className="inline-block no-underline cursor-pointer transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.6]" passHref>
                             <FaTiktok></FaTiktok>
+</Link>*/}
+                       <Link href="https://www.instagram.com/vegclubmagazine/" className="inline-block mr-3 no-underline cursor-pointer transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.6]" passHref>
+                            <FaInstagram></FaInstagram>
                         </Link>
 
 
@@ -47,7 +50,7 @@ const Footer  = ({})=>
                         
                         <Link className="inline-block mr-5 transition-all cursor-pointer duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.6]"  href="/loyalty-program">Loyalty Program</Link>
 
-                        <Link className="inline-block mr-5 transition-all cursor-pointer duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.6]"  href="/restaurants">Restaurants</Link>
+                        {/*<Link className="inline-block mr-5 transition-all cursor-pointer duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.6]"  href="/restaurants">Restaurants</Link>*/}
 
                         
                         <Link className="inline-block transition-all cursor-pointer duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.6]" href="/contact">Contact</Link>
