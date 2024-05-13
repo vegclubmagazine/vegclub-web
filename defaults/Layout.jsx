@@ -240,6 +240,6 @@ Layout.defaultProps = {
     page: "Home",
     image: "vegClub_logo_original.png",
     keywords:
-      "vegan magazine, vegan magazine UK, vegan articles, veganism UK, veganism in the UK, rise of veganism UK, best vegan magazine UK, UK vegan magazine, vegclub UK, veg-club uk, veg club uk",
-    desc: "Your trusted UK vegan magazine",
+      "vegan magazine, vegan magazine europe, vegan articles, veganism europe, veganism in the europe, rise of veganism europe, best vegan magazine europe, EU vegan magazine, vegclub EU, veg-club eu, veg club eu",
+    desc: "Your Premier European Vegan Magazine",
   };
