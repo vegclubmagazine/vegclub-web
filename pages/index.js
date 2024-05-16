@@ -315,8 +315,8 @@ const Home = ({articles,ads})=>{
                                             </div>
                                         </div>
                                         <div className="">
-                                            <div className="flex flex-col w-[150px] h-full overflow-hidden object-cover md:h-auto md:w-full  md:aspect-[16/9] mx-auto bg-[#CACACA]">
-                                                <img    className="h-full w-auto md:w-full md:h-auto" 
+                                            <div className="flex flex-col w-[150px] h-full overflow-hidden  md:h-auto md:w-full  md:aspect-[16/9] mx-auto bg-[#CACACA]">
+                                                <img    className="h-full w-auto md:w-full md:h-auto object-cover" 
                                                         src={   article?.attributes?.media?.data?.attributes?.url ||
                                                                 article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
                                                                 article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
