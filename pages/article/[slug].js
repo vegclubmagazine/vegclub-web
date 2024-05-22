@@ -23,7 +23,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import {API, BASE_URL, SITE_URL} from "../../config/api.js"
 import {useEffect, useRef, useContext} from "react";
-import parse from "html-react-parser";
+import parse, {domToReact} from "html-react-parser";
 import Moment from "react-moment";
 import { GlobalContext } from "../../context/GlobalContext.js";
 import { slugify } from "../../lib/utils.js";
@@ -34,6 +34,15 @@ const qs = require('qs');
 const Article = ({article, articles}) =>
 {
     const {findAuthorByID} = useContext(GlobalContext);
+
+    const options = {
+        replace({attribs, children}) {
+            if(!attribs)return;
+            if(attribs.href){
+                return <a href={attribs.href} target="_blank" rel="noopener noreferrer">{domToReact(children)}</a>
+            }
+        }
+    }
     
     useEffect(()=>
     {
@@ -167,7 +176,7 @@ const Article = ({article, articles}) =>
                             When Golden was a young curator in the nineties, her shows, centering Black artists, were unprecedented. Today, those artists are the stars of the art market.
                         </p>*/}
                         <div className="mt-[3rem] article-preview leading-[1.8] mb-5 text-[1.2rem]">
-                            {article?.attributes?.content && (parse(article?.attributes?.content))}
+                            {article?.attributes?.content && (parse(article?.attributes?.content, options))}
                         </div>
                     </section>
                    
