@@ -1,5 +1,6 @@
 import Layout from "../defaults/Layout";
 import {useRef, useEffect, useCallback, useState} from "react";
+import { useRouter } from "next/router";
 
 import * as topojson from "topojson-client";
 import * as d3 from "d3";
@@ -22,7 +23,7 @@ import Link from "next/link";
 // about page
 
 
-const drag = (projection) =>
+/*const drag = (projection) =>
 {
     let v0,
         q0,
@@ -79,7 +80,7 @@ const drag = (projection) =>
         projection.rotate(versor.rotation(q1));
 
 
-        if(delta[0] < 0.7)dragstarted.apply(this, [event,this])*/
+        if(delta[0] < 0.7)dragstarted.apply(this, [event,this])
     
     
     }  
@@ -97,20 +98,20 @@ const height = (w, outline,projection) =>
     projection.scale(projection.scale() * ((l - 1)/l)).precision(0.2);
     return dy;
     
-}
+}*/
 
  const CallToAct = ()=>
 {
     
-    var render = function(){},
+   /* var render = function(){},
         v0,
         r0,
         q0;
- 
+    */
     const scrollYThresholdRef = useRef();
    
     const [isScrollPassedThreshold, setIsScrollPassedThreshold] = useState(false);
-    const w = 600,
+    /*const w = 600,
           h = 600;
     
     const mapCnvsRef = useRef();
@@ -157,10 +158,10 @@ const height = (w, outline,projection) =>
         projection.rotate(versor.rotation(q1));
 
 
-        if(delta[0] < 0.7)dragstarted.apply(this, [event,this])*/
+        if(delta[0] < 0.7)dragstarted.apply(this, [event,this])
     
     
-    }  
+    }  */
     const checkVerticalScroll =  ()=>{
         if(scrollYThresholdRef?.current){
             
@@ -285,7 +286,8 @@ const height = (w, outline,projection) =>
                             </div>
                         </div>
                     </div>
-                    <div className="mt-8 cursor-pointer w-fit mx-auto bg-black p-3 text-white uppercase font-semibold duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] transition-all hover:text-white/[.6]"><Link href="/checkout">Purchase now</Link></div>
+                    
+                    <div className="mt-8 cursor-pointer w-fit mx-auto bg-black p-3 text-white uppercase font-semibold duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] transition-all hover:text-white/[.6]"><Link href={{pathname:"/checkout", query:{type:"merchandise", amt:"35"}}}>Purchase now</Link></div>
                 </div>
                 <div className="border-t-[1px] border-b-[1px] py-5 pl-[40px]" ref={scrollYThresholdRef}>
                     <h2 className="text-[1.728rem] lg:text-[2.074rem] uppercase font-semibold">How does it work ?</h2>
