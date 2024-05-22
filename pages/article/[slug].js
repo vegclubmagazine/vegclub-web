@@ -84,7 +84,7 @@ const Article = ({article, articles}) =>
                 <main className="px-[40px]">
                     <div className="text-start  lg:w-[80%] lg:mx-auto pb-2 border-black/[.1] border-b-[1px]">
                         <h2 className="font-bold md:text-[1.2rem] uppercase cursor-pointer duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></h2>
-                        <h1 className="mt-5  font-bold  text-[2.448rem] lg:text-[2.986rem]">{article?.attributes?.title}</h1>
+                        <h1 className="mt-5 leading-[1.5] font-extrabold  text-[2.448rem] lg:text-[2.986rem]">{article?.attributes?.title}</h1>
                         <p className="mt-5 font-[400] leading-[2] md:text-[1.2rem]">{article?.attributes?.description}</p>                           
                         <div className="mt-5 w-fit">
                             <div className="rounded inline-block align-middle overflow-hidden w-[48px] h-[48px] bg-[#cacaca] mr-3">
@@ -203,7 +203,7 @@ const Article = ({article, articles}) =>
                                                     
                                                     <div className="py-[40px] md:pb-[40px] max-w-[653px] flex flex-col grow pl-[40px] md:block">
                                                                         
-                                                        <h1 className="article-title text-white font-semibold line-clamp-3 md:line-clamp-5 md:text-[1.44rem] lg:text-[1.728rem]"><span className="underline_span"><Link href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></span></h1>
+                                                        <h1 className="article-title text-white font-bold line-clamp-3 md:line-clamp-5 md:text-[1.44rem] lg:text-[1.728rem]"><span className="underline_span"><Link href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></span></h1>
                                                         <h2 className="hidden text-white md:line-clamp-4">{article?.attributes?.description}</h2>
                                                         <div className="mt-4 text-[0.833rem]">
                                                             <p className="inline-block text-white uppercase font-light  mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
