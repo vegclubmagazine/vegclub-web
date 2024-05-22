@@ -60,12 +60,12 @@ const Checkout = ()=>
                                 </div>
                                 <div className="flex grow pl-[20px] flex-col">
                                     <h2 className="text-[1.44rem] font-semibold">Loyalty Card</h2>
-                                    <p className="text-black/[.4] font-semibold text-[1.2rem] mt-3">UK£{cash_amt}</p>
+                                    <p className="text-black/[.4] font-semibold text-[1.2rem] mt-3">UK£35</p>
                                 </div>
                             </div>
                             <button type="submit" role="link" className="relative left-[50%] translate-x-[-50%] bg-black mt-5 max-w-[500px] text-center uppercase font-semibold text-white py-[12px] px-[20px] w-[80%] transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.4]">Checkout</button>
                             <input type="hidden" name="type" value={`merchandise`}/>
-                            <input type="hidden" name="amt" value={cash_amt}/>
+                            <input type="hidden" name="amt" value={"35"}/>
                         </form>
                     </div>
                 ): product_type == "donation" && cash_amt ? (
@@ -88,9 +88,11 @@ const Checkout = ()=>
 
                 ):(
                     <>
-                        <div className="mt-[60px] w-fit mx-auto text-[1.728rem] sm:text-[2.074rem] font-semibold md:text-[2.488rem] lg:text-[2.986rem] text-black/[.4]">
-                            Unable to Establish Checkout Constraints
-                        </div>
+                        {params_length ||(
+                            <div className="bg-white mx-auto  w-[100%] min-w-[340px] max-w-[676px] text-center sm:w-[80%] p-[40px] text-[1.728rem] md:text-[2.074rem]">
+                                Unable to Establish Checkout Constraints
+                            </div>
+                        )}
                         <div className="w-fit mx-auto mt-[40px]">
                             <Link href="/" className="w-fit mx-auto underline font-semibold uppercase text-[1.44rem] md:text-[1.728rem]">Home</Link>
                         </div>

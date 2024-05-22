@@ -5,7 +5,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 export default async function handler(req,res)
 {
     const {type, amt} = req.body;
-    const cash_amt = parseInt(amt * 100);
+    const cash_amt = type === "merchandise" ? 3500 : parseInt(amt * 100);
     if(req.method === "POST"){
         try{
             const session = await stripe.checkout.sessions.create({
@@ -23,7 +23,7 @@ export default async function handler(req,res)
                         price_data:{
                             unit_amount:cash_amt,
                             currency:"gbp",
-                            product: type === "merchandise" ? "price_1PAtwoDIMSnhhtR7WtwGvWHu":"",
+                            product: type === "merchandise" ? "prod_Q0voGFHCdNVMOM":"prod_Q9cEaqPXdA1J1s",
                         },
                         
                         
@@ -32,6 +32,7 @@ export default async function handler(req,res)
 
                 ],
                 mode:"payment",
+                payment_method_configuration:"pmc_1P8RskDIMSnhhtR764ENTjX7",
                 success_url:`${req.headers.origin}/checkout/?success=true`,
                 cancel_url:`${req.headers.origin}/checkout/?cancel=true`
             });
