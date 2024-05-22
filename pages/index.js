@@ -236,10 +236,12 @@ const Home = ({articles,ads})=>{
                             </div>
                         </div>
                     </div>
-                    <div className="">
+                    {/*<div className="">
+                        
+                    
                         
                         <div className="p-[40px]">
-                        <h3 className = "text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/category/${articles?.featureArticles[2]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.featureArticles[2]?.attributes?.category?.data?.attributes?.name}</Link></h3>                
+                            <h3 className = "text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/category/${articles?.featureArticles[2]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.featureArticles[2]?.attributes?.category?.data?.attributes?.name}</Link></h3>                
                             <h1 className="article-title mt-4 font-semibold w-fit leading-[1.5] text-[1.44rem] lg:text-[1.728rem]"><span className="underline_span"><Link href={`/article/${articles?.featureArticles[2]?.attributes?.slug}`}>{articles?.featureArticles[2]?.attributes?.title}</Link></span></h1>
                             <div className="mt-4 text-[0.833rem]">
                                 <p className="inline-block font-light  uppercase  mr-1">{articles?.featureArticles[2]?.attributes?.author?.data?.attributes?.name}</p>
@@ -247,7 +249,7 @@ const Home = ({articles,ads})=>{
                                 <Moment className="inline-block font-semibold uppercase  text-[0.833rem]" format="MMMM Do YYYY">{articles?.featureArticles[2]?.attributes?.date}</Moment>
                             </div>
                         </div>
-                    </div>
+                                        </div>*/}
                 </div>
             </section>
             {/*<section className="h-fit w-[90%] mx-auto border-box border-[#CACACA] border-b-[1px]  py-3 text-center">
@@ -259,7 +261,7 @@ const Home = ({articles,ads})=>{
                     {/*<h1 className=" text-center font-bold  text-[1.44rem]">Recent stories</h1>*/}
                         {articles?.featureArticles?.slice(1,6)?.map((article, index)=>(
 
-                            index < 2  ?(
+                            index < 1  ?(
                                 <div className="border-[#000]/[.1] border-b-[1px] md:border-r-[1px] md:hidden" key={index}>
                                     <div className="flex flex-row  md:grid md:grid-cols-1 h-fit">
                                         <div className="flex grow flex-col pl-[40px] justify-center md:hidden py-[20px] pr-[20px]">
