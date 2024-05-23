@@ -360,20 +360,20 @@ const Home = ({articles,ads})=>{
                 <div className="w-full">
                     <div className="hidden lg:block">
                         {ads.large.horizontal?.length ?  (
-                            <InHouseAds ad={ads.large.horizontal[0]} size={"large"} orientation={"horizontal"}/>
+                            <InHouseAds ad={ads.large.horizontal[1 % ads.large.horizontal.length ]} size={"large"} orientation={"horizontal"}/>
                         ):""}
 
                     </div>
                     <div className="hidden md:block lg:hidden">
                         {ads.medium.horizontal?.length  ? (
-                            <InHouseAds ad={ads.medium.horizontal[0]} size={"medium"} orientation={"horizontal"}/>
+                            <InHouseAds ad={ads.medium.horizontal[1 % ads.medium.horizontal.length  ]} size={"medium"} orientation={"horizontal"}/>
 
 
                         ):""}
                     </div>
                     <div className="block md:hidden">
                         {ads.small.horizontal?.length  ?(
-                            <InHouseAds ad={ads.small.horizontal[0]} size={"small"} orientation={"horizontal"}/>
+                            <InHouseAds ad={ads.small.horizontal[1 % ads.small.horizontal.length]} size={"small"} orientation={"horizontal"}/>
 
                         ):""}
                     </div>
