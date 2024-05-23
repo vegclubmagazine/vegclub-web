@@ -44,8 +44,8 @@ const Drawer = ({isOpen, onClose})=>{
 
     return (
         <Fragment>
-            <div className={`${isOpen ? "fixed opacity-[.1]":"hidden opacity-0"} bg-[#000] h-screen w-screen top-0 right-0 transition-opacity ease-out duration-300 z-[9998]`}></div>
-            <nav className ={`${isOpen ?"visible scale-y-100":"invisible scale-y-0"} fixed top-0 duration-[.34s] origin-top-right transition-visibility ease-[cubic-bezier(0.19,1,0.22,1)]   overflow-y-scroll w-screen h-screen md:h-fit md:pb-[3rem] bg-[#18181b] z-[9999]`}>
+            <div className={`${isOpen ? "fixed opacity-[.5]":"hidden opacity-0"} bg-[#000] h-screen w-screen top-0 right-0 transition-opacity ease-out duration-300 z-[9998]`}></div>
+            <nav className ={`${isOpen ?"visible scale-y-100":"invisible scale-y-0"} fixed top-0 duration-[.34s] origin-top-right transition-visibility ease-[cubic-bezier(0.19,1,0.22,1)] overflow-y-scroll   w-screen h-screen pb-[40px]  md:h-fit md:pb-[3rem] bg-[#18181b] z-[9999]`}>
                 <div className={`${isOpen ? "opacity-100 duration-300 delay-[250ms] ease-in transition-opacity": "opacity-0"} px-[20px] pt-[20px] pb-[40px] md:pb-0  relative`}>
                     <div className="relative mb-2 pb-2 border-[#333] border-b-[1px] h-fit">
                         <button className="w-[20%] pl-[20px] align-middle" aria-label="Close Menu" onClick={()=>{onClose();}}>
