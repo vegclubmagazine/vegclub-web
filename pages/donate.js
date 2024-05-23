@@ -75,7 +75,7 @@ const donate = ({})=>
             </div>
             <div className="mx-auto w-[90%] sm:w-[80%] md:w-[450px] px-[40px] py-[20px] bg-white border-[1px] border-black/[.1]">
                 <div className="border-b-[1px] text-center">
-                    <h2 className="md:text-[1.2rem] font-semibold leading-[2.5]">You have made a pedge of £<span>{Amt || "--"}</span></h2>
+                    <h2 className="md:text-[1.2rem] font-semibold leading-[2.5]">You have made a pledge of £<span>{Amt || "--"}</span></h2>
                 </div>
                 <form method="POST"  onSubmit={(e)=>{handleSubmit(e);}}>
                     <div className="mt-5 grid grid-cols-3">
