@@ -2,7 +2,8 @@ import { Fragment } from "react";
 import { API } from "../config/api";
 import Layout from "../defaults/Layout";
 import {useState, useRef, useEffect} from "react"
-
+import { FaInstagram } from "react-icons/fa";
+import Link from "next/link";
 
 
 const qs = require("qs");
@@ -87,7 +88,10 @@ const restaurants = ({locations, first_location}) =>
                                         <p className="mt-2 leading-[2] ">{selection?.attributes?.description}</p>
 
                                     </div>
-                                    <div className="mt-5 font-semibold px-[20px] pb-2 md:px-0 border-b-[1px] md:border-b-0">*{" "}{selection?.attributes?.notes || ""}</div>
+                                    <div className="mt-5 px-[20px] md:px-0 pb-2 md:pb-0 border-b-[1px] md:border-b-0">
+                                        {selection.attributes?.instagram && (<Link href={`${selection.attributes?.instagram}`}><FaInstagram className="text-[1.2rem]"></FaInstagram></Link>)}
+                                    </div>
+                                    <div className="mt-5 md:mt-8 font-semibold px-[20px] pb-2 md:px-0 border-b-[1px] md:border-b-0">*{" "}{selection?.attributes?.notes || ""}</div>
 
                                 </div>
                                 <div>
@@ -143,7 +147,10 @@ const restaurants = ({locations, first_location}) =>
                                         <p className="mt-2 leading-[2] ">{first_location?.attributes?.description}</p>
 
                                     </div>
-                                    <div className="mt-5 font-semibold px-[20px] pb-2 md:px-0 border-b-[1px] md:border-b-0">*{" "}{first_location?.attributes?.notes || ""}</div>
+                                    <div className="mt-5 px-[20px] md:px-0 pb-2 md:pb-0 border-b-[1px] md:border-b-0">
+                                        {first_location.attributes?.instagram && (<Link href={`${first_location.attributes?.instagram}`}><FaInstagram className="text-[1.2rem]"></FaInstagram></Link>)}
+                                    </div>
+                                    <div className="mt-5 md:mt-8 font-semibold px-[20px] pb-2 md:px-0 border-b-[1px] md:border-b-0">*{" "}{first_location?.attributes?.notes || ""}</div>
                                 </div>
                                 <div className="">
                                     {first_location?.attributes?.image?.data?.length && (
