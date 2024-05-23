@@ -210,9 +210,9 @@ const Home = ({articles,ads})=>{
                 </div>
                 <div className="hidden md:grid">
                     <div className="border-[#000]/[.1] border-b-[1px]">
-                        <div className="w-full aspect-[16/9]">
-                            <div className="h-full object-cover overflow-y-hidden bg-[#cacaca]">
-                                <img    className="w-full h-auto" 
+                        <div className="w-full aspect-[16/15]">
+                            <div className="h-full  overflow-hidden bg-[#cacaca]">
+                                <img    className="h-full w-auto object-cover" 
                                         src={   articles?.featureArticles[1]?.attributes?.media?.data?.attributes?.url ||
                                                 articles?.featureArticles[1]?.attributes?.media?.data?.attributes?.formats?.large?.url ||
                                                 articles?.featureArticles[1]?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
