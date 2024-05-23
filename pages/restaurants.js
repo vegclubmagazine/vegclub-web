@@ -34,8 +34,8 @@ const restaurants = ({locations, first_location}) =>
   
     return (
         <Layout title = "Restaurants | VegClub Magazine">
-            <main className="border-black/[.1] pt-[5px]">
-                <div className="mt-5 border-y-[1px] py-2 pl-[20px] md:px-[40px]">
+            <main className="border-black/[.1] ">
+                <div className=" border-y-[1px] py-2 pl-[20px] md:px-[40px]">
                     <div className="inline-block w-fit  text-[0.833rem] uppercase">restaurants</div>
                     <div className="inline-block w-[6px]  h-[6px] ml-2 align-middle rotate-[45deg] border-black border-t-[1px] border-r-[1px]"></div>
                     <div className="inline-block w-fit text-[0.833rem] ml-3 text-black/[.6] uppercase underline">{selection ? selection?.attributes?.name : "find restaurant"}</div>
@@ -43,7 +43,7 @@ const restaurants = ({locations, first_location}) =>
                 <div className="md:grid  md:grid-cols-[1fr_4fr] md:pr-[40px] pb-[40px]">
                 
                   
-                    <div className="uppercase  text-[.833rem] max-h-[300px] border-black/[.1] border-b-[1px] md:border-b-[0px] md:max-h-[100vh] overflow-y-scroll"> 
+                    <div className="uppercase r-menu text-[.833rem] max-h-[300px] border-black/[.1] border-b-[1px] md:border-b-[0px] md:max-h-[100vh] overflow-y-scroll"> 
                         {Object.keys(locations)?.map((country, index)=>(
                             <Fragment key={country}>
                                 <div className="px-[20px] md:px-[40px] bg-[#f7f7f7] py-3">{country}</div>
