@@ -4,17 +4,63 @@ import Layout from "../defaults/Layout";
 import {useState, useRef, useEffect} from "react"
 import { FaInstagram } from "react-icons/fa";
 import Link from "next/link";
+import { CiSearch } from "react-icons/ci";
 
 
 const qs = require("qs");
-
+/** search:
+ * client-side " filter" of what are essentially strings
+ * first approach: recursive search; dfs algo
+ */
 
 const restaurants = ({locations, first_location}) =>
 {
    // location is in format: { country:{ city: [...places]}}
-   
+
+   var filtered_locations = {};
+   const dfs = (locs,q) =>
+   {
+      if(!Object.keys(locs))return;
+      
+      const regex = new RegExp(`${q}`,"g")
+      
+      const loc_list = Object.keys(locs);
+      for(var i=0; i < loc_list.length; i++){
+        if(loc_list[i].match(regex)){
+            if(filteredLocations[`${loc_list[i]}`]){
+                continue;
+            }
+            else{
+                let location = `${loc_list[i]}`;
+                
+                setFilteredLocations(prev => ({...prev, [location]:locs[location]}));
+            }
+
+            
+        }
+        else{
+            for(let j= 0, cities = Object.keys(locs[`${loc_list[i]}`]); j < cities.length; j++){
+                if(cities[j].match(regex)){
+
+                    let location = `${loc_list[i]}`;
+                
+                    setFilteredLocations(prev => ({...prev, [location]:locs[location]}));
+
+
+
+                }
+
+
+            }
+        }
+        
+      }
+
+   }
    const [imageIndex, setImageIndex] = useState(0);
+   const [Query, setQuery] = useState(null);
    const [selection, setSelection] = useState(null);
+   const [filteredLocations, setFilteredLocations] = useState({});
    
    const [xVal, setXVal] = useState(0);
    const imgContainerRef = useRef(null);
@@ -26,6 +72,21 @@ const restaurants = ({locations, first_location}) =>
         setSelection(JSON.parse(e.target.getAttribute("data-meta")));
         
 
+   }
+
+   useEffect(()=>{
+        
+        Query && dfs(locations,Query);
+   },[Query])
+   const handleInput = (e)=>
+   {
+        
+        setFilteredLocations({});
+        setQuery(e.target.value);
+   }
+   const clearSearch = ()=>
+   {
+        setQuery(null);
    }
 
    useEffect(()=>{
@@ -42,28 +103,65 @@ const restaurants = ({locations, first_location}) =>
                     <div className="inline-block w-fit text-[0.833rem] ml-3 text-black/[.6] uppercase underline">{selection ? selection?.attributes?.name : "find restaurant"}</div>
                 </div>
                 <div className="md:grid  md:grid-cols-[1fr_4fr] md:pr-[40px] pb-[40px]">
-                
-                  
-                    <div className="uppercase r-menu text-[.833rem] max-h-[300px] border-black/[.1] border-b-[1px] md:border-b-[0px] md:max-h-[100vh] overflow-y-scroll"> 
-                        {Object.keys(locations)?.map((country, index)=>(
-                            <Fragment key={country}>
-                                <div className="px-[20px] md:px-[40px] bg-[#f7f7f7] py-3">{country}</div>
-                                <div>
-                                    {Object.keys(locations[`${country}`]).map((city, j)=>(
-                                        <Fragment key={city}>
-                                            <div className="px-[20px] md:px-[40px] border-b-[1px] py-3">{city}</div>
-                                            <div>
-                                                {locations[`${country}`][`${city}`].map((place,k)=>(
-                                                    <div key={place?.id || k} data-meta={JSON.stringify(place)} className="text-[#0018a8] py-3 px-[20px] md:px-[40px] cursor-pointer font-light border-b-[1px]" onClick={(e)=>{handleClick(e);}}>{place.attributes.name}</div>
-                                                ))}
-                                            </div>
-                                        </Fragment>
-                                    ))}
-                                </div>
-                            
-                            </Fragment>
-                        ))}
+                    <div>
+                        <div className="relative pl-[20px] pr-[60px] md:pl-[40px] pr:or-[60px] text-[.833rem] border-b-[1px] border-r-[1px] border-l-[1px]">
+                            <input className="placeholder:text-black/[.5] py-3 uppercase outline-none" type="search" value={Query || ""} placeholder="search..." onChange={(e)=>handleInput(e)}/>
+                            {Query ? (
+                                <div className="absolute text-[#0018a8] text-center w-[60px] top-[10px] right-0">
+                                    <div className="relative  inline-block align-middle pr-2 w-[30px] h-[16px] cursor-pointer" onClick={()=>clearSearch()}>
+                                        <div className="absolute top-0 right-[12.5px] bg-[#0018a8] w-[1px] h-[16px] rotate-[45deg]"></div>
+                                        <div className="absolute top-0 right-[12.5px] bg-[#0018a8] w-[1px] h-[16px] rotate-[-45deg]"></div>
+                                    </div>
+                                    <div className="inline-block  align-middle uppercase mr-2">exit</div>
+                                
+                                 </div>
+                            ):(
+                                <CiSearch className="absolute text-[#0018a8]  top-[10px] right-[12.5px] w-[20px] h-[20px]"/>
+
+                            )}
+                        </div>
                     
+                        <div className="uppercase r-menu text-[.833rem] max-h-[300px] border-black/[.1] border-b-[1px] md:border-b-[0px] md:max-h-[100vh] overflow-y-scroll"> 
+                            {Query ? (
+                                Object.keys(filteredLocations)?.map((country, index)=>(
+                                    <Fragment key={country}>
+                                        <div className="px-[20px] md:px-[40px] bg-[#f7f7f7] py-3">{country}</div>
+                                        <div>
+                                            {Object.keys(filteredLocations[`${country}`]).map((city, j)=>(
+                                                <Fragment key={city}>
+                                                    <div className="px-[20px] md:px-[40px] border-b-[1px] py-3">{city}</div>
+                                                    <div>
+                                                        {filteredLocations[`${country}`][`${city}`].map((place,k)=>(
+                                                            <div key={place?.id || k} data-meta={JSON.stringify(place)} className="text-[#0018a8] py-3 px-[20px] md:px-[40px] cursor-pointer font-light border-b-[1px]" onClick={(e)=>{handleClick(e);}}>{place.attributes.name}</div>
+                                                        ))}
+                                                    </div>
+                                                </Fragment>
+                                            ))}
+                                        </div> 
+                                    
+                                    </Fragment>
+                            ))
+                               ):(
+                                Object.keys(locations)?.map((country, index)=>(
+                                    <Fragment key={country}>
+                                        <div className="px-[20px] md:px-[40px] bg-[#f7f7f7] py-3">{country}</div>
+                                        <div>
+                                            {Object.keys(locations[`${country}`]).map((city, j)=>(
+                                                <Fragment key={city}>
+                                                    <div className="px-[20px] md:px-[40px] border-b-[1px] py-3">{city}</div>
+                                                    <div>
+                                                        {locations[`${country}`][`${city}`].map((place,k)=>(
+                                                            <div key={place?.id || k} data-meta={JSON.stringify(place)} className="text-[#0018a8] py-3 px-[20px] md:px-[40px] cursor-pointer font-light border-b-[1px]" onClick={(e)=>{handleClick(e);}}>{place.attributes.name}</div>
+                                                        ))}
+                                                    </div>
+                                                </Fragment>
+                                            ))}
+                                        </div>
+                                    
+                                    </Fragment>
+                            )))}
+                        
+                        </div>
                     </div>
                     
                     <div  className="">
