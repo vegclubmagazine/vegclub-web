@@ -12,9 +12,10 @@ import GenericArticleFormat from "../../components/GenericArticleFormat.jsx";
 const qs=require("qs");
 
 
-const Category = ({category, meta, articles}) =>
+const Category = ({category, meta, articles, latestCoverArticle}) =>
 {
     const articles_before_ad = 2;
+  
    const checkAds = (idx)=>
    {
         if(!idx)return null;
@@ -28,21 +29,93 @@ const Category = ({category, meta, articles}) =>
         <Layout>
             {articles?.length ? (
                 <Fragment>
-                    
-                    <div className="pb-3 border-black/[.1] md:pb-3 pt-[5rem] pl-[40px]">
-                        <h1 className="uppercase font-semibold  text-[1.728rem] md:text-[2.074rem] lg:text-[2.0728rem]">{category}</h1>
+                    {latestCoverArticle && (
+                        <div className="border-black/[.1] border-b-[1px]">
+                            <div className="bg-black">
+                                <div className="px-[40px] pt-3">
+                                    <h1 className="text-white border-[#333] border-b-[1px] font-bold text-[2.074rem] md:text-[2.488rem] lg:text-[2.986rem uppercase pb-2">{category}</h1>
+                                </div>
+                                <div className="px-[40px] pt-[20px] md:pt-0 md:px-0 md:grid md:grid-cols-[2fr_1fr] items-center">
+                                    <div className="hidden md:block w-full aspect-[16/9]">
+                                        <img    className="object-cover w-full h-auto" 
+                                                src={   latestCoverArticle[0]?.attributes?.media?.data?.attributes?.url ||
+                                                        latestCoverArticle[0]?.attributes?.media?.data?.attributes?.formats?.large?.url   ||
+                                                        latestCoverArticle[0]?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
+                                                        latestCoverArticle[0]?.attributes?.media?.data?.attributes?.formats?.small?.url   ||
+                                                        latestCoverArticle[0]?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url    }
+                                        />
+                                    </div>
+                                    <div className="w-full md:pl-[40px] pr-[40px]">
+                                        <h2 className="text-[1.44rem] md:text-[1.728rem] lg:text-[2.074rem] text-white mt-4 font-extrabold article-title"><span className="underline_span"><Link href={`article/${latestCoverArticle[0]?.attributes?.slug}`}>{latestCoverArticle[0]?.attributes?.title}</Link></span></h2>
+                                        {/*<div className="h-fit w-fit inline-block align-middle">
+                                            <i className=" inline-block cursor-pointer ml-2 h-[10px] w-[10px] border-[#40e0d0] border-t-[1px] border-r-[1px] rotate-45"></i>
+                                                </div>*/}
+                                        <p className="mt-4 text-[#a2a2a2] text-[1rem]">{latestCoverArticle[0].attributes?.description}</p>
+
+                                        <div className="mt-4 text-white text-[0.833rem]">
+                                            <p className="inline-block font-light uppercase  mr-1">{latestCoverArticle[0]?.attributes?.author?.data?.attributes?.name}</p>
+                                            
+                                            <Moment className="inline-block font-semibold uppercase  text-[0.833rem]" format="Do MMM YYYY">{latestCoverArticle[0]?.attributes?.date}</Moment>
+                                        </div>
+                                    </div>
+                                    <div className="mt-[40px] w-full aspect-[16/8] md:hidden">
+                                        
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div className="px-[40px] md:hidden w-full aspect-[16/9] overflow-hidden mt-[calc(-1*1/2*(100vw-80px))]">
+                                            <img    className="w-full h-auto object-cover" 
+                                                    src={latestCoverArticle[0]?.attributes?.media?.data?.attributes?.url ||
+                                                        latestCoverArticle[0]?.attributes?.media?.data?.attributes?.formats?.large?.url   ||
+                                                        latestCoverArticle[0]?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
+                                                        latestCoverArticle[0]?.attributes?.media?.data?.attributes?.formats?.small?.url   ||
+                                                        latestCoverArticle[0]?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url  }
+                                            />
+                            </div>
+                        </div>
+                    )}
+                    <div className={`pb-5 border-black/[.1] ${latestCoverArticle ? "pt-5":"pt-[5rem]"} pl-[40px]`}>
+                        {latestCoverArticle ? (
+                             <div className="w-fit font-bold uppercase text-[2.074rem]  lg:text-[2.488rem]">
+                                <h2 className="leading-[0.8]">The</h2>
+                                <h2>Latest</h2>
+                            </div>
+                            
+                        ):(
+                            <h1 className="uppercase font-semibold  text-[1.728rem] md:text-[2.074rem] ">{category}</h1>
+
+                        )}
                     </div>
                     <div className="w-full  border-t-[1px] border-b-[1px] lg:grid lg:grid-cols-[2fr_1fr]">
                             <ul className="list-none text-start lg:border-r-[1px]">
-                                {articles?.map((article, index) => (
+                                {latestCoverArticle ? articles?.filter((article)=>
+                                    article?.id !== latestCoverArticle[0].id
+                                
 
-                                    <Fragment>
+                                ).map((article, index) => (
+
+                                   
                                        
-                                        <li className={`${index < (articles.length - 1) ? "border-b-[1px]": ""}`} key={index}>
+                                        <li className={`${index < (articles.length - 2) ? "border-b-[1px]": ""}`} key={index}>
                                             <GenericArticleFormat article={article}/>
                                         </li>
-                                    </Fragment>
-                                ))}
+                                   
+                                ))
+                                :(
+                                   articles.map((article, index) => (
+
+                                       
+                                           
+                                            <li className={`${index < (articles.length - 1) ? "border-b-[1px]": ""}`} key={index}>
+                                                <GenericArticleFormat article={article}/>
+                                            </li>
+                                        
+                                   ))
+
+
+                                )
+                            }
                             
                                 
                                 
@@ -84,9 +157,11 @@ export async function getServerSideProps({req,res,query, params})
         "public", "s-maxage=604800", "stale-while-revalidate=86400"
         
     );
+    var latest_cover_article = [];
 
     const {page = 1} = query;
     const {cat} = params
+    
     const filters = qs.stringify(
         {
             populate:"*",
@@ -124,6 +199,7 @@ export async function getServerSideProps({req,res,query, params})
                 attributes{
                     title
                     description
+                    featureArticle
                     media{
                         data{
                             attributes{
@@ -203,7 +279,17 @@ export async function getServerSideProps({req,res,query, params})
         if(current_date >= publish_date){
             
             visible_articles = data?.articles?.data?.slice(i)
+
             break;
+        }
+    }
+    for(let i =0; i < visible_articles?.length; i++)
+    {
+        if(visible_articles[i]?.attributes.featureArticle)
+        {
+            latest_cover_article.push(visible_articles[i]);
+            break;
+
         }
     }
 
@@ -213,6 +299,7 @@ export async function getServerSideProps({req,res,query, params})
         props:{
             meta:data?.articles?.meta || null,
             articles: visible_articles || null,
+            latestCoverArticle: latest_cover_article.length ? latest_cover_article : null,
             category: data?.articles?.data[0]?.attributes?.category?.data?.attributes?.name || cat ,
       
         }
