@@ -10,6 +10,7 @@ const GlobalProvider = ({children}) =>
 {
     const [Authors, setAuthors] = useState([]);
     const [Categories, setCategories] = useState([]);
+    const [Ads,setAds] = useState([]);
     
     const [Error, setError] = useState({
         error: false,
@@ -52,6 +53,19 @@ const GlobalProvider = ({children}) =>
         })
 
     }, [])
+
+    //get ads
+    useEffect(()=>{
+
+        fetch(`${API}/advertisments`)
+        .then((res)=> res.json())
+        .then((data)=>{
+            setAds(data)
+        })
+        .catch((err)=>{
+            setError(()=>{ return {error: true, message: err?.message}});
+        })
+    },[])
 
     const reorder = (cat_arr) => {
     
@@ -133,9 +147,11 @@ const GlobalProvider = ({children}) =>
             value={{
                 Authors,
                 Categories,
+                Ads,
                 Error,
                 setAuthors,
                 setCategories,
+                setAds,
                 setError,
                 isMemberAuthor,
                 findAuthorByID,

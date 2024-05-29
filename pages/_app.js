@@ -8,13 +8,26 @@ import { GlobalProvider } from "../context/GlobalContext";
 function MyApp({Component, pageProps})
 {
     return(
-        <GlobalProvider>
-        
-          
-            <Component {...pageProps}></Component>
+        <>
+            <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-968FBW9QX9"/>
+            <Script id="google-analytics" strategy="afterInteractive">
+                {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
 
-        </GlobalProvider>
-        
+                gtag('config', 'G-968FBW9QX9');`
+                }
+            </Script>
+            <GlobalProvider>
+            
+            
+            
+                <Component {...pageProps}></Component>
+
+            </GlobalProvider>
+        </>
+            
         
         
     )

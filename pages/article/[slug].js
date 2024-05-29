@@ -43,10 +43,10 @@ const Article = ({article, articles}) =>
             }
         }
     }
+   
     
     useEffect(()=>
     {
-       
         
         (function(d,s,id){
             let js;
@@ -298,6 +298,7 @@ export async function getStaticProps({params}){
                 data{
                     id
                     attributes{
+                        slug
                         title
                         description
                         author{
