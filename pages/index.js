@@ -10,6 +10,7 @@ import SquareAdUnit from "../components/SquareAdUnit.jsx";
 import GenericArticleFormat from "../components/GenericArticleFormat.jsx";
 import Loader from "../components/Loader.jsx";
 import InHouseAds from "../components/InHouseAds.jsx";
+import NewsLetterCard from "../components/NewsLetterCard.jsx";
 
 const qs = require("qs");
 
@@ -310,7 +311,7 @@ const Home = ({articles,ads})=>{
                                         <div className="flex grow flex-col pl-[40px] justify-center md:hidden py-[20px] pr-[20px]">
                                             <h3 className = "text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit transition-all duration-[.34s] eas-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></h3>                
 
-                                            <h1 className="article-title mt-3 md:text-[1.44rem] lg:text-[1.728rem] font-bold"><span className="underline_span"><Link href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></span></h1>
+                                            <h1 className="article-title mt-3 md:text-[1.44rem] lg:text-[1.728rem] font-bold line-clamp-3 md:line-clamp-5"><span className="underline_span"><Link href={`/article/${article?.attributes?.slug}`}>{article?.attributes?.title}</Link></span></h1>
                                             <div className="mt-3 text-[0.833rem]">
                                                 <p className="inline-block font-light uppercase  mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
                                                 <Moment className="inline-block font-semibold uppercase " format="Do MMM YYYY">{article?.attributes?.date}</Moment>
@@ -379,6 +380,9 @@ const Home = ({articles,ads})=>{
                     </div>
                 </div>
             </section>
+            {/*<section>
+                <NewsLetterCard></NewsLetterCard>
+                        </section>*/}
             <section className="w-full border-black/[.1]">
                 <div className="border-b-[1px] text-[2.074rem] md:text-[2.488rem] lg:text-[2.986rem] font-bold  uppercase pt-5 pb-3">
                     <div className="w-fit pl-[40px]">
