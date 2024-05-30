@@ -10,7 +10,7 @@ import SquareAdUnit from "../components/SquareAdUnit.jsx";
 import GenericArticleFormat from "../components/GenericArticleFormat.jsx";
 import Loader from "../components/Loader.jsx";
 import InHouseAds from "../components/InHouseAds.jsx";
-import NewsLetterCard from "../components/NewsLetterCard.jsx";
+//import NewsLetterCard from "../components/NewsLetterCard.jsx";
 
 const qs = require("qs");
 
