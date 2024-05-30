@@ -25,7 +25,7 @@ const restaurants = ({locations, first_location}) =>
      
       
       const loc_list = Object.keys(locs);
-
+      console.log(locs, loc_list,q);
       for(var i=0; i < loc_list.length; i++){
         if(loc_list[i].includes(q)){
             if(filteredLocations[`${loc_list[i]}`]){
@@ -81,7 +81,7 @@ const restaurants = ({locations, first_location}) =>
    },[Query])
    const handleInput = (e)=>
    {
-        console.log(filteredLocations);
+        
         setFilteredLocations({});
         setQuery(e.target.value);
    }
