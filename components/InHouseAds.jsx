@@ -8,7 +8,7 @@ const InHouseAds = ({ad, size, orientation})=>
     
     return (
         <div className="border-black/[.1] p-[8px] lg:p-[10px]">
-            <Link href={ad?.attributes?.url || "#"} className="w-full cursor pointer">
+            <Link target="_blank" rel="noopener noreferrer" href={ad?.attributes?.url || "#"} className="w-full cursor pointer">
 
                 <div className={`relative  ad_${size} border-black/[.3]  mx-auto overflow-hidden`} data-orientation={`${orientation || ""}`}>
                     <img className={`${orientation === "vertical" ? "h-full w-auto":"w-full h-auto"} object-cover`} src={ad?.attributes?.image?.data?.attributes?.url}/>
