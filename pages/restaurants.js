@@ -25,7 +25,7 @@ const restaurants = ({locations, first_location}) =>
      
       
       const loc_list = Object.keys(locs);
-      console.log(locs, loc_list,q);
+      
       for(var i=0; i < loc_list.length; i++){
         if(loc_list[i].includes(q)){
             if(filteredLocations[`${loc_list[i]}`]){
@@ -77,7 +77,13 @@ const restaurants = ({locations, first_location}) =>
 
    useEffect(()=>{
         
-        Query && dfs(locations,Query);
+        if(Query){
+
+         dfs(locations,Query);
+        }
+        else{
+            console.log(Query);
+        }
    },[Query])
    const handleInput = (e)=>
    {
