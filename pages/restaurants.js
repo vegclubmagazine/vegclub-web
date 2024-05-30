@@ -25,7 +25,7 @@ const restaurants = ({locations, first_location}) =>
      
       
       const loc_list = Object.keys(locs);
-      console.log(locs,q,loc_list)
+      
       for(var i=0; i < loc_list.length; i++){
         if(loc_list[i].includes(q)){
             if(filteredLocations[`${loc_list[i]}`]){
@@ -33,7 +33,7 @@ const restaurants = ({locations, first_location}) =>
             }
             else{
                 let location = `${loc_list[i]}`;
-                
+                console.log(location, locs[location])
                 setFilteredLocations(prev => ({...prev, [location]:locs[location]}));
             }
 
@@ -44,7 +44,7 @@ const restaurants = ({locations, first_location}) =>
                 if(cities[j].includes(q)){
 
                     let location = `${loc_list[i]}`;
-                
+                    console.log(location, locs[location])
                     setFilteredLocations(prev => ({...prev, [location]:locs[location]}));
 
 
