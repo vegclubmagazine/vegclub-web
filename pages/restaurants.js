@@ -25,9 +25,9 @@ const restaurants = ({locations, first_location}) =>
      
       
       const loc_list = Object.keys(locs);
-      console.log(loc_list.length);
+      
       for(var i=0; i < loc_list.length; i++){
-        
+        console.log(i);
         if(loc_list[i].includes(q)){
             if(filteredLocations[`${loc_list[i]}`]){
                 continue;
