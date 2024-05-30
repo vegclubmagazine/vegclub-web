@@ -10,7 +10,7 @@ import { CiSearch } from "react-icons/ci";
 const qs = require("qs");
 /** search:
  * client-side " filter" of what are essentially strings
- * first approach: recursive search; dfs algo
+ * first approach: iterative search
  */
 
 const restaurants = ({locations, first_location}) =>
@@ -22,11 +22,12 @@ const restaurants = ({locations, first_location}) =>
    {
       if(!Object.keys(locs))return;
       
-      const regex = new RegExp(`${q}`,"g")
+     
       
       const loc_list = Object.keys(locs);
+
       for(var i=0; i < loc_list.length; i++){
-        if(loc_list[i].match(regex)){
+        if(loc_list[i].includes(q)){
             if(filteredLocations[`${loc_list[i]}`]){
                 continue;
             }
@@ -40,7 +41,7 @@ const restaurants = ({locations, first_location}) =>
         }
         else{
             for(let j= 0, cities = Object.keys(locs[`${loc_list[i]}`]); j < cities.length; j++){
-                if(cities[j].match(regex)){
+                if(cities[j].includes(q)){
 
                     let location = `${loc_list[i]}`;
                 
@@ -80,7 +81,7 @@ const restaurants = ({locations, first_location}) =>
    },[Query])
    const handleInput = (e)=>
    {
-        
+        console.log(filteredLocations);
         setFilteredLocations({});
         setQuery(e.target.value);
    }
@@ -105,18 +106,18 @@ const restaurants = ({locations, first_location}) =>
                 <div className="md:grid  md:grid-cols-[1fr_4fr] md:pr-[40px] pb-[40px]">
                     <div>
                         <div className="relative pl-[20px] pr-[60px] md:pl-[40px] pr:or-[60px] text-[.833rem] border-b-[1px] border-r-[1px] border-l-[1px]">
-                            <input className="placeholder:text-black/[.5] py-3 uppercase outline-none" type="search" value={Query || ""} placeholder="search..." onChange={(e)=>handleInput(e)}/>
+                            <input className="placeholder:text-black/[.5] bg-white py-3 uppercase outline-none" type="text" value={Query || ""} placeholder="search..." onChange={(e)=>handleInput(e)}/>
                             {Query ? (
-                                <div className="absolute text-[#0018a8] text-center w-[60px] top-[10px] right-0">
-                                    <div className="relative  inline-block align-middle pr-2 w-[30px] h-[16px] cursor-pointer" onClick={()=>clearSearch()}>
-                                        <div className="absolute top-0 right-[12.5px] bg-[#0018a8] w-[1px] h-[16px] rotate-[45deg]"></div>
-                                        <div className="absolute top-0 right-[12.5px] bg-[#0018a8] w-[1px] h-[16px] rotate-[-45deg]"></div>
+                                <div className="absolute text-[#0018a8]  text-center w-[60px] top-[12px] right-0">
+                                    <div className="relative  inline-block  w-[30px] h-[14px] cursor-pointer" onClick={()=>clearSearch()}>
+                                        <div className="absolute top-0 right-[12.5px] bg-[#0018a8] w-[1px] h-[14px] rotate-[45deg]"></div>
+                                        <div className="absolute top-0 right-[12.5px] bg-[#0018a8] w-[1px] h-[14px] rotate-[-45deg]"></div>
                                     </div>
-                                    <div className="inline-block  align-middle uppercase mr-2">exit</div>
+                                    <div className="inline-block text-[0.833rem] align-top leading-[1.3]  uppercase mr-2">exit</div>
                                 
                                  </div>
                             ):(
-                                <CiSearch className="absolute text-[#0018a8]  top-[10px] right-[12.5px] w-[20px] h-[20px]"/>
+                                <CiSearch className="absolute text-[#0018a8]  top-[8px] right-[12.5px] w-[20px] h-[20px]"/>
 
                             )}
                         </div>
