@@ -25,10 +25,10 @@ const restaurants = ({locations, first_location}) =>
      
       
       const loc_list = Object.keys(locs);
-      console.log("poland".includes(q));
+      
       for(var i=0; i < loc_list.length; i++){
     
-        if(loc_list[i].includes(q)){
+        if(loc_list[i].toLowerCase().includes(q.toLowerCase())){
             if(filteredLocations[`${loc_list[i]}`]){
                 continue;
             }
@@ -42,7 +42,7 @@ const restaurants = ({locations, first_location}) =>
         }
         else{
             for(let j= 0, cities = Object.keys(locs[`${loc_list[i]}`]); j < cities.length; j++){
-                if(cities[j].includes(q)){
+                if(cities[j].toLowerCase().includes(q.toLowerCase())){
 
                     let location = `${loc_list[i]}`;
                     
