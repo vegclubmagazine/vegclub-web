@@ -114,7 +114,7 @@ const restaurants = ({locations, first_location}) =>
                                 <p className="inline-block mr-3">{searchOpen ? "hide": "view all"}</p>
                                 <div className={`border-black relative ${searchOpen ? "rotate-[-45deg] align-middle top-[1px]":"top-[2px] rotate-[135deg] align-top"}  inline-block  border-r-[1px] mr-4 border-t-[1px] w-[7px] h-[7px]`}></div>
                             </div>
-                            <input className={`inline-block md:block placeholder:text-black/[.5] bg-white w-[50%] pl-2 md:pl-0 md:w-full py-3 uppercase outline-none`} type="text" value={Query || ""} placeholder="search..." onChange={(e)=>handleInput(e)}/>
+                            <input className={`inline-block md:block placeholder:text-black/[.5] bg-white w-[55%] pl-2 md:pl-0 md:w-full py-3 uppercase outline-none`} type="text" value={Query || ""} placeholder="search country,city..." onChange={(e)=>handleInput(e)}/>
                             {Query ? (
                                 <div className="absolute text-[#0018a8]  text-center w-[60px] top-[12px] right-0">
                                     <div className="relative  inline-block  w-[30px] h-[14px] cursor-pointer" onClick={()=>clearSearch()}>
