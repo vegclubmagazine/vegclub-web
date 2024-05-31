@@ -32,6 +32,7 @@ export default async function handler(req,res)
 
                 ],
                 mode:"payment",
+                allow_promotion_codes: type === "merchandise" ? true:false,
                 payment_method_configuration:"pmc_1P8RskDIMSnhhtR764ENTjX7",
                 success_url:`${req.headers.origin}/checkout/?success=true`,
                 cancel_url:`${req.headers.origin}/checkout/?cancel=true`
