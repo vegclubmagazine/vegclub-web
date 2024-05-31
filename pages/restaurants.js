@@ -59,6 +59,7 @@ const restaurants = ({locations, first_location}) =>
       }
 
    }
+   const [searchOpen, setSearchOpen] = useState(false);
    const [imageIndex, setImageIndex] = useState(0);
    const [Query, setQuery] = useState(null);
    const [selection, setSelection] = useState(null);
@@ -84,7 +85,7 @@ const restaurants = ({locations, first_location}) =>
    },[Query])
    const handleInput = (e)=>
    {
-        
+        if(!searchOpen)setSearchOpen(true);
         setFilteredLocations({});
         setQuery(e.target.value);
    }
@@ -101,15 +102,19 @@ const restaurants = ({locations, first_location}) =>
     return (
         <Layout title = "Restaurants | VegClub Magazine">
             <main className="border-black/[.1] ">
-                <div className=" border-y-[1px] py-2 pl-[20px] md:px-[40px]">
+                <div className="relative border-y-[1px] py-2 pl-[20px] md:px-[40px]">
                     <div className="inline-block w-fit  text-[0.833rem] uppercase">restaurants</div>
                     <div className="inline-block w-[6px]  h-[6px] ml-2 align-middle rotate-[45deg] border-black border-t-[1px] border-r-[1px]"></div>
                     <div className="inline-block w-fit text-[0.833rem] ml-3 text-black/[.6] uppercase underline">{selection ? selection?.attributes?.name : "find restaurant"}</div>
                 </div>
-                <div className="md:grid  md:grid-cols-[1fr_4fr] md:pr-[40px] pb-[40px]">
-                    <div>
-                        <div className="relative pl-[20px] pr-[60px] md:pl-[40px] pr:or-[60px] text-[.833rem] border-b-[1px] border-r-[1px] border-l-[1px]">
-                            <input className="placeholder:text-black/[.5] bg-white py-3 uppercase outline-none" type="text" value={Query || ""} placeholder="search..." onChange={(e)=>handleInput(e)}/>
+                <div className="md:grid   md:grid-cols-[1fr_4fr] md:pr-[40px] pb-[40px]">
+                    <div className="relative">
+                        <div className="relative pr-[60px] md:pl-[40px] pr:or-[60px] text-[0.833rem]  border-b-[1px] border-r-[1px] border-l-[1px]">
+                            <div className="inline-block md:hidden border-r-[1px] pl-[20px] uppercase pr-2 cursor-pointer" onClick={()=>setSearchOpen( prev => prev ? false:true)}>
+                                <p className="inline-block mr-3">{searchOpen ? "hide": "view all"}</p>
+                                <div className={`border-black relative ${searchOpen ? "rotate-[-45deg] align-middle top-[1px]":"top-[2px] rotate-[135deg] align-top"}  inline-block  border-r-[1px] mr-4 border-t-[1px] w-[7px] h-[7px]`}></div>
+                            </div>
+                            <input className={`inline-block md:block placeholder:text-black/[.5] bg-white w-[50%] pl-2 md:pl-0 md:w-full py-3 uppercase outline-none`} type="text" value={Query || ""} placeholder="search..." onChange={(e)=>handleInput(e)}/>
                             {Query ? (
                                 <div className="absolute text-[#0018a8]  text-center w-[60px] top-[12px] right-0">
                                     <div className="relative  inline-block  w-[30px] h-[14px] cursor-pointer" onClick={()=>clearSearch()}>
@@ -125,53 +130,55 @@ const restaurants = ({locations, first_location}) =>
                             )}
                         </div>
                     
-                        <div className="uppercase r-menu text-[.833rem] max-h-[300px] border-black/[.1] border-b-[1px] md:border-b-[0px] md:max-h-[100vh] overflow-y-scroll"> 
-                            {Query ? (
-                                Object.keys(filteredLocations)?.map((country, index)=>(
-                                    <Fragment key={country}>
-                                        <div className="px-[20px] md:px-[40px] bg-[#f7f7f7] py-3">{country}</div>
-                                        <div>
-                                            {Object.keys(filteredLocations[`${country}`]).map((city, j)=>(
-                                                <Fragment key={city}>
-                                                    <div className="px-[20px] md:px-[40px] border-b-[1px] py-3">{city}</div>
-                                                    <div>
-                                                        {filteredLocations[`${country}`][`${city}`].map((place,k)=>(
-                                                            <div key={place?.id || k} data-meta={JSON.stringify(place)} className="text-[#0018a8] py-3 px-[20px] md:px-[40px] cursor-pointer font-light border-b-[1px]" onClick={(e)=>{handleClick(e);}}>{place.attributes.name}</div>
-                                                        ))}
-                                                    </div>
-                                                </Fragment>
-                                            ))}
-                                        </div> 
-                                    
-                                    </Fragment>
-                            ))
-                               ):(
-                                Object.keys(locations)?.map((country, index)=>(
-                                    <Fragment key={country}>
-                                        <div className="px-[20px] md:px-[40px] bg-[#f7f7f7] py-3">{country}</div>
-                                        <div>
-                                            {Object.keys(locations[`${country}`]).map((city, j)=>(
-                                                <Fragment key={city}>
-                                                    <div className="px-[20px] md:px-[40px] border-b-[1px] py-3">{city}</div>
-                                                    <div>
-                                                        {locations[`${country}`][`${city}`].map((place,k)=>(
-                                                            <div key={place?.id || k} data-meta={JSON.stringify(place)} className="text-[#0018a8] py-3 px-[20px] md:px-[40px] cursor-pointer font-light border-b-[1px]" onClick={(e)=>{handleClick(e);}}>{place.attributes.name}</div>
-                                                        ))}
-                                                    </div>
-                                                </Fragment>
-                                            ))}
-                                        </div>
-                                    
-                                    </Fragment>
-                            )))}
+                        <div className={`${searchOpen ? "absolute":"hidden"} md:block z-[3]   w-full  md:relative uppercase r-menu text-[.833rem] max-h-[250px] border-black/[.1] border-b-[1px] md:border-b-[0px] md:max-h-[100vh] overflow-y-auto`}> 
+                            
+                                {Query ? (
+                                    Object.keys(filteredLocations)?.map((country, index)=>(
+                                        <Fragment key={country}>
+                                            <div className="w-full px-[20px] md:px-[40px] bg-[#f7f7f7] py-3 norder-b-[1px]">{country}</div>
+                                            <div>
+                                                {Object.keys(filteredLocations[`${country}`]).map((city, j)=>(
+                                                    <Fragment key={city}>
+                                                        <div className="px-[20px] bg-white md:px-[40px] border-b-[1px] py-3">{city}</div>
+                                                        <div>
+                                                            {filteredLocations[`${country}`][`${city}`].map((place,k)=>(
+                                                                <div key={place?.id || k} data-meta={JSON.stringify(place)} className="text-[#0018a8] bg-white py-3 px-[20px] md:px-[40px] cursor-pointer font-light border-b-[1px]" onClick={(e)=>{handleClick(e);}}>{place.attributes.name}</div>
+                                                            ))}
+                                                        </div>
+                                                    </Fragment>
+                                                ))}
+                                            </div> 
+                                        
+                                        </Fragment>
+                                ))
+                                ):(
+                                    Object.keys(locations)?.map((country, index)=>(
+                                        <Fragment key={country}>
+                                            <div className="px-[20px] md:px-[40px] bg-[#f7f7f7] border-b-[1px] py-3">{country}</div>
+                                            <div>
+                                                {Object.keys(locations[`${country}`]).map((city, j)=>(
+                                                    <Fragment key={city}>
+                                                        <div className="px-[20px] bg-white md:px-[40px] border-b-[1px] py-3">{city}</div>
+                                                        <div>
+                                                            {locations[`${country}`][`${city}`].map((place,k)=>(
+                                                                <div key={place?.id || k} data-meta={JSON.stringify(place)} className="text-[#0018a8] bg-white py-3 px-[20px] md:px-[40px] cursor-pointer font-light border-b-[1px]" onClick={(e)=>{handleClick(e);}}>{place.attributes.name}</div>
+                                                            ))}
+                                                        </div>
+                                                    </Fragment>
+                                                ))}
+                                            </div>
+                                        
+                                        </Fragment>
+                                )))}
+                            
                         
                         </div>
                     </div>
                     
-                    <div  className="">
+                    <div  className="relative z-[1]">
                         {selection ? (
                             
-                            <div className="mt-[20px] flex flex-col flex-col-reverse md:mt-0 md:grid md:grid-cols-[2fr_3fr] text-[.833rem]">
+                            <div className="flex flex-col flex-col-reverse md:mt-0 md:grid md:grid-cols-[2fr_3fr] text-[.833rem]">
                                 <div className="mt-5  md:px-[40px]">
                                     <h1 className="mt-5 px-[20px] md:px-0 font-semibold uppercase text-[1.2rem] md:text-[1.728rem]">{selection?.attributes?.name},{" "}<span className="font-normal md:text-[1.44rem]">{selection?.attributes?.country}</span></h1>
                                     <div className="mt-5 pb-2 md:pb-0 md:w-fit px-[20px] md:px-0 uppercase border-black/[.1] border-b-[1px] md:border-b-0">
@@ -190,7 +197,7 @@ const restaurants = ({locations, first_location}) =>
                                         <p className="mt-2 leading-[2] ">{selection?.attributes?.description}</p>
 
                                     </div>
-                                    <div className="mt-5 px-[20px] md:px-0 pb-2 md:pb-0 border-b-[1px] md:border-b-0">
+                                    <div className="mt-5 px-[20px] md:px-0 pb-2 md:pb-0 border-b-[1px]  md:border-b-0">
                                         {selection.attributes?.instagram && (<Link href={`${selection.attributes?.instagram}`}><FaInstagram className="text-[1.2rem]"></FaInstagram></Link>)}
                                     </div>
                                     <div className="mt-5 md:mt-8 font-semibold px-[20px] pb-2 md:px-0 border-b-[1px] md:border-b-0">*{" "}{selection?.attributes?.notes || ""}</div>
@@ -230,7 +237,7 @@ const restaurants = ({locations, first_location}) =>
                                 </div>
                             </div>
                         ):(
-                            <div className="mt-[20px] flex flex-col flex-col-reverse md:mt-0 md:grid md:grid-cols-[2fr_3fr] text-[.833rem]">
+                            <div className="z-[1] flex flex-col flex-col-reverse md:mt-0 md:grid md:grid-cols-[2fr_3fr] text-[.833rem]">
                                 <div className="mt-5  md:px-[40px]">
                                     <h1 className="mt-5 px-[20px] md:px-0 font-semibold uppercase text-[1.2rem] md:text-[1.728rem]">{first_location?.attributes?.name},{" "}<span className="font-normal md:text-[1.44rem]">{first_location?.attributes?.country}</span></h1>
                                     <div className="mt-5 pb-2 md:pb-0 md:w-fit px-[20px] md:px-0 uppercase border-black/[.1] border-b-[1px] md:border-b-0">
@@ -240,19 +247,19 @@ const restaurants = ({locations, first_location}) =>
                                         <div className="mt-2">{first_location?.attributes?.city}</div>
                                         <div className="mt-2">{first_location?.attributes?.zipcode}</div>
                                     </div>
-                                    <div className="md:w-fit mt-5 uppercase px-[20px] pb-2 md:pb-0 md:px-0 border-b-[1px] md:border-b-0">
+                                    <div className="md:w-fit mt-5 uppercase px-[20px] pb-2 md:pb-0 md:px-0 border-b-[1px]  md:border-b-0">
                                         <p className="md:inline-block mr-[40px]">discount</p>
                                         <p className="md:inline-block font-bold">{first_location?.attributes?.percentDiscount}%</p>
                                     </div>
-                                    <div className="mt-5 md:w-fit uppercase px-[20px] md:px-0 pb-2 md:pb-0 border-b-[1px] md:border-b-0">
+                                    <div className="mt-5 md:w-fit uppercase px-[20px] md:px-0 pb-2 md:pb-0 border-b-[1px]  md:border-b-0">
                                         <p className="">Description</p>
                                         <p className="mt-2 leading-[2] ">{first_location?.attributes?.description}</p>
 
                                     </div>
-                                    <div className="mt-5 px-[20px] md:px-0 pb-2 md:pb-0 border-b-[1px] md:border-b-0">
+                                    <div className="mt-5 px-[20px] md:px-0 pb-5 md:pb-0 border-b-[1px] md:border-b-0">
                                         {first_location.attributes?.instagram && (<Link href={`${first_location.attributes?.instagram}`}><FaInstagram className="text-[1.2rem]"></FaInstagram></Link>)}
                                     </div>
-                                    <div className="mt-5 md:mt-8 font-semibold px-[20px] pb-2 md:px-0 border-b-[1px] md:border-b-0">*{" "}{first_location?.attributes?.notes || ""}</div>
+                                    <div className="mt-5 md:mt-8 font-semibold px-[20px] pb-2 md:px-0 border-b-[1px]  md:border-b-0">*{" "}{first_location?.attributes?.notes || ""}</div>
                                 </div>
                                 <div className="">
                                     {first_location?.attributes?.image?.data?.length && (
