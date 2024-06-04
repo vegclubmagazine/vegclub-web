@@ -48,7 +48,7 @@ const Footer  = ({})=>
                         
                         
                         
-                        <Link className="inline-block mr-5 transition-all cursor-pointer duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.6]"  href="/loyalty-program">Loyalty Program</Link>
+                        <Link className="inline-block mr-5 transition-all cursor-pointer duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.6]"  href="/vegclubloyalty">Loyalty Program</Link>
 
                         {/*<Link className="inline-block mr-5 transition-all cursor-pointer duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.6]"  href="/restaurants">Restaurants</Link>*/}
 

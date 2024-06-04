@@ -14,6 +14,7 @@ import { BASE_URL } from "../config/api";
 import { GlobalContext} from "../context/GlobalContext";
 import Script from "next/script";
 
+
 const qs=require('qs');
 
 const Layout = (
@@ -62,13 +63,7 @@ const Layout = (
         
 
     }
-    useEffect(()=>{
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
 
-        gtag('config', 'G-968FBW9QX9');
-    },[])
     
     
     const controlNavBar = ()=>
@@ -123,15 +118,7 @@ const Layout = (
                 <meta content={canonicalUrl || "https://vegclubmagazine.com" } property="og:url"></meta>
                 <meta property="og:description" content={desc}></meta>
                 <meta property="og:type" content="website"></meta>
-                <Script async src="https://www.googletagmanager.com/gtag/js?id=G-968FBW9QX9"></Script>
-                {/*<script>
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-
-                    gtag('config', 'G-968FBW9QX9');
-    </script>*/}
-
+            
             </Head>
             
         
