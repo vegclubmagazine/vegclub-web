@@ -30,13 +30,13 @@ const Category = ({category, meta, articles, latestCoverArticle}) =>
             {articles?.length ? (
                 <Fragment>
                     {latestCoverArticle && (
-                        <div className="border-black/[.1] border-b-[1px]">
+                        <div className="border-black/[.1] border-b-[1px] pb-[40px] md:pb-0">
                             <div className="bg-black">
                                 <div className="px-[40px] pt-3">
                                     <h1 className="text-white border-[#333] border-b-[1px] font-bold text-[2.074rem] md:text-[2.488rem] lg:text-[2.986rem uppercase pb-2">{category}</h1>
                                 </div>
                                 <div className="px-[40px] pt-[20px] md:pt-0 md:px-0 md:grid md:grid-cols-[2fr_1fr] items-center">
-                                    <div className="hidden md:block w-full aspect-[16/9]">
+                                    <div className="hidden md:block w-full aspect-[16/9] overflow-hidden">
                                         <img    className="object-cover w-full h-auto" 
                                                 src={   latestCoverArticle[0]?.attributes?.media?.data?.attributes?.url ||
                                                         latestCoverArticle[0]?.attributes?.media?.data?.attributes?.formats?.large?.url   ||
