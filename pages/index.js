@@ -495,7 +495,7 @@ const Home = ({articles,ads})=>{
 export async function getServerSideProps({req,res}){
     res.setHeader(
         "Cache-Control",
-        "public", "s-maxage=5", "stale-while-revalidate=5"
+        "public", "s-maxage=604800", "stale-while-revalidate=84600"
     )
     // sort fetched articles into feature and non-feature articles
     
