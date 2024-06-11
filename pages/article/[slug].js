@@ -361,7 +361,7 @@ export async function getStaticProps({params}){
    return{
         props:{
             article: data[0] || null,
-            articles: articles_of_genre?.data?.articles?.data || null
+            articles: null
         },
         revalidate:10
    } ;
