@@ -257,7 +257,7 @@ export async function getStaticPaths()
     const response = await fetch(`${API}/articles`);
     const {data} = await response.json();
     const paths = data?.map((article)=>({
-        params:{slug:article?.attributes.slug}
+        params:{slug:encodeURIComponent(article?.attributes.slug)}
     }));
 
     return {paths, fallback:"blocking"};
