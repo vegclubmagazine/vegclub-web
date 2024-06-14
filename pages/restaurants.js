@@ -320,6 +320,9 @@ export async function getServerSideProps ({req,res})
     const filters = qs.stringify(
         {
             populate:"*",
+            pagination:{
+                pageSize:50,
+            },
             sort:["country:asc", "city:asc"]
         },
         {encodeValuesOnly:true}
