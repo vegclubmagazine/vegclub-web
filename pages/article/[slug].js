@@ -41,6 +41,10 @@ const Article = ({article, articles}) =>
             if(attribs.href){
                 return <a href={attribs.href} target="_blank" rel="noopener noreferrer">{domToReact(children)}</a>
             }
+            if(attribs.src){
+
+                return <div className="w-full overflow-hidden max-h-[450px]"> <img src={attribs.src} className="w-full object-cover"></img></div>
+            }
         }
     }
    
