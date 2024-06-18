@@ -43,7 +43,7 @@ const Article = ({article, articles}) =>
             }
             if(attribs.src){
 
-                return <div className="w-full overflow-hidden max-h-[450px]"> <img src={attribs.src} className="w-full object-cover"></img></div>
+                return <img src={attribs.src} className="w-full object-cover max-h-[450px]"></img>
             }
         }
     }
