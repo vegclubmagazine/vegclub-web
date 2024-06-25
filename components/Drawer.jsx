@@ -107,10 +107,10 @@ const Drawer = ({isOpen, onClose})=>{
                                         <FaInstagram></FaInstagram>
                                 </Link>
                                     
-                                {/*<Link href="#" className="inline-block text-[1.44rem]  ml-5 no-underline ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-white/[.4]" passHref>
+                                <Link href="https://www.linkedin.com/company/vegclubeurope/" className="inline-block text-[1.44rem]  ml-5 no-underline ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-white/[.4]" passHref>
                                     <FaLinkedinIn></FaLinkedinIn>
                                 </Link>
-                                <Link href="#" className="inline-block text-[1.44rem]  ml-5 no-underline ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-white/[.4]" passHref>
+                                {/*<Link href="#" className="inline-block text-[1.44rem]  ml-5 no-underline ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-white/[.4]" passHref>
                                     <FaFacebook></FaFacebook>
                                 </Link>
                                 <Link href="#" className="inline-block text-[1.44rem]  ml-5 no-underline ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-white/[.4]" passHref>

@@ -35,6 +35,9 @@ const Footer  = ({})=>
                        <Link href="https://www.instagram.com/vegclubmagazine/" className="inline-block mr-3 no-underline cursor-pointer transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.6]" passHref>
                             <FaInstagram></FaInstagram>
                         </Link>
+                        <Link href="https://www.linkedin.com/company/vegclubeurope/" className="inline-block mr-3 no-underline cursor-pointer transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.6]" passHref>
+                            <FaLinkedinIn></FaLinkedinIn>
+                        </Link>
 
 
                 </div>
