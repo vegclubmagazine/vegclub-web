@@ -24,6 +24,9 @@ const Layout = (
     desc,
     canonicalUrl,
     keywords,
+    metaImage,
+    metaDesc,
+    metaTitle,
     bodyStyles
 
  
@@ -110,14 +113,18 @@ const Layout = (
 
                 <meta content="en_US" property="og:locale"></meta>
 
-                <meta content={ title || "Vegclub Magazine"} property="og:title"></meta>
+                <meta content={metaTitle || title || "Vegclub Magazine"} property="og:title"></meta>
                 
                 <meta content="https://vegclubmagazine.com" property="og:site"></meta>
                 <meta content="Vegclub Magazine" property="og:site_name"></meta>
-                <meta content={image} property="og:image"></meta>
+                <meta content={metaImage || image} property="og:image"></meta>
                 <meta content={canonicalUrl || "https://vegclubmagazine.com" } property="og:url"></meta>
-                <meta property="og:description" content={desc}></meta>
+                <meta property="og:description" content={meta || desc}></meta>
                 <meta property="og:type" content="website"></meta>
+
+                <meta property="twitter:title" content={metaTitle || title} />
+                <meta property="twitter:description" content={metaDesc || desc} />
+                <meta property="twitter:image" content={metaImage || image} />
             
             </Head>
             
