@@ -119,7 +119,7 @@ const Layout = (
                 <meta content="Vegclub Magazine" property="og:site_name"></meta>
                 <meta content={metaImage || image} property="og:image"></meta>
                 <meta content={canonicalUrl || "https://vegclubmagazine.com" } property="og:url"></meta>
-                <meta property="og:description" content={meta || desc}></meta>
+                <meta property="og:description" content={metaDesc || desc}></meta>
                 <meta property="og:type" content="website"></meta>
 
                 <meta property="twitter:title" content={metaTitle || title} />
