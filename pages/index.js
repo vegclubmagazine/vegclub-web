@@ -10,7 +10,7 @@ import SquareAdUnit from "../components/SquareAdUnit.jsx";
 import GenericArticleFormat from "../components/GenericArticleFormat.jsx";
 import Loader from "../components/Loader.jsx";
 import InHouseAds from "../components/InHouseAds.jsx";
-//import NewsLetterCard from "../components/NewsLetterCard.jsx";
+import NewsLetterCard from "../components/NewsLetterCard.jsx";
 
 const qs = require("qs");
 
@@ -260,7 +260,7 @@ const Home = ({articles,ads})=>{
             <section className="w-full  border-box h-fit">
                 <div className="md:grid md:grid-cols-3">
                     {/*<h1 className=" text-center font-bold  text-[1.44rem]">Recent stories</h1>*/}
-                        {articles?.featureArticles?.slice(1,6)?.map((article, index)=>(
+                        {articles?.featureArticles?.slice(1,5)?.map((article, index)=>(
 
                             index < 1  ?(
                                 <div className="border-[#000]/[.1] border-b-[1px] md:border-r-[1px] md:hidden" key={index}>
@@ -380,9 +380,9 @@ const Home = ({articles,ads})=>{
                     </div>
                 </div>
             </section>
-            {/*<section>
+            <section>
                 <NewsLetterCard></NewsLetterCard>
-                        </section>*/}
+            </section>
             <section className="w-full border-black/[.1]">
                 <div className="border-b-[1px] text-[2.074rem] md:text-[2.488rem] lg:text-[2.986rem] font-bold  uppercase pt-5 pb-3">
                     <div className="w-fit pl-[40px]">

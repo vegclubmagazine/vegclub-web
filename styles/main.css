@@ -243,17 +243,26 @@ input[type=submit]{
   aspect-ratio: 5/1;
 
 }
+.loader-btn{
+  animation: 300ms Loader linear infinite;
+  width: 20px;
+  margin-inline: auto;
+  aspect-ratio: 1 / 1;
+  background: transparent;
+  border: 2px solid #009680;
+  border-top: 2px solid #000000;
+  border-left: 2px solid black;
+  border-radius: 50%;
 
-.r-menu::-webkit-scrollbar {
-  -webkit-appearance: none;
-  width: 7px;
 }
 
-.r-menu::-webkit-scrollbar-thumb {
-  border-radius: 4px;
-  background-color: rgba(0, 0, 0, .3);
-  box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+@keyframes Loader {
+  100% {
+    transform: rotate(360deg);
+  }
 }
+
+
 
 
 @keyframes opacity{
