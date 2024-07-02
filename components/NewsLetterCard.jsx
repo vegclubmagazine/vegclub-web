@@ -11,7 +11,7 @@ const NewsLetterCard = ({})=>
 {
     const [Email, setEmail] = useState("");
     const [isLoading, setIsLoading] =  useState(false);
-    const [submitErr, setSubmitErr] = useState(true);
+    const [submitErr, setSubmitErr] = useState(false);
     const [success, setSuccess] = useState(false);
     const handleSubmit = (e)=>
     {
