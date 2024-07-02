@@ -380,9 +380,9 @@ const Home = ({articles,ads})=>{
                     </div>
                 </div>
             </section>
-            <section>
+           {/*<section>
                 <NewsLetterCard></NewsLetterCard>
-            </section>
+                        </section>*/}
             <section className="w-full border-black/[.1]">
                 <div className="border-b-[1px] text-[2.074rem] md:text-[2.488rem] lg:text-[2.986rem] font-bold  uppercase pt-5 pb-3">
                     <div className="w-fit pl-[40px]">

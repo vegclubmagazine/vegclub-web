@@ -31,14 +31,14 @@ const Contact = ()=>
                             {"  "}<Link className="underline decoration-[#01e2c2] decoration-[4px] font-bold" href="mailto:editorial@vegclubmagazine.com">editorial@vegclubmagazine.com</Link>
 
                         </p>
-                        <h2 className="mt-[60px] font-semibold uppercase text-[1.44rem]">Press releases</h2>
-                        <p className="mt-5">If you have a press release for the editorial team, please send it to 
+                        <h2 className="mt-[60px] font-semibold uppercase text-[1.44rem]">Press release</h2>
+                        <p className="mt-5">If you have a press release for the editorial team, please email
                             
                             {"   "}<Link className="underline decoration-[#01e2c2] decoration-[4px] font-bold" href="mailto:press@vegclubmagazine.com">press@vegclubmagazine.com</Link>
 
                         </p>
                         <h2 className="mt-[60px] font-semibold uppercase text-[1.44rem]">Loyalty program</h2>
-                        <p className="mt-5">If you’d like to join our loyalty program as a physical member or as an eatery, please send it to 
+                        <p className="mt-5">If you’d like to join our loyalty program as a physical member or as an eatery, please email 
                             
                             {"  "}<Link className="underline decoration-[#01e2c2] decoration-[4px] font-semibold" href="mailto:loyalty@vegclubmagazine.com">loyalty@vegclubmagazine.com</Link>
 
@@ -47,6 +47,12 @@ const Contact = ()=>
                         <p className="mt-5">If you’re a journalist or a content creator and you’d like to join our team, please email
                             
                             {" "}<Link className="font-semibold decoration-[#01e2c2] decoration-[4px] underline" href="mailto:joinus@vegclubmagazine.com">joinus@vegclubmagazine.com</Link>
+
+                        </p>
+                        <h2 className="mt-[60px] font-semibold uppercase text-[1.44rem]">franchise</h2>
+                        <p className="mt-5">If you’d like to receive information about how to become a VegClub franchisee in a European country, please email 
+                            
+                            {" "}<Link className="font-semibold decoration-[#01e2c2] decoration-[4px] underline" href="mailto:franchise@vegclubmagazine.com">franchise@vegclubmagazine.com</Link>
 
                         </p>
                         <h2 className="mt-[60px] font-semibold uppercase text-[1.44rem]">GENERAL ENQUIRIES</h2>
