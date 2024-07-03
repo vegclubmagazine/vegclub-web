@@ -18,13 +18,15 @@ const NewsLetterCard = ({})=>
         e.preventDefault();
         setIsLoading(true);
         
-        const url = `${BASE_URL}/newsletter/newsletter/subscribe`;
+        const url = `${API}/readerships`;
         const email =  Email.toLowerCase();
 
         axios
             .post(url,
             {
-                email: email
+                data:{
+                    email: email
+                }
             })
             .then((res)=>{
                 setIsLoading(false);
