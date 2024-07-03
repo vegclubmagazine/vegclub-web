@@ -12,7 +12,7 @@ const InHouseAds = ({ad, size, orientation})=>
 
                 <div className={`relative  ad_${size} border-black/[.3]  mx-auto overflow-hidden`} data-orientation={`${orientation || ""}`}>
                     <img className={`${orientation === "vertical" ? "h-full w-auto":"w-full h-auto"} object-cover`} src={ad?.attributes?.image?.data?.attributes?.url}/>
-                    <div className="absolute top-4 left-4 drop-shadow-lg w-fit px-2  bg-[#f5f5f5] text-[0.69rem] font-bold tracking-[.05rem]">Advertisement</div>
+                    <div className="absolute top-4 left-4 drop-shadow-lg w-fit px-2  bg-[#f5f5f5] text-[0.69rem] font-bold tracking-[.05rem]">Ads</div>
                 </div>
             </Link>
         </div>

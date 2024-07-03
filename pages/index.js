@@ -19,7 +19,7 @@ const Home = ({articles,ads})=>{
    
     const [isLoading, setIsLoading] = useState(false);
     const [atLastPage, setAtLastPage] = useState(false);
-    const [LatestArticles,setLatestArticles] = useState([...articles?.nonFeatureArticles?.slice(1)]);
+    const [LatestArticles,setLatestArticles] = useState([...articles?.nonFeatureArticles?.slice(1,6)]);
     const [page,setPage] = useState(1);
 
     const countBeforeAd = 1;
@@ -56,7 +56,7 @@ const Home = ({articles,ads})=>{
         if(page > 1){
         
             const query = `query getLatestNonFeatureArticles($filtervar:ArticleFiltersInput){
-                                articles(filters:$filtervar, pagination:{page:${page}, pageSize:${articles?.nonFeatureArticles?.length || 10}})
+                                articles(filters:$filtervar, pagination:{page:${page}, pageSize:6}, sort:"date:desc")
                                 {
                                     meta{
                                         pagination{
