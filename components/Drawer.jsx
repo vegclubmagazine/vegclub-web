@@ -73,6 +73,13 @@ const Drawer = ({isOpen, onClose})=>{
 
                                     </li>
                                     <li className="cursor-pointer py-2 w-fit ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-white/[.4]">
+                                        <Link className="" href={`/donate`} >donate</Link>
+                                        
+                                       
+                       
+                                        
+                                    </li>
+                                    <li className="cursor-pointer py-2 w-fit ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-white/[.4]">
                                         <Link className="" href={`/contact`} >Contact Us</Link>
                                         
                                        
