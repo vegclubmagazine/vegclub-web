@@ -64,7 +64,7 @@ const donate = ({})=>
                     <div className="flex flex-col grow justify-center text-white pr-[20px]">
                         
                         <h1 className="text-[1.2rem] sm:text-[1.44rem] md:text-[1.728rem] lg:text-[2.488rem] xl:text-[2.986rem] font-bold">Donate to keep us in the green</h1>
-                        <h3 className="md:text-[1.44rem] mt-3">Limited offer: get a free tote bag when you donate £5 or more*</h3>
+                        <h3 className="md:text-[1.44rem] mt-3">Limited offer: get a free tote bag when you donate £50 or more*</h3>
                     </div>
                     <div className="min-w-[150px] w-[150px] md:w-[250px] lg:[300px]">
                         <img src="/donate_asset_4.png"></img>

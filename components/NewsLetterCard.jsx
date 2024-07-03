@@ -35,6 +35,7 @@ const NewsLetterCard = ({})=>
 
             })
             .catch((err)=>{
+                
                 setIsLoading(false)
                 setEmail("")
                 setSubmitErr(true)
