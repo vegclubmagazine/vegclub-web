@@ -72,6 +72,48 @@ const Member = ({member, articles, meta}) =>
                                 
                                 <h2 className="text-[1.44rem] w-fit mx-auto  md:mx-0 font-semibold">{member?.attributes?.position}</h2>
                                 <p className="text-[1.2rem]  w-fit mx-auto md:mx-0 mt-2">{member?.attributes?.pronouns}</p>
+                                <div className="mt-5 hidden md:block">
+                                    <ul className="list-none">
+                                        {member?.attributes?.instagram &&( 
+                                            <li className="inline-block mr-2">
+                                                <Link href={`${member?.attributes?.instagram}`}>
+                                                    <FaInstagram className="inline-block mr-2 text-[1.44rem]  ease-[cubic-bezier(0.19,1,0.22,1)] duration-[.34s] hover:text-black/[.6] "></FaInstagram>
+                                                </Link>
+                                            </li>
+                                        )}
+                                        
+                                        {member?.attributes?.linkedin && (
+                                            <li className="inline-block mr-5">
+                                                <Link href={`${member?.attributes?.linkedin}`}>
+                                                    <FaLinkedinIn className="inline-block mr-2 text-[1.44rem]  ease-[cubic-bezier(0.19,1,0.22,1)] duration-[.34s] hover:text-black/[.6]"></FaLinkedinIn>
+                                                </Link>
+                                            </li>
+                                        )}
+                                        
+                                        {member?.attributes?.twitter && (
+                                            <li className="inline-block mr-5">
+                                                <Link href={`${member?.attributes?.twitter}`}>
+                                                    <FaTwitter className="inline-block  text-[1.44rem] ease-[cubic-bezier(0.19,1,0.22,1)] duration-[.34s] hover:text-black/[.6]"></FaTwitter>
+                                                </Link>
+                                            </li>
+                                        )}
+                                        {member?.attributes?.Facebook &&(
+                                            <li className="inline-block mr-5">
+                                                <Link href={`${member?.attributes?.Facebook}`}>
+                                                    <FaFacebookF className="inline-block  text-[1.44rem] ease-[cubic-bezier(0.19,1,0.22,1)] duration-[.34s] hover:text-black/[.6]"></FaFacebookF>
+                                                </Link>
+                                            </li>
+                                        )}
+                                        {member?.attributes?.tiktok && (
+                                            <li className="inline-block mr-5">
+                                                    <Link href={`${member?.attributes?.tiktok}`}>
+                                                        <FaTiktok className="inline-block  text-[1.44rem] cursor-pointer ease-[cubic-bezier(0.19,1,0.22,1)] duration-[.34s] hover:text-black/[.6]"></FaTiktok>
+                                                    </Link>
+                                            </li>
+                                        )}
+                                        
+                                    </ul>
+                                </div>
                                 <div className={`mt-8 ${viewWhole ? "":"line-clamp-[6]"} leading-[1.9] text-justify`}ref={textEl}><p>{member?.attributes?.bio}</p></div>
                                 {exceedsLimit && (
                                     <div className="w-fit mt-5 mx-auto md:mx-0" role="button" onClick={()=>{setViewWhole(prev => prev ? false:true)}}>
@@ -142,7 +184,7 @@ const Member = ({member, articles, meta}) =>
                     </div>
                 
                 </div>
-                <div className="px-[40px] pb-3">
+                <div className="px-[40px] pb-3 md:hidden">
                         <ul className="list-none">
                             {member?.attributes?.instagram &&( 
                                 <li className="inline-block mr-5">
