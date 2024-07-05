@@ -104,6 +104,7 @@ input[type=submit]{
   margin: 0.1em 0.1em 0.2em 0;
 }
 .article-preview a,
+.article-preview a u,
 .article-preview a span,
 .article-preview a strong,
 .article-preview a strong u,
