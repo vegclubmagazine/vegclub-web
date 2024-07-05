@@ -64,9 +64,9 @@ const Member = ({member, articles, meta}) =>
                                     className="w-full h-auto object-cover"
                                 />
                         </div>
-                        <div className="mt-3 md:mt-0 md:pl-[20px] lg:pl-[40px] md:flex md:flex-col md:grow">
+                        <div className="mt-5 md:mt-0 md:pl-[20px] lg:pl-[40px] md:flex md:flex-col md:grow">
                             <div className="pl-0">
-                                <h1 className=" text-[2.488rem] w-fit mx-auto md:mx-0 font-semibold">{member?.attributes?.name}</h1>
+                                <h1 className=" text-[1.728rem] md:text-[2.488rem] w-fit mx-auto md:mx-0 font-semibold">{member?.attributes?.name}</h1>
                             </div>
                             <div className=" mx-auto md:mx-0 flex justify-center flex-col mt-2  md:pr-[60px] lg:pr-[100px]">
                                 
@@ -75,49 +75,55 @@ const Member = ({member, articles, meta}) =>
                                 <div className="mt-5 hidden md:block">
                                     <ul className="list-none">
                                         {member?.attributes?.instagram &&( 
-                                            <li className="inline-block mr-2">
-                                                <Link href={`${member?.attributes?.instagram}`}>
-                                                    <FaInstagram className="inline-block mr-2 text-[1.44rem]  ease-[cubic-bezier(0.19,1,0.22,1)] duration-[.34s] hover:text-black/[.6] "></FaInstagram>
+                                            <li className="inline-block mr-5">
+                                                <Link className="px-3 bg-[#f7f5f7] py-1 rounded-[5px]" href={`${member?.attributes?.instagram}`}>
+                                                        <FaInstagram className="inline-block text-[1.2rem] mr-2 transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]"></FaInstagram>
+                                                        <p className="inline-block text-[0.833rem] align-middle">instagram</p>
                                                 </Link>
                                             </li>
                                         )}
                                         
                                         {member?.attributes?.linkedin && (
                                             <li className="inline-block mr-5">
-                                                <Link href={`${member?.attributes?.linkedin}`}>
-                                                    <FaLinkedinIn className="inline-block mr-2 text-[1.44rem]  ease-[cubic-bezier(0.19,1,0.22,1)] duration-[.34s] hover:text-black/[.6]"></FaLinkedinIn>
+                                                <Link className="px-3 bg-[#f7f5f7] py-1 rounded-[5px]" href={`${member?.attributes?.linkedin}`}>
+                                                    <FaLinkedin className="inline-block mr-2 text-[1.44rem]  ease-[cubic-bezier(0.19,1,0.22,1)] duration-[.34s] hover:text-black/[.6]"></FaLinkedin>
+                                                    <p className="inline-block text-[0.833rem] align-middle">Linkedin</p>
+
                                                 </Link>
                                             </li>
                                         )}
                                         
                                         {member?.attributes?.twitter && (
                                             <li className="inline-block mr-5">
-                                                <Link href={`${member?.attributes?.twitter}`}>
-                                                    <FaTwitter className="inline-block  text-[1.44rem] ease-[cubic-bezier(0.19,1,0.22,1)] duration-[.34s] hover:text-black/[.6]"></FaTwitter>
+                                                <Link className="px-3 bg-[#f7f5f7] py-1 rounded-[5px]"  href={`${member?.attributes?.twitter}`}>
+                                                    <FaTwitter className="inline-block mr-2  text-[1.44rem] ease-[cubic-bezier(0.19,1,0.22,1)] duration-[.34s] hover:text-black/[.6]"></FaTwitter>
+                                                    <p className="inline-block text-[0.833rem] align-middle">Twitter</p>
                                                 </Link>
                                             </li>
                                         )}
                                         {member?.attributes?.Facebook &&(
                                             <li className="inline-block mr-5">
-                                                <Link href={`${member?.attributes?.Facebook}`}>
-                                                    <FaFacebookF className="inline-block  text-[1.44rem] ease-[cubic-bezier(0.19,1,0.22,1)] duration-[.34s] hover:text-black/[.6]"></FaFacebookF>
+                                                <Link  className="px-3 bg-[#f7f5f7] py-1 rounded-[5px]" href={`${member?.attributes?.Facebook}`}>
+                                                    <FaFacebookF className="inline-block mr-2 text-[1.44rem] ease-[cubic-bezier(0.19,1,0.22,1)] duration-[.34s] hover:text-black/[.6]"></FaFacebookF>
+                                                    <p className="text-[0.833rem] align-middle inline-block">Facebook</p>
                                                 </Link>
                                             </li>
                                         )}
                                         {member?.attributes?.tiktok && (
                                             <li className="inline-block mr-5">
-                                                    <Link href={`${member?.attributes?.tiktok}`}>
+                                                    <Link className="px-3 bg-[#f7f5f7] py-1 rounded-[5px]" href={`${member?.attributes?.tiktok}`}>
                                                         <FaTiktok className="inline-block  text-[1.44rem] cursor-pointer ease-[cubic-bezier(0.19,1,0.22,1)] duration-[.34s] hover:text-black/[.6]"></FaTiktok>
+                                                        <p className="inline-block align-middle text-[0.833rem]">Tiktok</p>
                                                     </Link>
                                             </li>
                                         )}
                                         
                                     </ul>
                                 </div>
-                                <div className={`mt-8 ${viewWhole ? "":"line-clamp-[6]"} leading-[1.9] text-justify`}ref={textEl}><p>{member?.attributes?.bio}</p></div>
+                                <div className={`mt-8 ${viewWhole ? "":"line-clamp-[6]"} leading-relaxed text-justify md:text-[1.2rem]`}ref={textEl}><p>{member?.attributes?.bio}</p></div>
                                 {exceedsLimit && (
                                     <div className="w-fit mt-5 mx-auto md:mx-0" role="button" onClick={()=>{setViewWhole(prev => prev ? false:true)}}>
-                                        <div className={`w-[16px] h-[16px] border-black border-r-[1px] border-b-[1px] ${viewWhole ? "align-bottom rotate-[-135deg]":"rotate-[45deg]"}  inline-block mr-5`}></div>
+                                        <div className={`w-[16px] h-[16px] border-black/[.4] border-r-[1px] border-b-[1px] ${viewWhole ? "align-bottom rotate-[-135deg]":"rotate-[45deg]"}  inline-block mr-5`}></div>
                                         <div className={`font-semibold uppercase leading-0 inline-block ${viewWhole ? "leading-[2rem]":"align-middle"}`}>{viewWhole ? "view less":"view more"}</div>
                                     </div>
                                 )}
