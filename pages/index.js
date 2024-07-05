@@ -167,7 +167,7 @@ const Home = ({articles,ads})=>{
             
             <section className="block md:grid md:grid-cols-[2fr_1fr] overflow-y-hidden">
                 <div className="relative border-[#000]/[.1] border-r-[1px]">
-                    <div className="w-full bg-[#000]/[.1] overflow-hidden h-fit  md:aspect-[16/9]">
+                    <div className="w-full bg-[#000]/[.1] overflow-hidden h-fit  md:max-h-[540px]">
                         <img    className="object-cover w-full h-auto" 
                                 src={   articles?.featureArticles[0]?.attributes?.media?.data?.attributes?.url ||
                                         articles?.featureArticles[0]?.attributes?.media?.data?.attributes?.formats?.large?.url ||
