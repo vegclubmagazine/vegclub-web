@@ -92,7 +92,7 @@ const NewsLetterCard = ({})=>
                         <p className="inline-block align-middle text-[#ff0000] text-[0.694rem]">Something went wrong, please try again</p>
                     </div>
                 )}
-                <p className="mt-5 text-[0.833rem] text-white/[.4]">By signing up to the VEGCLUB newsletter you agree to receive electronic communications from VEGCLUB that may sometimes include advertisements or sponsored content.</p>
+                <p className="mt-5 text-[0.833rem] text-white/[.4]">Stay updated on all things vegan in Europe. Get exclusive articles, deals and giveaways delivered straight to your inbox. VegClub Magazine is the number one outlet in Europe and you will not want to miss our unique content.</p>
             </div>
         </div>
     )

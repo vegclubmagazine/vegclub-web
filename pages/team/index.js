@@ -220,7 +220,7 @@ export async function getServerSideProps({req,res}){
         { encodeValuesOnly: true }
     );
 
-    const teamRequest = await fetch(`${API}/teams?populate=*`);
+    const teamRequest = await fetch(`${API}/teams?${filters}`);
     const team = await teamRequest.json();
 
    
