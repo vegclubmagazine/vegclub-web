@@ -46,7 +46,7 @@ const Category = ({category, meta, articles, latestCoverArticle}) =>
                                         />
                                     </div>
                                     <div className="w-full md:pl-[40px] pr-[40px]">
-                                        <h2 className="text-[1.44rem] md:text-[1.728rem] lg:text-[2.074rem] text-white mt-4 font-extrabold article-title"><span className="underline_span"><Link href={`/article/${latestCoverArticle[0]?.attributes?.slug}`}>{latestCoverArticle[0]?.attributes?.title}</Link></span></h2>
+                                        <h2 className="text-[1.44rem] md:text-[1.728rem] lg:text-[2.074rem] text-white mt-4 font-extrabold article-title"><span className="underline_span"><Link href={`/article/${encodeURIComponent(latestCoverArticle[0]?.attributes?.slug)}`}>{latestCoverArticle[0]?.attributes?.title}</Link></span></h2>
                                         {/*<div className="h-fit w-fit inline-block align-middle">
                                             <i className=" inline-block cursor-pointer ml-2 h-[10px] w-[10px] border-[#40e0d0] border-t-[1px] border-r-[1px] rotate-45"></i>
                                                 </div>*/}
