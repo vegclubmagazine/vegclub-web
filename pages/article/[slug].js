@@ -75,7 +75,8 @@ const Article = ({article, articles}) =>
     //const [shareBtnActive, setShareBtnActive] = useState(0);
     return (
         <Layout title={article?.attributes?.title || "Page Not Found"}
-                canonicalUrl={article?.attributes?.seo?.canonicalURL}
+
+                canonicalUrl={article?.attributes?.seo?.canonicalURL || SITE_URL + `/${article?.attributes?.slug || ""}`}
                 image={
                     article?.attributes?.seo?.metaImge?.data?.attributes?.url ||
                     article?.attributes?.media?.data?.attributes?.formats?.medium?.url
