@@ -318,8 +318,8 @@ const Home = ({articles,ads})=>{
                                             </div>
                                         </div>
                                         <div className="">
-                                            <div className="flex flex-col w-[150px] h-full overflow-hidden  md:h-auto md:w-full  md:aspect-[16/9] mx-auto bg-[#CACACA]">
-                                                <img    className="h-full w-auto md:w-full md:h-auto object-cover" 
+                                            <div className="flex flex-col w-[150px] h-full overflow-hidden  md:h-auto md:w-full  md:aspect-[16/9] mx-auto">
+                                                <img    className="h-full w-auto  object-cover" 
                                                         src={   article?.attributes?.media?.data?.attributes?.url ||
                                                                 article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
                                                                 article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
@@ -393,7 +393,7 @@ const Home = ({articles,ads})=>{
                 <div className="w-full  border-b-[1px] pb-[2rem] md:pb-0">
                     <div className="bg-[#000] px-[40px]  w-full md:px-0 md:grid md:grid-cols-[2fr_1fr] items-center">
                         <div className="hidden  overflow-y-hidden md:block w-full aspect-[16/9]  bg-[#cacaca]">
-                            <img    className="w-full h-auto" 
+                            <img    className="w-full h-auto object-cover" 
                                     src={   articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.url ||
                                             articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.large?.url ||
                                             articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
