@@ -392,7 +392,7 @@ const Home = ({articles,ads})=>{
                 </div>
                 <div className="w-full  border-b-[1px] pb-[2rem] md:pb-0">
                     <div className="bg-[#000] px-[40px]  w-full md:px-0 md:grid md:grid-cols-[2fr_1fr] items-center">
-                        <div className="hidden  overflow-y-hidden md:block w-full aspect-[16/9]  bg-[#cacaca]">
+                        <div className="hidden  overflow-y-hidden md:block w-full aspect-[16/9]">
                             <img    className="w-full h-auto object-cover" 
                                     src={   articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.url ||
                                             articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.large?.url ||
@@ -425,7 +425,7 @@ const Home = ({articles,ads})=>{
                         
                     </div>
                     <div className="block md:hidden px-[40px] mt-[-50px]">
-                        <div className="aspect-[16/9] overflow-y-hidden bg-[#CACACA]">
+                        <div className="aspect-[16/9] overflow-y-hidden ">
                                 <img    className="w-full h-auto" 
                                         src={   articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.url ||
                                                 articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.large?.url ||
