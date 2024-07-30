@@ -28,13 +28,16 @@ import Moment from "react-moment";
 import { GlobalContext } from "../../context/GlobalContext.js";
 import { slugify } from "../../lib/utils.js";
 
+
 const qs = require('qs');
 
 
 const Article = ({article, articles}) =>
 {
     const {findAuthorByID} = useContext(GlobalContext);
-
+    const regex = /list-style/g;
+    const regex2 = /(\w+)(;)/;
+    
     const options = {
         replace({attribs, children}) {
             if(!attribs)return;
@@ -45,6 +48,15 @@ const Article = ({article, articles}) =>
 
                 return <img src={attribs.src} className="w-full object-cover max-h-[450px]"></img>
             }
+            if(attribs.style && attribs.style.match(regex))
+            {
+                const listStyle = attribs.style.split(":")[1].match(regex2);
+               
+                return <ul style={{listStyle:`${listStyle[1]}`}} className="pl-[25px] md:pl-[30px]">{domToReact(children)}</ul>
+                
+            }
+          
+
         }
     }
    
