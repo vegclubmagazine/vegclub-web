@@ -212,8 +212,8 @@ const Article = ({article, articles}) =>
                                         <li className={`border-box text-white border-[#333]  border-b-[1px] md:border-b-0 ${(index + 1) % 3 ? "md:border-r-[1px]":""}`} key={index}>
                                               <div className="flex  flex-row md:grid md:grid-cols-1  h-full">
                                                     
-                                                    <div className="hidden md:block w-full overflow-hidden bg-[#00b89d] aspect-[16/9] max-h-[248px]">
-                                                        <img    className="w-full h-auto" 
+                                                    <div className="hidden md:block w-full overflow-hidden  aspect-[16/9] max-h-[248px]">
+                                                        <img    className="h-full w-auto" 
                                                                 src={   article?.attributes?.media?.data?.attributes?.url ||
                                                                         article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
                                                                         article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
