@@ -48,13 +48,13 @@ const Article = ({article, articles}) =>
 
                 return <img src={attribs.src} className="w-full object-cover max-h-[450px]"></img>
             }
-            if(attribs.style && attribs.style.match(regex))
+            /*f(attribs.style && attribs.style.match(regex))
             {
                 const listStyle = attribs.style.split(":")[1].match(regex2);
                
                 return <ul style={{listStyle:`${listStyle[1]}`}} className="pl-[25px] md:pl-[30px]">{domToReact(children)}</ul>
                 
-            }
+            }*/
           
 
         }
