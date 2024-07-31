@@ -213,7 +213,7 @@ const Article = ({article, articles}) =>
                                               <div className="flex  flex-row md:grid md:grid-cols-1  h-full">
                                                     
                                                     <div className="hidden md:block w-full overflow-hidden  aspect-[16/9] max-h-[248px]">
-                                                        <img    className="h-full w-auto" 
+                                                        <img    className="w-full h-auto" 
                                                                 src={   article?.attributes?.media?.data?.attributes?.url ||
                                                                         article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
                                                                         article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
@@ -227,10 +227,10 @@ const Article = ({article, articles}) =>
                                                         ></img>  
                                                     </div>
                                                     
-                                                    <div className="py-[40px] md:pb-[40px] max-w-[653px] flex flex-col grow pl-[40px] md:block">
+                                                    <div className="py-[40px] md:pb-[40px] max-w-[653px] flex flex-col grow px-[40px]  md:block">
                                                                         
                                                         <h1 className="article-title text-white font-bold line-clamp-3 md:line-clamp-5 md:text-[1.44rem] lg:text-[1.728rem]"><span className="underline_span"><Link href={`/article/${encodeURIComponent(article?.attributes?.slug)}`}>{article?.attributes?.title}</Link></span></h1>
-                                                        <h2 className="hidden mt-3 text-white md:line-clamp-4">{article?.attributes?.description}</h2>
+                                                        <h2 className="hidden mt-3 text-white md:line-clamp-4 md:text-justify">{article?.attributes?.description}</h2>
                                                         <div className="mt-4 text-[0.833rem]">
                                                             <p className="inline-block text-white uppercase font-light  mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
                                                         

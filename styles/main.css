@@ -77,6 +77,8 @@ input[type=submit]{
 
 
 }
+.basic-link:hover .underline_span,
+.basic-link:focus .underline_span,
 .menu-cat--title:hover .underline_span,
 .menu-cat--title:focus .underline_span,
 .article-title:hover .underline_span,
@@ -256,6 +258,11 @@ input[type=submit]{
   border-radius: 50%;
 
 }
+ul[style*="list-style-type"]{
+  padding-left:35px;
+}
+
+
 
 @keyframes Loader {
   100% {
