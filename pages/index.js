@@ -410,11 +410,11 @@ const Home = ({articles,ads})=>{
                             <h3 className = "text-white text-[0.833rem] inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.32s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.6]"><Link href={`category/${articles?.nonFeatureArticles[0]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.nonFeatureArticles[0]?.attributes?.category?.data?.attributes?.name}</Link>
                                 
                             </h3>
-                            <h1 className="text-[1.44rem] md:text-[1.728rem] lg:text-[2.074rem] text-white mt-4 font-extrabold article-title"><span className="underline_span"><Link href={`article/${encodeURIComponent(articles?.nonFeatureArticles[0]?.attributes?.slug)}`}>{articles?.nonFeatureArticles[0]?.attributes?.title}</Link></span></h1>
+                            <h1 className="text-[1.44rem] md:text-[1.728rem] lg:text-[2.074rem] text-white mt-4 font-extrabold article-title line-clamp-4"><span className="underline_span"><Link href={`article/${encodeURIComponent(articles?.nonFeatureArticles[0]?.attributes?.slug)}`}>{articles?.nonFeatureArticles[0]?.attributes?.title}</Link></span></h1>
                             {/*<div className="h-fit w-fit inline-block align-middle">
                                 <i className=" inline-block cursor-pointer ml-2 h-[10px] w-[10px] border-[#40e0d0] border-t-[1px] border-r-[1px] rotate-45"></i>
                             </div>*/}
-                            <p className="mt-4 text-[#a2a2a2] text-[1rem]">{articles?.nonFeatureArticles[0]?.attributes?.description}</p>
+                            <p className="mt-4 text-white line-clamp-4 text-[1rem]">{articles?.nonFeatureArticles[0]?.attributes?.description}</p>
 
                             <div className="mt-4 text-white text-[0.833rem]">
                                 <p className="inline-block font-light uppercase  mr-1">{articles?.nonFeatureArticles[0]?.attributes?.author?.data?.attributes?.name}</p>
