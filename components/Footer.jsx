@@ -92,7 +92,7 @@ const Footer  = ({})=>
                     <div className="w-fit  mx-auto">
                         <div className="text-[0.6rem] md:text-[0.694rem] text-[#fff] uppercase font-light"><span className="font-bold">©</span>{" "} Vegclub Magazine 2024. All rights reserved.</div>
                         <div className="text-center text-[0.6rem] md:text-[0.694rem] mt-2 font-light uppercase text-[#fff]">
-                            <p className="inline-block border-[#333] pr-1 w-fit border-r-[1px]">Privacy Policy</p>
+                            <Link href="/legal/privacy-policy" className="inline-block border-[#333] pr-1 w-fit border-r-[1px]">Privacy Policy</Link>
                         
                             <p className="inline-block border-[#333] px-1 w-fit border-r-[1px] ">Cookie Policy</p>
                             <p className="inline-block px-1 w-fit">Manage preferences</p>

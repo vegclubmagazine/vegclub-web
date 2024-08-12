@@ -16,7 +16,7 @@ body {
   font-size: 14px;
   /*#0043EF*/
   /*background-accent #ffe0e0*/
-  overflow-x:hidden;
+
 }
 html.drawer-open{
   overflow:hidden;
