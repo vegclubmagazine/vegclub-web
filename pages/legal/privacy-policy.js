@@ -161,7 +161,7 @@ const PrivacyPolicy =({}) =>
                     
                         <div className="my-3">
                             VegClub Magazine
-                            <div className="">Email:<span><Link href="mailto:contact@vegclubmagazine.com">contact@vegclubmagazine.com</Link></span></div>
+                            <div className="">Email:<span><Link className="bg-[linear-gradient(to_bottom,_#fff_60%,_#01e2c2_40%)]" href="mailto:contact@vegclubmagazine.com">contact@vegclubmagazine.com</Link></span></div>
                         </div>
                         <div className="my-3">Thank you for trusting VegClub Magazine with your personal information. We are committed to safeguarding your privacy and ensuring a safe online experience.
                         </div>   
@@ -171,6 +171,7 @@ const PrivacyPolicy =({}) =>
 
                         </div>
                     </section>
+                    <div className="mt-[40px] h-[1px] bg-black/[.1]"></div>
                 </main>
                 
             </main>
