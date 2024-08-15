@@ -1,6 +1,6 @@
 import { API, BASE_URL } from "../config/api";
 import Layout from "../defaults/Layout";
-import {Fragment, useEffect,useState} from "react";
+import {Fragment, useEffect,useState, useCallback} from "react";
 import {PAGINATION_LIMIT} from "../config/meta.js";
 import { slugify } from "../lib/utils.js";
 import Link from "next/link.js";
@@ -16,11 +16,14 @@ const qs = require("qs");
 
 
 const Home = ({articles,ads})=>{
-   
+
+
+    const [offset, setOffset] = useState(8);
     const [isLoading, setIsLoading] = useState(false);
     const [atLastPage, setAtLastPage] = useState(false);
-    const [LatestArticles,setLatestArticles] = useState([...articles?.nonFeatureArticles?.slice(1,6)]);
+    const [LatestArticles,setLatestArticles] = useState([...articles?.nonFeatureArticles?.slice(1,8)]);
     const [page,setPage] = useState(1);
+    const [prevPage, setPrevPage] = useState(1);
 
     const countBeforeAd = 1;
     
@@ -44,6 +47,8 @@ const Home = ({articles,ads})=>{
 
     const loadArticles = ()=>
     {
+        
+        
         setIsLoading(true);
         setPage(prev => prev += 1);
 
@@ -53,14 +58,14 @@ const Home = ({articles,ads})=>{
     {
         
         
-        if(page > 1){
+        if(page > 1 && prevPage !== page){
         
             const query = `query getLatestNonFeatureArticles($filtervar:ArticleFiltersInput){
-                                articles(filters:$filtervar, pagination:{page:${page}, pageSize:6}, sort:"date:desc")
+                                articles(filters:$filtervar, pagination:{start:${offset}, limit:6}, sort:"date:desc")
                                 {
                                     meta{
                                         pagination{
-                                            pageCount
+                                            total
                                         }
                                     }
                                     
@@ -125,9 +130,12 @@ const Home = ({articles,ads})=>{
                     return res.json();
                 })
                 .then(({data}) =>{
+                   
+                 
                     setIsLoading(false);
-                    
-                    setAtLastPage(page >= data.articles.meta.pagination.pageCount);
+                    setPrevPage(page);
+                    setAtLastPage(offset + 6 >= data.articles.meta.pagination.total);
+                    setOffset(prev => prev + 6);
                     setLatestArticles(prev => [...prev,...data.articles.data]);
                 })
                 .catch((err)=>{
@@ -390,7 +398,98 @@ const Home = ({articles,ads})=>{
                         <h2>Latest</h2>
                     </div>
                 </div>
-                <div className="w-full  border-b-[1px] pb-[2rem] md:pb-0">
+                
+                <div className="block hidden md:grid md:grid-cols-[1fr_2fr] overflow-y-hidden">
+                    <div className="hidden md:grid">
+                        <div className="border-[#000]/[.1] border-b-[1px] border-r-[1px]">
+                            <div className="w-full aspect-[16/15]">
+                                <div className="h-full  overflow-hidden bg-[#cacaca]">
+                                    <img    className="h-full w-auto object-cover" 
+                                            src={   articles?.nonFeatureArticles[1]?.attributes?.media?.data?.attributes?.url ||
+                                                    articles?.nonFeatureArticles[1]?.attributes?.media?.data?.attributes?.formats?.large?.url ||
+                                                    articles?.nonFeatureArticles[1]?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
+                                                    articles?.nonFeatureArticles[1]?.attributes?.media?.data?.attributes?.formats?.small?.url ||
+                                                    articles?.nonFeatureArticles[1]?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url 
+                                                    
+                                                
+
+
+                                                }
+                                    ></img> 
+                                </div>
+                            </div>
+                            <div className=" mx-auto p-[40px]">
+                            <h3 className = " text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/category/${articles?.nonFeatureArticles[1]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.nonFeatureArticles[1]?.attributes?.category?.data?.attributes?.name}</Link></h3>                
+                                <h1 className="article-title mt-4 font-bold w-fit leading-[1.5] text-[1.44rem] lg:text-[1.728rem]"><span className="underline_span"><Link href={`/article/${encodeURIComponent(articles?.nonFeatureArticles[1]?.attributes?.slug)}`}>{articles?.nonFeatureArticles[1]?.attributes?.title}</Link></span></h1>
+                                <div className="mt-4 text-[0.833rem]">
+                                    <p className="inline-block font-light  uppercase  mr-1">{articles?.nonFeatureArticles[1]?.attributes?.author?.data?.attributes?.name}</p>
+                                    
+                                    <Moment className="inline-block font-semibold uppercase text-[0.833rem]" format="MMMM Do YYYY">{articles?.nonFeatureArticles[1]?.attributes?.date}</Moment>
+                                </div>
+                            </div>
+                        </div>
+                        {/*<div className="">
+                            
+                        
+                            
+                            <div className="p-[40px]">
+                                <h3 className = "text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/category/${articles?.featureArticles[2]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.featureArticles[2]?.attributes?.category?.data?.attributes?.name}</Link></h3>                
+                                <h1 className="article-title mt-4 font-semibold w-fit leading-[1.5] text-[1.44rem] lg:text-[1.728rem]"><span className="underline_span"><Link href={`/article/${articles?.featureArticles[2]?.attributes?.slug}`}>{articles?.featureArticles[2]?.attributes?.title}</Link></span></h1>
+                                <div className="mt-4 text-[0.833rem]">
+                                    <p className="inline-block font-light  uppercase  mr-1">{articles?.featureArticles[2]?.attributes?.author?.data?.attributes?.name}</p>
+                                    
+                                    <Moment className="inline-block font-semibold uppercase  text-[0.833rem]" format="MMMM Do YYYY">{articles?.featureArticles[2]?.attributes?.date}</Moment>
+                                </div>
+                            </div>
+                                            </div>*/}
+                    </div>
+                    <div className="relative border-[#000]/[.1] border-r-[1px]">
+                        <div className="w-full bg-[#000]/[.1] overflow-hidden h-fit  md:max-h-[540px]">
+                            <img    className="object-cover w-full h-auto" 
+                                    src={   articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.url ||
+                                            articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.large?.url ||
+                                            articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
+                                            articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.small?.url ||
+                                            articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url
+                                            
+                                        
+
+
+                                        }
+                            ></img>   
+                        </div>
+                        <div className="relative inline-block py-[40px] pr-[40px] bottom-[40px] left-[10%] md:left-[25%]  bg-[#000] text-start text-white w-[90%] md:w-[75%]">
+                            {/*<p className="w-full bg-[#000] text-start text-[#fff] border-box pl-1 text-[0.6rem]"> Damon Winter <span className="text-[#01e2c2] ml-2 mr-2">/</span> Vegclub Magazine <span className="text-[#01e2c2] ml-2 mr-2">/</span> Redux</p>*/}
+                            <div className="pl-[40px]">
+                                <h3 className = "text-white text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.34s] ease-in-out hover:text-white/[.6]"><Link href={`/category/${articles?.nonFeatureArticles[0]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.nonFeatureArticles[0]?.attributes?.category?.data?.attributes?.name}</Link></h3>                
+                                <h1 className="article-title mt-4 line-clamp-4 font-extrabold w-fit leading-[1.5] text-[1.728rem] lg:text-[2.488rem]"><span className="underline_span"><Link href={`/article/${encodeURIComponent(articles?.nonFeatureArticles[0]?.attributes?.slug)}`}>{articles?.nonFeatureArticles[0]?.attributes?.title}</Link></span></h1>
+                                <h2 className="mt-4 text-white text-[1rem] line-clamp-4">{articles?.nonFeatureArticles[0]?.attributes?.description}</h2>
+                                <div className="mt-4 text-[0.833rem]">
+                                    <p className="inline-block uppercase font-light  mr-1">{articles?.nonFeatureArticles[0]?.attributes?.author?.data?.attributes?.name}</p>
+                                    
+                                    <Moment className="inline-block font-semibold uppercase  text-[0.833rem]" format="Do MMM YYYY">{articles?.nonFeatureArticles[0]?.attributes?.date}</Moment>
+                                </div>
+                            </div>
+                            <div className="absolute h-[200%] w-[100%] bg-black"></div>
+                            
+                        </div>
+                        <div className="hidden relative p-[60px] bottom-[40px] align-top w-[50%]">
+                            <div className="w-full">
+                                {/*{ads.square?.length ? (
+                                    <Fragment>
+                                        <p className="text-[0.634rem] w-fit mx-auto mb-2 text-[#CACACA] uppercase">Advertisement</p>
+
+                                        {/*<InHouseAds ad={ads.square[0]}/>
+                                    </Fragment>
+                                ):""}*/}
+                                <p className="leading-[1.6] text-[1.02rem] font-[410] line-clamp-3">{articles?.nonFeatureArticles[0]?.attributes?.description}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div className="w-full  md:hidden border-b-[1px] pb-[2rem] md:pb-0">
                     <div className="bg-[#000] px-[40px]  w-full md:px-0 md:grid md:grid-cols-[2fr_1fr] items-center">
                         <div className="hidden  overflow-y-hidden md:block w-full aspect-[16/9]">
                             <img    className="w-full h-auto object-cover" 
@@ -442,7 +541,36 @@ const Home = ({articles,ads})=>{
                         </div>
                     </div>
                 </div>
-                <div className="border-[#000]/[.1] border-b-[1px] lg:grid lg:grid-cols-[2fr_1fr]">
+                <div className="hidden md:grid grid-cols-3">
+                    {LatestArticles?.slice(1)?.map((article, index)=>(
+                        <div key={index} className="border-r-[1px] border-b-[1px] border-black/[.1] pb-[40px]">
+                            <div className="aspect-[16/9] overflow-hidden">
+                                <img src={article?.attributes?.media?.data?.attributes?.url ||
+                                        article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
+                                        article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
+                                        article?.attributes?.media?.data?.attributes?.formats?.small?.url ||
+                                        article?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url 
+                                        
+                                } className="w-full object-cover h-auto"/>
+
+
+                            </div>
+                            <div className="hidden md:block w-[85%] mt-4 mx-auto pb-3">
+                                            <h3 className = "article-title text-[0.833rem] inline-block  font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></span></h3>                
+
+                                            <h1 className="mt-4 font-bold text-[1.44rem] "><Link href={`/article/${encodeURIComponent(article?.attributes?.slug)}`}>{article?.attributes?.title}</Link></h1>
+                                            <div className="mt-4 text-[0.833rem]">
+                                                <p className="inline-block font-light  uppercase  mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
+                                                
+                                                <Moment className="inline-block font-semibold uppercase  text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
+                                            </div>
+                                
+                            </div>
+
+                        </div>
+                    ))}
+                </div>
+                <div className="border-[#000]/[.1] border-b-[1px] md:hidden">
                     <ul className="list-none text-start md:border-r-[1px]">
                         {LatestArticles?.map((article, index)=>(
                             <Fragment>
