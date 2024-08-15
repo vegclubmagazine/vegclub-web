@@ -193,7 +193,7 @@ const Home = ({articles,ads})=>{
                         {/*<p className="w-full bg-[#000] text-start text-[#fff] border-box pl-1 text-[0.6rem]"> Damon Winter <span className="text-[#01e2c2] ml-2 mr-2">/</span> Vegclub Magazine <span className="text-[#01e2c2] ml-2 mr-2">/</span> Redux</p>*/}
                         <div className="pl-[40px]">
                             <h3 className = "text-white text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.34s] ease-in-out hover:text-white/[.6]"><Link href={`/category/${articles?.featureArticles[0]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.featureArticles[0]?.attributes?.category?.data?.attributes?.name}</Link></h3>                
-                            <h1 className="article-title mt-4 line-clamp-4 font-extrabold w-fit leading-[1.5] text-[1.728rem] lg:text-[2.488rem]"><span className="underline_span"><Link href={`/article/${encodeURIComponent(articles?.featureArticles[0]?.attributes?.slug)}`}>{articles?.featureArticles[0]?.attributes?.title}</Link></span></h1>
+                            <h1 className="article-title mt-4 line-clamp-5 font-extrabold w-fit leading-[1.5] text-[1.728rem] lg:text-[2.986rem]"><span className="underline_span"><Link href={`/article/${encodeURIComponent(articles?.featureArticles[0]?.attributes?.slug)}`}>{articles?.featureArticles[0]?.attributes?.title}</Link></span></h1>
                             <h2 className="mt-4 text-white text-[1rem] line-clamp-4 lg:hidden">{articles?.featureArticles[0]?.attributes?.description}</h2>
                             <div className="mt-4 text-[0.833rem]">
                                 <p className="inline-block uppercase font-light  mr-1">{articles?.featureArticles[0]?.attributes?.author?.data?.attributes?.name}</p>
@@ -276,7 +276,7 @@ const Home = ({articles,ads})=>{
                                         <div className="flex grow flex-col pl-[40px] justify-center md:hidden py-[20px] pr-[20px]">
                                             <h3 className = "text-[0.833rem] inline-block uppercase transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]  font-semibold cursor-pointer w-fit"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></h3>                
     
-                                            <h1 className="article-title mt-3 md:text-[1.44rem] lg:text-[1.728rem] line-clamp-3 font-bold"><span className="underline_span"><Link href={`/article/${encodeURIComponent(article?.attributes?.slug)}`}>{article?.attributes?.title}</Link></span></h1>
+                                            <h1 className="article-title mt-3 md:text-[1.44rem] lg:text-[1.728rem] line-clamp-4 font-bold"><span className="underline_span"><Link href={`/article/${encodeURIComponent(article?.attributes?.slug)}`}>{article?.attributes?.title}</Link></span></h1>
                                             <div className="mt-3 text-[0.833rem]">
                                                 <p className="inline-block font-light uppercase  mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
                                                 <Moment className="inline-block font-semibold uppercase  text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
@@ -319,7 +319,7 @@ const Home = ({articles,ads})=>{
                                         <div className="flex grow flex-col pl-[40px] justify-center md:hidden py-[20px] pr-[20px]">
                                             <h3 className = "text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit transition-all duration-[.34s] eas-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></h3>                
 
-                                            <h1 className="article-title mt-3 md:text-[1.44rem] lg:text-[1.728rem] font-bold line-clamp-3 md:line-clamp-5"><span className="underline_span"><Link href={`/article/${encodeURIComponent(article?.attributes?.slug)}`}>{article?.attributes?.title}</Link></span></h1>
+                                            <h1 className="article-title mt-3 md:text-[1.44rem] lg:text-[1.728rem] font-bold line-clamp-4 md:line-clamp-5"><span className="underline_span"><Link href={`/article/${encodeURIComponent(article?.attributes?.slug)}`}>{article?.attributes?.title}</Link></span></h1>
                                             <div className="mt-3 text-[0.833rem]">
                                                 <p className="inline-block font-light uppercase  mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
                                                 <Moment className="inline-block font-semibold uppercase " format="Do MMM YYYY">{article?.attributes?.date}</Moment>
@@ -345,7 +345,7 @@ const Home = ({articles,ads})=>{
                                         <div className="hidden md:block p-[40px]">
                                             <h3 className = "text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.32s] ease-in-out hover:text-black/[.4]"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></h3>                
 
-                                            <h1 className="article-title mt-4 font-bold text-[1.44rem] md:line-clamp-3 lg:line-clamp-4 "><span className="underline_span"><Link className="" href={`/article/${encodeURIComponent(article?.attributes?.slug)}`}>{article?.attributes?.title}</Link></span></h1>
+                                            <h1 className="article-title mt-4 font-bold text-[1.44rem] md:line-clamp-4 lg:line-clamp-4 "><span className="underline_span"><Link className="" href={`/article/${encodeURIComponent(article?.attributes?.slug)}`}>{article?.attributes?.title}</Link></span></h1>
                                             <div className="mt-4 text-[0.833rem]">
                                                 <p className="inline-block font-light uppercase  mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
                                                 
@@ -482,7 +482,7 @@ const Home = ({articles,ads})=>{
                                         {/*<InHouseAds ad={ads.square[0]}/>
                                     </Fragment>
                                 ):""}*/}
-                                <p className="leading-[1.6] text-[1.02rem] font-[410] line-clamp-3">{articles?.nonFeatureArticles[0]?.attributes?.description}</p>
+                                <p className="leading-[1.6] text-[1.02rem] font-[410] line-clamp-4">{articles?.nonFeatureArticles[0]?.attributes?.description}</p>
                             </div>
                         </div>
                     </div>
