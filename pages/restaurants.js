@@ -73,6 +73,7 @@ const restaurants = ({locations, first_location}) =>
    const handleClick = (e)=>
    {
         setImageIndex(0);
+        setSearchOpen(false);
         setSelection(JSON.parse(e.target.getAttribute("data-meta")));
         
 
@@ -109,7 +110,7 @@ const restaurants = ({locations, first_location}) =>
                     <div className="inline-block w-fit text-[0.833rem] ml-3 text-black/[.6] uppercase underline">{selection ? selection?.attributes?.name : "find restaurant"}</div>
                 </div>
                 <div className="md:grid   md:grid-cols-[1fr_4fr] md:pr-[40px] pb-[40px]">
-                    <div className="relative ">
+                    <div className="relative z-[2]">
                         <div className="relative pr-[60px] md:pl-[40px] pr:or-[60px] text-[0.833rem]  border-b-[1px] border-r-[1px] border-l-[1px]">
                             <div className="inline-block md:hidden border-r-[1px] pl-[20px] uppercase pr-2 cursor-pointer" onClick={()=>setSearchOpen( prev => prev ? false:true)}>
                                 <p className="inline-block mr-3">{searchOpen ? "hide": "view all"}</p>
@@ -246,7 +247,13 @@ const restaurants = ({locations, first_location}) =>
                             </div>
                         ):(
                             <div className="z-[1] flex flex-col flex-col-reverse md:mt-0 md:grid md:grid-cols-[2fr_3fr] text-[.833rem]">
-                                <div className="mt-5  md:px-[40px]">
+                                <div className="py-[40px] min-h-[60vh] md:hidden">
+                                    <div className="w-fit  mx-auto">
+                                        <CiSearch className="w-[40px]  h-[40px] font-bold text-black mx-auto"/>
+                                        <h2 className="uppercase text-[1.44rem] mt-5">Search Country or City...</h2>
+                                    </div>
+                                </div>
+                                <div className="mt-5 hidden md:block md:px-[40px]">
                                     <h1 className="mt-5 px-[20px] md:px-0 font-semibold uppercase text-[1.2rem] md:text-[1.728rem]">{first_location?.attributes?.name},{" "}<span className="font-normal md:text-[1.44rem]">{first_location?.attributes?.country}</span></h1>
                                     <div className="mt-5 pb-2 md:pb-0 md:w-fit px-[20px] md:px-0 uppercase border-black/[.1] border-b-[1px] md:border-b-0">
                                         <div>{first_location?.attributes?.address_line_one}</div>
@@ -276,7 +283,7 @@ const restaurants = ({locations, first_location}) =>
                                     </div>
                                     <div className="mt-5 md:mt-8 font-semibold px-[20px] pb-2 md:px-0 border-b-[1px]  md:border-b-0">*{" "}{first_location?.attributes?.notes || ""}</div>
                                 </div>
-                                <div className="">
+                                <div className="hidden md:block">
                                     {first_location?.attributes?.image?.data?.length && (
                                         <Fragment>
                                             <div ref={imgContainerRef} className="group relative w-full lg:aspect-[4/3] overflow-hidden">
