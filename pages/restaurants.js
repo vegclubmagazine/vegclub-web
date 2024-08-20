@@ -193,8 +193,8 @@ const restaurants = ({locations, first_location}) =>
                                         <p className="md:inline-block mr-[40px]">discount</p>
                                         <p className="md:inline-block font-bold">{selection?.attributes?.percentDiscount}%</p>
                                     </div>
-                                    <div className="mt-5 md:w-fit uppercase px-[20px] md:px-0 pb-2 md:pb-0 border-b-[1px] md:border-b-0">
-                                        <p className="">Description</p>
+                                    <div className="mt-5 md:w-fit px-[20px] md:px-0 pb-2 md:pb-0 border-b-[1px] md:border-b-0">
+                                        <p className="uppercase">Description</p>
                                         <p className="mt-2 leading-[2] ">{selection?.attributes?.description}</p>
 
                                     </div>
@@ -252,8 +252,8 @@ const restaurants = ({locations, first_location}) =>
                                         <p className="md:inline-block mr-[40px]">discount</p>
                                         <p className="md:inline-block font-bold">{first_location?.attributes?.percentDiscount}%</p>
                                     </div>
-                                    <div className="mt-5 md:w-fit uppercase px-[20px] md:px-0 pb-2 md:pb-0 border-b-[1px]  md:border-b-0">
-                                        <p className="">Description</p>
+                                    <div className="mt-5 md:w-fit  px-[20px] md:px-0 pb-2 md:pb-0 border-b-[1px]  md:border-b-0">
+                                        <p className="uppercase">Description</p>
                                         <p className="mt-2 leading-[2] ">{first_location?.attributes?.description}</p>
 
                                     </div>
