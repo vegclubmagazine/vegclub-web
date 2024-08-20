@@ -140,10 +140,10 @@ const restaurants = ({locations, first_location}) =>
                                             <div>
                                                 {Object.keys(filteredLocations[`${country}`]).map((city, j)=>(
                                                     <Fragment key={city}>
-                                                        <div className="px-[20px] bg-white md:px-[40px] border-b-[1px] py-3">{city}</div>
+                                                        <div className="px-[30px] bg-white md:px-[40px] border-b-[1px] py-3">{city}</div>
                                                         <div>
                                                             {filteredLocations[`${country}`][`${city}`].map((place,k)=>(
-                                                                <div key={place?.id || k} data-meta={JSON.stringify(place)} className="text-[#0018a8] bg-white py-3 px-[20px] md:px-[40px] cursor-pointer font-light border-b-[1px]" onClick={(e)=>{handleClick(e);}}>{place.attributes.name}</div>
+                                                                <div key={place?.id || k} data-meta={JSON.stringify(place)} className="text-[#0018a8] bg-white py-3 px-[40px] md:px-[40px] cursor-pointer font-light border-b-[1px]" onClick={(e)=>{handleClick(e);}}>{place.attributes.name}</div>
                                                             ))}
                                                         </div>
                                                     </Fragment>
