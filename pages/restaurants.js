@@ -44,9 +44,10 @@ const restaurants = ({locations, first_location}) =>
             for(let j= 0, cities = Object.keys(locs[`${loc_list[i]}`]); j < cities.length; j++){
                 if(cities[j].toLowerCase().includes(q.toLowerCase())){
 
-                    let location = `${loc_list[i]}`;
+                    let region = `${loc_list[i]}`;
+                    let location = {[cities[j]]:locs[region][cities[j]]};
                     
-                    setFilteredLocations(prev => ({...prev, [location]:locs[location]}));
+                    setFilteredLocations(prev => ({...prev, [region]:location}));
 
 
 
@@ -130,7 +131,7 @@ const restaurants = ({locations, first_location}) =>
                             )}
                         </div>
                     
-                        <div className={`${searchOpen ? "absolute":"hidden"} md:block z-[3]   w-full  md:relative uppercase r-menu text-[.833rem] max-h-[250px] border-black/[.1] border-b-[1px] md:border-b-[0px] md:max-h-[100vh] overflow-y-auto`}> 
+                        <div className={`${searchOpen ? "absolute":"hidden"} md:block z-[3]   w-full  md:relative uppercase r-menu text-[.833rem] max-h-[250px] border-black/[.1] border-b-[1px] md:border-b-[0px] md:max-h-[100vh] overflow-y-auto drop-shadow-xl md:drop-shadow-none`}> 
                             
                                 {Query ? (
                                     Object.keys(filteredLocations)?.map((country, index)=>(
