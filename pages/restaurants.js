@@ -5,7 +5,7 @@ import {useState, useRef, useEffect} from "react"
 import { FaInstagram } from "react-icons/fa";
 import Link from "next/link";
 import { CiSearch } from "react-icons/ci";
-
+import { MdOutlineOpenInNew } from "react-icons/md";
 
 const qs = require("qs");
 /** search:
@@ -109,7 +109,7 @@ const restaurants = ({locations, first_location}) =>
                     <div className="inline-block w-fit text-[0.833rem] ml-3 text-black/[.6] uppercase underline">{selection ? selection?.attributes?.name : "find restaurant"}</div>
                 </div>
                 <div className="md:grid   md:grid-cols-[1fr_4fr] md:pr-[40px] pb-[40px]">
-                    <div className="relative">
+                    <div className="relative ">
                         <div className="relative pr-[60px] md:pl-[40px] pr:or-[60px] text-[0.833rem]  border-b-[1px] border-r-[1px] border-l-[1px]">
                             <div className="inline-block md:hidden border-r-[1px] pl-[20px] uppercase pr-2 cursor-pointer" onClick={()=>setSearchOpen( prev => prev ? false:true)}>
                                 <p className="inline-block mr-3">{searchOpen ? "hide": "view all"}</p>
@@ -131,12 +131,12 @@ const restaurants = ({locations, first_location}) =>
                             )}
                         </div>
                     
-                        <div className={`${searchOpen ? "absolute":"hidden"} md:block z-[3]   w-full  md:relative uppercase r-menu text-[.833rem] max-h-[250px] border-black/[.1] border-b-[1px] md:border-b-[0px] md:max-h-[100vh] overflow-y-auto drop-shadow-xl md:drop-shadow-none`}> 
+                        <div className={`${searchOpen ? "absolute":"hidden"} md:block z-[3]   w-full  md:relative uppercase r-menu text-[.833rem] max-h-[250px] border-black/[.1] border-b-[1px] md:border-b-[0px] md:max-h-[100vh] overflow-y-auto shadow-xl md:shadow-none`}> 
                             
                                 {Query ? (
                                     Object.keys(filteredLocations)?.map((country, index)=>(
                                         <Fragment key={country}>
-                                            <div className="w-full px-[20px] md:px-[40px] bg-[#f7f7f7] py-3 norder-b-[1px]">{country}</div>
+                                            <div className="w-full px-[20px] md:px-[40px] bg-[#f7f7f7] py-3 border-b-[1px]">{country}</div>
                                             <div>
                                                 {Object.keys(filteredLocations[`${country}`]).map((city, j)=>(
                                                     <Fragment key={city}>
@@ -155,14 +155,14 @@ const restaurants = ({locations, first_location}) =>
                                 ):(
                                     Object.keys(locations)?.map((country, index)=>(
                                         <Fragment key={country}>
-                                            <div className="px-[20px] md:px-[40px] bg-[#f7f7f7] border-b-[1px] py-3">{country}</div>
+                                            <div className="px-[20px] md:px-[40px] bg-[#f7f7f7] border-b-[1px] py-3 ">{country}</div>
                                             <div>
                                                 {Object.keys(locations[`${country}`]).map((city, j)=>(
                                                     <Fragment key={city}>
-                                                        <div className="px-[20px] bg-white md:px-[40px] border-b-[1px] py-3">{city}</div>
+                                                        <div className="px-[30px] bg-white md:px-[40px] border-b-[1px] py-3">{city}</div>
                                                         <div>
                                                             {locations[`${country}`][`${city}`].map((place,k)=>(
-                                                                <div key={place?.id || k} data-meta={JSON.stringify(place)} className="text-[#0018a8] bg-white py-3 px-[20px] md:px-[40px] cursor-pointer font-light border-b-[1px]" onClick={(e)=>{handleClick(e);}}>{place.attributes.name}</div>
+                                                                <div key={place?.id || k} data-meta={JSON.stringify(place)} className="text-[#0018a8] bg-white py-3 px-[40px] md:px-[40px] cursor-pointer font-light border-b-[1px]" onClick={(e)=>{handleClick(e);}}>{place.attributes.name}</div>
                                                             ))}
                                                         </div>
                                                     </Fragment>
@@ -199,7 +199,14 @@ const restaurants = ({locations, first_location}) =>
 
                                     </div>
                                     <div className="mt-5 px-[20px] md:px-0 pb-2 md:pb-0 border-b-[1px]  md:border-b-0">
-                                        {selection.attributes?.instagram && (<Link href={`${selection.attributes?.instagram}`}><FaInstagram className="text-[1.2rem]"></FaInstagram></Link>)}
+                                        {selection.attributes?.instagram && (<Link className="inline-block align-middle" href={`${selection.attributes?.instagram}`}><FaInstagram className="text-[1.2rem]"></FaInstagram></Link>)}
+                                        {selection.attributes?.siteUrl && (
+                                            <div className="text-[#0018a8] border-[#0018a8] borber-b-[1px] inline-block ml-3 align-middle">
+                                                <Link className="inline-block align-top" href={selection?.attributes?.siteUrl} target="_blank" rel="noopener noreferrer">{selection?.attributes?.siteUrl}</Link>
+
+                                                <MdOutlineOpenInNew className="ml-3 inline-block align-top text-[#0018a8] w-[12px] h-[12px]"/>
+                                            </div>
+                                        )}
                                     </div>
                                     <div className="mt-5 md:mt-8 font-semibold px-[20px] pb-2 md:px-0 border-b-[1px] md:border-b-0">*{" "}{selection?.attributes?.notes || ""}</div>
 
@@ -258,7 +265,14 @@ const restaurants = ({locations, first_location}) =>
 
                                     </div>
                                     <div className="mt-5 px-[20px] md:px-0 pb-5 md:pb-0 border-b-[1px] md:border-b-0">
-                                        {first_location.attributes?.instagram && (<Link href={`${first_location.attributes?.instagram}`}><FaInstagram className="text-[1.2rem]"></FaInstagram></Link>)}
+                                        {first_location.attributes?.instagram && (<Link className="inline-block align-middle" href={`${first_location.attributes?.instagram}`}><FaInstagram className="text-[1.2rem]"></FaInstagram></Link>)}
+                                        {first_location.attributes?.siteUrl && (
+                                            <div className="text-[#0018a8] border-[#0018a8] border-b-[1px] inline-block ml-3 align-middle">
+                                                <Link className="inline-block align-top" href={first_location?.attributes?.siteUrl} target="_blank" rel="noopener noreferrer">{first_location?.attributes?.siteUrl}</Link>
+
+                                                <MdOutlineOpenInNew className="ml-1 inline-block align-top  text-[#0018a8] w-[12px] h-[12px]"/>
+                                            </div>
+                                        )}
                                     </div>
                                     <div className="mt-5 md:mt-8 font-semibold px-[20px] pb-2 md:px-0 border-b-[1px]  md:border-b-0">*{" "}{first_location?.attributes?.notes || ""}</div>
                                 </div>
