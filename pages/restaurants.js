@@ -289,11 +289,11 @@ const restaurants = ({data,countries,cities, locations}) =>
                                               
                                     <div key={location?.id} className="w-full aspect-square overflow-hidden relative bg-[#01e2c2]">
                                         {location?.attributes?.image?.data?.length &&  location?.attributes?.image?.data[0]?.attributes?.url && (<img className="h-full w-full" src={location?.attributes?.image?.data[0]?.attributes?.url}/>)}
-                                        <Link href="#" className="w-full absolute h-full ease-[cubic-bezier(.19,1,.22,1)] duration-[1.5s]  transition-background bg-black/[.3] hover:bg-black/[.9] left-0 top-0">
+                                        <Link href="#" className="w-full absolute h-full ease-[cubic-bezier(.19,1,.22,1)] duration-[1.5s]  transition-background bg-black/[.5] md:bg-black/[.3] hover:bg-black/[.9] left-0 top-0">
                                            
                                                 <div className="relative translate-y-[-50%] top-[50%] w-fit mx-auto text-white">
                                                     <p className="font-bold w-fit mx-auto text-[1.2rem] md:text-[1.44rem] lg:text-[1.728rem]">{location?.attributes?.percentDiscount}%</p>
-                                                    <div className="mt-3 w-[100px] h-[6px] bg-[#01e2c2] mx-auto"></div>
+                                                    <div className="mt-3 w-[100px] h-[3.5px] md:h-[6px] bg-[#01e2c2] mx-auto"></div>
                                                     <p className="font-bold w-fit mx-auto text-center mt-3 max-w-[250px]  md:text-[1.2rem] lg:text-[1.44rem]">{location?.attributes?.name}</p>
                                                     <p className="w-fit max-w-[250px] mt-3 text-[.833rem] md:text-[1.2rem] mx-auto text-center">{location?.attributes?.city},{location?.attributes?.country}</p>
                                                 </div>
