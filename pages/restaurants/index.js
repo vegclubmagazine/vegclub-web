@@ -1,15 +1,15 @@
 import { Fragment } from "react";
-import { API } from "../config/api";
-import Layout from "../defaults/Layout";
+import { API } from "../../config/api";
+import Layout from "../../defaults/Layout";
 import {useState, useRef, useEffect, useContext} from "react";
-import { GlobalContext } from "../context/GlobalContext";
+import { GlobalContext } from "../../context/GlobalContext";
 import { FaInstagram } from "react-icons/fa";
 import Link from "next/link";
 import { CiSearch } from "react-icons/ci";
 import { MdOutlineOpenInNew } from "react-icons/md";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSliders } from "@fortawesome/free-solid-svg-icons";
-import { PAGINATION_LIMIT } from "../config/meta";
+import { PAGINATION_LIMIT } from "../../config/meta";
 
 const qs = require("qs");
 /** search:
@@ -289,7 +289,7 @@ const restaurants = ({data,countries,cities, locations}) =>
                                               
                                     <div key={location?.id} className="w-full aspect-square overflow-hidden relative bg-[#01e2c2]">
                                         {location?.attributes?.image?.data?.length &&  location?.attributes?.image?.data[0]?.attributes?.url && (<img className="h-full w-full" src={location?.attributes?.image?.data[0]?.attributes?.url}/>)}
-                                        <Link href="#" className="w-full absolute h-full ease-[cubic-bezier(.19,1,.22,1)] duration-[1.5s]  transition-background bg-black/[.5] md:bg-black/[.3] hover:bg-black/[.9] left-0 top-0">
+                                        <Link href={`/restaurants/${location?.attributes?.slug}`} className="w-full absolute h-full ease-[cubic-bezier(.19,1,.22,1)] duration-[1.5s]  transition-background bg-black/[.5] md:bg-black/[.3] hover:bg-black/[.9] left-0 top-0">
                                            
                                                 <div className="relative translate-y-[-50%] top-[50%] w-fit mx-auto text-white">
                                                     <p className="font-bold w-fit mx-auto text-[1.2rem] md:text-[1.44rem] lg:text-[1.728rem]">{location?.attributes?.percentDiscount}%</p>

@@ -221,6 +221,11 @@ input[type=submit]{
   
 
 }
+.r-dtls-division{
+  -webkit-mask:radial-gradient(1px,#fff 100%, transparent 100%) 0 0/4px 4px;
+  mask:radial-gradient(.5px,#fff 100%, transparent 100%) 0 0/2px 2px;
+
+}
 
 .ad_medium[data-orientation="horizontal"]
 {
