@@ -27,6 +27,7 @@ import parse, {domToReact} from "html-react-parser";
 import Moment from "react-moment";
 import { GlobalContext } from "../../context/GlobalContext.js";
 import { slugify } from "../../lib/utils.js";
+import NewsLetterCard from "../../components/NewsLetterCard.jsx";
 
 
 const qs = require('qs');
@@ -200,16 +201,16 @@ const Article = ({article, articles}) =>
                     
                   
                 </main>
-                <section className="mt-[80px] text-white border-box py-5 bg-[#000]">
+                <section className="mt-[80px] text-white border-box pt-5 bg-[#000]">
                         <div className="mt-5">
-                            <h2 className="uppercase cursor-pointer font-semibold text-[2.074rem] md:text-[2.488rem] pl-[40px] md:text-[1.44rem]">
+                            <h2 className="uppercase cursor-pointer font-bold   pl-[40px] text-[2.074rem] lg:text-[2.488rem]">
                                 <p>More</p>
-                             <p>from <Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></p>
+                             <p>from <Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`} className="ease-[cubic-bezier(.19,1,.22,1)] transition-all duration-[.34s] hover:text-white/[.6]">{article?.attributes?.category?.data?.attributes?.name}</Link></p>
                              </h2>
                             <div className="mt-[2rem]">
-                                <ul className="list-none border-[#333] md:grid md:grid-cols-3 md:auto-rows-fr  ">
+                                <ul className="list-none border-[#333] md:grid md:grid-cols-4 md:auto-rows-fr   md:gap-x-3">
                                     {articles?.map((article, index) => (
-                                        <li className={`border-box text-white border-[#333]  border-b-[1px] md:border-b-0 ${(index + 1) % 3 ? "md:border-r-[1px]":""}`} key={index}>
+                                        <li className={`border-box text-white mt-5 md:mt-0`} key={index}>
                                               <div className="flex  flex-row md:grid md:grid-cols-1  h-full">
                                                     
                                                     <div className="hidden md:block w-full overflow-hidden  aspect-[16/9] max-h-[248px]">
@@ -227,10 +228,10 @@ const Article = ({article, articles}) =>
                                                         ></img>  
                                                     </div>
                                                     
-                                                    <div className="py-[40px] md:pb-[40px] max-w-[653px] flex flex-col grow px-[40px]  md:block">
+                                                    <div className="md:py-[40px] max-w-[653px] justify-center flex flex-col grow px-[40px]  md:max-w-fit  md:block">
                                                                         
-                                                        <h1 className="article-title text-white font-bold line-clamp-3 md:line-clamp-5 md:text-[1.44rem] lg:text-[1.728rem]"><span className="underline_span"><Link href={`/article/${encodeURIComponent(article?.attributes?.slug)}`}>{article?.attributes?.title}</Link></span></h1>
-                                                        <h2 className="hidden mt-3 text-white md:line-clamp-4">{article?.attributes?.description}</h2>
+                                                        <h1 className="article-title text-white font-bold line-clamp-3 md:line-clamp-4 md:text-[1.44rem]"><span className="underline_span"><Link href={`/article/${encodeURIComponent(article?.attributes?.slug)}`}>{article?.attributes?.title}</Link></span></h1>
+                                                        {/*<h2 className="hidden mt-3 text-white md:line-clamp-4">{article?.attributes?.description}</h2>*/}
                                                         <div className="mt-4 text-[0.833rem]">
                                                             <p className="inline-block text-white uppercase font-light  mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
                                                         
@@ -238,7 +239,7 @@ const Article = ({article, articles}) =>
                                                         </div>
                                                     </div>
                                                     <div>
-                                                        <div className="flex flex-col w-[150px] overflow-hidden md:hidden h-full">
+                                                        <div className="w-[150px] aspect-square overflow-hidden md:hidden h-full">
                                                             <img    className="h-full object-cover w-auto" 
                                                                     src={   article?.attributes?.media?.data?.attributes?.url ||
                                                                             article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
@@ -263,6 +264,7 @@ const Article = ({article, articles}) =>
                             </div>
                         </div>
                     </section>
+                    <NewsLetterCard mode={"l-mode"}></NewsLetterCard>
             </div>
         </Layout>
     )
@@ -310,7 +312,7 @@ export async function getStaticProps({params}){
     const fetch_query = 
     `   
         query FilterArticlesByCategory($filtervar: ArticleFiltersInput){
-            articles(filters:$filtervar, pagination:{pageSize:6})
+            articles(filters:$filtervar, pagination:{pageSize:4})
             {
                 data{
                     id

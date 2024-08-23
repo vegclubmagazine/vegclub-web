@@ -7,7 +7,7 @@ import { subscribeUser } from "@strapi-newsletter/react";
 import axios from "axios";
 import InputLoader from "./InputLoader";
 
-const NewsLetterCard = ({})=>
+const NewsLetterCard = ({mode})=>
 {
     const [Email, setEmail] = useState("");
     const [isLoading, setIsLoading] =  useState(false);
@@ -46,15 +46,15 @@ const NewsLetterCard = ({})=>
     }
 
     return (
-        <div className="bg-[#18181b] px-[40px] py-[70px]">
+        <div className={`${mode === "l-mode" ? "bg-white":"bg-[#18181b]"} px-[40px] py-[70px]`}>
             <div className="w-full md:max-w-[66.67%]">
-                <h3 className="uppercase leading-[1.12] font-bold text-white text-[2.074rem] lg:text-[2.488rem]">
+                <h3 className={`uppercase leading-[1.12] font-bold ${mode === "l-mode" ? "text-black":"text-white"} text-[2.074rem] lg:text-[2.488rem]`}>
                     <p>sign up</p>
                     <p>for the vegclub newsletter.</p>
                 </h3>
                 <form className="w-full mt-5 flex flex-row" method="POST" onSubmit={(e)=>handleSubmit(e)}>
                     {success ? (
-                            <input className="flex grow pl-[20px] text-white mr-2 bg-[#a2a2a2] py-3 placeholder:font-bold placeholder:text-white/[.6] outline-white"
+                            <input className={`flex grow pl-[20px] ${mode === "l-mode" ? "text-black placeholder:text-white/[.6] outline-black":"text-white placeholder:text-white/[.6] outline-white"} mr-2 bg-[#a2a2a2] py-3 placeholder:font-bold`}
                                     
                                     placeholder="E-mail"
                                     type="email"
@@ -67,7 +67,7 @@ const NewsLetterCard = ({})=>
 
                             </input>
                     ):(
-                        <input className={`flex grow pl-[20px] text-white mr-2 bg-[#a2a2a2] py-3 placeholder:font-bold placeholder:text-white/[.6] ${submitErr ? "border-[#ff0000] border-[.5px] outline-none":""}`}
+                        <input className={`flex grow pl-[20px] ${mode === "l-mode" ? "text-black placeholder:text-white/[.6] outline-black":"text-white placeholder:text-white/[.6] outline-white"} mr-2 bg-[#a2a2a2] py-3 placeholder:font-bold  ${submitErr ? "border-[#ff0000] border-[.5px] outline-none":""}`}
                                     
                                 placeholder="E-mail"
                                 type="email"
@@ -84,7 +84,7 @@ const NewsLetterCard = ({})=>
 
                     )}
 
-                    <button type="submit" name="subscribe" className={`px-3 text-center min-w-[84.233px] bg-[#01e2c2] text-[.833rem]  uppercase font-semibold`}>{isLoading ? (<InputLoader/>): success ? (<FaCheck className="block text-black mx-auto text-[1.2rem]"></FaCheck>): "Subscribe"}</button>
+                    <button type="submit" name="subscribe" className={`px-3 text-center min-w-[84.233px] ${mode === "l-mode" ? "bg-black text-white":"bg-[#01e2c2] text-black"} text-[.833rem]  uppercase font-semibold`}>{isLoading ? (<InputLoader/>): success ? (<FaCheck className={`block ${mode === "l-mode" ? "text-white":"text-black"} mx-auto text-[1.2rem]`}></FaCheck>): "Subscribe"}</button>
                 </form>
                 {submitErr && (
                     <div className="mt-2">
@@ -92,7 +92,7 @@ const NewsLetterCard = ({})=>
                         <p className="inline-block align-middle text-[#ff0000] text-[0.694rem]">Something went wrong, please try again</p>
                     </div>
                 )}
-                <p className="mt-5 text-[0.833rem] text-white">Stay updated on all things vegan in Europe. Get exclusive articles, deals and giveaways delivered straight to your inbox. VegClub Magazine is the number one outlet in Europe and you will not want to miss our unique content.</p>
+                <p className={`mt-5 text-[0.833rem] ${mode === "l-mode" ? "text-black":"text-white"}`}>Stay updated on all things vegan in Europe. Get exclusive articles, deals and giveaways delivered straight to your inbox. VegClub Magazine is the number one outlet in Europe and you will not want to miss our unique content.</p>
             </div>
         </div>
     )
