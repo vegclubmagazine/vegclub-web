@@ -189,12 +189,12 @@ const Home = ({articles,ads})=>{
                                     }
                         ></img>   
                     </div>
-                    <div className="relative inline-block py-[40px] pr-[40px] bottom-[40px] left-[10%] md:left-[0%]  bg-[#000] text-start text-white w-[90%] md:w-[75%] lg:w-[50%]">
+                    <div className="relative inline-block py-[40px] pr-[40px] bottom-[40px] left-[10%] md:left-[0%]  bg-[#000] text-start text-white w-[90%] md:w-[75%] 2xl:w-[50%]">
                         {/*<p className="w-full bg-[#000] text-start text-[#fff] border-box pl-1 text-[0.6rem]"> Damon Winter <span className="text-[#01e2c2] ml-2 mr-2">/</span> Vegclub Magazine <span className="text-[#01e2c2] ml-2 mr-2">/</span> Redux</p>*/}
                         <div className="pl-[40px]">
                             <h3 className = "text-white text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.34s] ease-in-out hover:text-white/[.6]"><Link href={`/category/${articles?.featureArticles[0]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.featureArticles[0]?.attributes?.category?.data?.attributes?.name}</Link></h3>                
-                            <h1 className="article-title mt-4 line-clamp-5 font-extrabold w-fit leading-[1.5] text-[1.728rem] lg:text-[2.986rem]"><span className="underline_span"><Link href={`/article/${encodeURIComponent(articles?.featureArticles[0]?.attributes?.slug)}`}>{articles?.featureArticles[0]?.attributes?.title}</Link></span></h1>
-                            <h2 className="mt-4 text-white text-[1rem] line-clamp-4 lg:hidden">{articles?.featureArticles[0]?.attributes?.description}</h2>
+                            <h1 className="article-title mt-4 line-clamp-3 font-extrabold w-fit leading-[1.5] text-[1.728rem] lg:text-[2.986rem]"><span className="underline_span"><Link href={`/article/${encodeURIComponent(articles?.featureArticles[0]?.attributes?.slug)}`}>{articles?.featureArticles[0]?.attributes?.title}</Link></span></h1>
+                            <h2 className="mt-4 text-white text-[1rem] line-clamp-4 2xl:hidden">{articles?.featureArticles[0]?.attributes?.description}</h2>
                             <div className="mt-4 text-[0.833rem]">
                                 <p className="inline-block uppercase font-light  mr-1">{articles?.featureArticles[0]?.attributes?.author?.data?.attributes?.name}</p>
                                 
@@ -204,7 +204,7 @@ const Home = ({articles,ads})=>{
                         <div className="absolute h-[200%] w-[100%] bg-black"></div>
                         
                     </div>
-                    <div className="hidden relative p-[60px] bottom-[40px] lg:inline-block align-top w-[50%]">
+                    <div className="hidden relative p-[60px] bottom-[40px] 2xl:inline-block align-top w-[50%]">
                         <div className="w-full">
                             {/*{ads.square?.length ? (
                                 <Fragment>
@@ -236,8 +236,9 @@ const Home = ({articles,ads})=>{
                             </div>
                         </div>
                         <div className=" mx-auto p-[40px]">
-                        <h3 className = " text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/category/${articles?.featureArticles[1]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.featureArticles[1]?.attributes?.category?.data?.attributes?.name}</Link></h3>                
+                            <h3 className = " text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/category/${articles?.featureArticles[1]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.featureArticles[1]?.attributes?.category?.data?.attributes?.name}</Link></h3>                
                             <h1 className="article-title mt-4 font-bold w-fit leading-[1.5] text-[1.44rem] lg:text-[1.728rem]"><span className="underline_span"><Link href={`/article/${encodeURIComponent(articles?.featureArticles[1]?.attributes?.slug)}`}>{articles?.featureArticles[1]?.attributes?.title}</Link></span></h1>
+                            {/*<p className="mt-5">{articles?.featureArticles[1]?.attributes?.description}</p>*/}
                             <div className="mt-4 text-[0.833rem]">
                                 <p className="inline-block font-light  uppercase  mr-1">{articles?.featureArticles[1]?.attributes?.author?.data?.attributes?.name}</p>
                                 
@@ -419,8 +420,9 @@ const Home = ({articles,ads})=>{
                                 </div>
                             </div>
                             <div className=" mx-auto p-[40px]">
-                            <h3 className = " text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/category/${articles?.nonFeatureArticles[1]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.nonFeatureArticles[1]?.attributes?.category?.data?.attributes?.name}</Link></h3>                
+                                <h3 className = " text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/category/${articles?.nonFeatureArticles[1]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.nonFeatureArticles[1]?.attributes?.category?.data?.attributes?.name}</Link></h3>                
                                 <h1 className="article-title mt-4 font-bold w-fit leading-[1.5] text-[1.44rem] lg:text-[1.728rem]"><span className="underline_span"><Link href={`/article/${encodeURIComponent(articles?.nonFeatureArticles[1]?.attributes?.slug)}`}>{articles?.nonFeatureArticles[1]?.attributes?.title}</Link></span></h1>
+                                {/*<p className=" mt-5">{articles?.nonFeatureArticles[1]?.attributes?.description}</p>*/}
                                 <div className="mt-4 text-[0.833rem]">
                                     <p className="inline-block font-light  uppercase  mr-1">{articles?.nonFeatureArticles[1]?.attributes?.author?.data?.attributes?.name}</p>
                                     
@@ -556,9 +558,9 @@ const Home = ({articles,ads})=>{
 
                             </div>
                             <div className="hidden md:block w-[85%] mt-4 mx-auto pb-3">
-                                            <h3 className = "article-title text-[0.833rem] inline-block  font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></span></h3>                
+                                            <h3 className = "article-title text-[0.833rem] inline-block  font-semibold cursor-pointer w-fit transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)]  hover:text-black/[.6]"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></h3>                
 
-                                            <h1 className="mt-4 font-bold text-[1.44rem] "><Link href={`/article/${encodeURIComponent(article?.attributes?.slug)}`}>{article?.attributes?.title}</Link></h1>
+                                            <h1 className="mt-4 font-bold text-[1.44rem] article-title"><span className="underline_span"><Link href={`/article/${encodeURIComponent(article?.attributes?.slug)}`}>{article?.attributes?.title}</Link></span></h1>
                                             <div className="mt-4 text-[0.833rem]">
                                                 <p className="inline-block font-light  uppercase  mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
                                                 
