@@ -1,7 +1,9 @@
 import { API } from "../../config/api";
 import Layout from "../../defaults/Layout";
 import { MdOutlineOpenInNew } from "react-icons/md";
-import { FaInstagram } from "react-icons/fa";
+import { FaInstagram, FaGlobe } from "react-icons/fa";
+import { CiGlobe } from "react-icons/ci";
+
 import Link from "next/link";
 import { Fragment } from "react";
 
@@ -70,18 +72,18 @@ const restaurant = ({restaurant})=>
                                 </Link>
                             )}
                             {restaurant?.attributes?.siteUrl && (
-                                <Link target="_blank" rel="noopener noreferrer" href={restaurant?.attributes?.siteUrl} className="text-black/[.8] inline-block align-middle ml-5">
-                                    <MdOutlineOpenInNew className=" inline-block align-middle"/>
-                                    <p className=" ml-1 text-[0.833rem] md:text-[0.833rem] inline-block align-middle underline">{restaurant?.attributes?.siteUrl}</p>
+                                <Link target="_blank" rel="noopener noreferrer" href={restaurant?.attributes?.siteUrl} className="inline-block align-middle  ml-3 relative top-[-.5px]">
+                                    
+                                    <CiGlobe className="text-[1.35rem] font-bold transition-all ease-[cubic-bezier(.19,1,.22,1]) duration-[.34s] hover:text-black/[.6]"></CiGlobe>
                                 </Link>
                             )}
                         </div>
                         {restaurant?.attributes?.notes ? (
-                            <Fragment>
-                                <div className="mt-5 h-[6px] bg-black/[.8] r-dtls-division"></div>
-                                <p className="mt-3 text-[0.833rem]">{restaurant?.attributes?.notes}</p>
-                                <div className="mt-3 h-[6px] bg-black/[.8] r-dtls-division"></div>
-                            </Fragment>
+                           
+                               
+                                <p className="mt-5 text-[0.833rem] font-semibold">*{restaurant?.attributes?.notes}</p>
+                               
+                          
                         ):("")}
                         
                     </div>
