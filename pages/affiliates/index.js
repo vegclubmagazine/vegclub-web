@@ -15,8 +15,8 @@ const affiliates = ({})=>
             <section className="tombStone bg-black py-5">
                 <div className="px-[40px] pb-[20px] lg:pb-0 flex flex-col-reverse lg:block  lg:w-[950px] mx-auto relative lg:h-[250px]">
                     <div className="text-white w-fit   pt-[20px] lg:absolute  lg:z-[2] lg:left-[75px]">
-                        <h1 className="font-bold text-[1.728rem] md:text-[2.072rem] lg:text-[2.488rem]">Become An Affiliate</h1>
-                        <h3 className="text-[1.2rem] md:text-[1.44rem] mt-5 max-w-[500px] font-extralight">Sign up to accept our loyalty cards at your establishment</h3>
+                        <h1 className="font-bold text-[1.728rem] md:text-[2.072rem] lg:text-[2.488rem]">Become Affiliated</h1>
+                        <h3 className="text-[1.2rem] md:text-[1.44rem] mt-5 max-w-[500px] font-extralight">Sign up to accept our loyalty card at your establishment.</h3>
                         <Link href={"/affiliates/application"} className="block mt-5 w-fit bg-[#01e2c2] py-2 px-3 text-black text-[0.833rem] uppercase font-semibold">Apply now</Link>
                         
                     </div>
@@ -32,7 +32,7 @@ const affiliates = ({})=>
                 </div>
             </section>
             <section className="py-5 px-[40px]  lg:mx-auto">
-                <h2 className="text-[1.728rem] lg:text-[2.074rem] font-bold text-center">It's Simple.</h2>
+                <h2 className="text-[1.728rem] lg:text-[2.074rem] font-bold text-center">How does it work ?</h2>
                 <div className="grid gap-y-5 lg:gap-y-0 lg:grid-cols-3 lg:gap-x-5  mt-5 lg:mt-[60px]">
                     <div>
                         <img src="/affiliate-asset-signup_one.png" className="w-[80px] h-[80px] mx-auto"/>
@@ -81,7 +81,7 @@ const affiliates = ({})=>
                             <div className="relative pr-[40px] lg:pr-0 cursor-pointer">
                                 <h3 className="font-bold text-[1.2rem] md:text-[1.44rem]">How Do I Sign Up To This Programme ?</h3>
                                 <div className={`absolute w-[40px] h-[40px] cursor-pointer border-[1px] rounded-[50%] top-[50%] translate-y-[-50%] right-0 group-hover:bg-black ${faq1 ? "bg-black": ""}`}>
-                                    <div className={`mx-auto relative border-black border-r-[2px] mt-[11.515px] w-[12px]  h-[12px] border-b-[2px] rotate-[45deg] group-hover:border-[#f3f2f1] ${faq1 ? "border-[#f3f2f1] rotate-[225deg] mt-[15px]": ""}`}></div>
+                                    <div className={`mx-auto relative border-r-[2px] w-[12px] h-[12px] border-b-[2px] ${faq1 ? "border-[#f3f2f1] rotate-[225deg] mt-[15px]": "border-black mt-[11.515px] group-hover:border-[#f3f2f1] rotate-[45deg]"}`}></div>
                                 </div>
                             </div>
                             
@@ -97,13 +97,13 @@ const affiliates = ({})=>
                             <div className="relative pr-[40px] lg:pr-0 cursor-pointer">
                                 <h3 className="font-bold text-[1.2rem] md:text-[1.44rem]">How Do I Qualify For This Programme ?</h3>
                                 <div className={`absolute w-[40px] h-[40px] cursor-pointer border-[1px] rounded-[50%] top-[50%] translate-y-[-50%] right-0 group-hover:bg-black ${faq2 ? "bg-black": ""}`}>
-                                    <div className={`mx-auto relative border-black border-r-[2px] mt-[11.515px] w-[12px]  h-[12px] border-b-[2px] rotate-[45deg] group-hover:border-[#f3f2f1] ${faq2 ? "border-[#f3f2f1] rotate-[225deg] mt-[15px]": ""}`}></div>
+                                    <div className={`mx-auto relative border-r-[2px] w-[12px] h-[12px] border-b-[2px] ${faq2 ? "border-[#f3f2f1] rotate-[225deg] mt-[15px]": "border-black mt-[11.515px] group-hover:border-[#f3f2f1] rotate-[45deg]"}`}></div>
                                 </div>
                             </div>
                             <div className={`${faq2 ? "":"hidden"}`}>
                                 <p className="mt-5">Vegan establishments that meet the
                                 basic prerequisites can participate in 
-                                this programme. For further information, contact us at <Link href="mailto:contact@vegclubmagazine.com" className="text-[#0018a8] underline">contact@vegclubmagazine.com</Link>
+                                this programme. For further information, contact us at <Link href="mailto:loyalty@vegclubmagazine.com" className="text-[#0018a8] underline">loyalty@vegclubmagazine.com</Link>
                                 </p>
                             </div>
                         </div>
@@ -117,7 +117,7 @@ const affiliates = ({})=>
                                 <h3 className="font-bold text-[1.2rem] md:text-[1.44rem]">How Do We Determine The Discount 
                                 You Will Offer ?</h3>
                                 <div className={`absolute w-[40px] h-[40px] cursor-pointer border-[1px] rounded-[50%] top-[50%] translate-y-[-50%] right-0 group-hover:bg-black ${faq3 ? "bg-black": ""}`}>
-                                    <div className={`mx-auto relative border-black border-r-[2px] mt-[11.515px] w-[12px]  h-[12px] border-b-[2px] rotate-[45deg] group-hover:border-[#f3f2f1] ${faq3 ? "border-[#f3f2f1] rotate-[225deg] mt-[15px]": ""}`}></div>
+                                    <div className={`mx-auto relative border-r-[2px] w-[12px] h-[12px] border-b-[2px] ${faq3 ? "border-[#f3f2f1] rotate-[225deg] mt-[15px]": "border-black mt-[11.515px] group-hover:border-[#f3f2f1] rotate-[45deg]"}`}></div>
                                 </div>
                             </div>
                             <div className={`${faq3 ? "":"hidden"}`}>
