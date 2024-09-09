@@ -79,7 +79,7 @@ const affiliates = ({})=>
                     <div className="px-[40px] has-[:hover]:bg-[#f3f2f1]">
                         <div className="border-b-[1px]   py-5 relative group" onClick={() => {setFaq1(prev => prev ? false:true)}}>
                             <div className="relative pr-[40px] lg:pr-0 cursor-pointer">
-                                <h3 className="font-bold text-[1.2rem] md:text-[1.44rem]">How Do I Sign Up To This Programme ?</h3>
+                                <h3 className="font-bold text-[1.2rem] md:text-[1.44rem]">How do I sign up to this program ?</h3>
                                 <div className={`absolute w-[40px] h-[40px] cursor-pointer border-[1px] rounded-[50%] top-[50%] translate-y-[-50%] right-0 group-hover:bg-black ${faq1 ? "bg-black": ""}`}>
                                     <div className={`mx-auto relative border-r-[2px] w-[12px] h-[12px] border-b-[2px] ${faq1 ? "border-[#f3f2f1] rotate-[225deg] mt-[15px]": "border-black mt-[11.515px] group-hover:border-[#f3f2f1] rotate-[45deg]"}`}></div>
                                 </div>
@@ -95,7 +95,7 @@ const affiliates = ({})=>
                     <div className="px-[40px] has-[:hover]:bg-[#f3f2f1]">
                         <div className="border-b-[1px] py-5 relative group" onClick={() => {setFaq2(prev => prev ? false:true)}}>
                             <div className="relative pr-[40px] lg:pr-0 cursor-pointer">
-                                <h3 className="font-bold text-[1.2rem] md:text-[1.44rem]">How Do I Qualify For This Programme ?</h3>
+                                <h3 className="font-bold text-[1.2rem] md:text-[1.44rem]">How do I qualify for this program ?</h3>
                                 <div className={`absolute w-[40px] h-[40px] cursor-pointer border-[1px] rounded-[50%] top-[50%] translate-y-[-50%] right-0 group-hover:bg-black ${faq2 ? "bg-black": ""}`}>
                                     <div className={`mx-auto relative border-r-[2px] w-[12px] h-[12px] border-b-[2px] ${faq2 ? "border-[#f3f2f1] rotate-[225deg] mt-[15px]": "border-black mt-[11.515px] group-hover:border-[#f3f2f1] rotate-[45deg]"}`}></div>
                                 </div>
@@ -114,8 +114,8 @@ const affiliates = ({})=>
                     <div className="px-[40px] has-[:hover]:bg-[#f3f2f1]">
                         <div className="border-b-[1px] py-5 relative group" onClick={() => {setFaq3(prev => prev ? false:true)}}>
                             <div className="relative pr-[40px] lg:pr-0 cursor-pointer">
-                                <h3 className="font-bold text-[1.2rem] md:text-[1.44rem]">How Do We Determine The Discount 
-                                You Will Offer ?</h3>
+                                <h3 className="font-bold text-[1.2rem] md:text-[1.44rem]">How do we determine the discount 
+                                you will offer ?</h3>
                                 <div className={`absolute w-[40px] h-[40px] cursor-pointer border-[1px] rounded-[50%] top-[50%] translate-y-[-50%] right-0 group-hover:bg-black ${faq3 ? "bg-black": ""}`}>
                                     <div className={`mx-auto relative border-r-[2px] w-[12px] h-[12px] border-b-[2px] ${faq3 ? "border-[#f3f2f1] rotate-[225deg] mt-[15px]": "border-black mt-[11.515px] group-hover:border-[#f3f2f1] rotate-[45deg]"}`}></div>
                                 </div>
