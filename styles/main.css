@@ -232,7 +232,7 @@ input[type=submit]{
   width: 100% !important;
   min-width: 768px !important;
   
-  aspect-ratio: 6/1 !important;
+  aspect-ratio: 7/1 !important;
 
 }
 
@@ -248,7 +248,7 @@ input[type=submit]{
   width: 100% !important;
   min-width:320px !important;
   
-  aspect-ratio: 5/1;
+  aspect-ratio: 7/1;
 
 }
 .loader-btn{
