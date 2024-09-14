@@ -110,7 +110,8 @@ input[type=submit]{
 .article-preview a span,
 .article-preview a strong,
 .article-preview a strong u,
-.article-preview a span u{
+.article-preview a span u,
+.article-preview strong u{
   color:black;
   
   text-decoration-color:#01e2c2;

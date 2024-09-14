@@ -1,20 +1,44 @@
 import Layout from "../defaults/Layout";
 import Link from "next/link";
+import {API} from "../config/api.js";
+
+import parse,{domToReact} from "html-react-parser";
 
 
 
-const Contact = ()=>
+const Contact = ({body})=>
 
 {
+
+    const options = {
+        replace({attribs, children}) {
+            if(!attribs)return;
+            if(attribs.href){
+                return <a href={attribs.href} target="_blank" rel="noopener noreferrer" className="article-preview">{domToReact(children)}</a>
+            }
+           
+            /*f(attribs.style && attribs.style.match(regex))
+            {
+                const listStyle = attribs.style.split(":")[1].match(regex2);
+               
+                return <ul style={{listStyle:`${listStyle[1]}`}} className="pl-[25px] md:pl-[30px]">{domToReact(children)}</ul>
+                
+            }*/
+          
+
+        }
+    }
     return(
         <Layout title= "Contact Us | VegClub Magazine">
             <main className="border-black/[.1] pb-[20vh]">
-                <h1 className="pl-[40px] text-[1.728rem] font-semibold uppercase pt-[40px] pb-5 border-b-[1px]">Contact Us</h1>
+                <h1 className="pl-[40px] text-[1.728rem] font-bold uppercase pt-[40px] pb-5 border-b-[1px]">Contact Us</h1>
 
             
                 <div className="pt-[40px] px-[40px] grid text-[1.2rem]">
                     <div>
-                        <p className="">We'd love to hear your feedback and suggestions or answer questions, so please do get in touch.
+
+                        {body && (parse(body, options))}
+                        {/*<p className="">We'd love to hear your feedback and suggestions or answer questions, so please do get in touch.
 
                         </p>
                         <p className="mt-3">Here's who to contact, depending on your enquiry:
@@ -60,7 +84,7 @@ const Contact = ()=>
                             
                             {" "}<Link className="mt-5 underline decoration-[#01e2c2] decoration-[4px] font-semibold" href="mailto:contact@vegclubmagazine.com">contact@vegclubmagazine.com</Link>.
 
-                        </p>
+                        </p>*/}
 
 
 
@@ -74,5 +98,18 @@ const Contact = ()=>
     )
     
 }
+
+export async function getStaticProps() {
+    const response = await fetch(`${API}/contact`);
+    const data = await response.json();
+  
+    return {
+      props: {
+        body: data?.data?.attributes?.body || null,
+      },
+      revalidate: 10,
+    };
+}
+
 
 export default Contact;
