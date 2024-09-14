@@ -67,7 +67,9 @@ const donate = ({})=>
                         <h3 className="md:text-[1.44rem] mt-3">Limited offer: get a free tote bag when you donate £50 or more*</h3>
                     </div>
                     <div className="min-w-[150px] w-[150px] md:w-[250px] lg:[300px]">
+                        
                         <img src="/donate_asset_4.png"></img>
+                    
                     </div>
                 </div>
                 
@@ -79,24 +81,24 @@ const donate = ({})=>
                 </div>
                 <form method="POST"  onSubmit={(e)=>{handleSubmit(e);}}>
                     <div className="mt-5 grid grid-cols-3">
-                        <button type="button" className="py-[20px] border-y-[1px] border-l-[1px] text-center" onClick={()=>setAmt(5)}>
+                        <button type="button" className="py-[20px] border-y-[1px] border-l-[1px] text-center rounded-[2px]" onClick={()=>setAmt(5)}>
                             <p className="md:text-[1.2rem] font-bold">£5</p>
                         </button>
-                        <button type="button" className="py-[20px] border-y-[1px] border-l-[1px] text-center" onClick={()=>setAmt(15)}>
+                        <button type="button" className="py-[20px] border-y-[1px] border-l-[1px] text-center rounded-[2px]" onClick={()=>setAmt(15)}>
                             <p className="md:text-[1.2rem] font-bold">£15</p>
                         </button>
-                        <button type="button" className="py-[20px] border-[1px] text-center" onClick={()=>setAmt(20)}>
+                        <button type="button" className="py-[20px] border-[1px] text-center rounded-[2px]" onClick={()=>setAmt(20)}>
                             <p className="md:text-[1.2rem] font-bold">£20</p>
                         </button>
                     </div>
-                    <input className="w-full outline-none pt-[20px] mt-[40px] border-b-[1px] leading-[2.5] placeholder:text-[1rem] placeholder:md:text-[1.2rem] poppins placeholder:font-semibold placeholder:text-black/[.4]" 
+                    <input className="w-full outline-none pt-[20px] mt-[40px] border-b-[1px] leading-[2.5] placeholder:text-[1rem] placeholder:md:text-[1.2rem] poppins placeholder:font-semibold placeholder:text-black/[.4] rounded-[2px]" 
                         type="text"
                         pattern="\d*(\.?\d{0,2})?"
                         value={InputAmt}
                         placeholder="£ - Other Amount"
                         onChange={(e)=>handleChange(e)}
                     />
-                    <button type={`${Amt ? "submit" : "button"}`} className={` w-full mt-[40px] text-center font-bold bg-[#01e2c2] py-[20px] md:text-[1.2rem] tracking-[.03rem] uppercase`}>Donate</button>
+                    <button type={`${Amt ? "submit" : "button"}`} className={` w-full mt-[40px] text-center font-bold bg-[#01e2c2] py-[20px] md:text-[1.2rem] tracking-[.03rem] uppercase rounded-[2px]`}>Donate</button>
                 </form>
                 
             </div>

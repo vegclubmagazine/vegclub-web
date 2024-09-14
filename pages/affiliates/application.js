@@ -516,11 +516,11 @@ const Application = ({}) =>
 
 }
 
-export async function getServerSideProps({req,res}){
+/*export async function getServerSideProps({req,res}){
 
     res.setHeader()
 
-}
+}*/
 
 
 

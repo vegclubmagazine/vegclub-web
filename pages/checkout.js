@@ -66,7 +66,7 @@ const Checkout = ()=>
                                         <p className="text-black/[.4] font-semibold text-[1.2rem] mt-3">UK£35</p>
                                     </div>
                                 </div>
-                                <button type="submit" role="link" className="relative left-[50%] translate-x-[-50%] bg-black mt-5 max-w-[500px] text-center uppercase font-semibold text-white py-[12px] px-[20px] w-[80%] transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.4]">Checkout</button>
+                                <button type="submit" role="link" className="relative left-[50%] translate-x-[-50%] bg-black mt-5 max-w-[500px] text-center uppercase font-semibold text-white py-[12px] px-[20px] w-[80%] transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.4] rounded-[2px]">Checkout</button>
                                 <input type="hidden" name="type" value={`merchandise`}/>
                                 <input type="hidden" name="amt" value={"35"}/>
                             </form>

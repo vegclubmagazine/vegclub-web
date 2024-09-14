@@ -17,7 +17,7 @@ const affiliates = ({})=>
                     <div className="text-white w-fit   pt-[20px] lg:absolute  lg:z-[2] lg:left-[75px]">
                         <h1 className="font-bold text-[1.728rem] md:text-[2.072rem] lg:text-[2.488rem]">Become Affiliated</h1>
                         <h3 className="text-[1.2rem] md:text-[1.44rem] mt-5 max-w-[500px] font-extralight">Sign up to accept our loyalty card at your establishment.</h3>
-                        <Link href={"/affiliates/application"} className="block mt-5 w-fit bg-[#01e2c2] py-2 px-3 text-black text-[0.833rem] uppercase font-semibold">Apply now</Link>
+                        <Link href={"/affiliates/application"} className="block mt-5 w-fit bg-[#01e2c2] py-2 px-3 text-black text-[0.833rem] uppercase font-semibold rounded-[2px]">Apply now</Link>
                         
                     </div>
                 
