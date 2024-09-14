@@ -134,7 +134,7 @@ const Layout = (
             <nav className={`fixed top-0 w-full z-[999] `}>
                 {minNav || (
                     <div className="py-3 hidden md:block text-end pr-[40px] border-[#333] border-b-[1px]  bg-black">
-                            <div className="inline-block text-[0.833rem] py-2  bg-[#01e2c2] px-3 w-fit">
+                            <div className="inline-block text-[0.833rem] py-2  bg-[#01e2c2] px-3 w-fit rounded-[2px]">
                                 <Link className=" duration-[.34s] ease-in-out font-semibold uppercase hover:text-black/[.4]" href="/vegclubloyalty">Loyalty Program</Link>
                                 {/*<div className="inline-block align-middle">
                                     <img src="/loyalty_button_asset.png" className="h-[15px] w-[15px]"></img>
@@ -178,7 +178,7 @@ const Layout = (
                                 </svg>
                 </button>*/}
                             <form data-action="Search" role="search" onSubmit={(e)=>handleSubmit(e)} className="hidden md:inline-block w-[60%]">
-                                <div className="relative w-[100%] bg-[#a2a2a2] inline-block align-bottom">
+                                <div className="relative w-[100%] bg-[#a2a2a2] inline-block align-bottom rounded-[2px]">
                                     <button type="submit" className="search-btn absolute">
                                         <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path fillRule="evenodd" clipRule="evenodd" d="M6.55892 10.7328C8.86408 10.7328 10.7328 8.86408 10.7328 6.55892C10.7328 4.25376 8.86408 2.38506 6.55892 2.38506C4.25376 2.38506 2.38506 4.25376 2.38506 6.55892C2.38506 8.86408 4.25376 10.7328 6.55892 10.7328ZM6.55892 13.1178C10.1813 13.1178 13.1178 10.1813 13.1178 6.55892C13.1178 2.93653 10.1813 0 6.55892 0C2.93653 0 0 2.93653 0 6.55892C0 10.1813 2.93653 13.1178 6.55892 13.1178Z" fill="black"></path>
