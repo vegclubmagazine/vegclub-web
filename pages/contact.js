@@ -31,7 +31,7 @@ const Contact = ({body})=>
     return(
         <Layout title= "Contact Us | VegClub Magazine">
             <main className="border-black/[.1] pb-[20vh]">
-                <h1 className="pl-[40px] text-[1.728rem] font-bold uppercase pt-[40px] pb-5 border-b-[1px]">Contact Us</h1>
+                <h1 className="pl-[40px] text-[2.074rem] font-bold uppercase pt-[40px] pb-5 border-b-[1px]">Contact Us</h1>
 
             
                 <div className="pt-[40px] px-[40px] grid text-[1.2rem]">
