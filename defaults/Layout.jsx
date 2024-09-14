@@ -202,7 +202,7 @@ const Layout = (
                 <div className="hidden xl:block py-5 bg-[#000] px-[40px]">
                     <ul className="text-white w-fit mx-auto  font-semibold">
                         {Categories?.map((category, index)=>(
-                            <li className="inline-block  pr-2 mr-[3.2rem] curor-pointer ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-white/[.6]" key={category?.id}><Link href={`/category/${category?.attributes?.slug}`}>{category?.attributes?.name}</Link></li>
+                            <li className="inline-block  uppercase pr-2 mr-[3.2rem] curor-pointer ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-white/[.6]" key={category?.id}><Link href={`/category/${category?.attributes?.slug}`}>{category?.attributes?.name}</Link></li>
                         ))}
                     </ul>
                 </div>
