@@ -255,9 +255,9 @@ const height = (w, outline,projection) =>
                             Loyalty Program
                             </h4>
                             <h1 className="max-w-[400px] lg:max-w-[600px] font-semibold text-[1.728rem] lg:text-[2.074rem]">
-                                Get <span className="font-bold italic">Discounts</span>{"    "}
-                                At Your Favourite Vegan <span className="font-bold italic">Eateries</span>{" "}
-                                Across Europe.
+                                Get <span className="font-bold italic">discounts</span>{"    "}
+                                at your favourite vegan <span className="font-bold italic">eateries</span>{" "}
+                                across Europe.
                             </h1>
                         </div>
                     </div>
@@ -282,7 +282,7 @@ const height = (w, outline,projection) =>
                             <p className="mt-5 text-[1rem] text-center">A lifetime discount from</p>
                             <div className="w-fit mx-auto font-bold text-[1.738rem]">
                                 <p className="w-fit mt-3 mx-auto text-[1.2rem] sm:text-[1.44rem]">5% - 20%</p>
-                                <p className="text-center mt-3 font-normal text-[.833rem] sm:text-[1rem] text-black/[.4]">At selected eateries across europe</p>
+                                <p className="text-center mt-3 font-normal text-[.833rem] sm:text-[1rem] text-black/[.4]">At selected eateries across Europe</p>
                             </div>
                         </div>
                     </div>
@@ -321,10 +321,10 @@ const height = (w, outline,projection) =>
                                 <p className="text-[1rem] sm:text-[1.2rem]">Keep an eye out for future recommendations and special offers through our website and social media. We'll always be seeking to provide you with the finest of the vegan scene in Europe.
                                     <br></br>
                                     <br></br>
-                                    Check out the restaurants we have to offer{" "} <span className="font-semibold underline"><Link href="/restaurants">here</Link></span>{" "} but dont forget to read our <span className="underline font-semibold"><Link href="/Benefits.pdf">Terms & Conditions</Link></span>
+                                    Check out the restaurants we have to offer{" "} <span className="font-semibold underline"><Link href="/restaurants">here</Link></span>{" "} but dont forget to read our <span className="underline font-semibold"><Link href="/Benefits.pdf">Terms & Conditions</Link></span>.
                                     <br></br>
                                     <br></br>
-                                    For more information, please send an email to {" "}  <span className="font-semibold underline"><Link href="mailto:loaylty@vegclubmagazine.com">loyalty@vegclubmagazine.com.</Link></span>
+                                    For more information, please send an email to {" "}  <span className="font-semibold underline"><Link href="mailto:loaylty@vegclubmagazine.com">loyalty@vegclubmagazine.com</Link></span>.
 
                                 </p>
                             </div>

@@ -192,7 +192,7 @@ const restaurants = ({data,countries,cities, locations}) =>
             <main className={`border-black/[.1] py-[40px] ${visible ? "bg-black/[.2]":""}`}>
                 <div className="px-[40px]">
                     <h1 className="text-[2.074rem] font-bold uppercase">Restaurants</h1>
-                    <p className="mt-1">Here are all the vegan eateries we've partenered up with across europe</p>
+                    <p className="mt-1">Here are all the vegan eateries we've partenered up with across Europe</p>
                 </div>
                 <div className="px-[40px] py-[40px]">
                     <div className="border-t-[1px] lg:grid lg:grid-cols-[1fr_2fr] lg:gap-x-[60px]">
