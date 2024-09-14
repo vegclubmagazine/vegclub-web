@@ -389,8 +389,28 @@ const Home = ({articles,ads})=>{
                     </div>
                 </div>
             </section>
-           <section>
+           <section className="lg:grid lg:grid-cols-2">
                 <NewsLetterCard></NewsLetterCard>
+                <div className="hidden lg:block bg-[#18181b] px-[40px] py-[70px] text-white overflow-hidden relative">
+                    <div className="">
+                        <h3 className={`uppercase leading-[1.4] font-bold  text-[2.074rem] lg:text-[2.488rem]`}>
+                            <p>Discounts</p>
+                            <p>At a variety of</p>
+                            <p>Vegan eateries across europe.</p>
+
+                        </h3>
+                    
+                        <div className="mt-5 w-fit py-2 px-3 bg-[#01e2c2] text-black relative right-0">
+                            <Link href="/vegclubloyalty" className=" cursor-pointer text-center min-w-[84.233px] text-[.833rem] uppercase font-semibold">Get loyalty card</Link>
+                        </div>
+                  
+
+                        {/*<div className="w-fit absolute opacity-300 rotate-[345deg] z-[0] bottom-0 right-0">
+                            <img src="/discount_asset_deliver-img.png" className="w-[250px] h-auto"/>
+                        </div>*/}
+
+                    </div>
+                </div>
             </section>
             <section className="w-full border-black/[.1]">
                 <div className="border-b-[1px] text-[2.074rem] md:text-[2.488rem] lg:text-[2.986rem] font-bold  uppercase pt-5 pb-3">
