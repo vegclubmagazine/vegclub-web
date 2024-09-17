@@ -33,10 +33,10 @@ const Category = ({category, meta, articles, latestCoverArticle}) =>
                         <div className="border-black/[.1] border-b-[1px] pb-[40px] md:pb-0">
                             <div className="bg-black">
                                 <div className="px-[40px] pt-3">
-                                    <h1 className="text-white border-[#333] border-b-[1px] font-bold text-[2.074rem] md:text-[2.488rem] lg:text-[2.986rem uppercase pb-2">{category}</h1>
+                                    <h1 className="text-white border-[#333] border-b-[1px] font-bold text-[2.074rem] md:text-[2.44rem] lg:text-[2.986rem] uppercase pb-2">{category}</h1>
                                 </div>
-                                <div className="px-[40px] pt-[20px] md:pt-0 md:px-0 md:grid md:grid-cols-[2fr_1fr] items-center">
-                                    <div className="hidden md:block w-full aspect-[16/9] overflow-hidden">
+                                <div className="px-[40px] pt-[20px] lg:pt-0 lg:px-0 lg:grid lg:grid-cols-[2fr_1fr]">
+                                    <div className="hidden lg:block w-full aspect-[16/9] overflow-hidden">
                                         <img    className="object-cover w-full h-auto" 
                                                 src={   latestCoverArticle[0]?.attributes?.media?.data?.attributes?.url ||
                                                         latestCoverArticle[0]?.attributes?.media?.data?.attributes?.formats?.large?.url   ||
@@ -45,12 +45,15 @@ const Category = ({category, meta, articles, latestCoverArticle}) =>
                                                         latestCoverArticle[0]?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url    }
                                         />
                                     </div>
-                                    <div className="w-full md:pl-[40px] pr-[40px]">
-                                        <h2 className="text-[1.44rem] md:text-[1.728rem] lg:text-[2.074rem] text-white mt-4 font-extrabold article-title"><span className="underline_span"><Link href={`/article/${encodeURIComponent(latestCoverArticle[0]?.attributes?.slug)}`}>{latestCoverArticle[0]?.attributes?.title}</Link></span></h2>
+                                    <div className="w-full lg:pl-[40px] lg:pr-[40px] lg:py-[40px]">
+                                        <h3 className = "hidden lg:block text-white text-[0.833rem] inline-block uppercase mt-4 font-semibold cursor-pointer w-fit duration-[.32s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.6]"><Link href={`category/${latestCoverArticle[0]?.attributes?.slug}`}>{category}</Link>
+                                
+                                         </h3>
+                                        <h2 className="text-[1.44rem] md:text-[2.074rem]  text-white mt-4 font-extrabold article-title"><span className="underline_span"><Link href={`/article/${encodeURIComponent(latestCoverArticle[0]?.attributes?.slug)}`}>{latestCoverArticle[0]?.attributes?.title}</Link></span></h2>
                                         {/*<div className="h-fit w-fit inline-block align-middle">
                                             <i className=" inline-block cursor-pointer ml-2 h-[10px] w-[10px] border-[#40e0d0] border-t-[1px] border-r-[1px] rotate-45"></i>
                                                 </div>*/}
-                                        <p className="mt-4 text-[#a2a2a2] text-[1rem]">{latestCoverArticle[0].attributes?.description}</p>
+                                        <p className="mt-4 text-white text-[1rem]">{latestCoverArticle[0].attributes?.description}</p>
 
                                         <div className="mt-4 text-white text-[0.833rem]">
                                             <p className="inline-block font-light uppercase  mr-1">{latestCoverArticle[0]?.attributes?.author?.data?.attributes?.name}</p>
@@ -58,13 +61,13 @@ const Category = ({category, meta, articles, latestCoverArticle}) =>
                                             <Moment className="inline-block font-semibold uppercase  text-[0.833rem]" format="Do MMM YYYY">{latestCoverArticle[0]?.attributes?.date}</Moment>
                                         </div>
                                     </div>
-                                    <div className="mt-[40px] w-full aspect-[16/8] md:hidden">
+                                    <div className="mt-[40px] w-full aspect-[16/8] lg:hidden">
                                         
                                     </div>
                                 </div>
                                 
                             </div>
-                            <div className="px-[40px] md:hidden w-full aspect-[16/9] overflow-hidden mt-[calc(-1*1/2*(100vw-80px))]">
+                            <div className="px-[40px] lg:hidden w-full aspect-[16/9] overflow-hidden mt-[calc(-1*1/2*(100vw-80px))]">
                                             <img    className="w-full h-auto object-cover" 
                                                     src={latestCoverArticle[0]?.attributes?.media?.data?.attributes?.url ||
                                                         latestCoverArticle[0]?.attributes?.media?.data?.attributes?.formats?.large?.url   ||
@@ -87,29 +90,105 @@ const Category = ({category, meta, articles, latestCoverArticle}) =>
 
                         )}
                     </div>
-                    <div className="w-full  border-t-[1px] border-b-[1px] lg:grid lg:grid-cols-[2fr_1fr]">
-                            <ul className="list-none text-start lg:border-r-[1px]">
+                    <div className="w-full  border-t-[1px] border-b-[1px]">
+                            <div className="list-none text-start  lg:grid lg:grid-cols-3">
                                 {latestCoverArticle ? articles?.filter((article)=>
                                     article?.id !== latestCoverArticle[0].id
                                 
 
                                 ).map((article, index) => (
 
-                                   
-                                       
-                                        <li className={`${index < (articles.length - 2) ? "border-b-[1px]": ""}`} key={index}>
-                                            <GenericArticleFormat article={article}/>
-                                        </li>
+                                    <div key={index} className="flex flex-row  lg:block md:border-r-[1px] border-b-[1px] border-black/[.1]">
+                                        <div className="hidden md:block self-center w-[220px]  aspect-[16/9]   lg:w-full  overflow-y-hidden">
+                                            <img src={article?.attributes?.media?.data?.attributes?.url ||
+                                                    article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
+                                                    article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
+                                                    article?.attributes?.media?.data?.attributes?.formats?.small?.url ||
+                                                    article?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url 
+                                                    
+                                            } className="w-full object-cover h-auto"/>
+            
+            
+                                        </div>
+                                        <div className="flex grow flex-col max-w-[635px] py-[20px] pl-[40px]  pr-[20px] md:grow-0  md:block lg:px-[40px] lg::mt-4  lg::pb-3">
+                                                        <h3 className = "uppercase text-[0.833rem] inline-block  font-semibold cursor-pointer w-fit transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)]  hover:text-black/[.6]"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></h3>                
+            
+                                                        <h1 className="mt-4 font-bold text-[1.2rem] md:text-[1.44rem] article-title"><span className="underline_span"><Link href={`/article/${encodeURIComponent(article?.attributes?.slug)}`}>{article?.attributes?.title}</Link></span></h1>
+                                                        <h2 className="hidden  mt-4 md:line-clamp-4 lg:hidden">{article?.attributes?.description}</h2>
+
+                                                        <div className="mt-4 text-[0.833rem]">
+                                                            <p className="inline-block font-light  uppercase  mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
+                                                            
+                                                            <Moment className="inline-block font-semibold uppercase  text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
+                                                        </div>
+                                            
+                                        </div>
+                                        <div>
+                                            <div className="flex flex-col w-[150px] overflow-hidden md:hidden h-full md:h-auto md:w-[80%] md:mx-auto   md:aspect-[16/9] mx-auto bg-[#CACACA]">
+                                                <img    className="h-full object-cover w-auto" 
+                                                        src={   article?.attributes?.media?.data?.attributes?.url ||
+                                                                article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
+                                                                article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
+                                                                article?.attributes?.media?.data?.attributes?.formats?.small?.url ||
+                                                                article?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url 
+                                                                
+                                                            
+
+
+                                                            }
+                                                ></img>  
+                                            </div>
+                                        </div>
+        
+                                     </div>
                                    
                                 ))
                                 :(
                                    articles.map((article, index) => (
 
-                                       
-                                           
-                                            <li className={`${index < (articles.length - 1) ? "border-b-[1px]": ""}`} key={index}>
-                                                <GenericArticleFormat article={article}/>
-                                            </li>
+                                    <div key={index} className="flex flex-row  lg:block md:border-r-[1px] border-b-[1px] border-black/[.1]">
+                                        <div className="hidden md:block self-center w-[220px]  aspect-[16/9]   lg:w-full  overflow-y-hidden">
+                                            <img src={article?.attributes?.media?.data?.attributes?.url ||
+                                                    article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
+                                                    article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
+                                                    article?.attributes?.media?.data?.attributes?.formats?.small?.url ||
+                                                    article?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url 
+                                                    
+                                            } className="w-full object-cover h-auto"/>
+            
+            
+                                        </div>
+                                        <div className="flex grow flex-col max-w-[635px] py-[20px] pl-[40px]  pr-[20px] md:grow-0  md:block lg:px-[40px] lg::mt-4  lg::pb-3">
+                                                        <h3 className = "uppercase text-[0.833rem] inline-block  font-semibold cursor-pointer w-fit transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)]  hover:text-black/[.6]"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></h3>                
+            
+                                                        <h1 className="mt-4 font-bold text-[1.2rem] md:text-[1.44rem] article-title"><span className="underline_span"><Link href={`/article/${encodeURIComponent(article?.attributes?.slug)}`}>{article?.attributes?.title}</Link></span></h1>
+                                                        <h2 className="hidden  mt-4 md:line-clamp-4 lg:hidden">{article?.attributes?.description}</h2>
+
+                                                        <div className="mt-4 text-[0.833rem]">
+                                                            <p className="inline-block font-light  uppercase  mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
+                                                            
+                                                            <Moment className="inline-block font-semibold uppercase  text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
+                                                        </div>
+                                            
+                                        </div>
+                                        <div>
+                                            <div className="flex flex-col w-[150px] overflow-hidden md:hidden h-full md:h-auto md:w-[80%] md:mx-auto   md:aspect-[16/9] mx-auto bg-[#CACACA]">
+                                                <img    className="h-full object-cover w-auto" 
+                                                        src={   article?.attributes?.media?.data?.attributes?.url ||
+                                                                article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
+                                                                article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
+                                                                article?.attributes?.media?.data?.attributes?.formats?.small?.url ||
+                                                                article?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url 
+                                                                
+                                                            
+
+
+                                                            }
+                                                ></img>  
+                                            </div>
+                                        </div>
+        
+                                    </div>
                                         
                                    ))
 
@@ -120,7 +199,7 @@ const Category = ({category, meta, articles, latestCoverArticle}) =>
                                 
                                 
                                 
-                            </ul>
+                            </div>
 
                     </div>
                     <div className="w-fit mx-auto  py-5 md:w-full md:text-center md:">
@@ -174,6 +253,7 @@ export async function getServerSideProps({req,res,query, params})
                 }
             },
             pagination:{
+                
                 pageSize:(Math.floor(PAGINATION_LIMIT/6)),
                 page:`${page}`
             },
