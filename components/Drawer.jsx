@@ -67,7 +67,7 @@ const Drawer = ({isOpen, onClose})=>{
                                     <li className="cursor-pointer w-fit py-2 ease-[cubic-bezier(.19,1,.22,1)] duration-[.34s] hover:text-white/[.4]"><Link href={`/team`} ><span className="">Meet the Team</span></Link></li>
                                     <li className="w-fit py-2">
                                         <div className="group/mainLink mr-2 flex flex-col cursor-pointer overflow-hidden h-[36.2833px] transition-all duration-[.68s] ease-[cubic-bezier(.19,1,.22,1)] hover:h-[140px]">Loyalty Program
-                                            {/*<Link href="/affiliates" className="mt-2 opacity-0 text-end text-[1.2rem] transition-opacity group-hover/mainLink:duration-[.5s] group-hover/mainLink:ease-linear   duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.4] group-hover/mainLink:opacity-100">Become an affiliate</Link>*/}
+                                            <Link href="/affiliates" className="mt-2 opacity-0 text-end text-[1.2rem] transition-opacity group-hover/mainLink:duration-[.5s] group-hover/mainLink:ease-linear   duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.4] group-hover/mainLink:opacity-100">Become an affiliate</Link>
 
                                             <Link href="/vegclubloyalty" className="mt-2 opacity-0 text-end text-[1.2rem] transition-opacity group-hover/mainLink:duration-[.5s] group-hover/mainLink:ease-linear   duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.4] group-hover/mainLink:opacity-100">Get Loyalty Card</Link>
 

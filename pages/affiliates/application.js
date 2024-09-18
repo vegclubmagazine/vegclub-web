@@ -12,8 +12,9 @@ import Link from "next/link";
 
 const qs = require("qs");
 
-const Application = ({}) =>
+const Application = ({countries}) =>
 {
+
     const router = useRouter();
 
     const [Loading, setLoading] = useState(true);
@@ -27,6 +28,7 @@ const Application = ({}) =>
 
     useEffect(()=>
     {
+        
         setFormValues(prev =>({...prev,["discount"]:"5"}))
     },[])
     const handleSubmit = (e)=>
@@ -179,7 +181,14 @@ const Application = ({}) =>
                 }
                 break;
             case "select-one":
-                setInvalidInputs(prev => ({...prev,[`${e.target.id}`]:"select country from drop down"}));
+                if(e.target.id === "country"){
+                    setInvalidInputs(prev => ({...prev,[`${e.target.id}`]:"select country from drop down"}));
+                }
+                else{
+                    setInvalidInputs(prev => ({...prev,[`${e.target.id}`]:"select dial code from drop down"}));
+
+
+                }
                 break;
 
             case "url":
@@ -204,17 +213,17 @@ const Application = ({}) =>
                         <div className="absolute w-[85%]  max-w-[650px] h-fit py-5 left-[50%] bg-[#18181b] translate-x-[-50%] top-[50%] translate-y-[-50%]">
 
                             {Success ? (
-                                    <div className="text-center">
+                                    <div className="text-center py-[40px] px-[40px]">
                                        <FontAwesomeIcon  icon={faCircleCheck} className="w-[40px] h-[40px] text-[#01e2c2] mx-auto" ></FontAwesomeIcon>
-                                       <div className="text-white md:text-[1.2rem] mt-[80px] mb-5">We have received your application</div>
+                                       <div className="text-white md:text-[1.2rem] mt-[40px] mb-5">We have received your application</div>
                                        <Link href="/" className="text-white w-fit text-[1.2rem] underline decoration-[3px] underline-offset-4 font-semibold uppercase">
                                             home
                                         </Link>                                  
                                     </div>
                             ): Error ? (
-                                <div className="text-center">
+                                <div className="text-center py-[40px] px-[40px]">
                                     <FontAwesomeIcon  icon={faCircleXmark} className="w-[40px] h-[40px] text-[#01e2c2] mx-auto" ></FontAwesomeIcon>
-                                    <div className="text-white md:text-[1.2rem] mt-[80px] mb-5">Something went wrong. Try again later.</div>
+                                    <div className="text-white md:text-[1.2rem] mt-[40px] mb-5">Something went wrong. Try again later.</div>
                                     <Link href="/" className="text-white w-fit text-[1.2rem] underline decoration-[3px] underline-offset-4 font-semibold uppercase">
                                         home
                                     </Link>
@@ -222,9 +231,9 @@ const Application = ({}) =>
 
                                 </div>
                             ):(
-                                <div className="text-center py-[80px] px-[40px] shadow-md bg-[#18181b]">
+                                <div className="text-center py-[40px] px-[40px] shadow-md bg-[#18181b]">
                                     <div className="app_loader mx-auto"></div>
-                                    <div className="text-white md:text-[1.2rem] mt-[80px] mb-5">Please stand by while your application is processed...</div>
+                                    <div className="text-white md:text-[1.2rem] mt-[40px] mb-5">Please stand by while your application is processed...</div>
                                     
 
 
@@ -263,7 +272,7 @@ const Application = ({}) =>
                                 </div>
                                 <div className="mt-5 md:mt-0 lg:w-fit">
                                     <p className="font-bold">Owner/Manager name<span className="text-red-600">*</span></p>
-                                    <input className={`mt-2 w-full lg:w-[350px] outline-black border-[1px] ${invalidInputs["owner_or_manager_name"] ? "border-red-600 border-[1.2px]":""}`}
+                                    <input className={`px-2 mt-2 w-full lg:w-[350px] outline-black border-[1px] ${invalidInputs["owner_or_manager_name"] ? "border-red-600 border-[1.2px]":""}`}
                                         name="owner_or_manager_name"
                                         type="text"
                                         value={formValues?.owner_or_manager_name || ""}
@@ -276,7 +285,7 @@ const Application = ({}) =>
                                 </div>
                                 <div className="mt-5 md:mt-0 lg:w-fit">
                                     <p className="font-bold">Cuisine type<span className="text-red-600">*</span></p>
-                                    <input className={`mt-2 w-full lg:w-[350px] outline-black border-[1px] ${invalidInputs["cuisineType"] ? "border-red-600 border-[1.2px]":""}`}
+                                    <input className={`mt-2 px-2 w-full lg:w-[350px] outline-black border-[1px] ${invalidInputs["cuisineType"] ? "border-red-600 border-[1.2px]":""}`}
                                             name="cuisineType"
                                             type="text"
                                             value={formValues?.cuisineType || ""}
@@ -303,12 +312,11 @@ const Application = ({}) =>
                                 <div className="lg:w-fit">
                                     <label className="font-bold">Country<span className="text-red-600">*</span></label>
                                     <div className={`mt-2 lg:w-fit border-[#d5d9d9] border-[1px] ${invalidInputs["country"] ? "border-red-600 border-[1.2px]":""}`}>
-                                        <select id="country"  className="px-2 w-full  lg:w-[350px] bg-#[f3f0f3]" onChange={e => handleSelect(e)}  onInvalid={e => handleInvalid(e)} required>
+                                        <select id="country"  className={`px-2 w-full  lg:w-[350px] bg-#[f3f0f3]`} onChange={e => handleSelect(e)}  onInvalid={e => handleInvalid(e)} required>
                                             <option value="" selected disabled hidden>select</option>
-                                            <option value="GB">england</option>
-                                            <option>england</option>
-                                            <option>england</option>
-                                            <option>england</option>
+                                            {countries && countries?.map((country) =>(
+                                                <option key={country.code} value={country.name}>{country.name}</option>
+                                            ))}
                                         </select>
 
                                         <input type="hidden"
@@ -323,7 +331,7 @@ const Application = ({}) =>
                                 </div>
                                 <div className="mt-5 md:mt-0 lg:w-fit">
                                     <label className="font-bold block">Address line 1<span className="text-red-600">*</span></label>
-                                    <input className={`border-[1px] mt-2 w-full lg:w-[350px] ${invalidInputs["address_line_one"] ? "border-red-600 border-[1.2px]":""}`}
+                                    <input className={`px-2 border-[1px] mt-2 w-full lg:w-[350px] ${invalidInputs["address_line_one"] ? "border-red-600 border-[1.2px]":""}`}
                                             name="address_line_one"
                                             type="text"
                                             value={formValues?.address_line_one|| ""}
@@ -337,7 +345,7 @@ const Application = ({}) =>
                                 </div>
                                 <div className="mt-5 md:mt-0 lg:w-fit">
                                     <label className="font-bold block">Address line 2</label>
-                                    <input className="border-[1px] mt-2 w-full lg:w-[350px]"
+                                    <input className="px-2 border-[1px] mt-2 w-full lg:w-[350px]"
                                             name="address_line_two"
                                             type="text"
                                             value={formValues?.address_line_two || ""}
@@ -346,7 +354,7 @@ const Application = ({}) =>
                                 </div>
                                 <div className="mt-5 md:mt-0 lg:w-fit">
                                     <label className="font-bold block">Address line 3</label>
-                                    <input className="border-[1px] mt-2 w-full lg:w-[350px]"
+                                    <input className="px-2 border-[1px] mt-2 w-full lg:w-[350px]"
                                             name="address_line_three"
                                             type="text"
                                             value={formValues?.address_line_three || ""}
@@ -355,7 +363,7 @@ const Application = ({}) =>
                                 </div>
                                 <div className="mt-5 md:mt-0 lg:w-fit">
                                     <label className="font-bold block">City<span className="text-red-600">*</span></label>
-                                    <input className={`border-[1px] mt-2 w-full lg:w-[350px] ${invalidInputs["city"] ? "border-red-600 border-[1.2px]":""}`}
+                                    <input className={`px-2 border-[1px] mt-2 w-full lg:w-[350px] ${invalidInputs["city"] ? "border-red-600 border-[1.2px]":""}`}
                                             name="city"
                                             type="text"
                                             value={formValues?.city || ""}
@@ -369,7 +377,7 @@ const Application = ({}) =>
                                 </div>
                                 <div className="mt-5 md:mt-0 lg:w-fit">
                                     <label className="font-bold block">State,Province or Region<span className="text-red-600">*</span></label>
-                                    <input className={`border-[1px] mt-2 w-full lg:w-[350px] ${invalidInputs["state_province_region"] ? "border-red-600 border-[1.2px]":""}`}
+                                    <input className={`px-2 border-[1px] mt-2 w-full lg:w-[350px] ${invalidInputs["state_province_region"] ? "border-red-600 border-[1.2px]":""}`}
                                             name="state_province_region"
                                             type="text"
                                             value={formValues?.state_province_region|| ""}
@@ -383,7 +391,7 @@ const Application = ({}) =>
                                 </div>
                                 <div className="mt-5 md:mt-0 lg:w-fit">
                                     <label className="font-bold block">ZIP or Postal code<span className="text-red-600">*</span></label>
-                                    <input className={`border-[1px] mt-2 w-full lg:w-[350px] ${invalidInputs["zipCode"] ? "border-red-600 border-[1.2px]":""}`}
+                                    <input className={`px-2 border-[1px] mt-2 w-full lg:w-[350px] ${invalidInputs["zipCode"] ? "border-red-600 border-[1.2px]":""}`}
                                             name="zipCode"
                                             type="text"
                                             value={formValues?.zipCode|| ""}
@@ -408,9 +416,14 @@ const Application = ({}) =>
                             <div className="p-5 text-[0.833rem]">
                                 <div className="">
                                     <label className="block font-bold">Mobile number<span className="text-red-600">*</span></label>
-                                    <div className="mt-2">
-                                        <select id="countryCode" onChange={e => handleSelect(e)} onInvalid={e=>handleInvalid(e)} className="inline-block px-2">
+                                    <div className="text-red-600 mt-2 text-[0.693rem]">{invalidInputs["countryCode"]}</div>
+
+                                    <div className={`mt-2`}>
+                                        <select id="countryCode" onChange={e => handleSelect(e)} onInvalid={e=>handleInvalid(e)} className={`inline-block px-2 ${invalidInputs["countryCode"] ? "border-red-600 border-[1.2px]":""}`} required>
                                             <option value="" hidden selected disabled>Select</option>
+                                            {countries && countries?.map((country) =>(
+                                                <option key={country.code} value={country.dial_code}>{country.dial_code}</option>
+                                            ))}
                                         </select>
                                         <input type="hidden" name="countryCode" value={formValues?.countryCode || ""}/>
                                         <input className={`inline-block lg:w-[350px] ml-3 border-[1px] px-2 placeholder:text-[0.693rem] placeholder:text-black/[.4] ${invalidInputs["mobileNumber"] ? "border-red-600 border-[1.2px]":""}`}
@@ -425,7 +438,7 @@ const Application = ({}) =>
                                         />
 
                                     </div>
-                                    <div className="text-red-600 mt-2 text-[0.693rem]">{invalidInputs["mobileNumber"]}</div>
+                                    <div className="ml-[76px] text-red-600 mt-2 text-[0.693rem]">{invalidInputs["mobileNumber"]}</div>
                                 </div>
                                 <div className="mt-5 grid md:grid-cols-2 gap-x-5 lg:gap-x-0 gap-y-5">
                                     <div className="mt-5 md:mt-0">
@@ -516,11 +529,57 @@ const Application = ({}) =>
 
 }
 
-/*export async function getServerSideProps({req,res}){
+export async function getServerSideProps({req,res}){
 
-    res.setHeader()
+    res.setHeader(
+        "Cache-Control",
+        "public", "s-maxage=604800", "stale-while-revalidate=84600"
+    )
+    const europeanCountryCodes = ["GB","DK","BG", "BE", "EL", "CZ","CY","AT","EE",
+                 "FI","FR","DE","GR","HU","HR", "IE","IT","LV","LT","LU","MT","NL",
+                "PL","PT","RO","SK","SI","ES","SE", "AL", "AD", "AM", "BY", "BA","FO", "GE",
+                "GI","IS","IM","XK","LI","MK","MD","MC","ME","NO","RU","SM","RS","CH","TR","UA",
+                "VA"];
+    const europeanCountries = [];
+   
+    const getCountries = new Promise((resolve,reject)=>{
 
-}*/
+        fetch("https://gist.githubusercontent.com/anubhavshrimal/75f6183458db8c453306f93521e93d37/raw/f77e7598a8503f1f70528ae1cbf9f66755698a16/CountryCodes.json")
+        .then(response => response.json())
+        .then((data) =>{
+            resolve(data);
+        } )
+        .catch(err => reject(err))
+    });
+
+    var globalData = await getCountries;
+    
+    europeanCountryCodes.forEach((cc) =>{
+        var found = false;
+        globalData = globalData.filter((ctry) =>{
+
+            if(!found && ctry.code === cc){
+                europeanCountries.push(ctry);
+                found = true;
+                return false;
+            }
+            else {
+                return true;
+            }
+            
+        })
+    })
+
+   
+     
+
+    return {
+        props:{
+            countries:europeanCountries|| null
+        }
+    }
+
+}
 
 
 
