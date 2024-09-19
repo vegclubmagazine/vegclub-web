@@ -311,7 +311,7 @@ const Home = ({articles,ads})=>{
                                                 ></img>  
                                             </div>
                                         </div>
-                                        <div className="hidden md:block w-[85%] mt-4 mx-auto pb-3">
+                                        <div className="hidden md:block p-[40px]">
                                             <h3 className = "article-title text-[0.833rem] inline-block  font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></span></h3>                
 
                                             <h1 className="mt-4 font-bold text-[1.44rem] "><Link href={`/article/${encodeURIComponent(article?.attributes?.slug)}`}>{article?.attributes?.title}</Link></h1>
@@ -592,8 +592,8 @@ const Home = ({articles,ads})=>{
 
 
                             </div>
-                            <div className="hidden md:block w-[85%] mt-4 mx-auto pb-3">
-                                            <h3 className = "article-title text-[0.833rem] inline-block  font-semibold cursor-pointer w-fit transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)]  hover:text-black/[.6]"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></h3>                
+                            <div className="hidden md:block p-[40px]">
+                                            <h3 className = "article-title text-[0.833rem] uppercase inline-block  font-semibold cursor-pointer w-fit transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)]  hover:text-black/[.6]"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></h3>                
 
                                             <h1 className="mt-4 font-bold text-[1.44rem] article-title"><span className="underline_span"><Link href={`/article/${encodeURIComponent(article?.attributes?.slug)}`}>{article?.attributes?.title}</Link></span></h1>
                                             <div className="mt-4 text-[0.833rem]">
