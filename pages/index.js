@@ -21,7 +21,7 @@ const Home = ({articles,ads})=>{
     const [offset, setOffset] = useState(8);
     const [isLoading, setIsLoading] = useState(false);
     const [atLastPage, setAtLastPage] = useState(false);
-    const [LatestArticles,setLatestArticles] = useState([...articles?.nonFeatureArticles?.slice(1,8)]);
+    const [LatestArticles,setLatestArticles] = useState([...articles?.nonFeatureArticles?.slice(1,7)]);
     const [page,setPage] = useState(1);
     const [prevPage, setPrevPage] = useState(1);
 
@@ -173,8 +173,9 @@ const Home = ({articles,ads})=>{
                 </div>
             </section>
             
+            
             <section className="block md:grid md:grid-cols-[2fr_1fr] overflow-y-hidden">
-                <div className="relative border-[#000]/[.1] border-r-[1px]">
+                <div className="relative border-[#000]/[.1] border-r-[1px] md:border-r-0">
                     <div className="w-full bg-[#000]/[.1] overflow-hidden h-fit  md:max-h-[540px]">
                         <img    className="object-cover w-full h-auto" 
                                 src={   articles?.featureArticles[0]?.attributes?.media?.data?.attributes?.url ||
@@ -189,13 +190,13 @@ const Home = ({articles,ads})=>{
                                     }
                         ></img>   
                     </div>
-                    <div className="relative inline-block py-[40px] pr-[40px] bottom-[40px] left-[10%] md:left-[0%]  bg-[#000] text-start text-white w-[90%] md:w-[75%] 2xl:w-[50%]">
+                    <div className="relative inline-block py-[40px] pr-[40px] bottom-[40px] left-[10%] md:left-[0%]  bg-[#000] text-start text-white w-[90%] md:w-full">
                         {/*<p className="w-full bg-[#000] text-start text-[#fff] border-box pl-1 text-[0.6rem]"> Damon Winter <span className="text-[#01e2c2] ml-2 mr-2">/</span> Vegclub Magazine <span className="text-[#01e2c2] ml-2 mr-2">/</span> Redux</p>*/}
-                        <div className="pl-[40px]">
+                        <div className="pl-[40px] md:px-[40px]">
                             <h3 className = "text-white text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.34s] ease-in-out hover:text-white/[.6]"><Link href={`/category/${articles?.featureArticles[0]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.featureArticles[0]?.attributes?.category?.data?.attributes?.name}</Link></h3>                
-                            <h1 className="article-title mt-4 line-clamp-5 font-extrabold w-fit leading-[1.5] text-[1.728rem] lg:text-[2.986rem]"><span className="underline_span"><Link href={`/article/${encodeURIComponent(articles?.featureArticles[0]?.attributes?.slug)}`}>{articles?.featureArticles[0]?.attributes?.title}</Link></span></h1>
+                            <h1 className="article-title mt-4 line-clamp-5 font-extrabold w-fit leading-[1.5]  text-[1.728rem] lg:text-[2.488rem]"><span className="underline_span"><Link href={`/article/${encodeURIComponent(articles?.featureArticles[0]?.attributes?.slug)}`}>{articles?.featureArticles[0]?.attributes?.title}</Link></span></h1>
                             <h2 className="mt-4 text-white text-[1rem] line-clamp-4 2xl:hidden">{articles?.featureArticles[0]?.attributes?.description}</h2>
-                            <div className="mt-4 text-[0.833rem]">
+                            <div className="mt-8 text-[0.833rem]">
                                 <p className="inline-block uppercase font-light  mr-1">{articles?.featureArticles[0]?.attributes?.author?.data?.attributes?.name}</p>
                                 
                                 <Moment className="inline-block font-semibold uppercase  text-[0.833rem]" format="Do MMM YYYY">{articles?.featureArticles[0]?.attributes?.date}</Moment>
@@ -217,11 +218,11 @@ const Home = ({articles,ads})=>{
                         </div>
                     </div>
                 </div>
-                <div className="hidden md:grid">
-                    <div className="border-[#000]/[.1] border-b-[1px]">
-                        <div className="w-full aspect-[16/15]">
-                            <div className="h-full  overflow-hidden bg-[#cacaca]">
-                                <img    className="h-full w-auto object-cover" 
+                <div className="hidden md:grid md:grid-rows-[540px_280px]">
+                    <div className="border-[#000]/[.1]">
+                        <div className="w-full aspect-[16/10]">
+                            <div className="h-full overflow-hidden">
+                                <img    className="w-full h-auto object-cover" 
                                         src={   articles?.featureArticles[1]?.attributes?.media?.data?.attributes?.url ||
                                                 articles?.featureArticles[1]?.attributes?.media?.data?.attributes?.formats?.large?.url ||
                                                 articles?.featureArticles[1]?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
@@ -235,15 +236,25 @@ const Home = ({articles,ads})=>{
                                 ></img> 
                             </div>
                         </div>
-                        <div className=" mx-auto p-[40px]">
-                            <h3 className = " text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/category/${articles?.featureArticles[1]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.featureArticles[1]?.attributes?.category?.data?.attributes?.name}</Link></h3>                
-                            <h1 className="article-title mt-4 font-bold w-fit leading-[1.5] text-[1.44rem] lg:text-[1.728rem]"><span className="underline_span"><Link href={`/article/${encodeURIComponent(articles?.featureArticles[1]?.attributes?.slug)}`}>{articles?.featureArticles[1]?.attributes?.title}</Link></span></h1>
+                        <div className=" mx-auto py-[40px] px-[40px]">
+                            <h3 className = "text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/category/${articles?.featureArticles[1]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.featureArticles[1]?.attributes?.category?.data?.attributes?.name}</Link></h3>                
+                            <h1 className="article-title mt-4 font-bold w-fit leading-[1.5] line-clamp-3 text-[1.44rem] lg:text-[1.728rem]"><span className="underline_span"><Link href={`/article/${encodeURIComponent(articles?.featureArticles[1]?.attributes?.slug)}`}>{articles?.featureArticles[1]?.attributes?.title}</Link></span></h1>
                             {/*<p className="mt-5">{articles?.featureArticles[1]?.attributes?.description}</p>*/}
                             <div className="mt-4 text-[0.833rem]">
                                 <p className="inline-block font-light  uppercase  mr-1">{articles?.featureArticles[1]?.attributes?.author?.data?.attributes?.name}</p>
                                 
                                 <Moment className="inline-block font-semibold uppercase text-[0.833rem]" format="MMMM Do YYYY">{articles?.featureArticles[1]?.attributes?.date}</Moment>
                             </div>
+                        </div>
+                    </div>
+                    <div className="px-[40px]">
+                        <div className="py-[40px] border-black/[.1] border-y-[1px]">
+                            <h3 className = "text-[1rem] font-semibold  uppercase">Keep us going.</h3>
+                            <h1 className="mt-4 mb-6 font-extrabold leading-[1.5] uppercase text-[1.44rem]">
+                                <p>Support our</p>
+                                <p>continued effort to</p>
+                                <p>provide meaningful vegan content</p></h1>
+                            <Link href="/donate" className="text-black rounded-[2px] mx-auto text-[0.833rem] w-fit px-3 py-2 bg-[#01e2c2]  font-semibold uppercase transition-all duration-[.32s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.6]">donate</Link>
                         </div>
                     </div>
                     {/*<div className="">
@@ -400,7 +411,7 @@ const Home = ({articles,ads})=>{
 
                         </h3>
                     
-                        <div className="mt-5 w-fit py-2 px-3 bg-[#01e2c2] text-black relative right-0">
+                        <div className="mt-5 w-fit py-2 px-3 bg-[#01e2c2] rounded-[2px] text-black relative right-0">
                             <Link href="/vegclubloyalty" className=" cursor-pointer text-center min-w-[84.233px] text-[.833rem] uppercase font-semibold">Get loyalty card</Link>
                         </div>
                   
@@ -413,14 +424,16 @@ const Home = ({articles,ads})=>{
                 </div>
             </section>
             <section className="w-full border-black/[.1]">
-                <div className="border-b-[1px] text-[2.074rem] md:text-[2.488rem] lg:text-[2.986rem] font-bold  uppercase pt-5 pb-3">
+                <div className="border-b-[1px] text-[2.074rem] md:text-[2.488rem] lg:text-[2.986rem] font-bold  uppercase py-[40px]">
                     <div className="w-fit pl-[40px]">
                         <h2 className="leading-[0.8]">The</h2>
                         <h2>Latest</h2>
                     </div>
                 </div>
                 
-                <div className="block hidden md:grid md:grid-cols-[1fr_2fr] overflow-y-hidden">
+
+                
+                {/*<div className="block hidden md:grid md:grid-cols-[1fr_2fr] overflow-y-hidden">
                     <div className="hidden md:grid">
                         <div className="border-[#000]/[.1] border-b-[1px] border-r-[1px]">
                             <div className="w-full aspect-[16/15]">
@@ -442,7 +455,7 @@ const Home = ({articles,ads})=>{
                             <div className=" mx-auto p-[40px]">
                                 <h3 className = " text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/category/${articles?.nonFeatureArticles[1]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.nonFeatureArticles[1]?.attributes?.category?.data?.attributes?.name}</Link></h3>                
                                 <h1 className="article-title mt-4 font-bold w-fit leading-[1.5] text-[1.44rem] lg:text-[1.728rem]"><span className="underline_span"><Link href={`/article/${encodeURIComponent(articles?.nonFeatureArticles[1]?.attributes?.slug)}`}>{articles?.nonFeatureArticles[1]?.attributes?.title}</Link></span></h1>
-                                {/*<p className=" mt-5">{articles?.nonFeatureArticles[1]?.attributes?.description}</p>*/}
+                                {/*<p className=" mt-5">{articles?.nonFeatureArticles[1]?.attributes?.description}</p>
                                 <div className="mt-4 text-[0.833rem]">
                                     <p className="inline-block font-light  uppercase  mr-1">{articles?.nonFeatureArticles[1]?.attributes?.author?.data?.attributes?.name}</p>
                                     
@@ -463,7 +476,7 @@ const Home = ({articles,ads})=>{
                                     <Moment className="inline-block font-semibold uppercase  text-[0.833rem]" format="MMMM Do YYYY">{articles?.featureArticles[2]?.attributes?.date}</Moment>
                                 </div>
                             </div>
-                                            </div>*/}
+                                            </div>
                     </div>
                     <div className="relative border-[#000]/[.1] border-r-[1px]">
                         <div className="w-full bg-[#000]/[.1] overflow-hidden h-fit  md:max-h-[540px]">
@@ -481,7 +494,7 @@ const Home = ({articles,ads})=>{
                             ></img>   
                         </div>
                         <div className="relative inline-block py-[40px] pr-[40px] bottom-[40px] left-[10%] md:left-[25%]  bg-[#000] text-start text-white w-[90%] md:w-[75%]">
-                            {/*<p className="w-full bg-[#000] text-start text-[#fff] border-box pl-1 text-[0.6rem]"> Damon Winter <span className="text-[#01e2c2] ml-2 mr-2">/</span> Vegclub Magazine <span className="text-[#01e2c2] ml-2 mr-2">/</span> Redux</p>*/}
+                            {/*<p className="w-full bg-[#000] text-start text-[#fff] border-box pl-1 text-[0.6rem]"> Damon Winter <span className="text-[#01e2c2] ml-2 mr-2">/</span> Vegclub Magazine <span className="text-[#01e2c2] ml-2 mr-2">/</span> Redux</p>
                             <div className="pl-[40px]">
                                 <h3 className = "text-white text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.34s] ease-in-out hover:text-white/[.6]"><Link href={`/category/${articles?.nonFeatureArticles[0]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.nonFeatureArticles[0]?.attributes?.category?.data?.attributes?.name}</Link></h3>                
                                 <h1 className="article-title mt-4 line-clamp-4 font-extrabold w-fit leading-[1.5] text-[1.728rem] lg:text-[2.488rem]"><span className="underline_span"><Link href={`/article/${encodeURIComponent(articles?.nonFeatureArticles[0]?.attributes?.slug)}`}>{articles?.nonFeatureArticles[0]?.attributes?.title}</Link></span></h1>
@@ -503,30 +516,17 @@ const Home = ({articles,ads})=>{
 
                                         {/*<InHouseAds ad={ads.square[0]}/>
                                     </Fragment>
-                                ):""}*/}
+                                ):""}
                                 <p className="leading-[1.6] text-[1.02rem] font-[410] line-clamp-4">{articles?.nonFeatureArticles[0]?.attributes?.description}</p>
                             </div>
                         </div>
                     </div>
                     
-                </div>
+                </div>*/}
 
-                <div className="w-full  md:hidden border-b-[1px] pb-[2rem] md:pb-0">
-                    <div className="bg-[#000] px-[40px]  w-full md:px-0 md:grid md:grid-cols-[2fr_1fr] items-center">
-                        <div className="hidden  overflow-y-hidden md:block w-full aspect-[16/9]">
-                            <img    className="w-full h-auto object-cover" 
-                                    src={   articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.url ||
-                                            articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.large?.url ||
-                                            articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
-                                            articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.small?.url ||
-                                            articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url 
-                                           
-                                        
-
-
-                                        }
-                            ></img>                          
-                        </div>
+                <div className="w-full  border-b-[1px] md:border-b-0 pb-[2rem] md:pb-0">
+                    <div className="bg-[#000] px-[40px]  w-full md:px-0 md:grid md:grid-cols-[1fr_2fr] items-center">
+                        
                         <div className=" mx-auto md:mx-0 md:px-[40px] h-fit  pt-[20px] pb-[80px]">
                             <h3 className = "text-white text-[0.833rem] inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.32s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.6]"><Link href={`category/${articles?.nonFeatureArticles[0]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.nonFeatureArticles[0]?.attributes?.category?.data?.attributes?.name}</Link>
                                 
@@ -542,6 +542,20 @@ const Home = ({articles,ads})=>{
                                 
                                 <Moment className="inline-block font-semibold uppercase  text-[0.833rem]" format="Do MMM YYYY">{articles?.nonFeatureArticles[0]?.attributes?.date}</Moment>
                             </div>
+                        </div>
+                        <div className="hidden  overflow-y-hidden md:block w-full aspect-[16/9]">
+                            <img    className="w-full h-auto object-cover" 
+                                    src={   articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.url ||
+                                            articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.large?.url ||
+                                            articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
+                                            articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.small?.url ||
+                                            articles?.nonFeatureArticles[0]?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url 
+                                           
+                                        
+
+
+                                        }
+                            ></img>                          
                         </div>
                         
                     </div>
@@ -564,7 +578,7 @@ const Home = ({articles,ads})=>{
                     </div>
                 </div>
                 <div className="hidden md:grid grid-cols-3">
-                    {LatestArticles?.slice(1)?.map((article, index)=>(
+                    {LatestArticles?.map((article, index)=>(
                         <div key={index} className="border-r-[1px] border-b-[1px] border-black/[.1] pb-[40px]">
                             <div className="aspect-[16/9] overflow-hidden">
                                 <img src={article?.attributes?.media?.data?.attributes?.url ||
