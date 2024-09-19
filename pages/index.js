@@ -249,8 +249,8 @@ const Home = ({articles,ads})=>{
                     </div>
                     <div className="px-[40px]">
                         <div className="py-[40px] border-black/[.1] border-y-[1px]">
-                            <h3 className = "text-[1rem] font-semibold  uppercase">Keep us going.</h3>
-                            <h1 className="mt-4 mb-6 font-extrabold leading-[1.5] uppercase text-[1.44rem]">
+                            <h3 className = "text-[1rem] font-semibold select-none  uppercase">Keep us going.</h3>
+                            <h1 className="mt-4 mb-6 font-extrabold leading-[1.5] select-none  uppercase text-[1.44rem]">
                                 <p>Support our</p>
                                 <p>continued effort to</p>
                                 <p>provide meaningful vegan content</p></h1>
@@ -403,9 +403,9 @@ const Home = ({articles,ads})=>{
             </section>
            <section className="lg:grid lg:grid-cols-[2fr_1fr]">
                 <NewsLetterCard></NewsLetterCard>
-                <div className="hidden lg:block bg-[#18181b]  py-[70px] text-white overflow-hidden relative">
+                <div className="hidden lg:block bg-[#18181b] pl-[40px]  py-[70px] text-white overflow-hidden relative">
                     <div className="">
-                        <h3 className={`uppercase leading-[1.4] font-bold  text-[2.074rem] lg:text-[2.488rem]`}>
+                        <h3 className={`uppercase leading-[1.4] select-none font-bold  text-[2.074rem] lg:text-[2.488rem]`}>
                             <p>Discounts</p>
                             <p>At a variety of</p>
                             <p>Vegan eateries across europe.</p>

@@ -177,10 +177,16 @@ const Layout = (
                                     </path>
                                 </svg>
                 </button>*/}
-                            <form data-action="Search" role="search" onSubmit={(e)=>handleSubmit(e)} className="hidden md:inline-block w-[60%]">
-                                <div className="relative w-[100%] bg-[#a2a2a2] inline-block align-bottom rounded-[2px]">
-                                    <button type="submit" className="search-btn absolute">
-                                        <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <form data-action="Search" role="search" onSubmit={(e)=>handleSubmit(e)} className="hidden md:inline-block w-[60%] max-w-[429px]">
+                                <div className="relative w-[100%]  bg-white inline-block align-bottom rounded-[2px] pl-[70px] pr-[40px]">
+                                    <div className="absolute left-0 py-2 top-[4.5px]">
+                                        <div className="px-2 border-black/[.1] leading-[2] border-r-[1px]">
+                                            <p className="text-[.833rem]  font-semibold uppercase">Search</p>
+
+                                        </div>
+                                    </div>
+                                    <button type="submit" className="absolute bg-[#01e2c2] p-3 rounded-[2px] cursor-pointer right-[2px] top-[2px]">
+                                        <svg  width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path fillRule="evenodd" clipRule="evenodd" d="M6.55892 10.7328C8.86408 10.7328 10.7328 8.86408 10.7328 6.55892C10.7328 4.25376 8.86408 2.38506 6.55892 2.38506C4.25376 2.38506 2.38506 4.25376 2.38506 6.55892C2.38506 8.86408 4.25376 10.7328 6.55892 10.7328ZM6.55892 13.1178C10.1813 13.1178 13.1178 10.1813 13.1178 6.55892C13.1178 2.93653 10.1813 0 6.55892 0C2.93653 0 0 2.93653 0 6.55892C0 10.1813 2.93653 13.1178 6.55892 13.1178Z" fill="black"></path>
                                             <path fillRule="evenodd" clipRule="evenodd" d="M14.5219 15.9015C14.3906 16.0328 14.1777 16.0328 14.0464 15.9015L9.18249 11.0376L11.0376 9.18249L15.9015 14.0464C16.0328 14.1777 16.0328 14.3906 15.9015 14.5219L14.5219 15.9015Z" fill="black">
                                             </path>
@@ -188,8 +194,8 @@ const Layout = (
                                     </button>
                                     <input type="search"
                                       name="q" 
-                                      placeholder="Search VegClub..." 
-                                      className="z-[1] w-[100%] placeholder:text-[#000] pl-[45px] h-[45px] border-[#cacaca] bg-transparent relative outline-[#01e2c2]"
+                                      
+                                      className="z-[1] w-[100%] text-[1rem] text-[#18181b] font-normal placeholder:text-[#000] pl-[2px] h-[45px] border-[#cacaca] bg-transparent relative outline-none"
                                       ref={navSearchInputRef}
                                      ></input>
                                 </div>
