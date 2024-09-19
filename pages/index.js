@@ -376,6 +376,7 @@ const Home = ({articles,ads})=>{
                     
                 </div>
             </section>
+            
             <section className="h-fit w-full  border-box border-[#000]/[.1] border-b-[1px]   text-center">
                 {/*<p className="text-[0.634rem] text-[#CACACA] uppercase">Advertisement</p>*/}
                 <div className="w-full">
@@ -400,9 +401,9 @@ const Home = ({articles,ads})=>{
                     </div>
                 </div>
             </section>
-           <section className="lg:grid lg:grid-cols-2">
+           <section className="lg:grid lg:grid-cols-[2fr_1fr]">
                 <NewsLetterCard></NewsLetterCard>
-                <div className="hidden lg:block bg-[#18181b] px-[40px] py-[70px] text-white overflow-hidden relative">
+                <div className="hidden lg:block bg-[#18181b]  py-[70px] text-white overflow-hidden relative">
                     <div className="">
                         <h3 className={`uppercase leading-[1.4] font-bold  text-[2.074rem] lg:text-[2.488rem]`}>
                             <p>Discounts</p>
