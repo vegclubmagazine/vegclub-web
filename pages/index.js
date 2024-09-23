@@ -194,7 +194,7 @@ const Home = ({articles,ads})=>{
                         {/*<p className="w-full bg-[#000] text-start text-[#fff] border-box pl-1 text-[0.6rem]"> Damon Winter <span className="text-[#01e2c2] ml-2 mr-2">/</span> Vegclub Magazine <span className="text-[#01e2c2] ml-2 mr-2">/</span> Redux</p>*/}
                         <div className="pl-[40px] md:px-[40px]">
                             <h3 className = "text-white text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.34s] ease-in-out hover:text-white/[.6]"><Link href={`/category/${articles?.featureArticles[0]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.featureArticles[0]?.attributes?.category?.data?.attributes?.name}</Link></h3>                
-                            <h1 className="article-title mt-4 line-clamp-5 font-extrabold w-fit leading-[1.5]  text-[1.728rem] lg:text-[2.488rem]"><span className="underline_span"><Link href={`/article/${encodeURIComponent(articles?.featureArticles[0]?.attributes?.slug)}`}>{articles?.featureArticles[0]?.attributes?.title}</Link></span></h1>
+                            <h1 className="article-title mt-4 line-clamp-5 font-extrabold w-fit leading-[1.5]  text-[2.074rem] lg:text-[2.488rem]"><span className="underline_span"><Link href={`/article/${encodeURIComponent(articles?.featureArticles[0]?.attributes?.slug)}`}>{articles?.featureArticles[0]?.attributes?.title}</Link></span></h1>
                             <h2 className="mt-4 text-white text-[1rem] line-clamp-4 2xl:hidden">{articles?.featureArticles[0]?.attributes?.description}</h2>
                             <div className="mt-8 text-[0.833rem]">
                                 <p className="inline-block uppercase font-light  mr-1">{articles?.featureArticles[0]?.attributes?.author?.data?.attributes?.name}</p>
@@ -425,7 +425,7 @@ const Home = ({articles,ads})=>{
                 </div>
             </section>
             <section className="w-full border-black/[.1]">
-                <div className="border-b-[1px] text-[2.074rem] md:text-[2.488rem] lg:text-[2.986rem] font-bold  uppercase py-[40px]">
+                <div className="border-b-[1px] text-[2.074rem] md:text-[2.488rem] lg:text-[2.986rem] font-extrabold  uppercase py-[40px]">
                     <div className="w-fit pl-[40px]">
                         <h2 className="leading-[0.8]">The</h2>
                         <h2>Latest</h2>
