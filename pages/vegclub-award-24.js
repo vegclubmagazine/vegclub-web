@@ -565,7 +565,7 @@ const AwardApp = ({countries})=>
                                                 onChange={(e)=> handleInput(e)}
                                                 onInvalid={e => handleInvalid(e)}
                                                 type="tel"
-                                                pattern="[0-9]{10,11}"
+                                                pattern="^(?:\s*-*\s*\d){8,11}$"
                                                 required
                                         />
 
