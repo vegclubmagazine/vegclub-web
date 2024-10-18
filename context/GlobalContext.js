@@ -1,16 +1,72 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useReducer } from "react";
 
-import { API } from "../config/api";
+import { API, BASE_URL } from "../config/api";
 
+const INITIAL_STATE = {
+    user: null,
+    hasLoginError: false,
+    
 
+  
+    
+}
 const GlobalContext = createContext(null);
 const {Provider} = GlobalContext;
 
 const GlobalProvider = ({children}) =>
 {
+    const reducer = ({state, action}) =>
+    {
+        switch(action.type){
+            case "login":
+                const {username, password} = action.payload;
+                if(validateCredentials(username, password)){
+                    return {
+                        ...state,
+                        hasLoginError: false,
+                        user:{}
+                    }
+                }
+
+                return {
+                    ...state,
+                    hasLoginError: true,
+                    user:null
+                }
+            case "logout":
+                return {
+                    ...state,
+                    user:null
+                }
+            default:
+                throw new Error(`Invalid action type: ${action.type}`)
+
+        }
+    }
+
+    const [state,dispatch] = useReducer(reducer, INITIAL_STATE);
+
+    const login = (username, password) =>
+    {
+        dispatch({type:"login", payload :{username, password}})
+    }
+
+    const logout = () =>
+    {
+        dispatch({type:"logout"})
+    }
+
+    const UserState = {
+        user: state.user,
+        hasLoginError:state.hasLoginError,
+        login,
+        logout
+    }
+
     const [Authors, setAuthors] = useState([]);
     const [Categories, setCategories] = useState([]);
     const [Ads,setAds] = useState([]);
+   
     
     const [Error, setError] = useState({
         error: false,
@@ -117,6 +173,53 @@ const GlobalProvider = ({children}) =>
         
     };
 
+    const getTotalRestaurants = async(country) =>
+    {
+        const filter = { f1:{country:{eqi:country}}};
+
+        const query = 
+        `query getRestaurantsViaCountry($f1:RestaurantFiltersInput){
+            restaurants(filters:$f1){
+                meta{
+                    pagination{
+                        total
+                    }
+                }
+
+            }
+        }`;
+
+        const restaurantsPromise = new Promise((getData,getErr) => {
+
+            fetch(`${BASE_URL}/graphql`, {
+
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json",
+                    Accept:"application/json",
+                },
+                body:JSON.stringify({
+                    query:query,
+                    variables:filter
+                })
+
+            })
+            .then((response)=>{
+                return response.json();
+            })
+            .then(({data})=>{
+
+                getData(data?.restaurants?.data?.meta?.pagination?.total)
+
+            })
+            .catch(err => getErr(err))
+        });
+
+        const restaurantsCount = await restaurantsPromise;
+
+    
+    }
+
 
     const isMemberAuthor = (member)=>
     {
@@ -140,7 +243,15 @@ const GlobalProvider = ({children}) =>
         const author = Authors?.filter((user)=> parseInt(user?.id) === parseInt(id))
 
         return author[0];
-    }   
+    } 
+    const getContestantById = async (id)=>
+    {
+        const res = await fetch(`${API}/contestants/${id}?populate=*`);
+
+        const {data} = await res.json();
+
+        return data;
+    }  
 
     return (
         <Provider 
@@ -149,12 +260,17 @@ const GlobalProvider = ({children}) =>
                 Categories,
                 Ads,
                 Error,
+                UserState,
                 setAuthors,
                 setCategories,
                 setAds,
                 setError,
                 isMemberAuthor,
                 findAuthorByID,
+                getTotalRestaurants,
+                getContestantById,
+                
+
                 
             }}
         >{children}</Provider>
