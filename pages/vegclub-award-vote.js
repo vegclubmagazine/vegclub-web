@@ -85,6 +85,8 @@ const vote =  ({contestants, countries}) =>
 
     const toUrl = (str,type) =>
     {
+        if(typeof str !== "string") return "#";
+        
         const regex = (type === "instagram" ? /www\.instagram\.com/: /www\.facebook\.com/);
         if(str.match(regex)) return str;
         const regex_at = /(@?)(.+)/;
@@ -412,7 +414,9 @@ const vote =  ({contestants, countries}) =>
                                             <MdInfoOutline className=""/>
                                         </div>
                                         <div role="button" className="h-[40px] rounded-[8px] w-[40px] ml-3 bg-[#f3f3f3] flex items-center justify-center transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:bg-[#d8d8d8]">
-                                            <FaInstagram className=""/>
+                                            <Link href={`${toUrl(contestant?.attribute?.instagramHandle, "instagram")}`}>
+                                                <FaInstagram className=""/>
+                                            </Link>
                                         </div>
                                         {ClientVoted ? (
                                              <button  className="h-[40px] rounded-[8px] ml-3 bg-[#f3f3f3] text-[#d8d8d8] font-[500]  flex items-center grow justify-center transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)]">
