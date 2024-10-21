@@ -391,7 +391,7 @@ const vote =  ({contestants, countries}) =>
                     <div className="px-[20px]">
                         <h2 className="text-[1.728rem] md:text-[2.074rem] lg:text-[2.488rem] text-white font-extrabold text-center uppercase">Restaurant of the year</h2>
                         <p className="mt-5 text-[.833rem] md:text-[1rem] text-white font-light text-center">Find below our {contestants?.length} finalists from {Object.keys(countries)?.length} countries within europe, all eligible to become the 2024 vegclub restaurant of the year.</p>
-                        <div className="hidden lg:block mt-[40px] flex flex-row flex-wrap justify-center gap-[1rem]">
+                        <div className="hidden  mt-[40px] lg:flex flex-row flex-wrap justify-center gap-[1rem]">
                             { Object.keys(countries)?.map((country, index)=>(
                                 <div role="button" onClick={()=>{handleCountrySelect(country);}}key={index}  className={`cursor-pointer  rounded-[24px] w-[120px] h-[48px] font-[500] flex  text-[.833rem] bg-white hover:bg-[#f3f2f1] transition-all items-center justify-center flex-wrap ${SelectedCountry === country ? "border-[3px] border-[#01e2c2]":""}`}>{country}</div>
                             )) }
