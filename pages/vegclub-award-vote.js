@@ -389,14 +389,20 @@ const vote =  ({contestants, countries}) =>
                 </section>
                 <section className="py-[40px] bg-[#18181b] mt-5 xl:mt-[40px] px-[40px]">
                     <div className="px-[20px]">
-                        <h2 className="text-[2.074rem] lg:text-[2.488rem] text-white font-extrabold text-center uppercase">Restaurant of the year</h2>
-                        <p className="mt-5 text-white font-light text-center">Find below our {contestants?.length} finalists from {Object.keys(countries)?.length} countries within europe, all eligible to become the 2024 vegclub restaurant of the year.</p>
-                        <div className="mt-[40px] flex flex-row flex-wrap justify-center gap-[1rem]">
+                        <h2 className="text-[1.728rem] md:text-[2.074rem] lg:text-[2.488rem] text-white font-extrabold text-center uppercase">Restaurant of the year</h2>
+                        <p className="mt-5 text-[.833rem] md:text-[1rem] text-white font-light text-center">Find below our {contestants?.length} finalists from {Object.keys(countries)?.length} countries within europe, all eligible to become the 2024 vegclub restaurant of the year.</p>
+                        <div className="hidden lg:block mt-[40px] flex flex-row flex-wrap justify-center gap-[1rem]">
                             { Object.keys(countries)?.map((country, index)=>(
                                 <div role="button" onClick={()=>{handleCountrySelect(country);}}key={index}  className={`cursor-pointer  rounded-[24px] w-[120px] h-[48px] font-[500] flex  text-[.833rem] bg-white hover:bg-[#f3f2f1] transition-all items-center justify-center flex-wrap ${SelectedCountry === country ? "border-[3px] border-[#01e2c2]":""}`}>{country}</div>
                             )) }
 
                         </div>
+                        <select className="lg:hidden mt-[40px] text-[.833rem] w-full px-[20px] cursor-pointer rounded-[8px] py-[10px]">
+                            { Object.keys(countries)?.map((country, index)=>(
+                                <option  onClick={()=>{handleCountrySelect(country);}} key={index}  className={`text-[.833rem]`}>{country}</option>
+                            )) }
+
+                        </select>
                     </div>
                     <div ref={cardsCtnrRef} className="mt-[40px] flex flex-row justify-center flex-wrap gap-[2rem]">
                         {countries[`${SelectedCountry}`]?.map((contestant, index)=>(
@@ -405,10 +411,10 @@ const vote =  ({contestants, countries}) =>
                                     <img src={contestant?.attributes?.logo?.data?.attributes?.url} className="h-full w-auto object-cover"/>
                                 </div>
                                 <div className="flex flex-col px-[20px] grow">
-                                    <h3 className="text-[1.2rem] font-[500]">{contestant?.attributes?.eateryName}</h3>
+                                    <h3 className="md:text-[1.2rem] font-[500]">{contestant?.attributes?.eateryName}</h3>
                                     <div className="mt-3">
                                         <FaMapLocationDot className="text-black/[.4] text-[.833rem] inline-block"/>
-                                        <p className="font-light ml-3 inline-block">{contestant?.attributes?.city}</p>
+                                        <p className=" text-[.833rem] md:text-[1rem] font-light ml-3 inline-block">{contestant?.attributes?.city}</p>
                                     </div>
                                     <div className="flex flex-row mt-5 w-full">
                                         <div  role="button" onClick={(e)=>{handleInfoReq(e, contestant.id);}} className="h-[40px] rounded-[8px] w-[40px] bg-[#f3f3f3] flex items-center justify-center transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:bg-[#d8d8d8]">
