@@ -2,13 +2,15 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import {Fade as Hamburger} from "hamburger-react";
-import { faSearch, FaInstagram, FaLinkedinIn} from "react-icons/fa";
+import { faSearch, FaInstagram, FaLinkedinIn, FaUser, FaTrophy} from "react-icons/fa";
+import {FaXmark} from "react-icons/fa6";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 import { useState, useEffect,useContext,useRef} from "react";
 import { useScrollDirection } from "react-use-scroll-direction";
 import Drawer from "../components/Drawer";
 import Footer from "../components/Footer";
+import CookiesConsentBanner from "../components/CookiesConsentBanner";
 import { slugify } from "../lib/utils";
 import { BASE_URL } from "../config/api";
 import { GlobalContext} from "../context/GlobalContext";
@@ -39,7 +41,9 @@ const Layout = (
     const {isScrolling,isScrollingDown} = useScrollDirection();
     const [isOpen,setIsOpen] = useState(false);
     const [ lastScrollY, setLastScrollY] = useState(0);
-    const {Categories} = useContext(GlobalContext);
+    const {Categories, UserState} = useContext(GlobalContext);
+
+    const {user, logout} = UserState;
     
     const openDrawer = ()=>
     {
@@ -132,16 +136,52 @@ const Layout = (
             
             
             <nav className={`fixed top-0 w-full z-[999] `}>
+                
+                
                 {minNav || (
-                    <div className="py-3 hidden md:block text-end pr-[40px] border-[#333] border-b-[1px]  bg-black">
-                            <div className="inline-block text-[0.833rem] py-2  bg-[#01e2c2] px-3 w-fit rounded-[2px]">
-                                <Link className=" duration-[.34s] ease-in-out font-semibold uppercase hover:text-black/[.4]" href="/vegclubloyalty">Loyalty Program</Link>
-                                {/*<div className="inline-block align-middle">
-                                    <img src="/loyalty_button_asset.png" className="h-[15px] w-[15px]"></img>
-                                </div>*/}
+                    <>
+                        {/*<div className={`bg-black py-3 px-[40px]`}>
+                            <div className="awards-banner  relative bg-[#01e2c2] py-3 px-[80px]">
+                                <FaXmark className="text-black text-[1.2rem] absolute right-[5px] top-[5px]"></FaXmark>
+                                <div className="mx-auto w-fit select-none">
+                                    <p className="text-center  md:text-[1.728rem] 2xl:text-[2.074rem]">
+                                        Put your vegan restuarant up against the others
+                                        
+                                    </p>
+
+
+                                </div>
                             </div>
-                                    
-                    </div>
+                       </div>*/}
+                        <div className="py-3 hidden md:block text-end pr-[40px] border-[#333] border-b-[1px]  bg-black">
+                                    <div className="inline-block text-[0.833rem] py-2  bg-[#01e2c2] px-3 w-fit rounded-[2px]">
+                                            <Link className=" duration-[.34s] ease-in-out font-semibold uppercase hover:text-black/[.4]" href="/vegclubloyalty">Loyalty Program</Link>
+                                            {/*<div className="inline-block align-middle">
+                                                <img src="/loyalty_button_asset.png" className="h-[15px] w-[15px]"></img>
+                                            </div>*/}
+                                        </div>
+                                {/*{user  ? (
+                                    <div className="inline-block align-middle w-fit cursor-pointer">
+                                        <FaUser className="text-[#a2a2a2] text-[1rem] mr-2 inline-block align-middle"></FaUser>
+                                        <div className="inline-block  align-middle text-[#a2a2a2] font-light">{user?.name}</div>
+                                    </div>
+                                ):(
+                                    <>
+                                        <div className="inline-block align-middle w-fit cursor-pointer mr-[2.2rem]">
+                                            <FaUser className="text-[#a2a2a2] text-[1rem] mr-2 inline-block align-middle"></FaUser>
+                                            <div className="inline-block underline decoration-[#a2a2a2] decoration-[1.5px] align-middle text-[#a2a2a2] font-light">Sign In</div>
+                                        </div>
+                                
+                                        <div className="inline-block text-[0.833rem] py-2  bg-[#01e2c2] px-3 w-fit rounded-[2px]">
+                                            <Link className=" duration-[.34s] ease-in-out font-semibold uppercase hover:text-black/[.4]" href="/vegclubloyalty">Loyalty Program</Link>
+                                            {/*<div className="inline-block align-middle">
+                                                <img src="/loyalty_button_asset.png" className="h-[15px] w-[15px]"></img>
+                                            </div>
+                                        </div>
+                                    </>
+                                )}*/}
+                        </div>
+                    </>
                 )}
 
              
@@ -222,6 +262,7 @@ const Layout = (
             <main className={`mt-[6rem] md:mt-[9.8rem] xl:mt-[13.8rem]`}>
                 {children}
             </main>
+            <CookiesConsentBanner/>
             <Footer></Footer>
             <Drawer isOpen={isOpen} onClose={onClose}></Drawer>
         </>

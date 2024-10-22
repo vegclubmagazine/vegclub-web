@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const defaultTheme = require("tailwindcss/defaultTheme");
+const { transform } = require('topojson-client');
 
 module.exports = {
   content: [
@@ -48,8 +49,21 @@ module.exports = {
             left:"0"
           }
         },
+        popUpIn:{
+          "0%":{
+            opacity:"0",
+            transform:"translateY(0px)translateX(-50%)"
+          },
+          "100%":{
+            opacity:"1",
+            transform:"translateY(-50%)translateX(-50%)",
+          }
+  
+         
+        },
 
       },
+      
     },
   },
   plugins: [],

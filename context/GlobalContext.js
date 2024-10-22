@@ -66,12 +66,26 @@ const GlobalProvider = ({children}) =>
     const [Authors, setAuthors] = useState([]);
     const [Categories, setCategories] = useState([]);
     const [Ads,setAds] = useState([]);
+    const [ManagePreferences, setManagePreferences] = useState(false);
+    const [CookieConsentHandled, setCookieConsentHandled] = useState(false);
+
+
+
    
     
     const [Error, setError] = useState({
         error: false,
         message:""
     })
+    // check whether cookie consent cookie exists
+    useEffect(()=>{
+        if(document && document.cookie.split("; ").some((item)=>item.startsWith("cookie-consent-handled="))){
+            setCookieConsentHandled(true);
+        }
+
+    },[])
+    
+   
     //get categories
     useEffect(()=>{
 
@@ -261,14 +275,18 @@ const GlobalProvider = ({children}) =>
                 Ads,
                 Error,
                 UserState,
+                ManagePreferences,
+                CookieConsentHandled,
                 setAuthors,
                 setCategories,
                 setAds,
                 setError,
+                setManagePreferences,
                 isMemberAuthor,
                 findAuthorByID,
                 getTotalRestaurants,
                 getContestantById,
+                setCookieConsentHandled,
                 
 
                 

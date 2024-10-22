@@ -54,7 +54,7 @@ const NewsLetterCard = ({mode})=>
                 </h3>
                 <form className="w-full mt-5 flex flex-row" method="POST" onSubmit={(e)=>handleSubmit(e)}>
                     {success ? (
-                            <input className={`flex grow pl-[20px] rounded-[2px] ${mode === "l-mode" ? "text-black placeholder:text-white/[.6] outline-black":"text-white placeholder:text-white/[.6] outline-white"} mr-2 bg-[#a2a2a2] py-3 placeholder:font-bold`}
+                            <input className={`flex grow pl-[20px] rounded-[2px] ${mode === "l-mode" ? "text-black placeholder:text-black/[.6] bg-[#f3f3f3] outline-black":"text-white placeholder:text-white/[.6] outline-white bg-[#a2a2a2]"} mr-2  py-3 placeholder:font-bold`}
                                     
                                     placeholder="E-mail"
                                     type="email"

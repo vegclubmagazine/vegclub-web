@@ -18,7 +18,9 @@ body {
   /*background-accent #ffe0e0*/
 
 }
-html.drawer-open{
+html.drawer-open,
+html.popup-open
+{
   overflow:hidden;
 }
 button,
