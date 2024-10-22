@@ -32,6 +32,7 @@ const vote =  ({contestants, countries}) =>
 
     const handleCountrySelect = (country)=>
     {
+       
         setSelectedCountry(country);
 
     }
@@ -120,6 +121,12 @@ const vote =  ({contestants, countries}) =>
         setContestant(contestant);
 
         
+    }
+    const handleSelect = (e) =>
+    {
+
+        setSelectedCountry(e.target.value);
+
     }
 
     useEffect(()=>{
@@ -393,13 +400,19 @@ const vote =  ({contestants, countries}) =>
                         <p className="mt-5 text-[.833rem] md:text-[1rem] text-white font-light text-center">Find below our {contestants?.length} finalists from {Object.keys(countries)?.length} countries within europe, all eligible to become the 2024 vegclub restaurant of the year.</p>
                         <div className="hidden  mt-[40px] lg:flex flex-row flex-wrap justify-center gap-[1rem]">
                             { Object.keys(countries)?.map((country, index)=>(
-                                <div role="button" onClick={()=>{handleCountrySelect(country);}}key={index}  className={`cursor-pointer  rounded-[24px] w-[120px] h-[48px] font-[500] flex  text-[.833rem] bg-white hover:bg-[#f3f2f1] transition-all items-center justify-center flex-wrap ${SelectedCountry === country ? "border-[3px] border-[#01e2c2]":""}`}>{country}</div>
+                                <div role="button" onClick={()=>{handleCountrySelect(country);}} key={index}  className={`cursor-pointer  rounded-[24px] w-[120px] h-[48px] font-[500] flex  text-[.833rem] bg-white hover:bg-[#f3f2f1] transition-all items-center justify-center flex-wrap ${SelectedCountry === country ? "border-[3px] border-[#01e2c2]":""}`}>{country}</div>
                             )) }
 
                         </div>
-                        <select className="lg:hidden mt-[40px] text-[.833rem] w-full px-[20px] cursor-pointer rounded-[8px] py-[10px]">
+                        <select  onChange ={(e)=> handleSelect(e)} className="lg:hidden mt-[40px] text-[.833rem] w-full px-[20px] cursor-pointer rounded-[8px] py-[10px]">
                             { Object.keys(countries)?.map((country, index)=>(
-                                <option  onClick={()=>{handleCountrySelect(country);}} key={index}  className={`text-[.833rem]`}>{country}</option>
+                            
+                                <option key={index} className={`text-[.833rem]`}>
+                                    {country}
+                                    
+                                
+                                </option>
+                                
                             )) }
 
                         </select>
@@ -454,8 +467,8 @@ const vote =  ({contestants, countries}) =>
             </Layout>
             {InfoDrawerOpen && (
                     <Fragment>
-                        <div className="bg-black opacity-0 animate-[drawerInMask_.3s_ease-out_forwards] w-screen fixed h-screen z-[9998] top-0 left-0"></div>
-                        <div className={`fixed max-w-[100vw] w-[480px] animate-[drawerIn_.3s_ease-out_forwards] h-[100vh] bg-white z-[9999] top-0 left-[-100vw]`}>
+                        <div className="bg-black opacity-0 animate-[drawerInMask_.3s_ease-out_forwards] w-screen fixed h-[100dvh] md:h-screen z-[9998] top-0 left-0"></div>
+                        <div className={`fixed max-w-[100vw] w-[480px] animate-[drawerIn_.3s_ease-out_forwards] h-[100dvh] md:h-screen bg-white z-[9999] top-0 left-[-100vw]`}>
                             <div className="w-full h-full relative">
                                 <div className="text-end py-3 px-[40px]">
                                     <button onClick={()=>{closeDrawer();}} className="rounded-[8px] bg-[#f3f3f3] w-[25px] py-[5px] transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:bg-[#d8d8d8]">
@@ -505,7 +518,11 @@ const vote =  ({contestants, countries}) =>
                                     </div>
 
                                 </div>
-                                <p className="mt-[60px] px-[40px] text-justify font-light">{Contestant?.attributes?.statement}</p>
+                                <div className="mt-[60px] px-[40px] py-3 relative text-justify font-light max-h-[40dvh] overflow-auto md:max-h-fit">
+                                    <p>{Contestant?.attributes?.statement}</p>
+                                    <div className="sticky md:hidden left-0 bottom-0 translate-y-[15px]  w-full h-[60px] bg-[linear-gradient(to_bottom,_rgba(255,255,255,0)_10%,_rgba(255,255,255,.9))]"></div>
+
+                                </div>
                                 <div className="absolute bg-[#18181b] bottom-0 py-[40px]  w-full">
                                     <div className="px-[40px] flex flex-row">
                                         <div role="button" className="w-[40px] h-[40px] mr-3 rounded-[8px] bg-white transition text-center transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:bg-[#f3f2f1]">
