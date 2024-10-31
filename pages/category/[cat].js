@@ -9,12 +9,15 @@ import InHouseAds from "../../components/InHouseAds.jsx";
 import GenericArticleFormat from "../../components/GenericArticleFormat.jsx";
 
 
+
 const qs=require("qs");
 
 
-const Category = ({category, meta, articles, latestCoverArticle}) =>
+const Category = ({category, meta, articles, latestCoverArticle, ads}) =>
 {
     const articles_before_ad = 2;
+
+   
   
    const checkAds = (idx)=>
    {
@@ -78,6 +81,29 @@ const Category = ({category, meta, articles, latestCoverArticle}) =>
                             </div>
                         </div>
                     )}
+                    <section className="h-fit w-full  border-box border-[#000]/[.1]">
+                        <div className="w-full">
+                            <div className="hidden lg:block border-b-[1px]   ">
+                                {ads?.large?.horizontal?.length ? (
+                                    <InHouseAds ad={ads.large.horizontal[0]} size={"large"} orientation={"horizontal"}/>
+                                ):""}
+
+                            </div>
+                            <div className="hidden md:block lg:hidden border-b-[1px]   ">
+                                {ads?.medium?.horizontal?.length ? (
+                                    <InHouseAds ad={ads.medium.horizontal[0]} size={"medium"} orientation={"horizontal"}/>
+
+
+                                ):""}
+                            </div>
+                            <div className="block md:hidden border-b-[1px]   ">
+                                {ads?.small?.horizontal?.length ?(
+                                    <InHouseAds ad={ads.small.horizontal[0]} size={"small"} orientation={"horizontal"}/>
+
+                                ):""}
+                            </div>
+                        </div>
+                    </section>
                     <div className={`pb-5 border-black/[.1] ${latestCoverArticle ? "pt-5":"pt-[5rem]"} pl-[40px]`}>
                         {latestCoverArticle ? (
                              <div className="w-fit font-bold uppercase text-[2.074rem]  lg:text-[2.488rem]">
@@ -239,8 +265,31 @@ export async function getServerSideProps({req,res,query, params})
     var latest_cover_article = [];
 
     const {page = 1} = query;
-    const {cat} = params
-    
+    const {cat} = params;
+
+    const ads_large_horizontal = [];
+    const ads_medium_horizontal = [];
+    const ads_small_horizontal = [];
+    const ad_filters = qs.stringify(
+        {
+            populate:"*",
+            filters:{
+                categories:{
+                    slug:{
+                        $eq:cat
+                    }
+                }
+            },
+            pagination:{
+                pageSize:5,
+                page:"1"
+                
+            },
+            sort:["publishedAt:desc"]
+            
+        },
+        {encodeValuesOnly:true}
+    )
     const filters = qs.stringify(
         {
             populate:"*",
@@ -347,6 +396,11 @@ export async function getServerSideProps({req,res,query, params})
         )
 
     });
+    const ads_response = await fetch(`${API}/advertisments?${ad_filters}`);
+    
+   
+
+    const ads_data = await ads_response.json();
 
 
     const {data} = await response.json();
@@ -372,6 +426,32 @@ export async function getServerSideProps({req,res,query, params})
 
         }
     }
+    for(let i = 0, ads = ads_data?.data; i < ads?.length; i++){
+        if(ads[i].attributes.shape === "rectangle"){
+            if(ads[i].attributes.size === "large"){
+                
+                if(ads[i].attributes.orientation === "horizontal"){
+                    ads_large_horizontal.push(ads[i])
+                }
+             
+            }
+            else {
+                if(ads[i].attributes.size === "medium"){
+                    if(ads[i].attributes.orientation === "horizontal"){
+                        ads_medium_horizontal.push(ads[i])
+                    }
+                 
+                }
+                else{
+                    if(ads[i].attributes.orientation === "horizontal"){
+                        ads_small_horizontal.push(ads[i])
+                    }
+              
+                }
+            }
+        }
+       
+    }
 
    
 
@@ -381,6 +461,21 @@ export async function getServerSideProps({req,res,query, params})
             articles: visible_articles || null,
             latestCoverArticle: latest_cover_article.length ? latest_cover_article : null,
             category: data?.articles?.data[0]?.attributes?.category?.data?.attributes?.name || cat ,
+            ads:{
+                
+                large:{
+                    horizontal: ads_large_horizontal || null,
+                  
+                },
+                medium:{
+                    horizontal: ads_medium_horizontal || null,
+                   
+                },
+                small:{
+                    horizontal: ads_small_horizontal || null,
+                  
+                },
+            },
       
         }
     }
