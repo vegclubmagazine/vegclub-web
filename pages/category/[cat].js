@@ -32,6 +32,29 @@ const Category = ({category, meta, articles, latestCoverArticle, ads}) =>
         <Layout>
             {articles?.length ? (
                 <Fragment>
+                    <section className="h-fit w-full  border-box border-[#000]/[.1]">
+                        <div className="w-full">
+                            <div className="hidden lg:block border-b-[1px]   ">
+                                {ads?.large?.horizontal?.length ? (
+                                    <InHouseAds ad={ads.large.horizontal[0]} size={"large"} orientation={"horizontal"}/>
+                                ):""}
+
+                            </div>
+                            <div className="hidden md:block lg:hidden border-b-[1px]   ">
+                                {ads?.medium?.horizontal?.length ? (
+                                    <InHouseAds ad={ads.medium.horizontal[0]} size={"medium"} orientation={"horizontal"}/>
+
+
+                                ):""}
+                            </div>
+                            <div className="block md:hidden border-b-[1px]   ">
+                                {ads?.small?.horizontal?.length ?(
+                                    <InHouseAds ad={ads.small.horizontal[0]} size={"small"} orientation={"horizontal"}/>
+
+                                ):""}
+                            </div>
+                        </div>
+                    </section>
                     {latestCoverArticle && (
                         <div className="border-black/[.1] border-b-[1px] pb-[40px] md:pb-0">
                             <div className="bg-black">
@@ -81,7 +104,7 @@ const Category = ({category, meta, articles, latestCoverArticle, ads}) =>
                             </div>
                         </div>
                     )}
-                    <section className="h-fit w-full  border-box border-[#000]/[.1]">
+                    {/*<section className="h-fit w-full  border-box border-[#000]/[.1]">
                         <div className="w-full">
                             <div className="hidden lg:block border-b-[1px]   ">
                                 {ads?.large?.horizontal?.length ? (
@@ -103,7 +126,7 @@ const Category = ({category, meta, articles, latestCoverArticle, ads}) =>
                                 ):""}
                             </div>
                         </div>
-                    </section>
+                    </section>*/}
                     <div className={`pb-5 border-black/[.1] ${latestCoverArticle ? "pt-5":"pt-[5rem]"} pl-[40px]`}>
                         {latestCoverArticle ? (
                              <div className="w-fit font-bold uppercase text-[2.074rem]  lg:text-[2.488rem]">
