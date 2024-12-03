@@ -646,7 +646,7 @@ export async function getServerSideProps ({req,res})
         {
             populate:"*",
             pagination:{
-                pageSize:50,
+                pageSize:100,
             },
             sort:["country:asc", "city:asc"]
         },
