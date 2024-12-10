@@ -11,6 +11,9 @@ import GenericArticleFormat from "../components/GenericArticleFormat.jsx";
 import Loader from "../components/Loader.jsx";
 import InHouseAds from "../components/InHouseAds.jsx";
 import NewsLetterCard from "../components/NewsLetterCard.jsx";
+import { FaArrowRight } from "react-icons/fa";
+import { MdHowToVote } from "react-icons/md";
+import Image from "next/image";
 
 const qs = require("qs");
 
@@ -22,12 +25,13 @@ const Home = ({articles,ads})=>{
     const [isLoading, setIsLoading] = useState(false);
     const [atLastPage, setAtLastPage] = useState(false);
     const [LatestArticles,setLatestArticles] = useState([...articles?.nonFeatureArticles?.slice(1,7)]);
+   
     const [page,setPage] = useState(1);
     const [prevPage, setPrevPage] = useState(1);
 
     const countBeforeAd = 1;
     
-    
+  
     const checkAds = (idx)=>
     {
 
@@ -176,8 +180,9 @@ const Home = ({articles,ads})=>{
             
             <section className="block md:grid md:grid-cols-[2fr_1fr] overflow-y-hidden">
                 <div className="relative border-[#000]/[.1] border-r-[1px] md:border-r-0">
-                    <div className="w-full bg-[#000]/[.1] overflow-hidden h-fit  md:max-h-[540px]">
-                        <img    className="object-cover w-full h-auto" 
+                    <div className={`w-full bg-[#000]/[.1] overflow-hidden h-fit md:max-h-[540px]`}>
+                        <img    className={`asset-loading duration-[.34s] transition-all ease-[cubic-bezier(.19,1,.22,1)] object-cover w-full h-auto`}
+                                
                                 src={   articles?.featureArticles[0]?.attributes?.media?.data?.attributes?.url ||
                                         articles?.featureArticles[0]?.attributes?.media?.data?.attributes?.formats?.large?.url ||
                                         articles?.featureArticles[0]?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
@@ -188,9 +193,13 @@ const Home = ({articles,ads})=>{
 
 
                                     }
+                              
+                               
+                                alt={articles?.featureArticles[0]?.attributes?.alternativeText || "Cover Article Image"}
+                                
                         ></img>   
                     </div>
-                    <div className="relative inline-block py-[40px] pr-[40px] bottom-[40px] left-[10%] md:left-[0%]  bg-[#000] text-start text-white w-[90%] md:w-full">
+                    <div className="relative inline-block py-[40px] pr-[40px] bottom-[40px] md:pb-[80px] lg:bottom-0 left-[10%] md:left-[0%]  bg-[#000] text-start text-white w-[90%] md:w-full">
                         {/*<p className="w-full bg-[#000] text-start text-[#fff] border-box pl-1 text-[0.6rem]"> Damon Winter <span className="text-[#01e2c2] ml-2 mr-2">/</span> Vegclub Magazine <span className="text-[#01e2c2] ml-2 mr-2">/</span> Redux</p>*/}
                         <div className="pl-[40px] md:px-[40px]">
                             <h3 className = "text-white text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.34s] ease-in-out hover:text-white/[.6]"><Link href={`/category/${articles?.featureArticles[0]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.featureArticles[0]?.attributes?.category?.data?.attributes?.name}</Link></h3>                
@@ -222,7 +231,8 @@ const Home = ({articles,ads})=>{
                     <div className="border-[#000]/[.1]">
                         <div className="w-full aspect-[16/10]">
                             <div className="h-full overflow-hidden">
-                                <img    className="w-full h-auto object-cover" 
+                                <img    className={` duration-[.34s] transition-all ease-[cubic-bezier(.19,1,.22,1)] object-cover w-full h-auto bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/B8AAusB9FD6Pn0AAAAASUVORK5CYII=')] bg-no-repeat bg-cover`}
+                                        
                                         src={   articles?.featureArticles[1]?.attributes?.media?.data?.attributes?.url ||
                                                 articles?.featureArticles[1]?.attributes?.media?.data?.attributes?.formats?.large?.url ||
                                                 articles?.featureArticles[1]?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
@@ -233,12 +243,13 @@ const Home = ({articles,ads})=>{
 
 
                                             }
+                                        
                                 ></img> 
                             </div>
                         </div>
                         <div className=" mx-auto py-[40px] px-[40px]">
                             <h3 className = "text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.34s] ease-in-out hover:text-black/[.4]"><Link href={`/category/${articles?.featureArticles[1]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.featureArticles[1]?.attributes?.category?.data?.attributes?.name}</Link></h3>                
-                            <h1 className="article-title mt-4 font-bold w-fit leading-[1.5] line-clamp-3 text-[1.44rem] lg:text-[1.728rem]"><span className="underline_span"><Link href={`/article/${encodeURIComponent(articles?.featureArticles[1]?.attributes?.slug)}`}>{articles?.featureArticles[1]?.attributes?.title}</Link></span></h1>
+                            <h2 className="article-title mt-4 font-bold w-fit leading-[1.5] line-clamp-3 text-[1.44rem]"><span className="underline_span"><Link href={`/article/${encodeURIComponent(articles?.featureArticles[1]?.attributes?.slug)}`}>{articles?.featureArticles[1]?.attributes?.title}</Link></span></h2>
                             {/*<p className="mt-5">{articles?.featureArticles[1]?.attributes?.description}</p>*/}
                             <div className="mt-4 text-[0.833rem]">
                                 <p className="inline-block font-light  uppercase  mr-1">{articles?.featureArticles[1]?.attributes?.author?.data?.attributes?.name}</p>
@@ -250,10 +261,10 @@ const Home = ({articles,ads})=>{
                     <div className="px-[40px]">
                         <div className="py-[40px] border-black/[.1] border-y-[1px]">
                             <h3 className = "text-[1rem] font-semibold select-none  uppercase">Keep us going.</h3>
-                            <h1 className="mt-4 mb-6 font-extrabold leading-[1.5] select-none  uppercase text-[1.44rem]">
+                            <h2 className="mt-4 mb-6 font-extrabold leading-[1.5] select-none  uppercase text-[1.44rem]">
                                 <p>Support our</p>
                                 <p>continued effort to</p>
-                                <p>provide meaningful vegan content</p></h1>
+                                <p>provide meaningful vegan content</p></h2>
                             <Link href="/donate" className="text-black rounded-[2px] mx-auto text-[0.833rem] w-fit px-3 py-2 bg-[#01e2c2]  font-semibold uppercase transition-all duration-[.32s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.6]">donate</Link>
                         </div>
                     </div>
@@ -288,7 +299,7 @@ const Home = ({articles,ads})=>{
                                         <div className="flex grow flex-col pl-[40px] justify-center md:hidden py-[20px] pr-[20px]">
                                             <h3 className = "text-[0.833rem] inline-block uppercase transition-all duration-[.34s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]  font-semibold cursor-pointer w-fit"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></h3>                
     
-                                            <h1 className="article-title mt-3 md:text-[1.44rem] lg:text-[1.728rem] line-clamp-4 font-bold"><span className="underline_span"><Link href={`/article/${encodeURIComponent(article?.attributes?.slug)}`}>{article?.attributes?.title}</Link></span></h1>
+                                            <h2 className="article-title mt-3 md:text-[1.44rem] lg:text-[1.728rem] line-clamp-4 font-bold"><span className="underline_span"><Link href={`/article/${encodeURIComponent(article?.attributes?.slug)}`}>{article?.attributes?.title}</Link></span></h2>
                                             <div className="mt-3 text-[0.833rem]">
                                                 <p className="inline-block font-light uppercase  mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
                                                 <Moment className="inline-block font-semibold uppercase  text-[0.833rem]" format="Do MMM YYYY">{article?.attributes?.date}</Moment>
@@ -296,7 +307,8 @@ const Home = ({articles,ads})=>{
                                         </div>
                                         <div>
                                             <div className="flex flex-col w-[150px] h-full overflow-hidden md:h-auto md:w-full  md:aspect-[16/9] mx-auto bg-[#CACACA]">
-                                                <img    className="h-full object-cover w-auto" 
+                                                <img    className={` duration-[.34s] transition-all ease-[cubic-bezier(.19,1,.22,1)] object-cover h-full w-auto bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/B8AAusB9FD6Pn0AAAAASUVORK5CYII=')] bg-no-repeat bg-cover`}
+                                                        
                                                         src={   article?.attributes?.media?.data?.attributes?.url ||
                                                                 article?.attributes?.media?.data?.attributes?.formats?.large?.url ||
                                                                 article?.attributes?.media?.data?.attributes?.formats?.medium?.url ||
@@ -308,13 +320,14 @@ const Home = ({articles,ads})=>{
 
 
                                                             }
+                                                      
                                                 ></img>  
                                             </div>
                                         </div>
                                         <div className="hidden md:block p-[40px]">
                                             <h3 className = "article-title text-[0.833rem] inline-block  font-semibold cursor-pointer w-fit"><span className="underline_span"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></span></h3>                
 
-                                            <h1 className="mt-4 font-bold text-[1.44rem] "><Link href={`/article/${encodeURIComponent(article?.attributes?.slug)}`}>{article?.attributes?.title}</Link></h1>
+                                            <h2 className="mt-4 font-bold text-[1.44rem] "><Link href={`/article/${encodeURIComponent(article?.attributes?.slug)}`}>{article?.attributes?.title}</Link></h2>
                                             <div className="mt-4 text-[0.833rem]">
                                                 <p className="inline-block font-light  uppercase  mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
                                                 
@@ -331,7 +344,7 @@ const Home = ({articles,ads})=>{
                                         <div className="flex grow flex-col pl-[40px] justify-center md:hidden py-[20px] pr-[20px]">
                                             <h3 className = "text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit transition-all duration-[.34s] eas-[cubic-bezier(.19,1,.22,1)] hover:text-black/[.4]"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></h3>                
 
-                                            <h1 className="article-title mt-3 md:text-[1.44rem] lg:text-[1.728rem] font-bold line-clamp-4 md:line-clamp-5"><span className="underline_span"><Link href={`/article/${encodeURIComponent(article?.attributes?.slug)}`}>{article?.attributes?.title}</Link></span></h1>
+                                            <h2 className="article-title mt-3 md:text-[1.44rem] lg:text-[1.728rem] font-bold line-clamp-4 md:line-clamp-5"><span className="underline_span"><Link href={`/article/${encodeURIComponent(article?.attributes?.slug)}`}>{article?.attributes?.title}</Link></span></h2>
                                             <div className="mt-3 text-[0.833rem]">
                                                 <p className="inline-block font-light uppercase  mt-3 mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
                                                 <Moment className="inline-block font-semibold uppercase " format="Do MMM YYYY">{article?.attributes?.date}</Moment>
@@ -357,7 +370,7 @@ const Home = ({articles,ads})=>{
                                         <div className="hidden md:block p-[40px]">
                                             <h3 className = "text-[0.833rem]  inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.32s] ease-in-out hover:text-black/[.4]"><Link href={`/category/${article?.attributes?.category?.data?.attributes?.slug}`}>{article?.attributes?.category?.data?.attributes?.name}</Link></h3>                
 
-                                            <h1 className="article-title mt-4 font-bold text-[1.44rem] md:line-clamp-4 lg:line-clamp-4 "><span className="underline_span"><Link className="" href={`/article/${encodeURIComponent(article?.attributes?.slug)}`}>{article?.attributes?.title}</Link></span></h1>
+                                            <h2 className="article-title mt-4 font-bold text-[1.44rem] md:line-clamp-4 lg:line-clamp-4 "><span className="underline_span"><Link className="" href={`/article/${encodeURIComponent(article?.attributes?.slug)}`}>{article?.attributes?.title}</Link></span></h2>
                                             <div className="mt-4 text-[0.833rem]">
                                                 <p className="inline-block font-light uppercase  mr-1">{article?.attributes?.author?.data?.attributes?.name}</p>
                                                 
@@ -532,7 +545,7 @@ const Home = ({articles,ads})=>{
                             <h3 className = "text-white text-[0.833rem] inline-block uppercase  font-semibold cursor-pointer w-fit duration-[.32s] ease-[cubic-bezier(.19,1,.22,1)] hover:text-white/[.6]"><Link href={`category/${articles?.nonFeatureArticles[0]?.attributes?.category?.data?.attributes?.slug}`}>{articles?.nonFeatureArticles[0]?.attributes?.category?.data?.attributes?.name}</Link>
                                 
                             </h3>
-                            <h1 className="text-[1.44rem] md:text-[1.728rem] lg:text-[2.074rem] text-white mt-4 font-extrabold article-title line-clamp-4"><span className="underline_span"><Link href={`article/${encodeURIComponent(articles?.nonFeatureArticles[0]?.attributes?.slug)}`}>{articles?.nonFeatureArticles[0]?.attributes?.title}</Link></span></h1>
+                            <h2 className="text-[1.44rem] md:text-[1.728rem] lg:text-[2.074rem] text-white mt-4 font-extrabold article-title line-clamp-4"><span className="underline_span"><Link href={`article/${encodeURIComponent(articles?.nonFeatureArticles[0]?.attributes?.slug)}`}>{articles?.nonFeatureArticles[0]?.attributes?.title}</Link></span></h2>
                             {/*<div className="h-fit w-fit inline-block align-middle">
                                 <i className=" inline-block cursor-pointer ml-2 h-[10px] w-[10px] border-[#40e0d0] border-t-[1px] border-r-[1px] rotate-45"></i>
                             </div>*/}
@@ -652,6 +665,51 @@ const Home = ({articles,ads})=>{
                     </div>
                 )}
             </section>
+            <div className="temp-awards-banner h-[120px] md:h-[150px] lg:h-[250px]  px-[40px] relative  bg-[#01e2c2] text-black">
+                
+                <div className="absolute lg:static  left-[20px] top-[1rem] w-fit text-[1rem] md:text-[1.44rem] lg:text-[1.728rem] xl:text-[2.074rem] font-bold max-w-[300px] md:max-w-[550px] lg:max-w-fit py-1 md:py-3 lg:py-[40px]  z-[1]">
+                    <p className="uppercase font-extrabold">Cast
+                      
+                         your
+                      
+                        votes.
+                    </p>
+                    <p className="mt-2 lg:mt-5 font-normal md:font-light text-[.833rem] md:text-[1rem] lg:text-[1.2rem] ">Vote for your favourite vegan eatery in europe.</p>
+                    <div role="button" className="w-fit bg-black text-[#01e2c2] mt-2 lg:mt-5 text-[1rem] h-fit rounded-[5px] py-1 lg:py-3 px-3">
+                        <Link className="" href="/vegclub-award-24">
+                            <div className="inline-block w-fit mr-2 align-middle">
+                                <FaArrowRight className="text-[.693rem] md:text-[.833rem] lg:text-[1rem]"/>
+                            </div>
+                            <div className="text-[.693rem] md:text-[.833rem] lg:text-[1rem] inline-block align-middle uppercase ">Vote now</div>
+                        </Link>
+                    </div>
+                    {/*<div className="mt-[40px] flex h-fit flex-direction-row">
+                        <div className="w-[24px] h-[24px]">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                                <path d="M 0 0 L 0 100 L 100 0" fill="#009680"/>
+                            </svg>
+                        </div>
+                        <div className="w-[24px] h-[24px] ml-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                                <path d="M 0 0 L 0 100 L 100 0" fill="#009680"/>
+                            </svg>
+                        </div>
+                        <div className="w-[24px] h-[24px] ml-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                                <path d="M 0 0 L 0 100 L 100 0" fill="#009680"/>
+                            </svg>
+                        </div>
+
+                    </div>*/}
+                </div>
+                
+                <div className="absolute right-0 top-0 z-[0]">
+                    <img className="h-[120px] md:h-[150px] lg:h-[250px]  w-auto" src="/asset_banner_pattern.png"/>
+                </div>
+                <div className="absolute left-0 top-0 hidden">
+                    <img className="h-[100px] md:h-[150px] lg:h-[250px] w-auto rotate-[180deg]" src="/asset_banner_pattern.png"/>
+                </div>
+            </div>
           
         </Layout>
     )
