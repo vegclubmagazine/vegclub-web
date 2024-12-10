@@ -243,6 +243,7 @@ const Home = ({articles,ads})=>{
 
 
                                             }
+                                        alt = {articles?.featureArticles[1]?.attributes?.alternativeText || ""}
                                         
                                 ></img> 
                             </div>
@@ -320,6 +321,7 @@ const Home = ({articles,ads})=>{
 
 
                                                             }
+                                                        alt = {article?.attributes?.alternativeText || ""}
                                                       
                                                 ></img>  
                                             </div>
@@ -364,6 +366,7 @@ const Home = ({articles,ads})=>{
 
 
                                                             }
+                                                            alt = {article?.attributes?.alternativeText || ""}
                                                 ></img>  
                                             </div>
                                         </div>
@@ -569,6 +572,7 @@ const Home = ({articles,ads})=>{
 
 
                                         }
+                                    alt = {articles?.nonFeatureArticles[0]?.attributes?.alternativeText || ""}
                             ></img>                          
                         </div>
                         
@@ -586,6 +590,7 @@ const Home = ({articles,ads})=>{
 
 
                                             }
+                                        alt = {articles?.nonFeatureArticles[0]?.attributes?.alternativeText || ""}
                                 ></img>  
 
                         </div>
@@ -601,7 +606,9 @@ const Home = ({articles,ads})=>{
                                         article?.attributes?.media?.data?.attributes?.formats?.small?.url ||
                                         article?.attributes?.media?.data?.attributes?.formats?.thumbnail?.url 
                                         
-                                } className="w-full object-cover h-auto"/>
+                                } 
+                                alt ={article?.attributes?.alternativeText || ""}
+                                className="w-full object-cover h-auto"/>
 
 
                             </div>
@@ -665,7 +672,7 @@ const Home = ({articles,ads})=>{
                     </div>
                 )}
             </section>
-            <div className="temp-awards-banner h-[120px] md:h-[150px] lg:h-[250px]  px-[40px] relative  bg-[#01e2c2] text-black">
+            {/*<div className="temp-awards-banner h-[120px] md:h-[150px] lg:h-[250px]  px-[40px] relative  bg-[#01e2c2] text-black">
                 
                 <div className="absolute lg:static  left-[20px] top-[1rem] w-fit text-[1rem] md:text-[1.44rem] lg:text-[1.728rem] xl:text-[2.074rem] font-bold max-w-[300px] md:max-w-[550px] lg:max-w-fit py-1 md:py-3 lg:py-[40px]  z-[1]">
                     <p className="uppercase font-extrabold">Cast
@@ -700,7 +707,7 @@ const Home = ({articles,ads})=>{
                             </svg>
                         </div>
 
-                    </div>*/}
+                    </div>
                 </div>
                 
                 <div className="absolute right-0 top-0 z-[0]">
@@ -709,7 +716,7 @@ const Home = ({articles,ads})=>{
                 <div className="absolute left-0 top-0 hidden">
                     <img className="h-[100px] md:h-[150px] lg:h-[250px] w-auto rotate-[180deg]" src="/asset_banner_pattern.png"/>
                 </div>
-            </div>
+            </div>*/}
           
         </Layout>
     )
