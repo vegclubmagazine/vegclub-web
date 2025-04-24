@@ -1,5 +1,5 @@
 
-import { API } from "../config/api";
+import { API,GIVEAWAY_APIKEY,GIVEAWAY_FORMID } from "../config/api";
 import Layout from "../defaults/Layout";
 import { FaGift } from "react-icons/fa6";
 import {useState, useEffect, useRef, Fragment} from "react";
@@ -19,16 +19,69 @@ const Giveaway = ({})=>
     const [Success, setSuccess] = useState(false);
     const formRef = useRef(null);
 
+
     const handleSubmit = async(e)=>
     {
+            const uri = 'https://api.convertkit.com/v3/forms';
+
             e.preventDefault();
             setAppSubmitted(true);
             setLoading(true);
+
+
+            fetch(`${uri}/${GIVEAWAY_FORMID}/subscribe`,{
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body:JSON.stringify({
+                    api_key:GIVEAWAY_APIKEY,
+                    email:formValues['email'],
+                    first_name:formValues['name'],
+                    fields:{
+                        last_name:formValues['surname'],
+                        city:formValues['city']
+
+                    }
+
+                })
+            })
+            .then((res)=>{
+                if(res.ok){
+                    return res.json()
+    
+                }
+                throw res;
+            })
+            .then(({data})=>{
+               
+                setLoading(false);
+                setError(false);
+                setSuccess(true);
+                
+            })
+            .catch((err)=>
+            {
+                setLoading(false);
+                setError(true);
+                setSuccess(false);
+                if(err instanceof TypeError){
+                    console.log(err)
+                    
+                }
+                else{
+                    err.json().then((body)=>{
+                        console.log(body)
+                        
+                    })
+                }
+            })
+
            
           
          
     
-            fetch(`${API}/giveaways`, {
+            /*fetch(`${API}/giveaways`, {
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json",
@@ -66,7 +119,7 @@ const Giveaway = ({})=>
                         
                     })
                 }
-            })
+            })*/
         
     
           
@@ -138,7 +191,6 @@ const Giveaway = ({})=>
         e.preventDefault();
        
         if(!formRef.current)return;
-        console.log(e.target.type);
         if(e.target === formRef.current.querySelector(":invalid")){
             let scrollToNode = getNthParent(e.target, 4);
             scrollToNode.scrollIntoView();
@@ -205,6 +257,7 @@ const Giveaway = ({})=>
         <Layout backgroundColor={"#f3f3f3"} title="Giveaway | VegClub Magazine">
            
                 <div className=" w-screen relative min-h-screen">
+
                     {AppSubmitted && (
                         <Fragment>
                             <div className="absolute left-0 top-0 w-screen  h-full bg-black/[.4] backdrop-blur-sm"></div>
@@ -213,7 +266,7 @@ const Giveaway = ({})=>
                                 {Success ? (
                                         <div className="text-center py-[40px] px-[40px]">
                                         <FontAwesomeIcon  icon={faCircleCheck} className="w-[40px] h-[40px] text-[#01e2c2] mx-auto" ></FontAwesomeIcon>
-                                        <div className="text-white md:text-[1.2rem] mt-[40px] mb-5">We have received your application</div>
+                                        <div className="text-white md:text-[1.2rem] mt-[40px] mb-5">We've received your application, an email has been sent to you!</div>
                                         <Link href="/" className="text-white w-fit text-[1.2rem] underline decoration-[3px] underline-offset-4 font-semibold uppercase">
                                                 home
                                             </Link>                                  
@@ -252,7 +305,8 @@ const Giveaway = ({})=>
 
 
                         </div>
-                        <div className="mt-[20px] bg-white rounded-[30px] shadow-md p-[20px]">
+                       
+                       <div className="mt-[20px] bg-white rounded-[30px] shadow-md p-[20px]">
                             <form id="giveAwayApp" onSubmit={(e)=>handleSubmit(e)} ref={formRef} method="POST" encType="multipart/form-data" className="md:w-[400px] mx-auto">
                                 <label for="name" className="block font-semibold text-[1rem]">Name</label>
                                 <input 
@@ -261,7 +315,7 @@ const Giveaway = ({})=>
                                     value={`${formValues?.name || ""}`}
                                     onChange={(e) => handleFormInput(e)}
                                     type="text"
-                                    oninvalid={(e) => handleInvalid(e)}
+                                    onInvalid={(e) => handleInvalid(e)}
                                     name="name"
                                     required
 
@@ -275,7 +329,7 @@ const Giveaway = ({})=>
                                     value={`${formValues?.surname || ""}`}
                                     onChange={(e) => handleFormInput(e)}
                                     type="text"
-                                    oninvalid={(e)=>handleInvalid(e)}
+                                    onInvalid={(e)=>handleInvalid(e)}
                                     name="surname"
                                     required
 
@@ -289,7 +343,7 @@ const Giveaway = ({})=>
                                     value={`${formValues?.city || ""}`}
                                     onChange={(e) => handleFormInput(e)}
                                     type="text"
-                                    oninvalid={(e) => handleInvalid(e)}
+                                    onInvalid={(e) => handleInvalid(e)}
                                     name="city"
                                     required
 
@@ -304,7 +358,7 @@ const Giveaway = ({})=>
                                     value={`${formValues?.email || ""}`}
                                     onChange={(e) => handleFormInput(e)}
                                     type="email"
-                                    oninvalid={(e)=>handleInvalid(e)}
+                                    onInvalid={(e)=>handleInvalid(e)}
                                     name="email"
                                     required
 
@@ -317,6 +371,7 @@ const Giveaway = ({})=>
                     </div>
 
                 </div>
+
                 
             
         </Layout>
